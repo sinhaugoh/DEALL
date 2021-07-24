@@ -7,6 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../../auth/presentation/consumer_home_page.dart' as _i5;
+import '../../../auth/presentation/sign_in_page.dart' as _i6;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../splash/splash_page.dart' as _i3;
 
@@ -25,13 +27,25 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i4.WelcomePage();
+        }),
+    ConsumerHomeRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i5.ConsumerHomePage();
+        }),
+    SignInRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i6.SignInPage();
         })
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(SplashRoute.name, path: '/'),
-        _i1.RouteConfig(WelcomeRoute.name, path: '/welcome-page')
+        _i1.RouteConfig(WelcomeRoute.name, path: '/welcome-page'),
+        _i1.RouteConfig(ConsumerHomeRoute.name, path: '/consumer-home-page'),
+        _i1.RouteConfig(SignInRoute.name, path: '/sign-in-page')
       ];
 }
 
@@ -45,4 +59,16 @@ class WelcomeRoute extends _i1.PageRouteInfo {
   const WelcomeRoute() : super(name, path: '/welcome-page');
 
   static const String name = 'WelcomeRoute';
+}
+
+class ConsumerHomeRoute extends _i1.PageRouteInfo {
+  const ConsumerHomeRoute() : super(name, path: '/consumer-home-page');
+
+  static const String name = 'ConsumerHomeRoute';
+}
+
+class SignInRoute extends _i1.PageRouteInfo {
+  const SignInRoute() : super(name, path: '/sign-in-page');
+
+  static const String name = 'SignInRoute';
 }
