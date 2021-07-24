@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/auth_notifier.dart';
-import 'package:deall/auth/application/firebase_user.dart';
+import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,12 +23,18 @@ class AppWidget extends ConsumerWidget {
     ref.listen(initialisationProvider, (value) {});
     ref.listen<AuthState>(authNotifierProvider, (state) {
       state.maybeWhen(
-        authenticated: (firebaseUser) {
+        authenticated: (appUser) {
           //TODO: navigate to home page
-          if (firebaseUser.userType == UserType.consumer) {
-            // ref.read(consumerNotifierProvider.notifier).getConsumer();
+          if (appUser.userType == UserType.consumer) {
             appRouter.pushAndPopUntil(
               const ConsumerHomeRoute(),
+              predicate: (route) => false,
+            );
+          }
+
+          if (appUser.userType == UserType.retailer) {
+            appRouter.pushAndPopUntil(
+              const RetailerHomeRoute(),
               predicate: (route) => false,
             );
           }

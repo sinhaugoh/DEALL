@@ -20,7 +20,7 @@ class _$AuthStateTearOff {
     return const _Initial();
   }
 
-  _Authenticated authenticated(FirebaseUser user) {
+  _Authenticated authenticated(AppUser user) {
     return _Authenticated(
       user,
     );
@@ -39,14 +39,14 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(FirebaseUser user) authenticated,
+    required TResult Function(AppUser user) authenticated,
     required TResult Function() notAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(FirebaseUser user)? authenticated,
+    TResult Function(AppUser user)? authenticated,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) =>
@@ -121,7 +121,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(FirebaseUser user) authenticated,
+    required TResult Function(AppUser user) authenticated,
     required TResult Function() notAuthenticated,
   }) {
     return initial();
@@ -131,7 +131,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(FirebaseUser user)? authenticated,
+    TResult Function(AppUser user)? authenticated,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -176,9 +176,9 @@ abstract class _$AuthenticatedCopyWith<$Res> {
   factory _$AuthenticatedCopyWith(
           _Authenticated value, $Res Function(_Authenticated) then) =
       __$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({FirebaseUser user});
+  $Res call({AppUser user});
 
-  $FirebaseUserCopyWith<$Res> get user;
+  $AppUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -199,13 +199,13 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as FirebaseUser,
+              as AppUser,
     ));
   }
 
   @override
-  $FirebaseUserCopyWith<$Res> get user {
-    return $FirebaseUserCopyWith<$Res>(_value.user, (value) {
+  $AppUserCopyWith<$Res> get user {
+    return $AppUserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -217,7 +217,7 @@ class _$_Authenticated extends _Authenticated {
   const _$_Authenticated(this.user) : super._();
 
   @override
-  final FirebaseUser user;
+  final AppUser user;
 
   @override
   String toString() {
@@ -245,7 +245,7 @@ class _$_Authenticated extends _Authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(FirebaseUser user) authenticated,
+    required TResult Function(AppUser user) authenticated,
     required TResult Function() notAuthenticated,
   }) {
     return authenticated(user);
@@ -255,7 +255,7 @@ class _$_Authenticated extends _Authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(FirebaseUser user)? authenticated,
+    TResult Function(AppUser user)? authenticated,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -291,10 +291,10 @@ class _$_Authenticated extends _Authenticated {
 }
 
 abstract class _Authenticated extends AuthState {
-  const factory _Authenticated(FirebaseUser user) = _$_Authenticated;
+  const factory _Authenticated(AppUser user) = _$_Authenticated;
   const _Authenticated._() : super._();
 
-  FirebaseUser get user => throw _privateConstructorUsedError;
+  AppUser get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -341,7 +341,7 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(FirebaseUser user) authenticated,
+    required TResult Function(AppUser user) authenticated,
     required TResult Function() notAuthenticated,
   }) {
     return notAuthenticated();
@@ -351,7 +351,7 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(FirebaseUser user)? authenticated,
+    TResult Function(AppUser user)? authenticated,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {

@@ -1,4 +1,4 @@
-import 'package:deall/auth/application/firebase_user.dart';
+import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -9,7 +9,7 @@ part 'auth_notifier.freezed.dart';
 class AuthState with _$AuthState {
   const AuthState._();
   const factory AuthState.initial() = _Initial;
-  const factory AuthState.authenticated(FirebaseUser user) = _Authenticated;
+  const factory AuthState.authenticated(AppUser user) = _Authenticated;
   const factory AuthState.notAuthenticated() = _NotAuthenticated;
 }
 
@@ -24,9 +24,4 @@ class AuthNotifier extends StateNotifier<AuthState> {
         ? state = const AuthState.notAuthenticated()
         : state = AuthState.authenticated(firebaseUser);
   }
-
-  // Future<void> signIn() async {
-  //   await _authRepository.signIn();
-  //   state = const AuthState.authenticated(FirebaseUser(id: '123', userType: UserType.consumer));
-  // }
 }

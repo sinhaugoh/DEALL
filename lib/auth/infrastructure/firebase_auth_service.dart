@@ -9,10 +9,13 @@ class FirebaseAuthService {
     return _authInstance.authStateChanges().first;
   }
 
-  // Future<void> signIn() {
-  //   return _authInstance.signInWithEmailAndPassword(
-  //     email: 'test@gmail.com',
-  //     password: '123456',
-  //   );
-  // }
+  Future<UserCredential> signIn({
+    required String email,
+    required String password,
+  }) {
+    return _authInstance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 }
