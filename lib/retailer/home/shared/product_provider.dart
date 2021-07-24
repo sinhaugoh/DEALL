@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/product.dart';
+import 'package:deall/retailer/home/application/product.dart';
 
-class ProductList extends ChangeNotifier {
+class ProductProvider extends ChangeNotifier {
   List<Product> _productList = [];
   List<Product> get productList => _productList;
 
@@ -20,4 +20,4 @@ class ProductList extends ChangeNotifier {
   }
 }
 
-final ProductsProvider = ChangeNotifierProvider((ref) => ProductList());
+final productProvider = ChangeNotifierProvider((ref) => ProductProvider());
