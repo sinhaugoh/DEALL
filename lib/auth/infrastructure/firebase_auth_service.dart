@@ -5,12 +5,14 @@ class FirebaseAuthService {
 
   FirebaseAuthService(this._authInstance);
 
-  Future<bool> isUserAuthenticated() async {
-    final result = await _authInstance.authStateChanges().first;
-    if(result == null) {
-      return false;
-    } else {
-      return true;
-    }
+  Future<User?> getFirebaseUser() {
+    return _authInstance.authStateChanges().first;
   }
+
+  // Future<void> signIn() {
+  //   return _authInstance.signInWithEmailAndPassword(
+  //     email: 'test@gmail.com',
+  //     password: '123456',
+  //   );
+  // }
 }
