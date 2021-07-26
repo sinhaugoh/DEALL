@@ -20,4 +20,6 @@ class ProductProvider extends ChangeNotifier {
   }
 }
 
+
 final productProvider = ChangeNotifierProvider((ref) => ProductProvider());
+// final productProvider = Provider<ProductProvider>((ref) => throw UnimplementedError());

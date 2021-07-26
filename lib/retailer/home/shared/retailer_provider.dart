@@ -68,4 +68,4 @@ class RetailerProvider extends ChangeNotifier {
 }
 
 final retailerProvider = ChangeNotifierProvider((ref) => RetailerProvider());
-
+// final retailerProvider = Provider<RetailerProvider>((ref) => throw UnimplementedError());

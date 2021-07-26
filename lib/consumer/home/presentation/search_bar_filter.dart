@@ -5,8 +5,9 @@ class SearchBarWithFilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context);
     return Container(
-      
+      height: mq.size.height * 0.1,
     );
   }
 }
