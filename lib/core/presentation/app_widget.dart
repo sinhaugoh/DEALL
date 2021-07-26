@@ -24,7 +24,6 @@ class AppWidget extends ConsumerWidget {
     ref.listen<AuthState>(authNotifierProvider, (state) {
       state.maybeWhen(
         authenticated: (appUser) {
-          //TODO: navigate to home page
           if (appUser.userType == UserType.consumer) {
             appRouter.pushAndPopUntil(
               const ConsumerHomeRoute(),
