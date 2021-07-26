@@ -33,10 +33,12 @@ class SignInPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Sign In'),
       ),
-      body: Stack(children: [
-        const SignInForm(),
-        SavingInProgressOverlay(isSaving: ref.watch(signInFormNotifierProvider.select((state) => state.isSaving))),
-      ],),
+      body: SafeArea(
+        child: Stack(children: [
+          const SignInForm(),
+          SavingInProgressOverlay(isSaving: ref.watch(signInFormNotifierProvider.select((state) => state.isSaving))),
+        ],),
+      ),
     );
   }
 }

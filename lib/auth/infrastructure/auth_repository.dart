@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
+import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
@@ -11,20 +12,21 @@ class AuthRepository {
   static const retailerTypeString = 'retailer';
 
   final FirebaseAuthService _firebaseAuthService;
+  final InitialUserCreationService _initialUserCreationService;
 
-  AuthRepository(this._firebaseAuthService);
+  AuthRepository(this._firebaseAuthService, this._initialUserCreationService);
 
   UserType _convertFromStringToUserType(String? userTypeString) {
-      UserType userType = UserType.unknown;
+    UserType userType = UserType.unknown;
 
-      if(userTypeString == consumerTypeString) {
-        userType = UserType.consumer;
-      }
-      if(userTypeString == retailerTypeString) {
-        userType = UserType.retailer;
-      }
+    if (userTypeString == consumerTypeString) {
+      userType = UserType.consumer;
+    }
+    if (userTypeString == retailerTypeString) {
+      userType = UserType.retailer;
+    }
 
-      return userType;
+    return userType;
   }
 
   Future<AppUser?> getFirebaseUser() async {
@@ -44,7 +46,8 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      final userCredential = await _firebaseAuthService.signIn(email: email, password: password);
+      final userCredential =
+          await _firebaseAuthService.signIn(email: email, password: password);
       final user = userCredential.user;
 
       if (user != null) {
@@ -58,6 +61,28 @@ class AuthRepository {
       }
     } on FirebaseAuthException catch (e) {
       return left(AuthFailure.server('${e.code}: ${e.message}'));
+    }
+  }
+
+  Future<Either<AuthFailure, Unit>> consumerSignUp({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _firebaseAuthService.consumerSignUp(
+          email: email, password: password);
+
+      await _initialUserCreationService
+          .createConsumer(_firebaseAuthService.getUserId());
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return left(const AuthFailure.server('Email already in use'));
+      }
+      return left(const AuthFailure.unexpectedError('Unexpected error'));
+    } catch(e) {
+      return left(const AuthFailure.unexpectedError('Unexpected error'));
     }
   }
 }

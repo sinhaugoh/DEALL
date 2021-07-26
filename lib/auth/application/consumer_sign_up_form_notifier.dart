@@ -1,41 +1,40 @@
-import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
 import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/form_error_message.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'sign_in_form_notifier.freezed.dart';
+part 'consumer_sign_up_form_notifier.freezed.dart';
 
 @freezed
-class SignInFormState with _$SignInFormState {
-  const SignInFormState._();
+class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
+  const ConsumerSignUpFormState._();
 
-  const factory SignInFormState({
+  const factory ConsumerSignUpFormState({
     required bool showErrorMessage,
     required bool isSaving,
+    required bool successful,
     required String? emailErrorMessage,
     required String? passwordErrorMessage,
     required String email,
     required String password,
-    required UserType userType,
   }) = _SignInFormState;
 
-  factory SignInFormState.initial() => const SignInFormState(
+  factory ConsumerSignUpFormState.initial() => const ConsumerSignUpFormState(
         showErrorMessage: false,
         isSaving: false,
+        successful: false,
         emailErrorMessage: null,
         passwordErrorMessage: null,
         email: '',
         password: '',
-        userType: UserType.unknown,
       );
 }
 
-class SignInFormNotifier extends StateNotifier<SignInFormState> {
+class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> {
   final AuthRepository _authRepository;
 
-  SignInFormNotifier(this._authRepository) : super(SignInFormState.initial());
+  ConsumerSignUpFormNotifier(this._authRepository) : super(ConsumerSignUpFormState.initial());
 
 
 
@@ -80,7 +79,7 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     state = stateCopy;
   }
 
-  Future<void> signIn() async {
+  Future<void> signUp() async {
     _validateInputs();
 
     //if the input are valid
@@ -89,26 +88,25 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
         isSaving: true,
       );
 
-      final failureOrSuccess = await _authRepository.signIn(
+      final failureOrSuccess = await _authRepository.consumerSignUp(
         email: state.email,
         password: state.password,
       );
 
       failureOrSuccess.fold((authFailure) {
-        authFailure.maybeMap(
-          server: (_) {
+        authFailure.maybeWhen(
+          server: (failureMessage) {
             state = state.copyWith(
-              emailErrorMessage: FormErrorMessage.signInAuthfailureMessage,
-              passwordErrorMessage: FormErrorMessage.signInAuthfailureMessage,
+              emailErrorMessage: failureMessage,
               isSaving: false,
             );
           },
           orElse: () {},
         );
-      }, (firebaseUser) {
+      }, (_) {
         state = state.copyWith(
           isSaving: false,
-          userType: firebaseUser.userType,
+          successful: true,
         );
       });
     }
