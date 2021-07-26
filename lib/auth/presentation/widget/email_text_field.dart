@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SignInEmailTextField extends ConsumerWidget {
+class EmailTextField extends ConsumerWidget {
   final String? errorText;
   final void Function(String value) onChanged;
-  const SignInEmailTextField({
+  const EmailTextField({
     Key? key,
     required this.errorText,
     required this.onChanged,
@@ -12,6 +12,7 @@ class SignInEmailTextField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //TODO: change to generic name
     return Padding(
       padding: const EdgeInsets.all(16),
       child: TextFormField(
