@@ -14,7 +14,6 @@ class SignInFormState with _$SignInFormState {
   const factory SignInFormState({
     required bool showErrorMessage,
     required bool isSaving,
-    required bool successful,
     required String? emailErrorMessage,
     required String? passwordErrorMessage,
     required String email,
@@ -25,7 +24,6 @@ class SignInFormState with _$SignInFormState {
   factory SignInFormState.initial() => const SignInFormState(
         showErrorMessage: false,
         isSaving: false,
-        successful: false,
         emailErrorMessage: null,
         passwordErrorMessage: null,
         email: '',
