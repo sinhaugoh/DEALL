@@ -1,10 +1,13 @@
-import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignInPasswordTextField extends ConsumerWidget {
+  final String? errorText;
+  final void Function(String value) onChanged;
   const SignInPasswordTextField({
     Key? key,
+    required this.errorText,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -16,17 +19,9 @@ class SignInPasswordTextField extends ConsumerWidget {
         decoration: InputDecoration(
           labelText: 'Password',
           border: const OutlineInputBorder(),
-          errorText: ref.watch(signInFormNotifierProvider
-                  .select((state) => state.showErrorMessage))
-              ? ref.watch(signInFormNotifierProvider
-                  .select((state) => state.passwordErrorMessage))
-              : null,
+          errorText: errorText,
         ),
-        onChanged: (value) {
-          ref
-              .read(signInFormNotifierProvider.notifier)
-              .passwordChanged(value);
-        },
+        onChanged: onChanged,
       ),
     );
   }

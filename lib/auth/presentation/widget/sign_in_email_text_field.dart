@@ -1,10 +1,13 @@
-import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignInEmailTextField extends ConsumerWidget {
+  final String? errorText;
+  final void Function(String value) onChanged;
   const SignInEmailTextField({
     Key? key,
+    required this.errorText,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -15,17 +18,9 @@ class SignInEmailTextField extends ConsumerWidget {
         decoration: InputDecoration(
           labelText: 'Email',
           border: const OutlineInputBorder(),
-          errorText: ref.watch(signInFormNotifierProvider
-                  .select((state) => state.showErrorMessage))
-              ? ref.watch(signInFormNotifierProvider
-                  .select((state) => state.emailErrorMessage))
-              : null,
+          errorText: errorText,
         ),
-        onChanged: (value) {
-          ref
-              .read(signInFormNotifierProvider.notifier)
-              .emailChanged(value);
-        },
+        onChanged: onChanged,
       ),
     );
   }
