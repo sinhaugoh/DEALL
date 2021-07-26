@@ -23,7 +23,9 @@ class WelcomePage extends ConsumerWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                AutoRouter.of(context).push(const SignUpRoute());
+              },
               child: const Text('sign up'),
             ),
           ],
