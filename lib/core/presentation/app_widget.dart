@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,33 +21,37 @@ class AppWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(initialisationProvider, (value) {});
-    ref.listen<AuthState>(authNotifierProvider, (state) {
-      state.maybeWhen(
-        authenticated: (appUser) {
-          if (appUser.userType == UserType.consumer) {
-            appRouter.pushAndPopUntil(
-              const ConsumerHomeRoute(),
-              predicate: (route) => false,
-            );
-          }
+    final isInitialPageRendered = ref.watch(splashHasRenderedProvider).state;
+    if (isInitialPageRendered) {
+      ref.listen(initialisationProvider, (value) {});
+      ref.listen<AuthState>(authNotifierProvider, (state) {
+        state.maybeWhen(
+          authenticated: (appUser) {
+            //TODO: navigate to home page
+            if (appUser.userType == UserType.consumer) {
+              appRouter.pushAndPopUntil(
+                const ConsumerHomeRoute(),
+                predicate: (route) => false,
+              );
+            }
 
-          if (appUser.userType == UserType.retailer) {
+            if (appUser.userType == UserType.retailer) {
+              appRouter.pushAndPopUntil(
+                const RetailerHomeRoute(),
+                predicate: (route) => false,
+              );
+            }
+          },
+          notAuthenticated: () {
             appRouter.pushAndPopUntil(
-              const RetailerHomeRoute(),
+              const WelcomeRoute(),
               predicate: (route) => false,
             );
-          }
-        },
-        notAuthenticated: () {
-          appRouter.pushAndPopUntil(
-            const WelcomeRoute(),
-            predicate: (route) => false,
-          );
-        },
-        orElse: () {},
-      );
-    });
+          },
+          orElse: () {},
+        );
+      });
+    }
 
     return MaterialApp.router(
       title: 'DEALL',

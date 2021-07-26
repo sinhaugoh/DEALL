@@ -1,32 +1,38 @@
-import 'package:deall/auth/infrastructure/auth_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SplashPage extends StatelessWidget {
+final splashHasRenderedProvider = StateProvider<bool>((ref) => false);
+
+class SplashPage extends ConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    WidgetsBinding.instance?.addPostFrameCallback(
+        (_) => ref.watch(splashHasRenderedProvider).state = true);
     //TODO: implement splash page
     return Scaffold(
-      body: Center(
-          child: Column(
-        children: [
-          const Text('this is splash page!'),
-          ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.currentUser
-                    ?.updateDisplayName(AuthRepository.consumerTypeString);
-              },
-              child: const Text('become consumer')),
-          ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.currentUser
-                    ?.updateDisplayName(AuthRepository.retailerTypeString);
-              },
-              child: const Text('become retailer')),
-        ],
-      )),
+      backgroundColor: Colors.red.shade400,
+      body: const Center(
+        child: Text('Splash Page'),
+        // child: Column(
+        //   children: [
+        //     const Text('this is splash page!'),
+        //     ElevatedButton(
+        //         onPressed: () {
+        //           FirebaseAuth.instance.currentUser
+        //               ?.updateDisplayName(AuthRepository.consumerTypeString);
+        //         },
+        //         child: const Text('become consumer')),
+        //     ElevatedButton(
+        //         onPressed: () {
+        //           FirebaseAuth.instance.currentUser
+        //               ?.updateDisplayName(AuthRepository.retailerTypeString);
+        //         },
+        //         child: const Text('become retailer')),
+        //   ],
+        // ),
+      ),
     );
   }
 }
