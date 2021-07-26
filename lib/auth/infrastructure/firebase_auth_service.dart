@@ -1,3 +1,4 @@
+import 'package:deall/auth/infrastructure/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {
@@ -9,6 +10,11 @@ class FirebaseAuthService {
     return _authInstance.authStateChanges().first;
   }
 
+  ///DO NOT use before authenticated
+  String getUserId() {
+    return _authInstance.currentUser!.uid;
+  }
+
   Future<UserCredential> signIn({
     required String email,
     required String password,
@@ -17,5 +23,19 @@ class FirebaseAuthService {
       email: email,
       password: password,
     );
+  }
+
+  Future<UserCredential> consumerSignUp({
+    required String email,
+    required String password,
+  }) async {
+    final userCredential = await _authInstance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    await userCredential.user?.updateDisplayName(AuthRepository.consumerTypeString);
+    
+    return userCredential;
   }
 }
