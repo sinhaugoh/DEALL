@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:deall/consumer/home/infrastructure/firestore_failure.dart';
 import 'package:deall/consumer/home/infrastructure/retailer_list_remote_service.dart';
 import 'package:deall/core/application/retailer.dart';
 
@@ -7,16 +9,20 @@ class RetailerListRepository {
 
   RetailerListRepository(this._remoteService);
 
-  //chg unit to failure
-  Future<Either<Unit, List<Retailer>>> getRetailerList() async {
+  Future<Either<FirestoreFailure, List<Retailer>>> getRetailerList() async {
     try {
       final retailerDTOList = await _remoteService.getRetailerList();
 
       return right(retailerDTOList
           .map((retailerDTO) => retailerDTO.toDomain())
           .toList());
-    } catch (e) {
-      return left(unit);
+    }
+     on FirebaseException catch (e) {
+      if(e.code == 'no-connedction') {
+        return left(const FirestoreFailure.noConnection());
+      } else {
+        return left(const FirestoreFailure.unknown());
+      }
     }
   }
 }

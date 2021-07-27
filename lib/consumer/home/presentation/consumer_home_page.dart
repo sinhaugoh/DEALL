@@ -1,3 +1,4 @@
+import 'package:deall/consumer/home/shared/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,8 @@ class ConsumerHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(retailerListNotifierProvider.notifier).getRetailerList();
+
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: enterLocationAppBar(),
