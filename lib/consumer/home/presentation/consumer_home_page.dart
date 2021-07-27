@@ -1,18 +1,28 @@
 import 'package:deall/consumer/home/shared/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:deall/consumer/home/presentation/drawer_widget.dart';
 import 'package:deall/consumer/home/presentation/retailer_listview.dart';
 import 'package:deall/consumer/home/presentation/search_bar_filter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ConsumerHomePage extends ConsumerWidget {
+class ConsumerHomePage extends ConsumerStatefulWidget {
   const ConsumerHomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(retailerListNotifierProvider.notifier).getRetailerList();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ConsumerHomePageState();
 
+
+}
+
+class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => ref.read(retailerListNotifierProvider.notifier).getRetailerList());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: enterLocationAppBar(),

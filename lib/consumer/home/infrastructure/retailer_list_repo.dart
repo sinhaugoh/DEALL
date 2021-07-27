@@ -10,19 +10,20 @@ class RetailerListRepository {
   RetailerListRepository(this._remoteService);
 
   Future<Either<FirestoreFailure, List<Retailer>>> getRetailerList() async {
-    try {
-      final retailerDTOList = await _remoteService.getRetailerList();
+    return left(const FirestoreFailure.noConnection());
+    // try {
+    //   final retailerDTOList = await _remoteService.getRetailerList();
 
-      return right(retailerDTOList
-          .map((retailerDTO) => retailerDTO.toDomain())
-          .toList());
-    }
-     on FirebaseException catch (e) {
-      if(e.code == 'no-connedction') {
-        return left(const FirestoreFailure.noConnection());
-      } else {
-        return left(const FirestoreFailure.unknown());
-      }
-    }
+    //   return right(retailerDTOList
+    //       .map((retailerDTO) => retailerDTO.toDomain())
+    //       .toList());
+    // }
+    //  on FirebaseException catch (e) {
+    //   if(e.code == 'no-connedction') {
+    //     return left(const FirestoreFailure.noConnection());
+    //   } else {
+    //     return left(const FirestoreFailure.unknown());
+    //   }
+    // }
   }
 }

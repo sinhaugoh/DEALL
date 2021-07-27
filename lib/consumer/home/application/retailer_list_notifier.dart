@@ -21,6 +21,7 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
   RetailerListNotifier(this._repo) : super(const RetailerListState.initial());
 
   Future<void> getRetailerList() async {
+    print('method called');
     state = const RetailerListState.loading();
 
     final successOrFailure = await _repo.getRetailerList();
@@ -35,7 +36,6 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
         },
         orElse: () {},
       );
-      state = const RetailerListState.failure('bla bal');
     }, (retailers) {
       state = RetailerListState.loaded(retailers);
     });
