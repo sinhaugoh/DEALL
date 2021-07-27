@@ -2,30 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/consumer/home/presentation/retailer_list_item.dart';
-import 'package:deall/retailer/home/shared/retailer_provider.dart';
-
-// final currentProductIndex = ScopedProvider<int>((_) => throw UnimplementedError());
-// this one need the version of flutter_riverpod: 0.13.0-nullsafety.1
-// the purpose of this is so that each RetailerItem can be const so that the items doesn't keep
-// getting rebuilt but do we really need it to be const? what scenarios will cause it to rebuilt etc?
+import 'package:deall/core/shared/retailer_provider.dart';
+import 'package:deall/core/application/retailer.dart';
 
 class RetailerListView extends ConsumerWidget {
   const RetailerListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView.builder(
-      itemCount: RetailerProvider().retailerList.length,
-      // replace with future builder next time?
-      itemBuilder: (context, index) {
-        return ProviderScope(
-          // overrides: [
-          // retailerProvider.overrideWithValue(),
-          // ],
-          child: RetailerItem(
-            retailerData: RetailerProvider().retailerList[index],
-          ), // retailer item
-        );
+    return FutureBuilder<List<Retailer>?>(
+      future: RetailerProvider().getRetailerList(),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return const CircularProgressIndicator();
+          default:
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) => ProviderScope(
+                  child: RetailerItem(
+                    retailerData: snapshot.data![index],
+                  ),
+                ),
+              );
+            }
+        }
       },
     );
   }

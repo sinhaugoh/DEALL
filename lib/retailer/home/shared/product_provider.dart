@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/retailer/home/application/product.dart';
+import 'package:deall/core/application/product.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<Product> _productList = [];

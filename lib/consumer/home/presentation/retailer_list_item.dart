@@ -1,4 +1,4 @@
-import 'package:deall/retailer/home/application/retailer.dart';
+import 'package:deall/core/application/retailer.dart';
 import 'package:flutter/material.dart';
 
 class RetailerItem extends StatelessWidget {
