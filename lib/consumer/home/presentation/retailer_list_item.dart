@@ -2,7 +2,8 @@ import 'package:deall/retailer/home/application/retailer.dart';
 import 'package:flutter/material.dart';
 
 class RetailerItem extends StatelessWidget {
-  const RetailerItem(Retailer retailerData, {Key? key}) : super(key: key);
+  final Retailer retailerData;
+  const RetailerItem({Key? key, required this.retailerData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +27,23 @@ class RetailerItem extends StatelessWidget {
             Flexible(
               flex: 6,
               child: Column(
-                children: const [
+                children: [
                   Flexible(
-                    flex: 2,
-                    child: Text(""), //shop name
+                    flex: 3,
+                    child: Text(retailerData.name), //shop name
                   ),
                   Flexible(
-                    child: SizedBox(), //dist and opening hours
+                    flex: 3,
+                    child: Text(
+                        "543m, ${retailerData.operatingHours}"), //dist and opening hours
                   ),
                   Flexible(
-                    flex: 2,
-                    child: SizedBox(), //shop description
+                    flex: 5,
+                    child: Text(
+                      retailerData.description.toString(),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                    ), //shop description
                   ),
                 ],
               ),

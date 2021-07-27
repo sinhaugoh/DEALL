@@ -20,9 +20,11 @@ class RetailerListView extends ConsumerWidget {
       itemBuilder: (context, index) {
         return ProviderScope(
           // overrides: [
-            // retailerProvider.overrideWithValue(),
+          // retailerProvider.overrideWithValue(),
           // ],
-          child: RetailerItem(RetailerProvider().retailerList[index]), // retailer item
+          child: RetailerItem(
+            retailerData: RetailerProvider().retailerList[index],
+          ), // retailer item
         );
       },
     );

@@ -51,6 +51,17 @@ class RetailerProvider extends ChangeNotifier {
       image: "",
       visibility: true,
     ),
+    const Retailer(
+      name: "Sum Cake",
+      block: "32A",
+      street: "Chai Chee Ave",
+      unit: "01-145",
+      postalCode: "462032",
+      operatingHours: "Monday - Sunday: 11:30am - 9:30pm",
+      description: "Some cake",
+      image: "",
+      visibility: true,
+    ),
   ];
   List<Retailer> get retailerList => _retailerList;
 
