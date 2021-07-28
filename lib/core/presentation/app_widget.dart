@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'routes/app_router.gr.dart';
-import 'themedata_swatch_color.dart';
+import 'const/themedata_swatch_color.dart';
 
 //Do all the initialisation here
 final initialisationProvider = FutureProvider<Unit>((ref) async {
