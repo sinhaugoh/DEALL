@@ -10,6 +10,7 @@ class ImagePickingRemoteService {
 
   static const int compressionQuality = 25;
   static const String shopLogoDir = 'ShopLogo';
+  static const String productImageDir = 'ProductImage';
 
   ImagePickingRemoteService(this._imagePicker, this._firebaseStorage);
 
@@ -32,6 +33,16 @@ class ImagePickingRemoteService {
   }) async {
     final String extension = p.extension(file.path);
     final String storagePath = '$shopLogoDir/$userId$extension';
+    return _uploadImageToDBBasedOnPath(path: storagePath, file: file);
+  }
+
+  Future<String> uploadProductImageToCloudStorage({
+    required String userId,
+    required String productId,
+    required File file,
+  }) async {
+    final String extension = p.extension(file.path);
+    final String storagePath = '$productImageDir/$userId/$productId$extension';
     return _uploadImageToDBBasedOnPath(path: storagePath, file: file);
   }
 

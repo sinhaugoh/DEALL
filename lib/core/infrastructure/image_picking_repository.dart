@@ -14,23 +14,44 @@ class ImagePickingRepository {
   Future<Either<ImagePickingFailure, File>> pickImage() async {
     try {
       final result = await _imagePickingRemoteService.pickImageFromGallery();
-      if(result == null) {
+      if (result == null) {
         return left(const ImagePickingFailure.imagePicker('Cancelled'));
       } else {
         return right(result);
       }
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       return left(ImagePickingFailure.imagePicker(e.code));
     }
   }
 
-  Future<Either<ImagePickingFailure, String>> uploadShopLogoToCloudStorage ({
+  Future<Either<ImagePickingFailure, String>> uploadShopLogoToCloudStorage({
     required String userId,
     required File file,
   }) async {
     try {
-      return right(await _imagePickingRemoteService.uploadShopLogoToCloudStorage(userId: userId, file: file,));
-    } on FirebaseException catch(e) {
+      return right(
+          await _imagePickingRemoteService.uploadShopLogoToCloudStorage(
+        userId: userId,
+        file: file,
+      ));
+    } on FirebaseException catch (e) {
+      return left(ImagePickingFailure.server(e.code));
+    }
+  }
+
+  Future<Either<ImagePickingFailure, String>> uploadProductImageToCloudStorage({
+    required String userId,
+    required File file,
+    required String productId,
+  }) async {
+    try {
+      return right(
+          await _imagePickingRemoteService.uploadProductImageToCloudStorage(
+        userId: userId,
+        productId: productId,
+        file: file,
+      ));
+    } on FirebaseException catch (e) {
       return left(ImagePickingFailure.server(e.code));
     }
   }
