@@ -17,10 +17,10 @@ class RetailerListRepository {
           .map((retailerDTO) => retailerDTO.toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      if (e.code == 'storage/canceled') {
+      if (e.code == 'ERROR_CANCELED') {
         return left(const FirestoreFailures.cancelledOperation());
       }
-      if (e.code == 'storage/object-not-found') {
+      if (e.code == 'ERROR_OBJECT_NOT_FOUND') {
         return left(const FirestoreFailures.objectNotFound());
       }
       return left(const FirestoreFailures.unknown());
