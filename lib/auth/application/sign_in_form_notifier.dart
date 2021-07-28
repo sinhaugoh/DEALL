@@ -12,6 +12,7 @@ class SignInFormState with _$SignInFormState {
   const SignInFormState._();
 
   const factory SignInFormState({
+    required bool hasConnection,
     required bool showErrorMessage,
     required bool isSaving,
     required String? emailErrorMessage,
@@ -22,6 +23,7 @@ class SignInFormState with _$SignInFormState {
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => const SignInFormState(
+        hasConnection: true,
         showErrorMessage: false,
         isSaving: false,
         emailErrorMessage: null,
@@ -36,8 +38,6 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
   final AuthRepository _authRepository;
 
   SignInFormNotifier(this._authRepository) : super(SignInFormState.initial());
-
-
 
   void emailChanged(String email) {
     state = state.copyWith(email: email);
@@ -55,7 +55,8 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     emailValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
           invalidEmail: () {
-            stateCopy = stateCopy.copyWith(emailErrorMessage: FormErrorMessage.emailErrorMessage);
+            stateCopy = stateCopy.copyWith(
+                emailErrorMessage: FormErrorMessage.emailErrorMessage);
           },
           orElse: () {}),
       (r) {
@@ -87,6 +88,7 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     if (state.emailErrorMessage == null && state.passwordErrorMessage == null) {
       state = state.copyWith(
         isSaving: true,
+        hasConnection: true,
       );
 
       final failureOrSuccess = await _authRepository.signIn(
@@ -100,6 +102,12 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
             state = state.copyWith(
               emailErrorMessage: FormErrorMessage.signInAuthfailureMessage,
               passwordErrorMessage: FormErrorMessage.signInAuthfailureMessage,
+              isSaving: false,
+            );
+          },
+          noConnection: (_) {
+            state = state.copyWith(
+              hasConnection: false,
               isSaving: false,
             );
           },

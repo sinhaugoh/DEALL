@@ -16,8 +16,10 @@ final initialUserCreationServiceProvider =
     Provider((ref) => InitialUserCreationService(ref.watch(firestoreProvider)));
 
 final authRepositoryProvider = Provider((ref) => AuthRepository(
-    ref.watch(firebaseAuthServiceProvider),
-    ref.watch(initialUserCreationServiceProvider)));
+      ref.watch(firebaseAuthServiceProvider),
+      ref.watch(initialUserCreationServiceProvider),
+      ref.watch(internetConnectionCheckerProvider),
+    ));
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
     (ref) => AuthNotifier(ref.watch(authRepositoryProvider)));
 
