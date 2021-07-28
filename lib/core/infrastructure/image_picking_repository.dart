@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:deall/core/application/image_picking_failure.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
@@ -20,6 +21,17 @@ class ImagePickingRepository {
       }
     } on PlatformException catch(e) {
       return left(ImagePickingFailure.imagePicker(e.code));
+    }
+  }
+
+  Future<Either<ImagePickingFailure, String>> uploadShopLogoToCloudStorage ({
+    required String userId,
+    required File file,
+  }) async {
+    try {
+      return right(await _imagePickingRemoteService.uploadShopLogoToCloudStorage(userId: userId, file: file,));
+    } on FirebaseException catch(e) {
+      return left(ImagePickingFailure.server(e.code));
     }
   }
 }
