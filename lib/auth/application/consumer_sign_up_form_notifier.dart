@@ -11,6 +11,7 @@ class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
   const ConsumerSignUpFormState._();
 
   const factory ConsumerSignUpFormState({
+    required bool hasConnection,
     required bool showErrorMessage,
     required bool isSaving,
     required bool successful,
@@ -21,6 +22,7 @@ class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
   }) = _SignInFormState;
 
   factory ConsumerSignUpFormState.initial() => const ConsumerSignUpFormState(
+        hasConnection: true,
         showErrorMessage: false,
         isSaving: false,
         successful: false,
@@ -86,6 +88,7 @@ class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> 
     if (state.emailErrorMessage == null && state.passwordErrorMessage == null) {
       state = state.copyWith(
         isSaving: true,
+        hasConnection: true,
       );
 
       final failureOrSuccess = await _authRepository.consumerSignUp(
@@ -98,6 +101,12 @@ class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> 
           server: (failureMessage) {
             state = state.copyWith(
               emailErrorMessage: failureMessage,
+              isSaving: false,
+            );
+          },
+          noConnection: () {
+            state = state.copyWith(
+              hasConnection: false,
               isSaving: false,
             );
           },
