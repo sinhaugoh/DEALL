@@ -18,9 +18,6 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
         cancelledOperation: (_) {
           state = const RetailerListState.failure("Operation cancelled.");
         },
-        unknown: (_) {
-          state = const RetailerListState.failure("Unknown error.");
-        },
         orElse: () {
           state = const RetailerListState.failure("Unknown error.");
         },
