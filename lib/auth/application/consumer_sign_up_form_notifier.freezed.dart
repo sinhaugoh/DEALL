@@ -17,7 +17,8 @@ class _$ConsumerSignUpFormStateTearOff {
   const _$ConsumerSignUpFormStateTearOff();
 
   _SignInFormState call(
-      {required bool showErrorMessage,
+      {required bool hasConnection,
+      required bool showErrorMessage,
       required bool isSaving,
       required bool successful,
       required String? emailErrorMessage,
@@ -25,6 +26,7 @@ class _$ConsumerSignUpFormStateTearOff {
       required String email,
       required String password}) {
     return _SignInFormState(
+      hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
       isSaving: isSaving,
       successful: successful,
@@ -41,6 +43,7 @@ const $ConsumerSignUpFormState = _$ConsumerSignUpFormStateTearOff();
 
 /// @nodoc
 mixin _$ConsumerSignUpFormState {
+  bool get hasConnection => throw _privateConstructorUsedError;
   bool get showErrorMessage => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get successful => throw _privateConstructorUsedError;
@@ -60,7 +63,8 @@ abstract class $ConsumerSignUpFormStateCopyWith<$Res> {
           $Res Function(ConsumerSignUpFormState) then) =
       _$ConsumerSignUpFormStateCopyWithImpl<$Res>;
   $Res call(
-      {bool showErrorMessage,
+      {bool hasConnection,
+      bool showErrorMessage,
       bool isSaving,
       bool successful,
       String? emailErrorMessage,
@@ -80,6 +84,7 @@ class _$ConsumerSignUpFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? hasConnection = freezed,
     Object? showErrorMessage = freezed,
     Object? isSaving = freezed,
     Object? successful = freezed,
@@ -89,6 +94,10 @@ class _$ConsumerSignUpFormStateCopyWithImpl<$Res>
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessage: showErrorMessage == freezed
           ? _value.showErrorMessage
           : showErrorMessage // ignore: cast_nullable_to_non_nullable
@@ -129,7 +138,8 @@ abstract class _$SignInFormStateCopyWith<$Res>
       __$SignInFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool showErrorMessage,
+      {bool hasConnection,
+      bool showErrorMessage,
       bool isSaving,
       bool successful,
       String? emailErrorMessage,
@@ -151,6 +161,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? hasConnection = freezed,
     Object? showErrorMessage = freezed,
     Object? isSaving = freezed,
     Object? successful = freezed,
@@ -160,6 +171,10 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object? password = freezed,
   }) {
     return _then(_SignInFormState(
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessage: showErrorMessage == freezed
           ? _value.showErrorMessage
           : showErrorMessage // ignore: cast_nullable_to_non_nullable
@@ -196,7 +211,8 @@ class __$SignInFormStateCopyWithImpl<$Res>
 
 class _$_SignInFormState extends _SignInFormState {
   const _$_SignInFormState(
-      {required this.showErrorMessage,
+      {required this.hasConnection,
+      required this.showErrorMessage,
       required this.isSaving,
       required this.successful,
       required this.emailErrorMessage,
@@ -205,6 +221,8 @@ class _$_SignInFormState extends _SignInFormState {
       required this.password})
       : super._();
 
+  @override
+  final bool hasConnection;
   @override
   final bool showErrorMessage;
   @override
@@ -222,13 +240,16 @@ class _$_SignInFormState extends _SignInFormState {
 
   @override
   String toString() {
-    return 'ConsumerSignUpFormState(showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password)';
+    return 'ConsumerSignUpFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SignInFormState &&
+            (identical(other.hasConnection, hasConnection) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasConnection, hasConnection)) &&
             (identical(other.showErrorMessage, showErrorMessage) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessage, showErrorMessage)) &&
@@ -254,6 +275,7 @@ class _$_SignInFormState extends _SignInFormState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(hasConnection) ^
       const DeepCollectionEquality().hash(showErrorMessage) ^
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(successful) ^
@@ -270,7 +292,8 @@ class _$_SignInFormState extends _SignInFormState {
 
 abstract class _SignInFormState extends ConsumerSignUpFormState {
   const factory _SignInFormState(
-      {required bool showErrorMessage,
+      {required bool hasConnection,
+      required bool showErrorMessage,
       required bool isSaving,
       required bool successful,
       required String? emailErrorMessage,
@@ -279,6 +302,8 @@ abstract class _SignInFormState extends ConsumerSignUpFormState {
       required String password}) = _$_SignInFormState;
   const _SignInFormState._() : super._();
 
+  @override
+  bool get hasConnection => throw _privateConstructorUsedError;
   @override
   bool get showErrorMessage => throw _privateConstructorUsedError;
   @override
