@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/consumer/home/presentation/drawer_widget.dart';
-import 'package:deall/consumer/home/presentation/retailer_listview.dart';
-import 'package:deall/consumer/home/presentation/search_bar_filter.dart';
+import 'package:deall/consumer/presentation/drawer_widget.dart';
+import 'package:deall/consumer/presentation/retailer_listview.dart';
+import 'package:deall/consumer/presentation/search_bar_filter.dart';
 
 class ConsumerHomePage extends ConsumerWidget {
   const ConsumerHomePage({Key? key}) : super(key: key);

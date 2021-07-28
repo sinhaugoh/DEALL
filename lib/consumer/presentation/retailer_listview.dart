@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/consumer/home/presentation/retailer_list_item.dart';
+import 'package:deall/consumer/presentation/retailer_list_item.dart';
 import 'package:deall/core/shared/retailer_provider.dart';
 import 'package:deall/core/application/retailer.dart';
 

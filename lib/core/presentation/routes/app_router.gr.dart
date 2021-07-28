@@ -12,7 +12,7 @@ import '../../../auth/presentation/retailer_sign_up_page.dart' as _i10;
 import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
-import '../../../consumer/home/presentation/consumer_home_page.dart' as _i5;
+import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
 import '../../../retailer/home/presentation/retailer_home_page.dart' as _i6;
 import '../../../splash/splash_page.dart' as _i3;
 
