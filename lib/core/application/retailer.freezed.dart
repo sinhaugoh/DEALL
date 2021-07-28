@@ -299,6 +299,12 @@ class _$_Retailer implements _Retailer {
   @override
   _$RetailerCopyWith<_Retailer> get copyWith =>
       __$RetailerCopyWithImpl<_Retailer>(this, _$identity);
+
+  @override
+  String addressLine() {
+    // TODO: implement addressLine
+    throw UnimplementedError();
+  }
 }
 
 abstract class _Retailer implements Retailer {

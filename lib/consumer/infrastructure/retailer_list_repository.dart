@@ -6,21 +6,21 @@ import 'package:deall/core/application/retailer.dart';
 import 'retailer_list_remote_service.dart';
 
 class RetailerListRepository {
-  final RetailerListRemoteService _retailerRemoteService;
+  final RetailerListRemoteService _retailerListRemoteService;
 
-  RetailerListRepository(this._retailerRemoteService);
+  RetailerListRepository(this._retailerListRemoteService);
 
   Future<Either<FirestoreFailures, List<Retailer>>> getRetailerList() async {
     try {
-      final retailerDTOList = await _retailerRemoteService.getRetailerList();
+      final retailerDTOList = await _retailerListRemoteService.getRetailerList();
       return right(retailerDTOList
           .map((retailerDTO) => retailerDTO.toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      if (e.code == 'ERROR_CANCELED') {
+      if (e.code == FirebaseException(code: 'cancelled', plugin: "The operation was cancelled.").code) {
         return left(const FirestoreFailures.cancelledOperation());
       }
-      if (e.code == 'ERROR_OBJECT_NOT_FOUND') {
+      if (e.code == FirebaseException(code: 'not-found', plugin: "Some requested document was not found.").code) {
         return left(const FirestoreFailures.objectNotFound());
       }
       return left(const FirestoreFailures.unknown());

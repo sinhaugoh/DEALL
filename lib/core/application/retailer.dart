@@ -15,4 +15,8 @@ abstract class Retailer with _$Retailer {
     String? image,
     required bool visibility,
   }) = _Retailer;
+
+  String addressLine (){
+    return "$block $street $unit $postalCode";
+  }
 }
