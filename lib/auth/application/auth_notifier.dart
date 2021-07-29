@@ -10,6 +10,7 @@ class AuthState with _$AuthState {
   const AuthState._();
   const factory AuthState.initial() = _Initial;
   const factory AuthState.authenticated(AppUser user) = _Authenticated;
+  const factory AuthState.noConnection() = NoConnection;
   const factory AuthState.notAuthenticated() = _NotAuthenticated;
 }
 
@@ -23,5 +24,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
     firebaseUser == null
         ? state = const AuthState.notAuthenticated()
         : state = AuthState.authenticated(firebaseUser);
+  }
+
+  Future<void> signOut() async {
+    final successOrFailure = await _authRepository.signOut();
+
+    successOrFailure.fold(
+        (f) => null,
+        (r) => state = const AuthState.notAuthenticated());
   }
 }

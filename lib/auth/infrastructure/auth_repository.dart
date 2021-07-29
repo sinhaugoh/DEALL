@@ -4,6 +4,7 @@ import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class AuthRepository {
   //! DO NOT CHANGE THE VALUE OF THIS,
@@ -13,8 +14,10 @@ class AuthRepository {
 
   final FirebaseAuthService _firebaseAuthService;
   final InitialUserCreationService _initialUserCreationService;
+  final InternetConnectionChecker _internetConnectionChecker;
 
-  AuthRepository(this._firebaseAuthService, this._initialUserCreationService);
+  AuthRepository(this._firebaseAuthService, this._initialUserCreationService,
+      this._internetConnectionChecker);
 
   UserType _convertFromStringToUserType(String? userTypeString) {
     UserType userType = UserType.unknown;
@@ -45,6 +48,11 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
+    //check for internet connection
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const AuthFailure.noConnection());
+    }
+
     try {
       final userCredential =
           await _firebaseAuthService.signIn(email: email, password: password);
@@ -68,6 +76,11 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
+    //check for internet connection
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const AuthFailure.noConnection());
+    }
+
     try {
       await _firebaseAuthService.consumerSignUp(
           email: email, password: password);
@@ -81,8 +94,17 @@ class AuthRepository {
         return left(const AuthFailure.server('Email already in use'));
       }
       return left(const AuthFailure.unexpectedError('Unexpected error'));
-    } catch(e) {
+    } catch (e) {
       return left(const AuthFailure.unexpectedError('Unexpected error'));
+    }
+  }
+
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      await _firebaseAuthService.signOut();
+      return right(unit);
+    } on FirebaseAuthException catch(e) {
+      return left(AuthFailure.server(e.code));
     }
   }
 }
