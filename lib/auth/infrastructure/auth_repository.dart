@@ -98,4 +98,13 @@ class AuthRepository {
       return left(const AuthFailure.unexpectedError('Unexpected error'));
     }
   }
+
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      await _firebaseAuthService.signOut();
+      return right(unit);
+    } on FirebaseAuthException catch(e) {
+      return left(AuthFailure.server(e.code));
+    }
+  }
 }
