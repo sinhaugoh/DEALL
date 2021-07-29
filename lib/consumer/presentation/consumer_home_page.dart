@@ -24,7 +24,6 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
   @override
   void initState() {
     super.initState();
-
     Future.microtask(() =>
         ref.read(retailerListNotifierProvider.notifier).getRetailerList());
   }
@@ -36,18 +35,15 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
   }
 
   void connectivityChecker() {
-    // ignore: cancel_subscriptions
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) async {
       if (result == ConnectivityResult.none) {
-        // if (!await InternetConnectionChecker().hasConnection) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("No connection"),
             ),
           );
-        // }
       }
     });
   }
