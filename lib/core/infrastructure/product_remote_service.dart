@@ -7,7 +7,6 @@ class ProductListRemoteService {
   ProductListRemoteService(this._firestore);
 
   Future<List<ProductDTO>> getProductList(String uid) async {
-    //check uid and match the retailer collection doc id
     final QuerySnapshot<Map<String, dynamic>> querySnapshot = await _firestore
         .collection('retailers')
         .doc(uid)
@@ -18,5 +17,3 @@ class ProductListRemoteService {
         .toList();
   }
 }
-
-// think if theres a need for another firestore failure such as no product found, isit no object found error or something else

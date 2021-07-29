@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:deall/consumer/infrastructure/firestore_failures.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:deall/core/application/retailer.dart';
 import 'retailer_list_remote_service.dart';
 

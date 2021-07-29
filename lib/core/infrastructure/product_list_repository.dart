@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:deall/core/application/product.dart';
 import 'package:deall/core/infrastructure/product_remote_service.dart';
-import 'package:deall/consumer/infrastructure/firestore_failures.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
 
 class ProductListRepository {
   final ProductListRemoteService _productListRemoteService;
