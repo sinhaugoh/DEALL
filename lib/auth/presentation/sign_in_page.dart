@@ -31,15 +31,32 @@ class SignInPage extends ConsumerWidget {
       }
     });
 
+    ref.listen<bool>(
+      signInFormNotifierProvider.select((state) => state.hasConnection),
+      (state) {
+        if (state == false) {
+          //TODO: use theme snackbar instead
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('No connection'),
+            duration: Duration(seconds: 5),
+            behavior: SnackBarBehavior.floating,
+          ));
+        }
+      },
+    );
+
     return Scaffold(
       appBar: Header().HeaderBar(context),
       body: SafeArea(
-        child: Stack(children: [
-          const SignInForm(),
-          SavingInProgressOverlay(isSaving: ref.watch(signInFormNotifierProvider.select((state) => state.isSaving))),
-        ],),
+        child: Stack(
+          children: [
+            const SignInForm(),
+            SavingInProgressOverlay(
+                isSaving: ref.watch(signInFormNotifierProvider
+                    .select((state) => state.isSaving))),
+          ],
+        ),
       ),
     );
   }
 }
-

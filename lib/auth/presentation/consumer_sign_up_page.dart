@@ -23,6 +23,20 @@ class ConsumerSignUpPage extends ConsumerWidget {
       }
     });
 
+    ref.listen<bool>(
+      consumerSignUpFormNotifierProvider.select((state) => state.hasConnection),
+      (state) {
+        if (state == false) {
+          //TODO: use theme snackbar instead
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('No connection'),
+            duration: Duration(seconds: 5),
+            behavior: SnackBarBehavior.floating,
+          ));
+        }
+      },
+    );
+
     return Scaffold(
       appBar: Header().HeaderBar(context),
       body: SafeArea(

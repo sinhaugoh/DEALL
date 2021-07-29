@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'routes/app_router.gr.dart';
+import 'const/themedata_swatch_color.dart';
 
 //Do all the initialisation here
 final initialisationProvider = FutureProvider<Unit>((ref) async {
@@ -56,7 +57,7 @@ class AppWidget extends ConsumerWidget {
     return MaterialApp.router(
       title: 'DEALL',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
       ),
       routeInformationParser: appRouter.defaultRouteParser(),
       routerDelegate: appRouter.delegate(),
