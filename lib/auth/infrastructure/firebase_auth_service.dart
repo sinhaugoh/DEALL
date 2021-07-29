@@ -38,4 +38,8 @@ class FirebaseAuthService {
     
     return userCredential;
   }
+
+  Future<void> signOut() {
+    return _authInstance.signOut();
+  }
 }
