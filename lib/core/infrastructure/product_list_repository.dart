@@ -10,9 +10,9 @@ class ProductListRepository {
 
   ProductListRepository(this._productListRemoteService);
 
-  Future<Either<FirestoreFailures, List<Product>>> getProductList() async {
+  Future<Either<FirestoreFailures, List<Product>>> getProductList(String uid) async {
     try {
-      final productDTOList = await _productListRemoteService.getProductList();
+      final productDTOList = await _productListRemoteService.getProductList(uid);
       return right(
           productDTOList.map((productDTO) => productDTO.toDomain()).toList());
     } on FirebaseException catch (e) {

@@ -17,11 +17,13 @@ class ConsumerHomePage extends ConsumerStatefulWidget {
 }
 
 class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
+  
   @override
   void initState() {
     super.initState();
     Future.microtask(() => ref.read(retailerListNotifierProvider.notifier).getRetailerList());
   }
+  
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);

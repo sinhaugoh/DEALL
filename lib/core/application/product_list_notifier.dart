@@ -7,9 +7,9 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
   final ProductListRepository _repo;
   ProductListNotifier(this._repo) : super(const ProductListState.initial());
 
-  Future<void> getProductList() async {
+  Future<void> getProductList(String uid) async {
     state = const ProductListState.loading();
-    final getListResult = await _repo.getProductList();
+    final getListResult = await _repo.getProductList(uid);
     getListResult.fold((failure) {
       failure.maybeMap(
         objectNotFound: (_) {
