@@ -24,6 +24,7 @@ dependencies:
   internet_connection_checker: ^0.0.1+2
   json_annotation: ^4.0.1
   path: ^1.8.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
