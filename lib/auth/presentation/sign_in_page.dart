@@ -3,6 +3,7 @@ import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/application/sign_in_form_notifier.dart';
 import 'package:deall/auth/presentation/widget/sign_in_form.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/presentation/const/header.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +45,7 @@ class SignInPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-      ),
+      appBar: Header().headerBar(context),
       body: SafeArea(
         child: Stack(
           children: [

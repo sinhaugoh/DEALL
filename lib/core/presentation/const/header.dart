@@ -6,9 +6,9 @@ class Header{
   //Top Bar
   AppBar headerBar(BuildContext context){
     return AppBar(
-      // iconTheme: IconThemeData(
-      //   color: Colors.black, //change your color here
-      // ),
+      iconTheme: IconThemeData(
+        color: Colors.black, //change your color here
+      ),
       elevation: 0,
       backgroundColor: Colors.white,
       title: const DeallLogo(0.125,0.02),
