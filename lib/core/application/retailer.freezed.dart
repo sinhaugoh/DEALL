@@ -218,7 +218,7 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Retailer implements _Retailer {
+class _$_Retailer extends _Retailer {
   const _$_Retailer(
       {required this.name,
       required this.block,
@@ -228,7 +228,8 @@ class _$_Retailer implements _Retailer {
       required this.operatingHours,
       this.description,
       this.image,
-      required this.visibility});
+      required this.visibility})
+      : super._();
 
   @override
   final String name;
@@ -299,15 +300,9 @@ class _$_Retailer implements _Retailer {
   @override
   _$RetailerCopyWith<_Retailer> get copyWith =>
       __$RetailerCopyWithImpl<_Retailer>(this, _$identity);
-
-  @override
-  String addressLine() {
-    // TODO: implement addressLine
-    throw UnimplementedError();
-  }
 }
 
-abstract class _Retailer implements Retailer {
+abstract class _Retailer extends Retailer {
   const factory _Retailer(
       {required String name,
       required String block,
@@ -318,6 +313,7 @@ abstract class _Retailer implements Retailer {
       String? description,
       String? image,
       required bool visibility}) = _$_Retailer;
+  const _Retailer._() : super._();
 
   @override
   String get name => throw _privateConstructorUsedError;

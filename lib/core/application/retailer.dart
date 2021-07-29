@@ -4,6 +4,7 @@ part 'retailer.freezed.dart';
 
 @freezed
 abstract class Retailer with _$Retailer {
+  const Retailer._();
   const factory Retailer({
     required String name,
     required String block,
