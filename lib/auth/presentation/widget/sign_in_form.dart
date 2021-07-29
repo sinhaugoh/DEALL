@@ -1,7 +1,7 @@
 import 'package:deall/auth/presentation/widget/email_text_field.dart';
 import 'package:deall/auth/presentation/widget/password_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
-import 'package:deall/core/presentation/const/header.dart';
+import 'package:deall/core/presentation/const/font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,7 +31,7 @@ class SignInForm extends ConsumerWidget {
                   'SIGN-IN',
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
-                  style: Header().deallFont(context, Colors.black),
+                  style: deallAppFont(context, Colors.black),
                 ),
               ),
             ),

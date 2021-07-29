@@ -3,9 +3,9 @@ import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/application/sign_in_form_notifier.dart';
 import 'package:deall/auth/presentation/widget/sign_in_form.dart';
 import 'package:deall/auth/shared/providers.dart';
-import 'package:deall/core/presentation/const/header.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
+import 'package:deall/core/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -45,7 +45,15 @@ class SignInPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: Header().headerBar(context),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Logo(0.125,0.02),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Stack(
           children: [

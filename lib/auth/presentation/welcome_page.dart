@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:deall/core/presentation/const/header.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomePage extends ConsumerWidget {
@@ -11,12 +11,20 @@ class WelcomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: Header().headerBar(context),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Logo(0.125,0.02),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const DeallLogo(0.5,0.1),
+            const Logo(0.5,0.1),
             const SizedBox(height:12),
             LateNightWidget(),
             const SizedBox(height: 15),
