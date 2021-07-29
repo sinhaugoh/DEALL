@@ -24,6 +24,10 @@ class _$FirestoreFailuresTearOff {
     return const ObjectNotFound();
   }
 
+  NoConnection noConnection() {
+    return const NoConnection();
+  }
+
   Unknown unknown() {
     return const Unknown();
   }
@@ -38,6 +42,7 @@ mixin _$FirestoreFailures {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
+    required TResult Function() noConnection,
     required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +50,7 @@ mixin _$FirestoreFailures {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
+    TResult Function()? noConnection,
     TResult Function()? unknown,
     required TResult orElse(),
   }) =>
@@ -53,6 +59,7 @@ mixin _$FirestoreFailures {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Unknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +67,7 @@ mixin _$FirestoreFailures {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) =>
@@ -125,6 +133,7 @@ class _$CancelledOperation extends CancelledOperation {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
+    required TResult Function() noConnection,
     required TResult Function() unknown,
   }) {
     return cancelledOperation();
@@ -135,6 +144,7 @@ class _$CancelledOperation extends CancelledOperation {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
+    TResult Function()? noConnection,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -149,6 +159,7 @@ class _$CancelledOperation extends CancelledOperation {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Unknown value) unknown,
   }) {
     return cancelledOperation(this);
@@ -159,6 +170,7 @@ class _$CancelledOperation extends CancelledOperation {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -216,6 +228,7 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
+    required TResult Function() noConnection,
     required TResult Function() unknown,
   }) {
     return objectNotFound();
@@ -226,6 +239,7 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
+    TResult Function()? noConnection,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -240,6 +254,7 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Unknown value) unknown,
   }) {
     return objectNotFound(this);
@@ -250,6 +265,7 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -263,6 +279,101 @@ class _$ObjectNotFound extends ObjectNotFound {
 abstract class ObjectNotFound extends FirestoreFailures {
   const factory ObjectNotFound() = _$ObjectNotFound;
   const ObjectNotFound._() : super._();
+}
+
+/// @nodoc
+abstract class $NoConnectionCopyWith<$Res> {
+  factory $NoConnectionCopyWith(
+          NoConnection value, $Res Function(NoConnection) then) =
+      _$NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoConnectionCopyWithImpl<$Res>
+    extends _$FirestoreFailuresCopyWithImpl<$Res>
+    implements $NoConnectionCopyWith<$Res> {
+  _$NoConnectionCopyWithImpl(
+      NoConnection _value, $Res Function(NoConnection) _then)
+      : super(_value, (v) => _then(v as NoConnection));
+
+  @override
+  NoConnection get _value => super._value as NoConnection;
+}
+
+/// @nodoc
+
+class _$NoConnection extends NoConnection {
+  const _$NoConnection() : super._();
+
+  @override
+  String toString() {
+    return 'FirestoreFailures.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledOperation,
+    required TResult Function() objectNotFound,
+    required TResult Function() noConnection,
+    required TResult Function() unknown,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledOperation,
+    TResult Function()? objectNotFound,
+    TResult Function()? noConnection,
+    TResult Function()? unknown,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledOperation value) cancelledOperation,
+    required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledOperation value)? cancelledOperation,
+    TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoConnection extends FirestoreFailures {
+  const factory NoConnection() = _$NoConnection;
+  const NoConnection._() : super._();
 }
 
 /// @nodoc
@@ -304,6 +415,7 @@ class _$Unknown extends Unknown {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
+    required TResult Function() noConnection,
     required TResult Function() unknown,
   }) {
     return unknown();
@@ -314,6 +426,7 @@ class _$Unknown extends Unknown {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
+    TResult Function()? noConnection,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -328,6 +441,7 @@ class _$Unknown extends Unknown {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Unknown value) unknown,
   }) {
     return unknown(this);
@@ -338,6 +452,7 @@ class _$Unknown extends Unknown {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
