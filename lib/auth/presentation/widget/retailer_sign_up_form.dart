@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/auth/presentation/widget/header.dart';
 
-class ConsumerSignUpForm extends ConsumerWidget {
-  const ConsumerSignUpForm({
+class RetailerSignUpForm extends ConsumerWidget {
+  const RetailerSignUpForm({
     Key? key,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
           children: [
             SizedBox(height: 100), //change to alignment?
             Text(
-              'SIGN-UP',
+              'REGISTRATION',
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               style: Header().Font(context, 40),

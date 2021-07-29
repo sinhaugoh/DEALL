@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/auth/application/consumer_sign_up_form_notifier.dart';
 import 'package:deall/auth/presentation/widget/consumer_sign_up_form.dart';
+import 'package:deall/auth/presentation/widget/header.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
@@ -23,9 +24,7 @@ class ConsumerSignUpPage extends ConsumerWidget {
     });
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-      ),
+      appBar: Header().HeaderBar(context),
       body: SafeArea(
         child: Stack(
           children: [
