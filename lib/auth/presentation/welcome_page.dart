@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/presentation/const/images.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class WelcomePage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Logo(0.5,0.1),
+            Image.asset(Images.logo),
+            // const Logo(0.5,0.1),
             const SizedBox(height:12),
             LateNightWidget(),
             const SizedBox(height: 15),
