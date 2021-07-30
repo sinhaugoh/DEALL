@@ -57,7 +57,10 @@ class AppWidget extends ConsumerWidget {
     return MaterialApp.router(
       title: 'DEALL',
       theme: ThemeData(
+        //text style
+        //textTheme
         primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
+        // textTheme: 
       ),
       routeInformationParser: appRouter.defaultRouteParser(),
       routerDelegate: appRouter.delegate(),
