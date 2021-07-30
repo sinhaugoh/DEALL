@@ -18,13 +18,14 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
         cancelledOperation: (_) {
           state = const RetailerListState.failure("Operation cancelled.");
         },
-        noConnection: (_){
-          state = const RetailerListState.failure("No connection.");
-        },
         orElse: () {
           state = const RetailerListState.failure("Unknown error.");
         },
       );
     }, (retailerList) => state = RetailerListState.loaded(retailerList));
+  }
+
+  void setNoConnectionState() {
+    state = const RetailerListState.noConnection();
   }
 }

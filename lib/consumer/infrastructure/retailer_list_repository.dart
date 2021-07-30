@@ -18,9 +18,6 @@ class RetailerListRepository {
           .map((retailerDTO) => retailerDTO.toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      if(!await InternetConnectionChecker().hasConnection){
-        return left(const FirestoreFailures.noConnection());
-      }
       if (e.code == FirebaseException(code: 'cancelled', plugin: "The operation was cancelled.").code) {
         return left(const FirestoreFailures.cancelledOperation());
       }

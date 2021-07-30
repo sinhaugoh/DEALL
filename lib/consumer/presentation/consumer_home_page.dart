@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import 'package:deall/core/presentation/widgets/drawer_widget.dart';
 import 'package:deall/consumer/shared/providers.dart';
@@ -19,13 +18,13 @@ class ConsumerHomePage extends ConsumerStatefulWidget {
 }
 
 class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
+  // ignore: cancel_subscriptions
   StreamSubscription<ConnectivityResult>? subscription;
 
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        ref.read(retailerListNotifierProvider.notifier).getRetailerList());
+    checkConnectivityAndGetRetailerList();
   }
 
   @override
@@ -34,23 +33,22 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     subscription!.cancel();
   }
 
-  void connectivityChecker() {
+  Future<void> checkConnectivityAndGetRetailerList() async {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) async {
-      if (result == ConnectivityResult.none) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("No connection"),
-            ),
-          );
+      if (result != ConnectivityResult.none) {
+        Future.microtask(() =>
+            ref.read(retailerListNotifierProvider.notifier).getRetailerList());
+      }
+      if (result == ConnectivityResult.none){
+        ref.read(retailerListNotifierProvider.notifier).setNoConnectionState();
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    connectivityChecker();
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: enterLocationAppBar(),
