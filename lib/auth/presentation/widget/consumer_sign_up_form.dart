@@ -15,25 +15,33 @@ class ConsumerSignUpForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            FormTextField(
-              label: 'Email',
-              errorText: ref.watch(consumerSignUpFormNotifierProvider
-                      .select((state) => state.showErrorMessage))
-                  ? ref.watch(consumerSignUpFormNotifierProvider
-                      .select((state) => state.emailErrorMessage))
-                  : null,
-              onChanged:
-                  ref.read(consumerSignUpFormNotifierProvider.notifier).emailChanged,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
+                label: 'Email',
+                errorText: ref.watch(consumerSignUpFormNotifierProvider
+                        .select((state) => state.showErrorMessage))
+                    ? ref.watch(consumerSignUpFormNotifierProvider
+                        .select((state) => state.emailErrorMessage))
+                    : null,
+                onChanged: ref
+                    .read(consumerSignUpFormNotifierProvider.notifier)
+                    .emailChanged,
+              ),
             ),
-            FormTextField(
-              label: 'Password',
-              errorText: ref.watch(consumerSignUpFormNotifierProvider
-                      .select((state) => state.showErrorMessage))
-                  ? ref.watch(consumerSignUpFormNotifierProvider
-                      .select((state) => state.passwordErrorMessage))
-                  : null,
-              onChanged:
-                  ref.read(consumerSignUpFormNotifierProvider.notifier).passwordChanged,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
+                label: 'Password',
+                errorText: ref.watch(consumerSignUpFormNotifierProvider
+                        .select((state) => state.showErrorMessage))
+                    ? ref.watch(consumerSignUpFormNotifierProvider
+                        .select((state) => state.passwordErrorMessage))
+                    : null,
+                onChanged: ref
+                    .read(consumerSignUpFormNotifierProvider.notifier)
+                    .passwordChanged,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
@@ -43,7 +51,9 @@ class ConsumerSignUpForm extends ConsumerWidget {
                   final currentFocus = FocusScope.of(context);
                   currentFocus.unfocus();
 
-                  ref.read(consumerSignUpFormNotifierProvider.notifier).signUp();
+                  ref
+                      .read(consumerSignUpFormNotifierProvider.notifier)
+                      .signUp();
                 },
                 child: const Text('Create Account'),
               ),
