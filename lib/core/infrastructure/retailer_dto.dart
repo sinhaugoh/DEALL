@@ -14,8 +14,8 @@ class RetailerDTO with _$RetailerDTO {
     required String unit,
     required String postalCode,
     required String operatingHours,
-    @JsonKey(defaultValue: "") String? description,
-    @JsonKey(defaultValue: "") String? image,
+    required String description,
+    required String image,
     required bool visibility,
   }) = _RetailerDTO;
 

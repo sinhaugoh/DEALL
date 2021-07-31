@@ -27,8 +27,8 @@ class _$RetailerDTOTearOff {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
+      required String description,
+      required String image,
       required bool visibility}) {
     return _RetailerDTO(
       name: name,
@@ -59,10 +59,8 @@ mixin _$RetailerDTO {
   String get unit => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get operatingHours => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: "")
-  String? get description => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: "")
-  String? get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   bool get visibility => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -83,8 +81,8 @@ abstract class $RetailerDTOCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
+      String description,
+      String image,
       bool visibility});
 }
 
@@ -136,11 +134,11 @@ class _$RetailerDTOCopyWithImpl<$Res> implements $RetailerDTOCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -163,8 +161,8 @@ abstract class _$RetailerDTOCopyWith<$Res>
       String unit,
       String postalCode,
       String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
+      String description,
+      String image,
       bool visibility});
 }
 
@@ -218,11 +216,11 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -241,8 +239,8 @@ class _$_RetailerDTO extends _RetailerDTO {
       required this.unit,
       required this.postalCode,
       required this.operatingHours,
-      @JsonKey(defaultValue: "") this.description,
-      @JsonKey(defaultValue: "") this.image,
+      required this.description,
+      required this.image,
       required this.visibility})
       : super._();
 
@@ -262,11 +260,9 @@ class _$_RetailerDTO extends _RetailerDTO {
   @override
   final String operatingHours;
   @override
-  @JsonKey(defaultValue: "")
-  final String? description;
+  final String description;
   @override
-  @JsonKey(defaultValue: "")
-  final String? image;
+  final String image;
   @override
   final bool visibility;
 
@@ -335,8 +331,8 @@ abstract class _RetailerDTO extends RetailerDTO {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
+      required String description,
+      required String image,
       required bool visibility}) = _$_RetailerDTO;
   const _RetailerDTO._() : super._();
 
@@ -356,11 +352,9 @@ abstract class _RetailerDTO extends RetailerDTO {
   @override
   String get operatingHours => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: "")
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: "")
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   bool get visibility => throw _privateConstructorUsedError;
   @override
