@@ -4,9 +4,33 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'retailer_dto_test.mocks.dart';
 
-@GenerateMocks([Retailer])
+@GenerateMocks([
+  Retailer,
+  RetailerDTO,
+])
+void main() {
+  group('toDomain', () {
+    test('Return Retailer object from RetailerDTO object - correct case', () {
+      final mockRetailerDTO = MockRetailerDTO();
+      const retailerTest = Retailer(
+        name: 'test name',
+        block: 'test block',
+        street: 'test street',
+        unit: 'test unit',
+        postalCode: 'test postalCode',
+        operatingHours: 'test operating hours',
+        image: '',
+        description: 'test description',
+        visibility: true,
+      );
+      when(mockRetailerDTO.toDomain()).thenAnswer((_) => retailerTest);
+      when(mockRetailerDTO.name).thenReturn('test name');
 
-void main(){
 
+      expect(mockRetailerDTO.toDomain(), isA<Retailer>());
+      expect(mockRetailerDTO.name, equals(mockRetailerDTO.toDomain().name));
+    });
+  });
 }
