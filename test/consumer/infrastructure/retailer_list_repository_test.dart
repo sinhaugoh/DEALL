@@ -27,12 +27,20 @@ void main() {
   ]);
 
   group('getRetailerList', () {
-    test('should return list of RetailerDTO', () async {
+    test('should return populated RetailerDTO list if successfully retrieved Json data from firebase collection list', () async {
       List<RetailerDTO> mockList = [];
       when(testContainer.read(retailerListRemoteServiceProvider).getRetailerList()).thenAnswer((_) async => firebaseList);
       mockList = await testContainer.read(retailerListRemoteServiceProvider).getRetailerList();
       expect(mockList, isA<List<RetailerDTO>>());
       expect(mockList, firebaseList);
+    });
+
+    test('should return empty RetailerDTO list if failed to retrieve Json data from firebase collection list', () async {
+      List<RetailerDTO> mockList = [];
+      when(testContainer.read(retailerListRemoteServiceProvider).getRetailerList()).thenAnswer((_) async => <RetailerDTO>[]);
+      mockList = await testContainer.read(retailerListRemoteServiceProvider).getRetailerList();
+      expect(mockList, isA<List<RetailerDTO>>());
+      expect(mockList, []);
     });
   });
 }
