@@ -25,7 +25,8 @@ class _$RetailerTearOff {
       required String operatingHours,
       required String description,
       required String image,
-      required bool visibility}) {
+      required bool visibility,
+      required String uen}) {
     return _Retailer(
       name: name,
       block: block,
@@ -36,6 +37,7 @@ class _$RetailerTearOff {
       description: description,
       image: image,
       visibility: visibility,
+      uen: uen,
     );
   }
 }
@@ -54,6 +56,7 @@ mixin _$Retailer {
   String get description => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   bool get visibility => throw _privateConstructorUsedError;
+  String get uen => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RetailerCopyWith<Retailer> get copyWith =>
@@ -73,7 +76,8 @@ abstract class $RetailerCopyWith<$Res> {
       String operatingHours,
       String description,
       String image,
-      bool visibility});
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -95,6 +99,7 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -133,6 +138,10 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +160,8 @@ abstract class _$RetailerCopyWith<$Res> implements $RetailerCopyWith<$Res> {
       String operatingHours,
       String description,
       String image,
-      bool visibility});
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -174,6 +184,7 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_Retailer(
       name: name == freezed
@@ -212,6 +223,10 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -228,7 +243,8 @@ class _$_Retailer extends _Retailer {
       required this.operatingHours,
       required this.description,
       required this.image,
-      required this.visibility})
+      required this.visibility,
+      required this.uen})
       : super._();
 
   @override
@@ -249,10 +265,12 @@ class _$_Retailer extends _Retailer {
   final String image;
   @override
   final bool visibility;
+  @override
+  final String uen;
 
   @override
   String toString() {
-    return 'Retailer(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility)';
+    return 'Retailer(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
   }
 
   @override
@@ -280,7 +298,9 @@ class _$_Retailer extends _Retailer {
                 const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.visibility, visibility) ||
                 const DeepCollectionEquality()
-                    .equals(other.visibility, visibility)));
+                    .equals(other.visibility, visibility)) &&
+            (identical(other.uen, uen) ||
+                const DeepCollectionEquality().equals(other.uen, uen)));
   }
 
   @override
@@ -294,7 +314,8 @@ class _$_Retailer extends _Retailer {
       const DeepCollectionEquality().hash(operatingHours) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(visibility);
+      const DeepCollectionEquality().hash(visibility) ^
+      const DeepCollectionEquality().hash(uen);
 
   @JsonKey(ignore: true)
   @override
@@ -312,7 +333,8 @@ abstract class _Retailer extends Retailer {
       required String operatingHours,
       required String description,
       required String image,
-      required bool visibility}) = _$_Retailer;
+      required bool visibility,
+      required String uen}) = _$_Retailer;
   const _Retailer._() : super._();
 
   @override
@@ -333,6 +355,8 @@ abstract class _Retailer extends Retailer {
   String get image => throw _privateConstructorUsedError;
   @override
   bool get visibility => throw _privateConstructorUsedError;
+  @override
+  String get uen => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RetailerCopyWith<_Retailer> get copyWith =>

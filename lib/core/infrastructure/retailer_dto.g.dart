@@ -17,6 +17,7 @@ _$_RetailerDTO _$_$_RetailerDTOFromJson(Map<String, dynamic> json) {
     description: json['description'] as String,
     image: json['image'] as String,
     visibility: json['visibility'] as bool,
+    uen: json['uen'] as String,
   );
 }
 
@@ -31,4 +32,5 @@ Map<String, dynamic> _$_$_RetailerDTOToJson(_$_RetailerDTO instance) =>
       'description': instance.description,
       'image': instance.image,
       'visibility': instance.visibility,
+      'uen': instance.uen,
     };

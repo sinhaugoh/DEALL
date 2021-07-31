@@ -15,6 +15,7 @@ abstract class Retailer with _$Retailer {
     required String description,
     required String image,
     required bool visibility,
+    required String uen,
   }) = _Retailer;
 
   factory Retailer.initial() {
@@ -28,6 +29,7 @@ abstract class Retailer with _$Retailer {
       description: '',
       image: '',
       visibility: false,
+      uen: '',
     );
   }
 
