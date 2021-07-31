@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ConsumerSignUpFormStateTearOff {
   const _$ConsumerSignUpFormStateTearOff();
 
-  _SignInFormState call(
+  _ConsumerSignUpFormState call(
       {required bool hasConnection,
       required bool showErrorMessage,
       required bool isSaving,
@@ -25,7 +25,7 @@ class _$ConsumerSignUpFormStateTearOff {
       required String? passwordErrorMessage,
       required String email,
       required String password}) {
-    return _SignInFormState(
+    return _ConsumerSignUpFormState(
       hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
       isSaving: isSaving,
@@ -131,11 +131,11 @@ class _$ConsumerSignUpFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SignInFormStateCopyWith<$Res>
+abstract class _$ConsumerSignUpFormStateCopyWith<$Res>
     implements $ConsumerSignUpFormStateCopyWith<$Res> {
-  factory _$SignInFormStateCopyWith(
-          _SignInFormState value, $Res Function(_SignInFormState) then) =
-      __$SignInFormStateCopyWithImpl<$Res>;
+  factory _$ConsumerSignUpFormStateCopyWith(_ConsumerSignUpFormState value,
+          $Res Function(_ConsumerSignUpFormState) then) =
+      __$ConsumerSignUpFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool hasConnection,
@@ -149,15 +149,16 @@ abstract class _$SignInFormStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SignInFormStateCopyWithImpl<$Res>
+class __$ConsumerSignUpFormStateCopyWithImpl<$Res>
     extends _$ConsumerSignUpFormStateCopyWithImpl<$Res>
-    implements _$SignInFormStateCopyWith<$Res> {
-  __$SignInFormStateCopyWithImpl(
-      _SignInFormState _value, $Res Function(_SignInFormState) _then)
-      : super(_value, (v) => _then(v as _SignInFormState));
+    implements _$ConsumerSignUpFormStateCopyWith<$Res> {
+  __$ConsumerSignUpFormStateCopyWithImpl(_ConsumerSignUpFormState _value,
+      $Res Function(_ConsumerSignUpFormState) _then)
+      : super(_value, (v) => _then(v as _ConsumerSignUpFormState));
 
   @override
-  _SignInFormState get _value => super._value as _SignInFormState;
+  _ConsumerSignUpFormState get _value =>
+      super._value as _ConsumerSignUpFormState;
 
   @override
   $Res call({
@@ -170,7 +171,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_SignInFormState(
+    return _then(_ConsumerSignUpFormState(
       hasConnection: hasConnection == freezed
           ? _value.hasConnection
           : hasConnection // ignore: cast_nullable_to_non_nullable
@@ -209,8 +210,8 @@ class __$SignInFormStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SignInFormState extends _SignInFormState {
-  const _$_SignInFormState(
+class _$_ConsumerSignUpFormState extends _ConsumerSignUpFormState {
+  const _$_ConsumerSignUpFormState(
       {required this.hasConnection,
       required this.showErrorMessage,
       required this.isSaving,
@@ -246,7 +247,7 @@ class _$_SignInFormState extends _SignInFormState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SignInFormState &&
+        (other is _ConsumerSignUpFormState &&
             (identical(other.hasConnection, hasConnection) ||
                 const DeepCollectionEquality()
                     .equals(other.hasConnection, hasConnection)) &&
@@ -286,12 +287,13 @@ class _$_SignInFormState extends _SignInFormState {
 
   @JsonKey(ignore: true)
   @override
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
-      __$SignInFormStateCopyWithImpl<_SignInFormState>(this, _$identity);
+  _$ConsumerSignUpFormStateCopyWith<_ConsumerSignUpFormState> get copyWith =>
+      __$ConsumerSignUpFormStateCopyWithImpl<_ConsumerSignUpFormState>(
+          this, _$identity);
 }
 
-abstract class _SignInFormState extends ConsumerSignUpFormState {
-  const factory _SignInFormState(
+abstract class _ConsumerSignUpFormState extends ConsumerSignUpFormState {
+  const factory _ConsumerSignUpFormState(
       {required bool hasConnection,
       required bool showErrorMessage,
       required bool isSaving,
@@ -299,8 +301,8 @@ abstract class _SignInFormState extends ConsumerSignUpFormState {
       required String? emailErrorMessage,
       required String? passwordErrorMessage,
       required String email,
-      required String password}) = _$_SignInFormState;
-  const _SignInFormState._() : super._();
+      required String password}) = _$_ConsumerSignUpFormState;
+  const _ConsumerSignUpFormState._() : super._();
 
   @override
   bool get hasConnection => throw _privateConstructorUsedError;
@@ -320,6 +322,6 @@ abstract class _SignInFormState extends ConsumerSignUpFormState {
   String get password => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
+  _$ConsumerSignUpFormStateCopyWith<_ConsumerSignUpFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
