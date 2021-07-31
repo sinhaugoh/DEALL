@@ -41,7 +41,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
         Future.microtask(() =>
             ref.read(retailerListNotifierProvider.notifier).getRetailerList());
       }
-      if (result == ConnectivityResult.none){
+      if (result == ConnectivityResult.none) {
         ref.read(retailerListNotifierProvider.notifier).setNoConnectionState();
       }
     });
@@ -53,7 +53,12 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     return Scaffold(
       appBar: enterLocationAppBar(),
       drawer: const ConsumerDrawer(),
-      body: consumerHomePageBody(mq),
+      body: RefreshIndicator(
+          onRefresh: () async {
+            await checkConnectivityAndGetRetailerList();
+            setState(() {});
+          },
+          child: consumerHomePageBody(mq)),
     );
   }
 }
