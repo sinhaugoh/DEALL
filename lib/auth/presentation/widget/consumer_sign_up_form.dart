@@ -1,5 +1,4 @@
-import 'package:deall/auth/presentation/widget/email_text_field.dart';
-import 'package:deall/auth/presentation/widget/password_text_field.dart';
+import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +15,8 @@ class ConsumerSignUpForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            EmailTextField(
+            FormTextField(
+              label: 'Email',
               errorText: ref.watch(consumerSignUpFormNotifierProvider
                       .select((state) => state.showErrorMessage))
                   ? ref.watch(consumerSignUpFormNotifierProvider
@@ -25,7 +25,8 @@ class ConsumerSignUpForm extends ConsumerWidget {
               onChanged:
                   ref.read(consumerSignUpFormNotifierProvider.notifier).emailChanged,
             ),
-            PasswordTextField(
+            FormTextField(
+              label: 'Password',
               errorText: ref.watch(consumerSignUpFormNotifierProvider
                       .select((state) => state.showErrorMessage))
                   ? ref.watch(consumerSignUpFormNotifierProvider

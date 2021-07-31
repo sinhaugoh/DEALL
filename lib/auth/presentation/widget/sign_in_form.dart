@@ -1,5 +1,4 @@
-import 'package:deall/auth/presentation/widget/email_text_field.dart';
-import 'package:deall/auth/presentation/widget/password_text_field.dart';
+import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,23 +15,32 @@ class SignInForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            EmailTextField(
-              errorText: ref.watch(signInFormNotifierProvider
-                      .select((state) => state.showErrorMessage))
-                  ? ref.watch(signInFormNotifierProvider
-                      .select((state) => state.emailErrorMessage))
-                  : null,
-              onChanged:
-                  ref.read(signInFormNotifierProvider.notifier).emailChanged,
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: FormTextField(
+                label: 'Email',
+                errorText: ref.watch(signInFormNotifierProvider
+                        .select((state) => state.showErrorMessage))
+                    ? ref.watch(signInFormNotifierProvider
+                        .select((state) => state.emailErrorMessage))
+                    : null,
+                onChanged:
+                    ref.read(signInFormNotifierProvider.notifier).emailChanged,
+              ),
             ),
-            PasswordTextField(
-              errorText: ref.watch(signInFormNotifierProvider
-                      .select((state) => state.showErrorMessage))
-                  ? ref.watch(signInFormNotifierProvider
-                      .select((state) => state.passwordErrorMessage))
-                  : null,
-              onChanged:
-                  ref.read(signInFormNotifierProvider.notifier).passwordChanged,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
+                label: 'Password',
+                errorText: ref.watch(signInFormNotifierProvider
+                        .select((state) => state.showErrorMessage))
+                    ? ref.watch(signInFormNotifierProvider
+                        .select((state) => state.passwordErrorMessage))
+                    : null,
+                onChanged: ref
+                    .read(signInFormNotifierProvider.notifier)
+                    .passwordChanged,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
