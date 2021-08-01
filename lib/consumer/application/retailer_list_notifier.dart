@@ -24,4 +24,8 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
       );
     }, (retailerList) => state = RetailerListState.loaded(retailerList));
   }
+
+  void setNoConnectionState() {
+    state = const RetailerListState.noConnection();
+  }
 }

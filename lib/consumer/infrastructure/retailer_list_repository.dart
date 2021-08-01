@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:deall/consumer/infrastructure/firestore_failures.dart';
 import 'package:deall/core/application/retailer.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'retailer_list_remote_service.dart';
 
 class RetailerListRepository {

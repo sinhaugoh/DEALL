@@ -12,6 +12,6 @@ final retailerListRemoteServiceProvider = Provider((ref) => RetailerListRemoteSe
 
 final retailerListRepoProvider = Provider((ref) => RetailerListRepository(ref.watch(retailerListRemoteServiceProvider)));
 
-final retailerListNotifierProvider = StateNotifierProvider<RetailerListNotifier, RetailerListState>(
+final retailerListNotifierProvider = StateNotifierProvider.autoDispose<RetailerListNotifier, RetailerListState>(
         (ref) => RetailerListNotifier(ref.watch(retailerListRepoProvider)));
 
