@@ -27,7 +27,7 @@ class RetailerSignUpFormState with _$RetailerSignUpFormState {
     required String email,
     required String password,
     required Retailer retailer,
-    required File? image,
+    required File? imageFile,
   }) = _RetailerSignUpFormState;
 
   factory RetailerSignUpFormState.initial() => RetailerSignUpFormState(
@@ -43,7 +43,7 @@ class RetailerSignUpFormState with _$RetailerSignUpFormState {
         email: '',
         password: '',
         retailer: Retailer.initial(),
-        image: null,
+        imageFile: null,
       );
 }
 
@@ -95,8 +95,8 @@ class RetailerSignUpFormNotifier
     state = state.copyWith.retailer(uen: uen);
   }
 
-  void imageChanged(File image) {
-    state = state.copyWith(image: image);
+  void imageChanged(File imageFile) {
+    state = state.copyWith(imageFile: imageFile);
   }
 
   void imageStringChanged(String imageString) {
@@ -183,12 +183,12 @@ class RetailerSignUpFormNotifier
     final failureOrSuccess = await _imagePickingRepository.pickImage();
     failureOrSuccess.fold(
       (f) => null,
-      (file) => state = state.copyWith(image: file),
+      (file) => state = state.copyWith(imageFile: file),
     );
   }
 
   void deleteImage() {
-    state = state.copyWith(image: null);
+    state = state.copyWith(imageFile: null);
   }
 
   Future<void> signUp() async {
@@ -206,9 +206,11 @@ class RetailerSignUpFormNotifier
         hasConnection: true,
       );
 
-      final failureOrSuccess = await _authRepository.consumerSignUp(
+      final failureOrSuccess = await _authRepository.retailerSignUp(
         email: state.email,
         password: state.password,
+        retailer: state.retailer,
+        imageFile: state.imageFile,
       );
 
       failureOrSuccess.fold((authFailure) {
@@ -225,7 +227,9 @@ class RetailerSignUpFormNotifier
               isSaving: false,
             );
           },
-          orElse: () {},
+          orElse: () {
+            //could throw unknown auth error or storage error
+          },
         );
       }, (_) {
         state = state.copyWith(
