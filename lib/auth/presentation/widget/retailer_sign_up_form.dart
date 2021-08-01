@@ -97,6 +97,8 @@ class RetailerSignUpForm extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
+                minLines: 3,
+                maxLines: null,
                 label: 'Operating Hours',
                 onChanged: ref
                     .read(retailerSignUpFormNotifierProvider.notifier)

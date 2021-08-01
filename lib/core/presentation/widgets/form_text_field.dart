@@ -7,6 +7,8 @@ class FormTextField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final int? maxLength;
+  final int? minLines;
+  final int? maxLines;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String value) onChanged;
 
@@ -17,6 +19,8 @@ class FormTextField extends StatelessWidget {
     this.obscureText = false,
     this.inputFormatters,
     this.maxLength,
+    this.minLines,
+    this.maxLines = 1,
     required this.onChanged,
     required this.label,
   }) : super(key: key);
@@ -24,6 +28,8 @@ class FormTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
+      minLines: minLines,
       maxLength: maxLength,
       keyboardType: keyboardType,
       obscureText: obscureText,
