@@ -20,6 +20,7 @@ final authRepositoryProvider = Provider((ref) => AuthRepository(
       ref.watch(firebaseAuthServiceProvider),
       ref.watch(initialUserCreationServiceProvider),
       ref.watch(internetConnectionCheckerProvider),
+      ref.watch(imagePickingRemoteServiceProvider),
     ));
 
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
@@ -34,7 +35,7 @@ final consumerSignUpFormNotifierProvider = StateNotifierProvider.autoDispose<
     (ref) => ConsumerSignUpFormNotifier(ref.watch(authRepositoryProvider)));
 
 final retailerSignUpFormNotifierProvider =
-    StateNotifierProvider<RetailerSignUpFormNotifier, RetailerSignUpFormState>(
+    StateNotifierProvider.autoDispose<RetailerSignUpFormNotifier, RetailerSignUpFormState>(
         (ref) => RetailerSignUpFormNotifier(
               ref.watch(authRepositoryProvider),
               ref.watch(imagePickingRepositoryProvider),
