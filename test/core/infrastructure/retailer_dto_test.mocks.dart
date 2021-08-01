@@ -2,8 +2,8 @@
 // in deall/test/core/infrastructure/retailer_dto_test.dart.
 // Do not manually edit this file.
 
-import 'package:deall/core/application/retailer.dart' as _i2;
-import 'package:deall/core/infrastructure/retailer_dto.dart' as _i3;
+import 'package:deall/core/application/retailer.dart' as _i3;
+import 'package:deall/core/infrastructure/retailer_dto.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -14,63 +14,15 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
-class _Fake$RetailerCopyWith<$Res> extends _i1.Fake
-    implements _i2.$RetailerCopyWith<$Res> {}
-
 class _Fake$RetailerDTOCopyWith<$Res> extends _i1.Fake
-    implements _i3.$RetailerDTOCopyWith<$Res> {}
+    implements _i2.$RetailerDTOCopyWith<$Res> {}
 
-class _FakeRetailer extends _i1.Fake implements _i2.Retailer {}
-
-/// A class which mocks [Retailer].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockRetailer extends _i1.Mock implements _i2.Retailer {
-  MockRetailer() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  String get name =>
-      (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
-  @override
-  String get block =>
-      (super.noSuchMethod(Invocation.getter(#block), returnValue: '')
-          as String);
-  @override
-  String get street =>
-      (super.noSuchMethod(Invocation.getter(#street), returnValue: '')
-          as String);
-  @override
-  String get unit =>
-      (super.noSuchMethod(Invocation.getter(#unit), returnValue: '') as String);
-  @override
-  String get postalCode =>
-      (super.noSuchMethod(Invocation.getter(#postalCode), returnValue: '')
-          as String);
-  @override
-  String get operatingHours =>
-      (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
-          as String);
-  @override
-  bool get visibility =>
-      (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
-          as bool);
-  @override
-  _i2.$RetailerCopyWith<_i2.Retailer> get copyWith =>
-      (super.noSuchMethod(Invocation.getter(#copyWith),
-              returnValue: _Fake$RetailerCopyWith<_i2.Retailer>())
-          as _i2.$RetailerCopyWith<_i2.Retailer>);
-  @override
-  String addressLine() =>
-      (super.noSuchMethod(Invocation.method(#addressLine, []), returnValue: '')
-          as String);
-}
+class _FakeRetailer extends _i1.Fake implements _i3.Retailer {}
 
 /// A class which mocks [RetailerDTO].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRetailerDTO extends _i1.Mock implements _i3.RetailerDTO {
+class MockRetailerDTO extends _i1.Mock implements _i2.RetailerDTO {
   MockRetailerDTO() {
     _i1.throwOnMissingStub(this);
   }
@@ -102,14 +54,14 @@ class MockRetailerDTO extends _i1.Mock implements _i3.RetailerDTO {
       (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
           as bool);
   @override
-  _i3.$RetailerDTOCopyWith<_i3.RetailerDTO> get copyWith =>
+  _i2.$RetailerDTOCopyWith<_i2.RetailerDTO> get copyWith =>
       (super.noSuchMethod(Invocation.getter(#copyWith),
-              returnValue: _Fake$RetailerDTOCopyWith<_i3.RetailerDTO>())
-          as _i3.$RetailerDTOCopyWith<_i3.RetailerDTO>);
+              returnValue: _Fake$RetailerDTOCopyWith<_i2.RetailerDTO>())
+          as _i2.$RetailerDTOCopyWith<_i2.RetailerDTO>);
   @override
-  _i2.Retailer toDomain() =>
+  _i3.Retailer toDomain() =>
       (super.noSuchMethod(Invocation.method(#toDomain, []),
-          returnValue: _FakeRetailer()) as _i2.Retailer);
+          returnValue: _FakeRetailer()) as _i3.Retailer);
   @override
   Map<String, dynamic> toJson() =>
       (super.noSuchMethod(Invocation.method(#toJson, []),

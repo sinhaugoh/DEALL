@@ -8,7 +8,6 @@ import 'package:deall/core/infrastructure/retailer_dto.dart';
 import 'retailer_dto_test.mocks.dart';
 
 @GenerateMocks([
-  Retailer,
   RetailerDTO,
 ])
 void main() {

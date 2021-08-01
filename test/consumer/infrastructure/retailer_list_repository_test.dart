@@ -21,13 +21,18 @@ import 'retailer_list_repository_test.mocks.dart';
   FirebaseException,
 ])
 void main() {
-  final testContainer = ProviderContainer(overrides: [
-    retailerListRemoteServiceProvider.overrideWithProvider(
-        Provider((ref) => MockRetailerListRemoteService())),
-  ]);
+  ProviderContainer setUpTestContainer() {
+    final testContainer = ProviderContainer(overrides: [
+      retailerListRemoteServiceProvider
+          .overrideWithProvider(Provider((ref) => MockRetailerListRemoteService())),
+    ]);
+    addTearDown(testContainer.dispose);
+    return testContainer;
+  }
 
   group('getRetailerList', () {
-    test('should return populated RetailerDTO list if successfully retrieved Json data from firebase collection list', () async {
+    test('should return populated RetailerDTO list if successfully retrieved data from firebase retailer collection list', () async {
+      final testContainer = setUpTestContainer();
       List<RetailerDTO> mockList = [];
       when(testContainer.read(retailerListRemoteServiceProvider).getRetailerList()).thenAnswer((_) async => firebaseList);
       mockList = await testContainer.read(retailerListRemoteServiceProvider).getRetailerList();
@@ -35,13 +40,16 @@ void main() {
       expect(mockList, firebaseList);
     });
 
-    test('should return empty RetailerDTO list if failed to retrieve Json data from firebase collection list', () async {
+    test('should return empty RetailerDTO list if successfully retrieved data firebase retailer collection list is empty', () async {
+      final testContainer = setUpTestContainer();
       List<RetailerDTO> mockList = [];
       when(testContainer.read(retailerListRemoteServiceProvider).getRetailerList()).thenAnswer((_) async => <RetailerDTO>[]);
       mockList = await testContainer.read(retailerListRemoteServiceProvider).getRetailerList();
       expect(mockList, isA<List<RetailerDTO>>());
       expect(mockList, []);
     });
+
+    // failure/exception testing in retailer_list_notifier_test
   });
 }
 
