@@ -20,6 +20,10 @@ class _$RetailerListStateTearOff {
     return const Initial();
   }
 
+  NoConnection noConnection() {
+    return const NoConnection();
+  }
+
   Loading loading() {
     return const Loading();
   }
@@ -45,6 +49,7 @@ mixin _$RetailerListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() noConnection,
     required TResult Function() loading,
     required TResult Function(List<Retailer> retailers) loaded,
     required TResult Function(String message) failure,
@@ -53,6 +58,7 @@ mixin _$RetailerListState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? noConnection,
     TResult Function()? loading,
     TResult Function(List<Retailer> retailers)? loaded,
     TResult Function(String message)? failure,
@@ -62,6 +68,7 @@ mixin _$RetailerListState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -70,6 +77,7 @@ mixin _$RetailerListState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -133,6 +141,7 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() noConnection,
     required TResult Function() loading,
     required TResult Function(List<Retailer> retailers) loaded,
     required TResult Function(String message) failure,
@@ -144,6 +153,7 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? noConnection,
     TResult Function()? loading,
     TResult Function(List<Retailer> retailers)? loaded,
     TResult Function(String message)? failure,
@@ -159,6 +169,7 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -170,6 +181,7 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -185,6 +197,105 @@ class _$Initial extends Initial {
 abstract class Initial extends RetailerListState {
   const factory Initial() = _$Initial;
   const Initial._() : super._();
+}
+
+/// @nodoc
+abstract class $NoConnectionCopyWith<$Res> {
+  factory $NoConnectionCopyWith(
+          NoConnection value, $Res Function(NoConnection) then) =
+      _$NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoConnectionCopyWithImpl<$Res>
+    extends _$RetailerListStateCopyWithImpl<$Res>
+    implements $NoConnectionCopyWith<$Res> {
+  _$NoConnectionCopyWithImpl(
+      NoConnection _value, $Res Function(NoConnection) _then)
+      : super(_value, (v) => _then(v as NoConnection));
+
+  @override
+  NoConnection get _value => super._value as NoConnection;
+}
+
+/// @nodoc
+
+class _$NoConnection extends NoConnection {
+  const _$NoConnection() : super._();
+
+  @override
+  String toString() {
+    return 'RetailerListState.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noConnection,
+    required TResult Function() loading,
+    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(String message) failure,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noConnection,
+    TResult Function()? loading,
+    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Failure value) failure,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoConnection extends RetailerListState {
+  const factory NoConnection() = _$NoConnection;
+  const NoConnection._() : super._();
 }
 
 /// @nodoc
@@ -225,6 +336,7 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() noConnection,
     required TResult Function() loading,
     required TResult Function(List<Retailer> retailers) loaded,
     required TResult Function(String message) failure,
@@ -236,6 +348,7 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? noConnection,
     TResult Function()? loading,
     TResult Function(List<Retailer> retailers)? loaded,
     TResult Function(String message)? failure,
@@ -251,6 +364,7 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -262,6 +376,7 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -343,6 +458,7 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() noConnection,
     required TResult Function() loading,
     required TResult Function(List<Retailer> retailers) loaded,
     required TResult Function(String message) failure,
@@ -354,6 +470,7 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? noConnection,
     TResult Function()? loading,
     TResult Function(List<Retailer> retailers)? loaded,
     TResult Function(String message)? failure,
@@ -369,6 +486,7 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -380,6 +498,7 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -464,6 +583,7 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() noConnection,
     required TResult Function() loading,
     required TResult Function(List<Retailer> retailers) loaded,
     required TResult Function(String message) failure,
@@ -475,6 +595,7 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? noConnection,
     TResult Function()? loading,
     TResult Function(List<Retailer> retailers)? loaded,
     TResult Function(String message)? failure,
@@ -490,6 +611,7 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -501,6 +623,7 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
