@@ -9,6 +9,7 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
 
   Future<void> getRetailerList() async {
     state = const RetailerListState.loading();
+
     final getListResult = await _repo.getRetailerList();
     getListResult.fold((failure) {
       failure.maybeMap(
@@ -18,6 +19,9 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
         cancelledOperation: (_) {
           state = const RetailerListState.failure("Operation cancelled.");
         },
+        noConnection: (_) {
+          state = const RetailerListState.noConnection();
+        },
         orElse: () {
           state = const RetailerListState.failure("Unknown error.");
         },
@@ -25,7 +29,4 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
     }, (retailerList) => state = RetailerListState.loaded(retailerList));
   }
 
-  void setNoConnectionState() {
-    state = const RetailerListState.noConnection();
-  }
 }

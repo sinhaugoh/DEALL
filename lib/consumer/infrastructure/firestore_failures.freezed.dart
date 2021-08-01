@@ -27,6 +27,10 @@ class _$FirestoreFailuresTearOff {
   Unknown unknown() {
     return const Unknown();
   }
+
+  NoConnection noConnection() {
+    return const NoConnection();
+  }
 }
 
 /// @nodoc
@@ -39,6 +43,7 @@ mixin _$FirestoreFailures {
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
     required TResult Function() unknown,
+    required TResult Function() noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +51,7 @@ mixin _$FirestoreFailures {
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
     TResult Function()? unknown,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +60,7 @@ mixin _$FirestoreFailures {
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(NoConnection value) noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$FirestoreFailures {
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
     TResult Function(Unknown value)? unknown,
+    TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +134,7 @@ class _$CancelledOperation extends CancelledOperation {
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
     required TResult Function() unknown,
+    required TResult Function() noConnection,
   }) {
     return cancelledOperation();
   }
@@ -136,6 +145,7 @@ class _$CancelledOperation extends CancelledOperation {
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
     TResult Function()? unknown,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (cancelledOperation != null) {
@@ -150,6 +160,7 @@ class _$CancelledOperation extends CancelledOperation {
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(NoConnection value) noConnection,
   }) {
     return cancelledOperation(this);
   }
@@ -160,6 +171,7 @@ class _$CancelledOperation extends CancelledOperation {
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
     TResult Function(Unknown value)? unknown,
+    TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (cancelledOperation != null) {
@@ -217,6 +229,7 @@ class _$ObjectNotFound extends ObjectNotFound {
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
     required TResult Function() unknown,
+    required TResult Function() noConnection,
   }) {
     return objectNotFound();
   }
@@ -227,6 +240,7 @@ class _$ObjectNotFound extends ObjectNotFound {
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
     TResult Function()? unknown,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (objectNotFound != null) {
@@ -241,6 +255,7 @@ class _$ObjectNotFound extends ObjectNotFound {
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(NoConnection value) noConnection,
   }) {
     return objectNotFound(this);
   }
@@ -251,6 +266,7 @@ class _$ObjectNotFound extends ObjectNotFound {
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
     TResult Function(Unknown value)? unknown,
+    TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (objectNotFound != null) {
@@ -305,6 +321,7 @@ class _$Unknown extends Unknown {
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
     required TResult Function() unknown,
+    required TResult Function() noConnection,
   }) {
     return unknown();
   }
@@ -315,6 +332,7 @@ class _$Unknown extends Unknown {
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
     TResult Function()? unknown,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -329,6 +347,7 @@ class _$Unknown extends Unknown {
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(NoConnection value) noConnection,
   }) {
     return unknown(this);
   }
@@ -339,6 +358,7 @@ class _$Unknown extends Unknown {
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
     TResult Function(Unknown value)? unknown,
+    TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -351,4 +371,99 @@ class _$Unknown extends Unknown {
 abstract class Unknown extends FirestoreFailures {
   const factory Unknown() = _$Unknown;
   const Unknown._() : super._();
+}
+
+/// @nodoc
+abstract class $NoConnectionCopyWith<$Res> {
+  factory $NoConnectionCopyWith(
+          NoConnection value, $Res Function(NoConnection) then) =
+      _$NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoConnectionCopyWithImpl<$Res>
+    extends _$FirestoreFailuresCopyWithImpl<$Res>
+    implements $NoConnectionCopyWith<$Res> {
+  _$NoConnectionCopyWithImpl(
+      NoConnection _value, $Res Function(NoConnection) _then)
+      : super(_value, (v) => _then(v as NoConnection));
+
+  @override
+  NoConnection get _value => super._value as NoConnection;
+}
+
+/// @nodoc
+
+class _$NoConnection extends NoConnection {
+  const _$NoConnection() : super._();
+
+  @override
+  String toString() {
+    return 'FirestoreFailures.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledOperation,
+    required TResult Function() objectNotFound,
+    required TResult Function() unknown,
+    required TResult Function() noConnection,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledOperation,
+    TResult Function()? objectNotFound,
+    TResult Function()? unknown,
+    TResult Function()? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledOperation value) cancelledOperation,
+    required TResult Function(ObjectNotFound value) objectNotFound,
+    required TResult Function(Unknown value) unknown,
+    required TResult Function(NoConnection value) noConnection,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledOperation value)? cancelledOperation,
+    TResult Function(ObjectNotFound value)? objectNotFound,
+    TResult Function(Unknown value)? unknown,
+    TResult Function(NoConnection value)? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoConnection extends FirestoreFailures {
+  const factory NoConnection() = _$NoConnection;
+  const NoConnection._() : super._();
 }
