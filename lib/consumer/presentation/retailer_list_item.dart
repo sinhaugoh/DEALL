@@ -20,9 +20,9 @@ class RetailerItem extends StatelessWidget {
         elevation: 2,
         child: Row(
           children: [
-            const Flexible(
+            Flexible(
               flex: 3,
-              child: Placeholder(),
+              child: retailerData.image == '' ? const Icon(Icons.account_circle) : Container(/* display image widget */),
             ),
             Flexible(
               flex: 6,
