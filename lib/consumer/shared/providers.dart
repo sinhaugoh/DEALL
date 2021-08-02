@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:deall/core/shared/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/consumer/application/retailer_list_notifier.dart';
@@ -8,10 +9,14 @@ import 'package:deall/consumer/application/retailer_list_state.dart';
 
 final firestoreProvider = Provider((ref) => FirebaseFirestore.instance);
 
-final retailerListRemoteServiceProvider = Provider((ref) => RetailerListRemoteService(ref.watch(firestoreProvider)));
+final retailerListRemoteServiceProvider =
+    Provider((ref) => RetailerListRemoteService(ref.watch(firestoreProvider)));
 
-final retailerListRepoProvider = Provider((ref) => RetailerListRepository(ref.watch(retailerListRemoteServiceProvider)));
+final retailerListRepoProvider = Provider((ref) => RetailerListRepository(
+      ref.watch(retailerListRemoteServiceProvider),
+      ref.watch(internetConnectionCheckerProvider),
+    ));
 
-final retailerListNotifierProvider = StateNotifierProvider.autoDispose<RetailerListNotifier, RetailerListState>(
+final retailerListNotifierProvider =
+    StateNotifierProvider.autoDispose<RetailerListNotifier, RetailerListState>(
         (ref) => RetailerListNotifier(ref.watch(retailerListRepoProvider)));
-

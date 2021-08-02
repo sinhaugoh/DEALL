@@ -8,4 +8,5 @@ class FirestoreFailures with _$FirestoreFailures {
   const factory FirestoreFailures.cancelledOperation() = CancelledOperation;
   const factory FirestoreFailures.objectNotFound() = ObjectNotFound;
   const factory FirestoreFailures.unknown() = Unknown;
+  const factory FirestoreFailures.noConnection() = NoConnection;
 }

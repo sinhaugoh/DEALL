@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:deall/consumer/application/retailer_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -24,7 +25,9 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
   @override
   void initState() {
     super.initState();
-    checkConnectivityAndGetRetailerList();
+    Future.microtask(() {
+      ref.read(retailerListNotifierProvider.notifier).getRetailerList();
+    });
   }
 
   @override
@@ -40,23 +43,26 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       if (result != ConnectivityResult.none) {
         Future.microtask(() =>
             ref.read(retailerListNotifierProvider.notifier).getRetailerList());
-      }
-      if (result == ConnectivityResult.none) {
-        ref.read(retailerListNotifierProvider.notifier).setNoConnectionState();
+        subscription?.cancel();
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<RetailerListState>(retailerListNotifierProvider, (state) { 
+      if(state == const RetailerListState.noConnection()) {
+        checkConnectivityAndGetRetailerList();
+      }
+    });
+
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: enterLocationAppBar(),
       drawer: const ConsumerDrawer(),
       body: RefreshIndicator(
           onRefresh: () async {
-            await checkConnectivityAndGetRetailerList();
-            setState(() {});
+            ref.read(retailerListNotifierProvider.notifier).getRetailerList();
           },
           child: consumerHomePageBody(mq)),
     );
