@@ -12,14 +12,18 @@ class SizeConfig{
   static double heightMultiplier = 0;
 
   void init(BoxConstraints constraints, Orientation orientation){
-    if(orientation == Orientation.portrait){
-      _screenWidth = constraints.maxWidth;
-      _screenHeight = constraints.maxHeight;
-    }
-    else{
-      _screenWidth = constraints.maxHeight;
-      _screenHeight = constraints.maxWidth;
-    }
+    // if(orientation == Orientation.portrait){
+    //   _screenWidth = constraints.maxWidth;
+    //   _screenHeight = constraints.maxHeight;
+    // }
+    // else{
+    //   _screenWidth = constraints.maxHeight;
+    //   _screenHeight = constraints.maxWidth;
+    // }
+
+    _screenWidth = constraints.maxWidth;
+    _screenHeight = constraints.maxHeight;
+
     _blockSizeHorizontal = _screenWidth/100;
     _blockSizeVertical = _screenHeight/100;
 
