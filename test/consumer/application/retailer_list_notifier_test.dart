@@ -24,57 +24,45 @@ void main() {
     addTearDown(testContainer.dispose);
     return testContainer;
   }
-
-  Either<FirestoreFailures, List<Retailer>> successResult(){
-    return right(firebaseList);
-  }
-
-  Either<FirestoreFailures, List<Retailer>> cancelOperationResult(){
-    return left(const FirestoreFailures.cancelledOperation());
-  }
-
-  Either<FirestoreFailures, List<Retailer>> objectNotFoundResult(){
-    return left(const FirestoreFailures.objectNotFound());
-  }
-
-  Either<FirestoreFailures, List<Retailer>> unknownFailureResult(){
-    return left(const FirestoreFailures.unknown());
-  }
   group('getRetailerList', () {
     test('should return a List<Retailer> if query is successful', () async {
       final testContainer = setUpTestContainer();
-      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => successResult());
+      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => const Right(firebaseList));
       final resultList = await testContainer.read(retailerListRepoProvider).getRetailerList();
       
-      expect(right(resultList), isA<List<Retailer>>());
-      expect(right(resultList), equals(firebaseList));
+      expect(resultList.isRight(), equals(true));
+      expect(resultList.isLeft(), equals(false));
+      expect(resultList, equals(const Right(firebaseList)));
     });
 
     test('should return FirestoreFailures.cancelledOperation() if operation cancelled before it is completed', () async {
       final testContainer = setUpTestContainer();
-      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => cancelOperationResult());
+      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => const Left(FirestoreFailures.cancelledOperation()));
       final resultList = await testContainer.read(retailerListRepoProvider).getRetailerList();
       
-      expect(left(resultList), isA<FirestoreFailures>());
-      expect(left(resultList), equals(const FirestoreFailures.cancelledOperation()));
+      expect(resultList.isRight(), equals(false));
+      expect(resultList.isLeft(), equals(true));
+      expect(resultList, equals(const Left(FirestoreFailures.cancelledOperation())));
     });
 
     test('should return FirestoreFailures.objectNotFound() if no object found during query', () async {
       final testContainer = setUpTestContainer();
-      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => objectNotFoundResult());
+      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => const Left(FirestoreFailures.objectNotFound()));
       final resultList = await testContainer.read(retailerListRepoProvider).getRetailerList();
       
-      expect(left(resultList), isA<FirestoreFailures>());
-      expect(left(resultList), equals(const FirestoreFailures.objectNotFound()));
+      expect(resultList.isRight(), equals(false));
+      expect(resultList.isLeft(), equals(true));
+      expect(resultList, equals(const Left(FirestoreFailures.objectNotFound())));
     });
 
     test('should return FirestoreFailures.cancelledOperation() if an unknown error occured', () async {
       final testContainer = setUpTestContainer();
-      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => unknownFailureResult());
+      when(testContainer.read(retailerListRepoProvider).getRetailerList()).thenAnswer((_) async => const Left(FirestoreFailures.unknown()));
       final resultList = await testContainer.read(retailerListRepoProvider).getRetailerList();
       
-      expect(left(resultList), isA<FirestoreFailures>());
-      expect(left(resultList), equals(const FirestoreFailures.unknown()));
+      expect(resultList.isRight(), equals(false));
+      expect(resultList.isLeft(), equals(true));
+      expect(resultList, equals(const Left(FirestoreFailures.unknown())));
     });
   }); 
 }

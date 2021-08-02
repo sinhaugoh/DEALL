@@ -56,12 +56,14 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
   TResult when<TResult extends Object?>(
           {TResult Function()? cancelledOperation,
           TResult Function()? objectNotFound,
-          TResult Function()? unknown}) =>
+          TResult Function()? unknown,
+          TResult Function()? noConnection}) =>
       (super.noSuchMethod(
           Invocation.method(#when, [], {
             #cancelledOperation: cancelledOperation,
             #objectNotFound: objectNotFound,
-            #unknown: unknown
+            #unknown: unknown,
+            #noConnection: noConnection
           }),
           returnValue: null) as TResult);
   @override
@@ -69,12 +71,14 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
           {TResult Function()? cancelledOperation,
           TResult Function()? objectNotFound,
           TResult Function()? unknown,
+          TResult Function()? noConnection,
           TResult Function()? orElse}) =>
       (super.noSuchMethod(
           Invocation.method(#maybeWhen, [], {
             #cancelledOperation: cancelledOperation,
             #objectNotFound: objectNotFound,
             #unknown: unknown,
+            #noConnection: noConnection,
             #orElse: orElse
           }),
           returnValue: null) as TResult);
@@ -82,12 +86,14 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
   TResult map<TResult extends Object?>(
           {TResult Function(_i6.CancelledOperation)? cancelledOperation,
           TResult Function(_i6.ObjectNotFound)? objectNotFound,
-          TResult Function(_i6.Unknown)? unknown}) =>
+          TResult Function(_i6.Unknown)? unknown,
+          TResult Function(_i6.NoConnection)? noConnection}) =>
       (super.noSuchMethod(
           Invocation.method(#map, [], {
             #cancelledOperation: cancelledOperation,
             #objectNotFound: objectNotFound,
-            #unknown: unknown
+            #unknown: unknown,
+            #noConnection: noConnection
           }),
           returnValue: null) as TResult);
   @override
@@ -95,12 +101,14 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
           {TResult Function(_i6.CancelledOperation)? cancelledOperation,
           TResult Function(_i6.ObjectNotFound)? objectNotFound,
           TResult Function(_i6.Unknown)? unknown,
+          TResult Function(_i6.NoConnection)? noConnection,
           TResult Function()? orElse}) =>
       (super.noSuchMethod(
           Invocation.method(#maybeMap, [], {
             #cancelledOperation: cancelledOperation,
             #objectNotFound: objectNotFound,
             #unknown: unknown,
+            #noConnection: noConnection,
             #orElse: orElse
           }),
           returnValue: null) as TResult);
