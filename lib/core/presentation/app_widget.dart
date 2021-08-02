@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -54,13 +55,23 @@ class AppWidget extends ConsumerWidget {
       });
     }
 
-    return MaterialApp.router(
-      title: 'DEALL',
-      theme: ThemeData(
-        primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
-      ),
-      routeInformationParser: appRouter.defaultRouteParser(),
-      routerDelegate: appRouter.delegate(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig().init(constraints, orientation);
+            
+            return MaterialApp.router(
+              title: 'DEALL',
+              theme: ThemeData(
+                primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
+              ),
+              routeInformationParser: appRouter.defaultRouteParser(),
+              routerDelegate: appRouter.delegate(),
+            );
+          }
+        );
+      }
     );
   }
 }
