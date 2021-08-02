@@ -3,6 +3,7 @@ import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/const/size_config.dart';
+import 'package:deall/core/presentation/const/style_theme.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -60,12 +61,14 @@ class AppWidget extends ConsumerWidget {
         return OrientationBuilder(
           builder: (context, orientation) {
             SizeConfig().init(constraints, orientation);
-            
+
             return MaterialApp.router(
               title: 'DEALL',
-              theme: ThemeData(
-                primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
-              ),
+              theme: StyleTheme.lightTheme,
+              // theme: ThemeData(
+              //   primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
+              //   scaffoldBackgroundColor: Colors.black
+              // ),
               routeInformationParser: appRouter.defaultRouteParser(),
               routerDelegate: appRouter.delegate(),
             );
