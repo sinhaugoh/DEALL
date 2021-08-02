@@ -13,6 +13,7 @@ class RetailerListView extends ConsumerWidget {
 
     return state.map(
       initial: (_) => const Center(child: Text("initial")),
+      noConnection: (_) => const Center(child: Text("No connection")),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       failure: (failure) => Center(child: Text("$failure failure")),
       loaded: (loaded) => ListView.builder(

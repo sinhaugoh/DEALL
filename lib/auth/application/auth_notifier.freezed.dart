@@ -26,10 +26,6 @@ class _$AuthStateTearOff {
     );
   }
 
-  NoConnection noConnection() {
-    return const NoConnection();
-  }
-
   _NotAuthenticated notAuthenticated() {
     return const _NotAuthenticated();
   }
@@ -44,7 +40,6 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AppUser user) authenticated,
-    required TResult Function() noConnection,
     required TResult Function() notAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,7 +47,6 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AppUser user)? authenticated,
-    TResult Function()? noConnection,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) =>
@@ -61,7 +55,6 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(_NotAuthenticated value) notAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -69,7 +62,6 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Authenticated value)? authenticated,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(_NotAuthenticated value)? notAuthenticated,
     required TResult orElse(),
   }) =>
@@ -130,7 +122,6 @@ class _$_Initial extends _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AppUser user) authenticated,
-    required TResult Function() noConnection,
     required TResult Function() notAuthenticated,
   }) {
     return initial();
@@ -141,7 +132,6 @@ class _$_Initial extends _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AppUser user)? authenticated,
-    TResult Function()? noConnection,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -156,7 +146,6 @@ class _$_Initial extends _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(_NotAuthenticated value) notAuthenticated,
   }) {
     return initial(this);
@@ -167,7 +156,6 @@ class _$_Initial extends _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Authenticated value)? authenticated,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(_NotAuthenticated value)? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -258,7 +246,6 @@ class _$_Authenticated extends _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AppUser user) authenticated,
-    required TResult Function() noConnection,
     required TResult Function() notAuthenticated,
   }) {
     return authenticated(user);
@@ -269,7 +256,6 @@ class _$_Authenticated extends _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AppUser user)? authenticated,
-    TResult Function()? noConnection,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -284,7 +270,6 @@ class _$_Authenticated extends _Authenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(_NotAuthenticated value) notAuthenticated,
   }) {
     return authenticated(this);
@@ -295,7 +280,6 @@ class _$_Authenticated extends _Authenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Authenticated value)? authenticated,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(_NotAuthenticated value)? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -314,100 +298,6 @@ abstract class _Authenticated extends AuthState {
   @JsonKey(ignore: true)
   _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NoConnectionCopyWith<$Res> {
-  factory $NoConnectionCopyWith(
-          NoConnection value, $Res Function(NoConnection) then) =
-      _$NoConnectionCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$NoConnectionCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $NoConnectionCopyWith<$Res> {
-  _$NoConnectionCopyWithImpl(
-      NoConnection _value, $Res Function(NoConnection) _then)
-      : super(_value, (v) => _then(v as NoConnection));
-
-  @override
-  NoConnection get _value => super._value as NoConnection;
-}
-
-/// @nodoc
-
-class _$NoConnection extends NoConnection {
-  const _$NoConnection() : super._();
-
-  @override
-  String toString() {
-    return 'AuthState.noConnection()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NoConnection);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(AppUser user) authenticated,
-    required TResult Function() noConnection,
-    required TResult Function() notAuthenticated,
-  }) {
-    return noConnection();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(AppUser user)? authenticated,
-    TResult Function()? noConnection,
-    TResult Function()? notAuthenticated,
-    required TResult orElse(),
-  }) {
-    if (noConnection != null) {
-      return noConnection();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(NoConnection value) noConnection,
-    required TResult Function(_NotAuthenticated value) notAuthenticated,
-  }) {
-    return noConnection(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(NoConnection value)? noConnection,
-    TResult Function(_NotAuthenticated value)? notAuthenticated,
-    required TResult orElse(),
-  }) {
-    if (noConnection != null) {
-      return noConnection(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NoConnection extends AuthState {
-  const factory NoConnection() = _$NoConnection;
-  const NoConnection._() : super._();
 }
 
 /// @nodoc
@@ -452,7 +342,6 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(AppUser user) authenticated,
-    required TResult Function() noConnection,
     required TResult Function() notAuthenticated,
   }) {
     return notAuthenticated();
@@ -463,7 +352,6 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(AppUser user)? authenticated,
-    TResult Function()? noConnection,
     TResult Function()? notAuthenticated,
     required TResult orElse(),
   }) {
@@ -478,7 +366,6 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(_NotAuthenticated value) notAuthenticated,
   }) {
     return notAuthenticated(this);
@@ -489,7 +376,6 @@ class _$_NotAuthenticated extends _NotAuthenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Authenticated value)? authenticated,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(_NotAuthenticated value)? notAuthenticated,
     required TResult orElse(),
   }) {

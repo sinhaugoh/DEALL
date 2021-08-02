@@ -10,7 +10,6 @@ class AuthState with _$AuthState {
   const AuthState._();
   const factory AuthState.initial() = _Initial;
   const factory AuthState.authenticated(AppUser user) = _Authenticated;
-  const factory AuthState.noConnection() = NoConnection;
   const factory AuthState.notAuthenticated() = _NotAuthenticated;
 }
 
