@@ -11,8 +11,8 @@ _$_ProductDTO _$_$_ProductDTOFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     usualPrice: (json['usualPrice'] as num).toDouble(),
     discountPrice: (json['discountPrice'] as num).toDouble(),
-    image: json['image'] as String? ?? '',
-    description: json['description'] as String? ?? '',
+    image: json['image'] as String,
+    description: json['description'] as String,
     availability: json['availability'] as bool,
   );
 }

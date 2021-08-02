@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/core/infrastructure/product_list_repository.dart';
+import 'package:deall/retailer/infrastructure/product_repository.dart';
 import 'product_list_state.dart';
 
 class ProductListNotifier extends StateNotifier<ProductListState> {

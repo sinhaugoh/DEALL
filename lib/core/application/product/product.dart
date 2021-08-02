@@ -8,8 +8,8 @@ abstract class Product with _$Product {
     required String name,
     required double usualPrice,
     required double discountPrice,
-    String? image,
-    String? description,
+    required String image,
+    required String description,
     required bool availability,
   }) = _Product;
 }

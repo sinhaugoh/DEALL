@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:deall/core/application/product_list_notifier.dart';
-import 'package:deall/core/application/product_list_state.dart';
+import 'package:deall/core/application/product/product_list_notifier.dart';
+import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
-import 'package:deall/core/infrastructure/product_list_repository.dart';
-import 'package:deall/core/infrastructure/product_remote_service.dart';
+import 'package:deall/retailer/infrastructure/product_repository.dart';
+import 'package:deall/retailer/infrastructure/product_remote_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';

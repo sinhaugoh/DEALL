@@ -6,14 +6,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
-  const RetailerHomePage({ Key? key }) : super(key: key);
+  const RetailerHomePage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _RetailerHomePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _RetailerHomePageState();
 }
 
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
-  
   @override
   void initState() {
     super.initState();
@@ -31,10 +31,11 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   }
 }
 
-
 Future<void> retrieveUserUIDAndGetProductList(WidgetRef ref) async {
-  final String uid = await Future.microtask(() => ref.read(firebaseAuthServiceProvider).getUserId());
-  Future.microtask(() => ref.read(productListNotifierProvider.notifier).getProductList(uid));
+  final String uid = await Future.microtask(
+      () => ref.read(firebaseAuthServiceProvider).getUserId());
+  Future.microtask(
+      () => ref.read(productListNotifierProvider.notifier).getProductList(uid));
 }
 
 AppBar shopNameAppBar() {
@@ -47,15 +48,21 @@ Widget retailerHomePageBody(MediaQueryData mq) {
   return SizedBox(
     height: mq.size.height * 0.9,
     child: Column(
-      children: const [
-        Flexible(
+      children: [
+        const Flexible(
           flex: 2,
           child: SizedBox(), // visibility text and switch button
         ),
-        Flexible(
-          child: SizedBox(), // add product, show all, hide all button
+        Flexible( // add product, show all, hide all button
+          child: TextButton(
+            onPressed: () {},
+            child: const ListTile(
+              leading: Icon(Icons.add_circle),
+              trailing: Text("Add Product"),
+            ),
+          ),
         ),
-        Flexible(
+        const Flexible(
           flex: 14,
           child: SizedBox(), // product list
         ),

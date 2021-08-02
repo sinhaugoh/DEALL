@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:deall/core/application/product.dart';
+import 'package:deall/core/application/product/product.dart';
 
 part 'product_dto.freezed.dart';
 part 'product_dto.g.dart';
@@ -11,8 +11,8 @@ class ProductDTO with _$ProductDTO {
     required String name,
     required double usualPrice,
     required double discountPrice,
-    @JsonKey(defaultValue: '') String? image,
-    @JsonKey(defaultValue: '') String? description,
+    required String image,
+    required String description,
     required bool availability,
   }) = _ProductDTO;
 

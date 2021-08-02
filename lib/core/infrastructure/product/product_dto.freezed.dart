@@ -24,8 +24,8 @@ class _$ProductDTOTearOff {
       {required String name,
       required double usualPrice,
       required double discountPrice,
-      @JsonKey(defaultValue: '') String? image,
-      @JsonKey(defaultValue: '') String? description,
+      required String image,
+      required String description,
       required bool availability}) {
     return _ProductDTO(
       name: name,
@@ -50,10 +50,8 @@ mixin _$ProductDTO {
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountPrice => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String? get image => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String? get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -71,8 +69,8 @@ abstract class $ProductDTOCopyWith<$Res> {
       {String name,
       double usualPrice,
       double discountPrice,
-      @JsonKey(defaultValue: '') String? image,
-      @JsonKey(defaultValue: '') String? description,
+      String image,
+      String description,
       bool availability});
 }
 
@@ -109,11 +107,11 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       availability: availability == freezed
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -132,8 +130,8 @@ abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
       {String name,
       double usualPrice,
       double discountPrice,
-      @JsonKey(defaultValue: '') String? image,
-      @JsonKey(defaultValue: '') String? description,
+      String image,
+      String description,
       bool availability});
 }
 
@@ -172,11 +170,11 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       availability: availability == freezed
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -192,8 +190,8 @@ class _$_ProductDTO extends _ProductDTO {
       {required this.name,
       required this.usualPrice,
       required this.discountPrice,
-      @JsonKey(defaultValue: '') this.image,
-      @JsonKey(defaultValue: '') this.description,
+      required this.image,
+      required this.description,
       required this.availability})
       : super._();
 
@@ -207,11 +205,9 @@ class _$_ProductDTO extends _ProductDTO {
   @override
   final double discountPrice;
   @override
-  @JsonKey(defaultValue: '')
-  final String? image;
+  final String image;
   @override
-  @JsonKey(defaultValue: '')
-  final String? description;
+  final String description;
   @override
   final bool availability;
 
@@ -268,8 +264,8 @@ abstract class _ProductDTO extends ProductDTO {
       {required String name,
       required double usualPrice,
       required double discountPrice,
-      @JsonKey(defaultValue: '') String? image,
-      @JsonKey(defaultValue: '') String? description,
+      required String image,
+      required String description,
       required bool availability}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
 
@@ -283,11 +279,9 @@ abstract class _ProductDTO extends ProductDTO {
   @override
   double get discountPrice => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: '')
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: '')
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   bool get availability => throw _privateConstructorUsedError;
   @override

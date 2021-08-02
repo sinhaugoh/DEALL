@@ -12,8 +12,8 @@ abstract class Retailer with _$Retailer {
     required String unit,
     required String postalCode,
     required String operatingHours,
-    String? description,
-    String? image,
+    required String description,
+    required String image,
     required bool visibility,
   }) = _Retailer;
 

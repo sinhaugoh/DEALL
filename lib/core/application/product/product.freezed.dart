@@ -20,8 +20,8 @@ class _$ProductTearOff {
       {required String name,
       required double usualPrice,
       required double discountPrice,
-      String? image,
-      String? description,
+      required String image,
+      required String description,
       required bool availability}) {
     return _Product(
       name: name,
@@ -42,8 +42,8 @@ mixin _$Product {
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountPrice => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -58,8 +58,8 @@ abstract class $ProductCopyWith<$Res> {
       {String name,
       double usualPrice,
       double discountPrice,
-      String? image,
-      String? description,
+      String image,
+      String description,
       bool availability});
 }
 
@@ -96,11 +96,11 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       availability: availability == freezed
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -118,8 +118,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {String name,
       double usualPrice,
       double discountPrice,
-      String? image,
-      String? description,
+      String image,
+      String description,
       bool availability});
 }
 
@@ -157,11 +157,11 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       availability: availability == freezed
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -177,8 +177,8 @@ class _$_Product implements _Product {
       {required this.name,
       required this.usualPrice,
       required this.discountPrice,
-      this.image,
-      this.description,
+      required this.image,
+      required this.description,
       required this.availability});
 
   @override
@@ -188,9 +188,9 @@ class _$_Product implements _Product {
   @override
   final double discountPrice;
   @override
-  final String? image;
+  final String image;
   @override
-  final String? description;
+  final String description;
   @override
   final bool availability;
 
@@ -242,8 +242,8 @@ abstract class _Product implements Product {
       {required String name,
       required double usualPrice,
       required double discountPrice,
-      String? image,
-      String? description,
+      required String image,
+      required String description,
       required bool availability}) = _$_Product;
 
   @override
@@ -253,9 +253,9 @@ abstract class _Product implements Product {
   @override
   double get discountPrice => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   bool get availability => throw _privateConstructorUsedError;
   @override

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:deall/core/infrastructure/product_dto.dart';
+import 'package:deall/core/infrastructure/product/product_dto.dart';
 
 class ProductListRemoteService {
   final FirebaseFirestore _firestore;
@@ -15,5 +15,9 @@ class ProductListRemoteService {
     return querySnapshot.docs
         .map((doc) => ProductDTO.fromJson(doc.data()))
         .toList();
+  }
+
+  Future<void> addProduct(ProductDTO newProduct) async{
+    // add product to collection logic
   }
 }

@@ -14,8 +14,8 @@ _$_RetailerDTO _$_$_RetailerDTOFromJson(Map<String, dynamic> json) {
     unit: json['unit'] as String,
     postalCode: json['postalCode'] as String,
     operatingHours: json['operatingHours'] as String,
-    description: json['description'] as String? ?? '',
-    image: json['image'] as String? ?? '',
+    description: json['description'] as String,
+    image: json['image'] as String,
     visibility: json['visibility'] as bool,
   );
 }

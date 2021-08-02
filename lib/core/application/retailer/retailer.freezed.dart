@@ -23,8 +23,8 @@ class _$RetailerTearOff {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      String? description,
-      String? image,
+      required String description,
+      required String image,
       required bool visibility}) {
     return _Retailer(
       name: name,
@@ -51,8 +51,8 @@ mixin _$Retailer {
   String get unit => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get operatingHours => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   bool get visibility => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -71,8 +71,8 @@ abstract class $RetailerCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      String? description,
-      String? image,
+      String description,
+      String image,
       bool visibility});
 }
 
@@ -124,11 +124,11 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -149,8 +149,8 @@ abstract class _$RetailerCopyWith<$Res> implements $RetailerCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      String? description,
-      String? image,
+      String description,
+      String image,
       bool visibility});
 }
 
@@ -203,11 +203,11 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -226,8 +226,8 @@ class _$_Retailer extends _Retailer {
       required this.unit,
       required this.postalCode,
       required this.operatingHours,
-      this.description,
-      this.image,
+      required this.description,
+      required this.image,
       required this.visibility})
       : super._();
 
@@ -244,9 +244,9 @@ class _$_Retailer extends _Retailer {
   @override
   final String operatingHours;
   @override
-  final String? description;
+  final String description;
   @override
-  final String? image;
+  final String image;
   @override
   final bool visibility;
 
@@ -310,8 +310,8 @@ abstract class _Retailer extends Retailer {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      String? description,
-      String? image,
+      required String description,
+      required String image,
       required bool visibility}) = _$_Retailer;
   const _Retailer._() : super._();
 
@@ -328,9 +328,9 @@ abstract class _Retailer extends Retailer {
   @override
   String get operatingHours => throw _privateConstructorUsedError;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   bool get visibility => throw _privateConstructorUsedError;
   @override
