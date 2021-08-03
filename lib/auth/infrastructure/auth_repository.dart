@@ -5,9 +5,9 @@ import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
-import 'package:deall/core/infrastructure/retailer_dto.dart';
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 

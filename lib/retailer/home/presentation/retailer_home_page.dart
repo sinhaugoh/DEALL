@@ -1,4 +1,4 @@
-import 'package:deall/core/presentation/widgets/drawer_widget.dart';
+import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class RetailerHomePage extends StatelessWidget {

@@ -9,7 +9,7 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:deall/auth/application/app_user.dart' as _i5;
 import 'package:deall/auth/application/auth_failure.dart' as _i6;
 import 'package:deall/auth/infrastructure/auth_repository.dart' as _i3;
-import 'package:deall/core/application/retailer.dart' as _i7;
+import 'package:deall/core/application/retailer/retailer.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
