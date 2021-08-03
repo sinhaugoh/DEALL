@@ -28,14 +28,35 @@ class FirebaseAuthService {
   Future<UserCredential> consumerSignUp({
     required String email,
     required String password,
+  }) async =>
+      _signUp(
+        email: email,
+        password: password,
+        userType: AuthRepository.consumerTypeString,
+      );
+
+  Future<UserCredential> retailerSignUp({
+    required String email,
+    required String password,
+  }) async =>
+      _signUp(
+        email: email,
+        password: password,
+        userType: AuthRepository.retailerTypeString,
+      );
+
+  Future<UserCredential> _signUp({
+    required String email,
+    required String password,
+    required String userType,
   }) async {
     final userCredential = await _authInstance.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
 
-    await userCredential.user?.updateDisplayName(AuthRepository.consumerTypeString);
-    
+    await userCredential.user?.updateDisplayName(userType);
+
     return userCredential;
   }
 

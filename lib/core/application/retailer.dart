@@ -12,12 +12,28 @@ abstract class Retailer with _$Retailer {
     required String unit,
     required String postalCode,
     required String operatingHours,
-    String? description,
-    String? image,
+    required String description,
+    required String image,
     required bool visibility,
+    required String uen,
   }) = _Retailer;
 
-  String addressLine (){
+  factory Retailer.initial() {
+    return const Retailer(
+      name: '',
+      block: '',
+      street: '',
+      unit: '',
+      postalCode: '',
+      operatingHours: '',
+      description: '',
+      image: '',
+      visibility: false,
+      uen: '',
+    );
+  }
+
+  String addressLine() {
     return "$block $street $unit $postalCode";
   }
 }

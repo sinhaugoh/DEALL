@@ -1,5 +1,6 @@
 import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/consumer_sign_up_form_notifier.dart';
+import 'package:deall/auth/application/retailer_sign_up_form_notifier.dart';
 import 'package:deall/auth/application/sign_in_form_notifier.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
@@ -19,13 +20,23 @@ final authRepositoryProvider = Provider((ref) => AuthRepository(
       ref.watch(firebaseAuthServiceProvider),
       ref.watch(initialUserCreationServiceProvider),
       ref.watch(internetConnectionCheckerProvider),
+      ref.watch(imagePickingRemoteServiceProvider),
     ));
+
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
     (ref) => AuthNotifier(ref.watch(authRepositoryProvider)));
 
 final signInFormNotifierProvider =
     StateNotifierProvider.autoDispose<SignInFormNotifier, SignInFormState>(
         (ref) => SignInFormNotifier(ref.watch(authRepositoryProvider)));
+
 final consumerSignUpFormNotifierProvider = StateNotifierProvider.autoDispose<
         ConsumerSignUpFormNotifier, ConsumerSignUpFormState>(
     (ref) => ConsumerSignUpFormNotifier(ref.watch(authRepositoryProvider)));
+
+final retailerSignUpFormNotifierProvider =
+    StateNotifierProvider.autoDispose<RetailerSignUpFormNotifier, RetailerSignUpFormState>(
+        (ref) => RetailerSignUpFormNotifier(
+              ref.watch(authRepositoryProvider),
+              ref.watch(imagePickingRepositoryProvider),
+            ));

@@ -19,7 +19,7 @@ class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
     required String? passwordErrorMessage,
     required String email,
     required String password,
-  }) = _SignInFormState;
+  }) = _ConsumerSignUpFormState;
 
   factory ConsumerSignUpFormState.initial() => const ConsumerSignUpFormState(
         hasConnection: true,
