@@ -9,29 +9,79 @@ class WelcomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-            return Scaffold(
-              body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        AutoRouter.of(context).push(const SignInRoute());
-                      },
-                      child: const Text('sign in'),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        AutoRouter.of(context).push(const SignUpRoute());
-                      },
-                      child: const Text('sign up'),
-                    ),
-                  ],
-                ),
-              ),
-            );
+    return Scaffold(
+      body: Center(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            WelcomeWidget(),
+            ButtonWidget()
+            
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WelcomeWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Flexible(
+          //   flex: 1,
+            Padding(
+              //error here
+              
+              padding: EdgeInsets.only(top: 10 * SizeConfig.heightMultiplier),
+        //     //   child: Align(
+        //     //     alignment: Alignment.bottomLeft,
+        //         // child: FittedBox(
+        //           child: Container(
+        //             color: Colors.grey,
+        //             child: Text(
+        //               'Welcome.',
+        //               style: Theme.of(context).textTheme.headline2,
+        //               textAlign: TextAlign.left,
+        //             ),
+        //           ),
+        //         // )
+        //     //   ),
+          //   )
+          )
+        ],
+      )
+    );
+  }
+}
+
+class ButtonWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+
+          ElevatedButton(
+            onPressed: () {
+              AutoRouter.of(context).push(const SignInRoute());
+            },
+            child: const Text('sign in'),
+          ),
+
+          ElevatedButton(
+            onPressed: () {
+              AutoRouter.of(context).push(const SignUpRoute());
+            },
+            child: const Text('sign up'),
+          ),
+
+        ],
+      ),
+    );
   }
 }
