@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
+import 'package:deall/core/infrastructure/retailer_dto.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +29,7 @@ import 'auth_repository_test.mocks.dart';
   User,
   UserCredential,
   FirebaseAuthException,
+  ImagePickingRemoteService,
 ])
 void main() {
   final container = ProviderContainer(overrides: [
@@ -33,6 +39,8 @@ void main() {
         Provider((ref) => MockInitialUserCreationService())),
     internetConnectionCheckerProvider.overrideWithProvider(
         Provider((ref) => MockInternetConnectionChecker())),
+    imagePickingRemoteServiceProvider.overrideWithProvider(
+        Provider((ref) => MockImagePickingRemoteService())),
   ]);
 
   const testEmail = 'test@gmail.com';
@@ -238,7 +246,9 @@ void main() {
       expect(result, left(const AuthFailure.server('Email already in use')));
     });
 
-    test('should return AuthFailure.unexpectedError if unexpected error are thrown', () async {
+    test(
+        'should return AuthFailure.unexpectedError if unexpected error are thrown',
+        () async {
       deviceIsOnline();
       when(container
               .read(firebaseAuthServiceProvider)
@@ -251,7 +261,135 @@ void main() {
                 password: testPassword,
               );
 
-      expect(result, left(const AuthFailure.unexpectedError('Unexpected error')));
+      expect(
+          result, left(const AuthFailure.unexpectedError('Unexpected error')));
+    });
+  });
+
+  group('retailerSignUp', () {
+    test('should return AuthFailure.noConnection when the device is offline',
+        () async {
+      //arrange
+      deviceIsOffline();
+      //act
+      final result =
+          await container.read(authRepositoryProvider).retailerSignUp(
+                email: testEmail,
+                password: testPassword,
+                retailer: Retailer.initial(),
+                imageFile: null,
+              );
+      //assert
+      verify(container.read(internetConnectionCheckerProvider).hasConnection);
+      expect(result, left(const AuthFailure.noConnection()));
+    });
+
+    test('should return unit if sign up was successful with a shop logo',
+        () async {
+      final userCredential = MockUserCredential();
+      final File imageFile = File('fakeImageRoute');
+      const userId = 'test123';
+
+      deviceIsOnline();
+      when(container
+              .read(firebaseAuthServiceProvider)
+              .retailerSignUp(email: testEmail, password: testPassword))
+          .thenAnswer((realInvocation) async => userCredential);
+      when(container.read(firebaseAuthServiceProvider).getUserId())
+          .thenReturn(userId);
+      when(container
+              .read(imagePickingRemoteServiceProvider)
+              .uploadShopLogoToCloudStorage(userId: userId, file: imageFile))
+          .thenAnswer((realInvocation) async => 'imageString');
+
+      final result =
+          await container.read(authRepositoryProvider).retailerSignUp(
+                email: testEmail,
+                password: testPassword,
+                retailer: Retailer.initial(),
+                imageFile: imageFile,
+              );
+
+      expect(result, right(unit));
+    });
+
+    test('should return unit if sign up was successful without a shop logo',
+        () async {
+      final userCredential = MockUserCredential();
+      const File? imageFile = null;
+      const userId = 'test123';
+      final File imageFileNotExist = File('');
+
+      deviceIsOnline();
+      when(container
+              .read(firebaseAuthServiceProvider)
+              .retailerSignUp(email: testEmail, password: testPassword))
+          .thenAnswer((realInvocation) async => userCredential);
+      when(container.read(firebaseAuthServiceProvider).getUserId())
+          .thenReturn(userId);
+      when(container
+              .read(imagePickingRemoteServiceProvider)
+              .uploadShopLogoToCloudStorage(
+                  userId: userId, file: imageFileNotExist))
+          .thenAnswer((realInvocation) async => 'imageString');
+
+      final result =
+          await container.read(authRepositoryProvider).retailerSignUp(
+                email: testEmail,
+                password: testPassword,
+                retailer: Retailer.initial(),
+                imageFile: imageFile,
+              );
+
+      // verifyZeroInteractions(container.read(imagePickingRemoteServiceProvider)
+      //     .uploadShopLogoToCloudStorage(file: imageFileNotExist, userId: userId));
+
+      expect(result, right(unit));
+    });
+
+    test('should return AuthFailure.server if email already in use', () async {
+      final mockFirebaseAuthException = MockFirebaseAuthException();
+      const File? imageFile = null;
+
+      deviceIsOnline();
+      when(container
+              .read(firebaseAuthServiceProvider)
+              .retailerSignUp(email: testEmail, password: testPassword))
+          .thenThrow(mockFirebaseAuthException);
+      when(mockFirebaseAuthException.code).thenReturn('email-already-in-use');
+
+      final result =
+          await container.read(authRepositoryProvider).retailerSignUp(
+                email: testEmail,
+                password: testPassword,
+                retailer: Retailer.initial(),
+                imageFile: imageFile,
+              );
+
+      expect(result, left(const AuthFailure.server('Email already in use')));
+    });
+
+    test(
+        'should return AuthFailure.unexpectedError if unexpected error are thrown',
+        () async {
+      const File? imageFile = null;
+
+      deviceIsOnline();
+      when(container
+              .read(firebaseAuthServiceProvider)
+              .retailerSignUp(email: testEmail, password: testPassword))
+          .thenThrow(PlatformException);
+
+      final result =
+          await container.read(authRepositoryProvider).retailerSignUp(
+                email: testEmail,
+                password: testPassword,
+                retailer: Retailer.initial(),
+                imageFile: imageFile,
+              );
+
+      expect(
+          result, left(const AuthFailure.unexpectedError('Unexpected error')));
     });
   });
 
@@ -263,11 +401,14 @@ void main() {
       expect(result, right(unit));
     });
 
-    test('should return AuthFailure.server when FirebaseAuthExceptionare thrown', () async {
+    test(
+        'should return AuthFailure.server when FirebaseAuthExceptionare thrown',
+        () async {
       final mockFirebaseAuthException = MockFirebaseAuthException();
       const errorCode = 'test';
 
-      when(container.read(firebaseAuthServiceProvider).signOut()).thenThrow(mockFirebaseAuthException);
+      when(container.read(firebaseAuthServiceProvider).signOut())
+          .thenThrow(mockFirebaseAuthException);
       when(mockFirebaseAuthException.code).thenReturn(errorCode);
 
       final result = await container.read(authRepositoryProvider).signOut();

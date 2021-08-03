@@ -15,9 +15,25 @@ abstract class Retailer with _$Retailer {
     required String description,
     required String image,
     required bool visibility,
+    required String uen,
   }) = _Retailer;
 
-  String addressLine (){
+  factory Retailer.initial() {
+    return const Retailer(
+      name: '',
+      block: '',
+      street: '',
+      unit: '',
+      postalCode: '',
+      operatingHours: '',
+      description: '',
+      image: '',
+      visibility: false,
+      uen: '',
+    );
+  }
+
+  String addressLine() {
     return "$block $street $unit $postalCode";
   }
 }

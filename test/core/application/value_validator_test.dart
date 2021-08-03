@@ -76,4 +76,28 @@ void main() {
       expect(result, right(unit));
     });
   });
+
+  group('validatePostal', () {
+    test('should return ValueFailure.incorrectLength if the postal length is not 6', () {
+      final result = validatePostal('12345');
+      expect(result, left(const ValueFailure.incorrectLength(6)));
+    });
+
+    test('should return Unit if the postal length is 6', () {
+      final result = validatePostal('123456');
+      expect(result, right(unit));
+    });
+  });
+
+  group('validateNotEmpty', () {
+    test('should return ValueFailure.empty if the input is empty', () {
+      final result = validateNotEmpty('');
+      expect(result, left(const ValueFailure.empty()));
+    });
+
+    test('should return Unit if the input is not empty', () {
+      final result = validateNotEmpty('any');
+      expect(result, right(unit));
+    });
+  });
 }

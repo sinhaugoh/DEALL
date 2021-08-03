@@ -23,3 +23,14 @@ Either<ValueFailure, Unit> validatePassword(String input) {
     return left(const ValueFailure.invalidPassword());
   }
 }
+
+Either<ValueFailure, Unit> validatePostal(String input) {
+  const postalLength = 6;
+
+  return input.length == postalLength
+      ? right(unit)
+      : left(const ValueFailure.incorrectLength(postalLength));
+}
+
+Either<ValueFailure, Unit> validateNotEmpty(String input) =>
+    input != '' ? right(unit) : left(const ValueFailure.empty());
