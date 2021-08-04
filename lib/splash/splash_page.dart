@@ -1,3 +1,4 @@
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,9 +13,13 @@ class SplashPage extends ConsumerWidget {
         (_) => ref.watch(splashHasRenderedProvider).state = true);
     //TODO: implement splash page
     return Scaffold(
-      backgroundColor: Colors.red.shade400,
-      body: const Center(
-        child: Text('Splash Page'),
+      backgroundColor: const Color(0xFFF86B6B),
+      body: Center(
+        // child: Text('test'),
+        // child: Image.asset(
+        //   Images.logoIconNoBorder,
+        //   fit: BoxFit.scaleDown,
+        // ),
         // child: Column(
         //   children: [
         //     const Text('this is splash page!'),
