@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:deall/auth/presentation/widget/sign_in_form.dart';
 import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,21 @@ class WelcomePage extends ConsumerWidget {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            WelcomeWidget(),
-            ButtonWidget()
+            Expanded(
+              flex: 4,
+              child: Align(
+                // alignment: Alignment.bottomLeft,
+                child: WelcomeWidget()
+              )
+            ),
+            Expanded(
+              flex: 3,
+              child: SignInForm(),
+            ),
+            Expanded(
+              flex: 2,
+              child: ButtonWidget()
+            ),
             
           ],
         ),
@@ -27,31 +41,61 @@ class WelcomePage extends ConsumerWidget {
 class WelcomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      // height: SizeConfig.heightMultiplier*35,
+      // width: MediaQuery.of(context).size.width,
+      // color: Colors.blue,
+      // alignment: Alignment.bottomLeft,
       child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Flexible(
-          //   flex: 1,
-            Padding(
-              //error here
-              
-              padding: EdgeInsets.only(top: 10 * SizeConfig.heightMultiplier),
-        //     //   child: Align(
-        //     //     alignment: Alignment.bottomLeft,
-        //         // child: FittedBox(
-        //           child: Container(
-        //             color: Colors.grey,
-        //             child: Text(
-        //               'Welcome.',
-        //               style: Theme.of(context).textTheme.headline2,
-        //               textAlign: TextAlign.left,
-        //             ),
-        //           ),
-        //         // )
-        //     //   ),
-          //   )
+          Expanded(
+            flex: 4,
+            child: Align(
+              // color: Colors.blue,
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                'Welcome.',
+                style: Theme.of(context).textTheme.headline2,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ),
+          // Text(
+          //   'Late night deals for your supper needs.',
+          //   style: Theme.of(context).textTheme.headline3,
+          //   textAlign: TextAlign.left,
+          // )
+          Expanded(
+            flex:1,
+            child: Container(
+              color: Colors.grey,
+              child: Text(
+                'test',
+                style: Theme.of(context).textTheme.headline3,
+              )
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SignInForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            // flex:2,
+            child: Text('test'),
+            // SignInForm()
           )
         ],
       )
@@ -59,25 +103,54 @@ class WelcomeWidget extends StatelessWidget {
   }
 }
 
+//Container
+      // height: SizeConfig.heightMultiplier*35,
+      // width: MediaQuery.of(context).size.width,
+      // color: Colors.blue,
+      // alignment: Alignment.bottomLeft,
+
 class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.yellow,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(const SignInRoute());
-            },
-            child: const Text('sign in'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).push(const SignInRoute());
+              },
+              child: const Text('sign in'),
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)
+                    )
+                 )
+               ),
+              ),
           ),
 
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(const SignUpRoute());
-            },
-            child: const Text('sign up'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).push(const SignUpRoute());
+              },
+              child: const Text('sign up'),
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)
+                    )
+                 ),
+               ),
+               
+            ),
           ),
 
         ],

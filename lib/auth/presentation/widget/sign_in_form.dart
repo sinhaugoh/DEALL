@@ -15,6 +15,8 @@ class SignInForm extends ConsumerWidget {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             EmailTextField(
               errorText: ref.watch(signInFormNotifierProvider
