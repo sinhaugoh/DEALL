@@ -51,7 +51,7 @@ class SignInForm extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Text('Forgot Password?', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),)
+                child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, decoration: TextDecoration.underline),)
               ),
             ),
             Padding(
@@ -71,7 +71,7 @@ class SignInForm extends ConsumerWidget {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30))
                      ),
-                     backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                   ),
                 ),
               ),
@@ -86,56 +86,41 @@ class SignInForm extends ConsumerWidget {
 
             //SIGN UP PART TEST
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                // mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints.tightFor(height: 40),
-                      child: ElevatedButton(
-                          onPressed: () {
-                          },
-                          child: const Text('Consumer',style: TextStyle(color: Colors.black87)),
-                          style: ButtonStyle(
-                          // side: MaterialStateProperty.all(BorderSide(color: Color(0xFFF86B6B))),
-                          side: MaterialStateProperty.all(BorderSide(color: Colors.blueAccent)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)
-                            )
-                          ),
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade50),
-                          )                      ),
-                    ),
-                  ),
-
-                  SizedBox(width: 10,),
-
-                  Expanded(
-                    flex: 1,
-                    child: ConstrainedBox(
-                    constraints: BoxConstraints.tightFor(height: 40),
-                      child: ElevatedButton(
-                          onPressed: () {
-                          },
-                          child: const Text('Retailer',style: TextStyle(color: Colors.black87)),
-                          style: ButtonStyle(
-                          // side: MaterialStateProperty.all(BorderSide(color: Color(0xFFF86B6B))),
-                          side: MaterialStateProperty.all(BorderSide(color: Colors.blueAccent)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)
-                            )
-                          ),
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade50),
-                          )
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: IntrinsicHeight(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child:  Text('Consumer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
                       ),
                     ),
-                  ),
-                      
-                ]
+
+                    // SizedBox(width: 10,),
+                    Container(
+                      height: 20,
+                      child: VerticalDivider(
+                        color: Colors.black54,
+                        thickness: 1,
+                        width: 20,
+                      ),
+                    ),
+
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Retailer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
+                      ),
+                    ),
+                        
+                  ]
+                ),
               ),
             )
 
