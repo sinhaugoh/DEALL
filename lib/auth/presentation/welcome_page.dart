@@ -3,6 +3,7 @@ import 'package:deall/auth/presentation/widget/sign_in_form.dart';
 import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:deall/core/presentation/const/themedata_swatch_color.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +17,22 @@ class WelcomePage extends ConsumerWidget {
       body: Center(
         child: Column(
           children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: WelcomeWidget()
-            ),
+            
             // Expanded(
             //   flex: 3,
             //   child: SignInForm(),
             // ),
+            Expanded(
+              child: Divider(),
+            ),
+            Expanded(
+              flex: 3,
+              child: WelcomeImageWidget(),
+            ),
+            Expanded(
+              flex: 1,
+              child: WelcomeWidget()
+            ),
             Expanded(
               flex: 2,
               child: ButtonWidget()
@@ -31,6 +40,18 @@ class WelcomePage extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class WelcomeImageWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Image.asset(
+        Images.welcomeImage
+      )
+      
     );
   }
 }
@@ -133,7 +154,7 @@ class ButtonWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30)
                       )
                     ),
-                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFFF7EC)),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                  ),
               ),
             ),
@@ -142,7 +163,7 @@ class ButtonWidget extends StatelessWidget {
           // thickness: 2,
           // indent: 4.5 * SizeConfig.heightMultiplier,
           // endIndent: 4.5 * SizeConfig.heightMultiplier,
-          height: 18 * SizeConfig.heightMultiplier,
+          // height: 18 * SizeConfig.heightMultiplier,
         )
         ],
       ),

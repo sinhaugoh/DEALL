@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 class StyleTheme{
   StyleTheme._();
 
-  static const Color appBackgroundColor = Color(0xFFFFF7EC);
+  // static const Color appBackgroundColor = Color(0xFFFFF7EC);
+  static const Color appBackgroundColor = Colors.white;
   static const Color appBarBackgroundColor = Color(0xFFF86B6B);
   // static const Color selectedTabBackgroundColor = Color();
   // static const Color unselectedTabBackgroundColor = Color(0xFFF86B6B);

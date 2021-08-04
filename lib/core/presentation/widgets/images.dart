@@ -6,4 +6,6 @@ class Images {
   static const String logoIcon = "assets/images/logo_icon.png";
   static const String logoText = "assets/images/logo_text.png";
   static const String logoIconNoBorder = "assets/images/logo_icon_noborder.png";
+
+  static const String welcomeImage = "assets/images/4.png";
 }
