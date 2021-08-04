@@ -17,7 +17,7 @@ class SignInForm extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: FormTextField(
                 label: 'Email',
                 errorText: ref.watch(signInFormNotifierProvider
@@ -30,7 +30,7 @@ class SignInForm extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: FormTextField(
                 label: 'Password',
                 obscureText: true,
@@ -48,18 +48,41 @@ class SignInForm extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () {
-                  //dismiss the keyboard
-                  final currentFocus = FocusScope.of(context);
-                  currentFocus.unfocus();
-
-                  ref.read(signInFormNotifierProvider.notifier).signIn();
-                },
-                child: const Text('Sign In'),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text('Forget Password')
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ConstrainedBox(
+                constraints: BoxConstraints.tightFor(height: 40),
+                child: ElevatedButton(
+                  onPressed: () {
+                    //dismiss the keyboard
+                    final currentFocus = FocusScope.of(context);
+                    currentFocus.unfocus();
+
+                    ref.read(signInFormNotifierProvider.notifier).signIn();
+                  },
+                  child: const Text('Sign In'),
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30))
+                     ),
+                    //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  ),
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+              height: 50,
+            ),
+            Center(child: Text("Don't have an account? Sign up."))
           ],
         ),
       ),
