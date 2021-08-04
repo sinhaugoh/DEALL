@@ -75,21 +75,24 @@ class SignInPage extends ConsumerWidget {
           ),
 
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               // color: Colors.grey,
-              child: SafeArea(
-                child: Stack(
-                  children: [
-                    const SignInForm(),
-                    SavingInProgressOverlay(
-                        isSaving: ref.watch(signInFormNotifierProvider
-                            .select((state) => state.isSaving))),
-                  ],
-                ),
-              ),
+                  child: SafeArea(
+                    child: Stack(
+                      children: [
+                        const SignInForm(),
+                        SavingInProgressOverlay(
+                            isSaving: ref.watch(signInFormNotifierProvider
+                                .select((state) => state.isSaving))),
+                      ],
+                    ),
+                  ),
+              
             ),
           ),
+
+
         ],
       ),
     );
