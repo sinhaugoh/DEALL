@@ -23,9 +23,10 @@ class _$RetailerTearOff {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      String? description,
-      String? image,
-      required bool visibility}) {
+      required String description,
+      required String image,
+      required bool visibility,
+      required String uen}) {
     return _Retailer(
       name: name,
       block: block,
@@ -36,6 +37,7 @@ class _$RetailerTearOff {
       description: description,
       image: image,
       visibility: visibility,
+      uen: uen,
     );
   }
 }
@@ -51,9 +53,10 @@ mixin _$Retailer {
   String get unit => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get operatingHours => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   bool get visibility => throw _privateConstructorUsedError;
+  String get uen => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RetailerCopyWith<Retailer> get copyWith =>
@@ -71,9 +74,10 @@ abstract class $RetailerCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      String? description,
-      String? image,
-      bool visibility});
+      String description,
+      String image,
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -95,6 +99,7 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -124,15 +129,19 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -149,9 +158,10 @@ abstract class _$RetailerCopyWith<$Res> implements $RetailerCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      String? description,
-      String? image,
-      bool visibility});
+      String description,
+      String image,
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -174,6 +184,7 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_Retailer(
       name: name == freezed
@@ -203,15 +214,19 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -226,9 +241,10 @@ class _$_Retailer extends _Retailer {
       required this.unit,
       required this.postalCode,
       required this.operatingHours,
-      this.description,
-      this.image,
-      required this.visibility})
+      required this.description,
+      required this.image,
+      required this.visibility,
+      required this.uen})
       : super._();
 
   @override
@@ -244,15 +260,17 @@ class _$_Retailer extends _Retailer {
   @override
   final String operatingHours;
   @override
-  final String? description;
+  final String description;
   @override
-  final String? image;
+  final String image;
   @override
   final bool visibility;
+  @override
+  final String uen;
 
   @override
   String toString() {
-    return 'Retailer(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility)';
+    return 'Retailer(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
   }
 
   @override
@@ -280,7 +298,9 @@ class _$_Retailer extends _Retailer {
                 const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.visibility, visibility) ||
                 const DeepCollectionEquality()
-                    .equals(other.visibility, visibility)));
+                    .equals(other.visibility, visibility)) &&
+            (identical(other.uen, uen) ||
+                const DeepCollectionEquality().equals(other.uen, uen)));
   }
 
   @override
@@ -294,7 +314,8 @@ class _$_Retailer extends _Retailer {
       const DeepCollectionEquality().hash(operatingHours) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(visibility);
+      const DeepCollectionEquality().hash(visibility) ^
+      const DeepCollectionEquality().hash(uen);
 
   @JsonKey(ignore: true)
   @override
@@ -310,9 +331,10 @@ abstract class _Retailer extends Retailer {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      String? description,
-      String? image,
-      required bool visibility}) = _$_Retailer;
+      required String description,
+      required String image,
+      required bool visibility,
+      required String uen}) = _$_Retailer;
   const _Retailer._() : super._();
 
   @override
@@ -328,11 +350,13 @@ abstract class _Retailer extends Retailer {
   @override
   String get operatingHours => throw _privateConstructorUsedError;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   bool get visibility => throw _privateConstructorUsedError;
+  @override
+  String get uen => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RetailerCopyWith<_Retailer> get copyWith =>

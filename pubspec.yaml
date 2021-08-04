@@ -26,6 +26,12 @@ dependencies:
   connectivity: ^3.0.6
   json_annotation: ^4.0.1
   path: ^1.8.0
+  flutter_native_splash: ^1.2.0
+
+flutter_native_splash:
+  color: "#F86B6B"
+  image: assets/images/logo_icon_noborder_1.5x.png
+  android: true
 
 dev_dependencies:
   flutter_test:
@@ -39,3 +45,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets: 
+    - assets/images/

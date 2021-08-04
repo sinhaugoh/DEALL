@@ -1,3 +1,4 @@
+import 'package:deall/core/presentation/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class RetailerHomePage extends StatelessWidget {
@@ -5,6 +6,10 @@ class RetailerHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Text('this is retailer home'),);
+    return Scaffold(
+      appBar: AppBar(title: const Text('DEALL'),),
+      //TODO: change to retailer drawer
+      drawer: const ConsumerDrawer(),
+      body: const Text('this is retailer home'),);
   }
 }
