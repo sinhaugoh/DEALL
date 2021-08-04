@@ -26,10 +26,17 @@ class ProductListRepository {
       }
       if (e.code ==
           FirebaseException(
-                  code: 'not-found',
-                  plugin: "Some requested document was not found.")
+                  code: 'resource-exhausted',
+                  plugin: "Resource quota per user has been exhausted or file system is out of space.")
               .code) {
-        return left(const FirestoreFailures.objectNotFound());
+        return left(const FirestoreFailures.resourceExhausted());
+      }
+      if (e.code ==
+          FirebaseException(
+                  code: 'unavailable',
+                  plugin: "Service is currently unavailable. Please try again later.")
+              .code) {
+        return left(const FirestoreFailures.serviceUnavailable());
       }
       return left(const FirestoreFailures.unknown());
     }
