@@ -5,8 +5,8 @@ import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:deall/core/presentation/const/themedata_swatch_color.dart';
 
-import 'const/themedata_swatch_color.dart';
 import 'routes/app_router.gr.dart';
 
 //Do all the initialisation here
