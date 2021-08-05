@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/app_user.dart';
+import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
