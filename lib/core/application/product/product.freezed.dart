@@ -17,13 +17,15 @@ class _$ProductTearOff {
   const _$ProductTearOff();
 
   _Product call(
-      {required String name,
+      {required String id,
+      required String name,
       required double usualPrice,
       required double discountPrice,
       required String image,
       required String description,
       required bool availability}) {
     return _Product(
+      id: id,
       name: name,
       usualPrice: usualPrice,
       discountPrice: discountPrice,
@@ -39,6 +41,7 @@ const $Product = _$ProductTearOff();
 
 /// @nodoc
 mixin _$Product {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountPrice => throw _privateConstructorUsedError;
@@ -55,7 +58,8 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {String id,
+      String name,
       double usualPrice,
       double discountPrice,
       String image,
@@ -73,6 +77,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
@@ -81,6 +86,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? availability = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,7 +124,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       __$ProductCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       double usualPrice,
       double discountPrice,
       String image,
@@ -134,6 +144,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
@@ -142,6 +153,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? availability = freezed,
   }) {
     return _then(_Product(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -172,15 +187,19 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Product implements _Product {
+class _$_Product extends _Product {
   const _$_Product(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.usualPrice,
       required this.discountPrice,
       required this.image,
       required this.description,
-      required this.availability});
+      required this.availability})
+      : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -196,13 +215,15 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, image: $image, description: $description, availability: $availability)';
+    return 'Product(id: $id, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, image: $image, description: $description, availability: $availability)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Product &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.usualPrice, usualPrice) ||
@@ -224,6 +245,7 @@ class _$_Product implements _Product {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
       const DeepCollectionEquality().hash(discountPrice) ^
@@ -237,15 +259,19 @@ class _$_Product implements _Product {
       __$ProductCopyWithImpl<_Product>(this, _$identity);
 }
 
-abstract class _Product implements Product {
+abstract class _Product extends Product {
   const factory _Product(
-      {required String name,
+      {required String id,
+      required String name,
       required double usualPrice,
       required double discountPrice,
       required String image,
       required String description,
       required bool availability}) = _$_Product;
+  const _Product._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

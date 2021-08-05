@@ -38,12 +38,22 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = state.copyWith(availability: !state.availability);
   }
 
-  void validateInputs(){
+  void _validateInputs(){
     
   }
 
   void addProduct() async {
-    // await _productRepository
+    _validateInputs();
+
+    //if the input are valid
+    if (state.nameErrorMessage == null &&
+        state.usualPriceErrorMessage == null &&
+        state.discountPriceErrorMessage == null) {
+      state = state.copyWith(
+        isSaving: true,
+        hasConnection: true,
+      );
+    }
   }
 
   Future<void> pickImage() async {

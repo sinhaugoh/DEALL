@@ -139,4 +139,3 @@ class AddProductRoute extends _i1.PageRouteInfo {
 
   static const String name = 'AddProductRoute';
 }
-
