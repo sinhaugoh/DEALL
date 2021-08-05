@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:deall/core/application/retailer.dart';
 import 'package:deall/retailer/application/retailer_failure.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
 import 'package:deall/retailer/shared/providers.dart';
@@ -8,16 +9,21 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'retailer_initialisation_notifier.freezed.dart';
 
 @freezed
-class RetailerInitialisationNotifierState with _$RetailerInitialisationNotifierState {
+class RetailerInitialisationNotifierState
+    with _$RetailerInitialisationNotifierState {
   const RetailerInitialisationNotifierState._();
   const factory RetailerInitialisationNotifierState.initial() = Initial;
   const factory RetailerInitialisationNotifierState.loading() = Loading;
-  const factory RetailerInitialisationNotifierState.success() = Success;
+  const factory RetailerInitialisationNotifierState.loaded(
+    Retailer retailer, {
+    required bool hasConnection,
+  }) = Loaded;
   const factory RetailerInitialisationNotifierState.failure(
       RetailerFailure retailerFailure) = Failure;
 }
 
-class RetailerInitialisationNotifier extends StateNotifier<RetailerInitialisationNotifierState> {
+class RetailerInitialisationNotifier
+    extends StateNotifier<RetailerInitialisationNotifierState> {
   final RetailerRepository _retailerRepository;
   final Reader _reader;
 
@@ -51,7 +57,10 @@ class RetailerInitialisationNotifier extends StateNotifier<RetailerInitialisatio
       (f) => state = RetailerInitialisationNotifierState.failure(f),
       (retailer) {
         _reader.call(retailerLocalStateProvider).state = retailer;
-        state = const RetailerInitialisationNotifierState.success();
+        state = RetailerInitialisationNotifierState.loaded(
+          retailer,
+          hasConnection: true,
+        );
       },
     );
   }

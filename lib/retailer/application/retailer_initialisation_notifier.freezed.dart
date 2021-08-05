@@ -24,8 +24,11 @@ class _$RetailerInitialisationNotifierStateTearOff {
     return const Loading();
   }
 
-  Success success() {
-    return const Success();
+  Loaded loaded(Retailer retailer, {required bool hasConnection}) {
+    return Loaded(
+      retailer,
+      hasConnection: hasConnection,
+    );
   }
 
   Failure failure(RetailerFailure retailerFailure) {
@@ -45,7 +48,7 @@ mixin _$RetailerInitialisationNotifierState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(Retailer retailer, bool hasConnection) loaded,
     required TResult Function(RetailerFailure retailerFailure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +56,7 @@ mixin _$RetailerInitialisationNotifierState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(Retailer retailer, bool hasConnection)? loaded,
     TResult Function(RetailerFailure retailerFailure)? failure,
     required TResult orElse(),
   }) =>
@@ -62,7 +65,7 @@ mixin _$RetailerInitialisationNotifierState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
+    required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,7 +73,7 @@ mixin _$RetailerInitialisationNotifierState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
+    TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) =>
@@ -135,7 +138,7 @@ class _$Initial extends Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(Retailer retailer, bool hasConnection) loaded,
     required TResult Function(RetailerFailure retailerFailure) failure,
   }) {
     return initial();
@@ -146,7 +149,7 @@ class _$Initial extends Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(Retailer retailer, bool hasConnection)? loaded,
     TResult Function(RetailerFailure retailerFailure)? failure,
     required TResult orElse(),
   }) {
@@ -161,7 +164,7 @@ class _$Initial extends Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
+    required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
   }) {
     return initial(this);
@@ -172,7 +175,7 @@ class _$Initial extends Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
+    TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -228,7 +231,7 @@ class _$Loading extends Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(Retailer retailer, bool hasConnection) loaded,
     required TResult Function(RetailerFailure retailerFailure) failure,
   }) {
     return loading();
@@ -239,7 +242,7 @@ class _$Loading extends Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(Retailer retailer, bool hasConnection)? loaded,
     TResult Function(RetailerFailure retailerFailure)? failure,
     required TResult orElse(),
   }) {
@@ -254,7 +257,7 @@ class _$Loading extends Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
+    required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
   }) {
     return loading(this);
@@ -265,7 +268,7 @@ class _$Loading extends Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
+    TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -282,49 +285,96 @@ abstract class Loading extends RetailerInitialisationNotifierState {
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
-      _$SuccessCopyWithImpl<$Res>;
+abstract class $LoadedCopyWith<$Res> {
+  factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
+      _$LoadedCopyWithImpl<$Res>;
+  $Res call({Retailer retailer, bool hasConnection});
+
+  $RetailerCopyWith<$Res> get retailer;
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<$Res>
+class _$LoadedCopyWithImpl<$Res>
     extends _$RetailerInitialisationNotifierStateCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
-      : super(_value, (v) => _then(v as Success));
+    implements $LoadedCopyWith<$Res> {
+  _$LoadedCopyWithImpl(Loaded _value, $Res Function(Loaded) _then)
+      : super(_value, (v) => _then(v as Loaded));
 
   @override
-  Success get _value => super._value as Success;
+  Loaded get _value => super._value as Loaded;
+
+  @override
+  $Res call({
+    Object? retailer = freezed,
+    Object? hasConnection = freezed,
+  }) {
+    return _then(Loaded(
+      retailer == freezed
+          ? _value.retailer
+          : retailer // ignore: cast_nullable_to_non_nullable
+              as Retailer,
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  @override
+  $RetailerCopyWith<$Res> get retailer {
+    return $RetailerCopyWith<$Res>(_value.retailer, (value) {
+      return _then(_value.copyWith(retailer: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$Success extends Success {
-  const _$Success() : super._();
+class _$Loaded extends Loaded {
+  const _$Loaded(this.retailer, {required this.hasConnection}) : super._();
+
+  @override
+  final Retailer retailer;
+  @override
+  final bool hasConnection;
 
   @override
   String toString() {
-    return 'RetailerInitialisationNotifierState.success()';
+    return 'RetailerInitialisationNotifierState.loaded(retailer: $retailer, hasConnection: $hasConnection)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Success);
+    return identical(this, other) ||
+        (other is Loaded &&
+            (identical(other.retailer, retailer) ||
+                const DeepCollectionEquality()
+                    .equals(other.retailer, retailer)) &&
+            (identical(other.hasConnection, hasConnection) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasConnection, hasConnection)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(retailer) ^
+      const DeepCollectionEquality().hash(hasConnection);
+
+  @JsonKey(ignore: true)
+  @override
+  $LoadedCopyWith<Loaded> get copyWith =>
+      _$LoadedCopyWithImpl<Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(Retailer retailer, bool hasConnection) loaded,
     required TResult Function(RetailerFailure retailerFailure) failure,
   }) {
-    return success();
+    return loaded(retailer, hasConnection);
   }
 
   @override
@@ -332,12 +382,12 @@ class _$Success extends Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(Retailer retailer, bool hasConnection)? loaded,
     TResult Function(RetailerFailure retailerFailure)? failure,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success();
+    if (loaded != null) {
+      return loaded(retailer, hasConnection);
     }
     return orElse();
   }
@@ -347,10 +397,10 @@ class _$Success extends Success {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
+    required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
   }) {
-    return success(this);
+    return loaded(this);
   }
 
   @override
@@ -358,20 +408,26 @@ class _$Success extends Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
+    TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class Success extends RetailerInitialisationNotifierState {
-  const factory Success() = _$Success;
-  const Success._() : super._();
+abstract class Loaded extends RetailerInitialisationNotifierState {
+  const factory Loaded(Retailer retailer, {required bool hasConnection}) =
+      _$Loaded;
+  const Loaded._() : super._();
+
+  Retailer get retailer => throw _privateConstructorUsedError;
+  bool get hasConnection => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoadedCopyWith<Loaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -450,7 +506,7 @@ class _$Failure extends Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(Retailer retailer, bool hasConnection) loaded,
     required TResult Function(RetailerFailure retailerFailure) failure,
   }) {
     return failure(retailerFailure);
@@ -461,7 +517,7 @@ class _$Failure extends Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(Retailer retailer, bool hasConnection)? loaded,
     TResult Function(RetailerFailure retailerFailure)? failure,
     required TResult orElse(),
   }) {
@@ -476,7 +532,7 @@ class _$Failure extends Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(Success value) success,
+    required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
   }) {
     return failure(this);
@@ -487,7 +543,7 @@ class _$Failure extends Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(Success value)? success,
+    TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {

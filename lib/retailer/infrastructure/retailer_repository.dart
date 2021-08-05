@@ -37,9 +37,9 @@ class RetailerRepository {
   // }
 
   Future<Either<RetailerFailure, Retailer>> getRetailer() async {
-    // if(! await _internetConnectionChecker.hasConnection) {
-    //   return left(const RetailerFailure.noConnection());
-    // }
+    if(! await _internetConnectionChecker.hasConnection) {
+      return left(const RetailerFailure.noConnection());
+    }
 
     try {
       final retailerDTO = await _retailerRemoteService.getRetailer();

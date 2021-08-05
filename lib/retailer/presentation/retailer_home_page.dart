@@ -18,17 +18,19 @@ class RetailerHomePage extends ConsumerStatefulWidget {
 
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
-  
+
   @override
   void initState() {
     super.initState();
     Future.microtask(
-      () => ref.read(retailerInitialisationNotifierProvider.notifier).getRetailer(),
+      () => ref
+          .read(retailerInitialisationNotifierProvider.notifier)
+          .getRetailer(),
     );
   }
 
   @override
-  void dispose() { 
+  void dispose() {
     super.dispose();
     _connectivityStreamSubscription?.cancel();
   }
@@ -41,12 +43,26 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         state.when(
           initial: () {},
           loading: () {},
-          success: () {},
+          loaded: (retailer, hasConnection) {
+            if (!hasConnection) {
+              //TODO: use theme snackbar instead
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('No connection'),
+                duration: Duration(seconds: 5),
+                behavior: SnackBarBehavior.floating,
+              ));
+            }
+          },
           failure: (retailerFailure) => retailerFailure.maybeWhen(
             noConnection: () {
-              _connectivityStreamSubscription = ref.read(connectivityProvider).onConnectivityChanged.listen((result) {
-                if(result != ConnectivityResult.none) {
-                  ref.read(retailerInitialisationNotifierProvider.notifier).getRetailer();
+              _connectivityStreamSubscription = ref
+                  .read(connectivityProvider)
+                  .onConnectivityChanged
+                  .listen((result) {
+                if (result != ConnectivityResult.none) {
+                  ref
+                      .read(retailerInitialisationNotifierProvider.notifier)
+                      .getRetailer();
                   _connectivityStreamSubscription?.cancel();
                 }
               });
@@ -72,20 +88,18 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
             child: CircularProgressIndicator(),
           );
         },
-        success: () {
+        loaded: (retailer, hasConnection) {
           return Column(
             children: [
               Switch(
                 onChanged: (value) {},
-                value: ref.watch<bool>(
-                  retailerLocalStateProvider
-                      .select((state) => state.state.visibility),
-                ),
+                value: retailer.visibility,
               ),
-              Text(ref.read(retailerLocalStateProvider).state.toString()),
+              Text(retailer.toString()),
             ],
           );
         },
+        //TODO: implement no connection page
         failure: (retailerFailure) {
           return Center(
             child: Text(
