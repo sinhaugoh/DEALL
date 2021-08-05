@@ -27,9 +27,10 @@ class _$RetailerDTOTearOff {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
-      required bool visibility}) {
+      required String description,
+      required String image,
+      required bool visibility,
+      required String uen}) {
     return _RetailerDTO(
       name: name,
       block: block,
@@ -40,6 +41,7 @@ class _$RetailerDTOTearOff {
       description: description,
       image: image,
       visibility: visibility,
+      uen: uen,
     );
   }
 
@@ -59,11 +61,10 @@ mixin _$RetailerDTO {
   String get unit => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get operatingHours => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: "")
-  String? get description => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: "")
-  String? get image => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   bool get visibility => throw _privateConstructorUsedError;
+  String get uen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -83,9 +84,10 @@ abstract class $RetailerDTOCopyWith<$Res> {
       String unit,
       String postalCode,
       String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
-      bool visibility});
+      String description,
+      String image,
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -107,6 +109,7 @@ class _$RetailerDTOCopyWithImpl<$Res> implements $RetailerDTOCopyWith<$Res> {
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -136,15 +139,19 @@ class _$RetailerDTOCopyWithImpl<$Res> implements $RetailerDTOCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -163,9 +170,10 @@ abstract class _$RetailerDTOCopyWith<$Res>
       String unit,
       String postalCode,
       String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
-      bool visibility});
+      String description,
+      String image,
+      bool visibility,
+      String uen});
 }
 
 /// @nodoc
@@ -189,6 +197,7 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
     Object? description = freezed,
     Object? image = freezed,
     Object? visibility = freezed,
+    Object? uen = freezed,
   }) {
     return _then(_RetailerDTO(
       name: name == freezed
@@ -218,15 +227,19 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       visibility: visibility == freezed
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
               as bool,
+      uen: uen == freezed
+          ? _value.uen
+          : uen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -241,9 +254,10 @@ class _$_RetailerDTO extends _RetailerDTO {
       required this.unit,
       required this.postalCode,
       required this.operatingHours,
-      @JsonKey(defaultValue: "") this.description,
-      @JsonKey(defaultValue: "") this.image,
-      required this.visibility})
+      required this.description,
+      required this.image,
+      required this.visibility,
+      required this.uen})
       : super._();
 
   factory _$_RetailerDTO.fromJson(Map<String, dynamic> json) =>
@@ -262,17 +276,17 @@ class _$_RetailerDTO extends _RetailerDTO {
   @override
   final String operatingHours;
   @override
-  @JsonKey(defaultValue: "")
-  final String? description;
+  final String description;
   @override
-  @JsonKey(defaultValue: "")
-  final String? image;
+  final String image;
   @override
   final bool visibility;
+  @override
+  final String uen;
 
   @override
   String toString() {
-    return 'RetailerDTO(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility)';
+    return 'RetailerDTO(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
   }
 
   @override
@@ -300,7 +314,9 @@ class _$_RetailerDTO extends _RetailerDTO {
                 const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.visibility, visibility) ||
                 const DeepCollectionEquality()
-                    .equals(other.visibility, visibility)));
+                    .equals(other.visibility, visibility)) &&
+            (identical(other.uen, uen) ||
+                const DeepCollectionEquality().equals(other.uen, uen)));
   }
 
   @override
@@ -314,7 +330,8 @@ class _$_RetailerDTO extends _RetailerDTO {
       const DeepCollectionEquality().hash(operatingHours) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(visibility);
+      const DeepCollectionEquality().hash(visibility) ^
+      const DeepCollectionEquality().hash(uen);
 
   @JsonKey(ignore: true)
   @override
@@ -335,9 +352,10 @@ abstract class _RetailerDTO extends RetailerDTO {
       required String unit,
       required String postalCode,
       required String operatingHours,
-      @JsonKey(defaultValue: "") String? description,
-      @JsonKey(defaultValue: "") String? image,
-      required bool visibility}) = _$_RetailerDTO;
+      required String description,
+      required String image,
+      required bool visibility,
+      required String uen}) = _$_RetailerDTO;
   const _RetailerDTO._() : super._();
 
   factory _RetailerDTO.fromJson(Map<String, dynamic> json) =
@@ -356,13 +374,13 @@ abstract class _RetailerDTO extends RetailerDTO {
   @override
   String get operatingHours => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: "")
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
-  @JsonKey(defaultValue: "")
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   bool get visibility => throw _privateConstructorUsedError;
+  @override
+  String get uen => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RetailerDTOCopyWith<_RetailerDTO> get copyWith =>

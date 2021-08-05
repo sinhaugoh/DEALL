@@ -14,9 +14,10 @@ class RetailerDTO with _$RetailerDTO {
     required String unit,
     required String postalCode,
     required String operatingHours,
-    @JsonKey(defaultValue: "") String? description,
-    @JsonKey(defaultValue: "") String? image,
+    required String description,
+    required String image,
     required bool visibility,
+    required String uen,
   }) = _RetailerDTO;
 
   factory RetailerDTO.fromDomain(Retailer retailer) {
@@ -30,6 +31,7 @@ class RetailerDTO with _$RetailerDTO {
       image: retailer.image,
       description: retailer.description,
       visibility: retailer.visibility,
+      uen: retailer.uen,
     );
   }
 
@@ -44,6 +46,7 @@ class RetailerDTO with _$RetailerDTO {
       image: image,
       description: description,
       visibility: visibility,
+      uen: uen,
     );
   }
 

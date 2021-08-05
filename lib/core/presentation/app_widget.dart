@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/application/app_user.dart';
+import 'package:deall/auth/application/auth_notifier.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'routes/app_router.gr.dart';
 import 'const/themedata_swatch_color.dart';
+import 'routes/app_router.gr.dart';
 
 //Do all the initialisation here
 final initialisationProvider = FutureProvider<Unit>((ref) async {
