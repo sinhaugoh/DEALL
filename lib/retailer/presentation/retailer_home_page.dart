@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/presentation/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +20,14 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   @override
   void initState() {
     super.initState();
-    retrieveUserUIDAndGetProductList(ref);
+    retrieveUserIDAndGetPageInfo(ref);
+  }
+
+  Future<void> retrieveUserIDAndGetPageInfo(WidgetRef ref) async {
+    final String uid = await Future.microtask(
+        () => ref.read(firebaseAuthServiceProvider).getUserId());
+    Future.microtask(() =>
+        ref.read(productListNotifierProvider.notifier).getProductList(uid));
   }
 
   @override
@@ -26,16 +36,9 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     return Scaffold(
       appBar: shopNameAppBar(),
       drawer: const RetailerDrawer(),
-      body: retailerHomePageBody(mq),
+      body: retailerHomePageBody(mq, context),
     );
   }
-}
-
-Future<void> retrieveUserUIDAndGetProductList(WidgetRef ref) async {
-  final String uid = await Future.microtask(
-      () => ref.read(firebaseAuthServiceProvider).getUserId());
-  Future.microtask(
-      () => ref.read(productListNotifierProvider.notifier).getProductList(uid));
 }
 
 AppBar shopNameAppBar() {
@@ -44,7 +47,7 @@ AppBar shopNameAppBar() {
   );
 }
 
-Widget retailerHomePageBody(MediaQueryData mq) {
+Widget retailerHomePageBody(MediaQueryData mq, BuildContext context) {
   return SizedBox(
     height: mq.size.height * 0.9,
     child: Column(
@@ -53,9 +56,12 @@ Widget retailerHomePageBody(MediaQueryData mq) {
           flex: 2,
           child: SizedBox(), // visibility text and switch button
         ),
-        Flexible( // add product, show all, hide all button
+        Flexible(
+          // add product, show all, hide all button
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              AutoRouter.of(context).push(const AddProductRoute());
+            },
             child: const ListTile(
               leading: Icon(Icons.add_circle),
               trailing: Text("Add Product"),
@@ -64,7 +70,7 @@ Widget retailerHomePageBody(MediaQueryData mq) {
         ),
         const Flexible(
           flex: 14,
-          child: SizedBox(), // product list
+          child: ProductListView(),
         ),
       ],
     ),

@@ -19,5 +19,6 @@ class ProductListRemoteService {
 
   Future<void> addProduct(ProductDTO newProduct) async{
     // add product to collection logic
+    
   }
 }

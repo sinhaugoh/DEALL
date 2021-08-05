@@ -20,20 +20,28 @@ class _$AddProductFormStateTearOff {
       {required bool hasConnection,
       required bool showErrorMessage,
       required bool isSaving,
+      required bool successful,
+      required String? nameErrorMessage,
+      required String? usualPriceErrorMessage,
+      required String? discountPriceErrorMessage,
       required String name,
       required double usualPrice,
       required double discountPrice,
-      required String image,
+      required File? imageFile,
       required String description,
       required bool availability}) {
     return _AddProductFormState(
       hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
       isSaving: isSaving,
+      successful: successful,
+      nameErrorMessage: nameErrorMessage,
+      usualPriceErrorMessage: usualPriceErrorMessage,
+      discountPriceErrorMessage: discountPriceErrorMessage,
       name: name,
       usualPrice: usualPrice,
       discountPrice: discountPrice,
-      image: image,
+      imageFile: imageFile,
       description: description,
       availability: availability,
     );
@@ -48,10 +56,14 @@ mixin _$AddProductFormState {
   bool get hasConnection => throw _privateConstructorUsedError;
   bool get showErrorMessage => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
+  bool get successful => throw _privateConstructorUsedError;
+  String? get nameErrorMessage => throw _privateConstructorUsedError;
+  String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
+  String? get discountPriceErrorMessage => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountPrice => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  File? get imageFile => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
 
@@ -69,10 +81,14 @@ abstract class $AddProductFormStateCopyWith<$Res> {
       {bool hasConnection,
       bool showErrorMessage,
       bool isSaving,
+      bool successful,
+      String? nameErrorMessage,
+      String? usualPriceErrorMessage,
+      String? discountPriceErrorMessage,
       String name,
       double usualPrice,
       double discountPrice,
-      String image,
+      File? imageFile,
       String description,
       bool availability});
 }
@@ -91,10 +107,14 @@ class _$AddProductFormStateCopyWithImpl<$Res>
     Object? hasConnection = freezed,
     Object? showErrorMessage = freezed,
     Object? isSaving = freezed,
+    Object? successful = freezed,
+    Object? nameErrorMessage = freezed,
+    Object? usualPriceErrorMessage = freezed,
+    Object? discountPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
-    Object? image = freezed,
+    Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
   }) {
@@ -111,6 +131,22 @@ class _$AddProductFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      successful: successful == freezed
+          ? _value.successful
+          : successful // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nameErrorMessage: nameErrorMessage == freezed
+          ? _value.nameErrorMessage
+          : nameErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      usualPriceErrorMessage: usualPriceErrorMessage == freezed
+          ? _value.usualPriceErrorMessage
+          : usualPriceErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      discountPriceErrorMessage: discountPriceErrorMessage == freezed
+          ? _value.discountPriceErrorMessage
+          : discountPriceErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -123,10 +159,10 @@ class _$AddProductFormStateCopyWithImpl<$Res>
           ? _value.discountPrice
           : discountPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFile: imageFile == freezed
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -150,10 +186,14 @@ abstract class _$AddProductFormStateCopyWith<$Res>
       {bool hasConnection,
       bool showErrorMessage,
       bool isSaving,
+      bool successful,
+      String? nameErrorMessage,
+      String? usualPriceErrorMessage,
+      String? discountPriceErrorMessage,
       String name,
       double usualPrice,
       double discountPrice,
-      String image,
+      File? imageFile,
       String description,
       bool availability});
 }
@@ -174,10 +214,14 @@ class __$AddProductFormStateCopyWithImpl<$Res>
     Object? hasConnection = freezed,
     Object? showErrorMessage = freezed,
     Object? isSaving = freezed,
+    Object? successful = freezed,
+    Object? nameErrorMessage = freezed,
+    Object? usualPriceErrorMessage = freezed,
+    Object? discountPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
-    Object? image = freezed,
+    Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
   }) {
@@ -194,6 +238,22 @@ class __$AddProductFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      successful: successful == freezed
+          ? _value.successful
+          : successful // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nameErrorMessage: nameErrorMessage == freezed
+          ? _value.nameErrorMessage
+          : nameErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      usualPriceErrorMessage: usualPriceErrorMessage == freezed
+          ? _value.usualPriceErrorMessage
+          : usualPriceErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      discountPriceErrorMessage: discountPriceErrorMessage == freezed
+          ? _value.discountPriceErrorMessage
+          : discountPriceErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -206,10 +266,10 @@ class __$AddProductFormStateCopyWithImpl<$Res>
           ? _value.discountPrice
           : discountPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFile: imageFile == freezed
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -229,10 +289,14 @@ class _$_AddProductFormState extends _AddProductFormState {
       {required this.hasConnection,
       required this.showErrorMessage,
       required this.isSaving,
+      required this.successful,
+      required this.nameErrorMessage,
+      required this.usualPriceErrorMessage,
+      required this.discountPriceErrorMessage,
       required this.name,
       required this.usualPrice,
       required this.discountPrice,
-      required this.image,
+      required this.imageFile,
       required this.description,
       required this.availability})
       : super._();
@@ -244,13 +308,21 @@ class _$_AddProductFormState extends _AddProductFormState {
   @override
   final bool isSaving;
   @override
+  final bool successful;
+  @override
+  final String? nameErrorMessage;
+  @override
+  final String? usualPriceErrorMessage;
+  @override
+  final String? discountPriceErrorMessage;
+  @override
   final String name;
   @override
   final double usualPrice;
   @override
   final double discountPrice;
   @override
-  final String image;
+  final File? imageFile;
   @override
   final String description;
   @override
@@ -258,7 +330,7 @@ class _$_AddProductFormState extends _AddProductFormState {
 
   @override
   String toString() {
-    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, image: $image, description: $description, availability: $availability)';
+    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountPriceErrorMessage: $discountPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, imageFile: $imageFile, description: $description, availability: $availability)';
   }
 
   @override
@@ -274,6 +346,20 @@ class _$_AddProductFormState extends _AddProductFormState {
             (identical(other.isSaving, isSaving) ||
                 const DeepCollectionEquality()
                     .equals(other.isSaving, isSaving)) &&
+            (identical(other.successful, successful) ||
+                const DeepCollectionEquality()
+                    .equals(other.successful, successful)) &&
+            (identical(other.nameErrorMessage, nameErrorMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.nameErrorMessage, nameErrorMessage)) &&
+            (identical(other.usualPriceErrorMessage, usualPriceErrorMessage) ||
+                const DeepCollectionEquality().equals(
+                    other.usualPriceErrorMessage, usualPriceErrorMessage)) &&
+            (identical(other.discountPriceErrorMessage,
+                    discountPriceErrorMessage) ||
+                const DeepCollectionEquality().equals(
+                    other.discountPriceErrorMessage,
+                    discountPriceErrorMessage)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.usualPrice, usualPrice) ||
@@ -282,8 +368,9 @@ class _$_AddProductFormState extends _AddProductFormState {
             (identical(other.discountPrice, discountPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.discountPrice, discountPrice)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
+            (identical(other.imageFile, imageFile) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageFile, imageFile)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -298,10 +385,14 @@ class _$_AddProductFormState extends _AddProductFormState {
       const DeepCollectionEquality().hash(hasConnection) ^
       const DeepCollectionEquality().hash(showErrorMessage) ^
       const DeepCollectionEquality().hash(isSaving) ^
+      const DeepCollectionEquality().hash(successful) ^
+      const DeepCollectionEquality().hash(nameErrorMessage) ^
+      const DeepCollectionEquality().hash(usualPriceErrorMessage) ^
+      const DeepCollectionEquality().hash(discountPriceErrorMessage) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
       const DeepCollectionEquality().hash(discountPrice) ^
-      const DeepCollectionEquality().hash(image) ^
+      const DeepCollectionEquality().hash(imageFile) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(availability);
 
@@ -317,10 +408,14 @@ abstract class _AddProductFormState extends AddProductFormState {
       {required bool hasConnection,
       required bool showErrorMessage,
       required bool isSaving,
+      required bool successful,
+      required String? nameErrorMessage,
+      required String? usualPriceErrorMessage,
+      required String? discountPriceErrorMessage,
       required String name,
       required double usualPrice,
       required double discountPrice,
-      required String image,
+      required File? imageFile,
       required String description,
       required bool availability}) = _$_AddProductFormState;
   const _AddProductFormState._() : super._();
@@ -332,13 +427,21 @@ abstract class _AddProductFormState extends AddProductFormState {
   @override
   bool get isSaving => throw _privateConstructorUsedError;
   @override
+  bool get successful => throw _privateConstructorUsedError;
+  @override
+  String? get nameErrorMessage => throw _privateConstructorUsedError;
+  @override
+  String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
+  @override
+  String? get discountPriceErrorMessage => throw _privateConstructorUsedError;
+  @override
   String get name => throw _privateConstructorUsedError;
   @override
   double get usualPrice => throw _privateConstructorUsedError;
   @override
   double get discountPrice => throw _privateConstructorUsedError;
   @override
-  String get image => throw _privateConstructorUsedError;
+  File? get imageFile => throw _privateConstructorUsedError;
   @override
   String get description => throw _privateConstructorUsedError;
   @override

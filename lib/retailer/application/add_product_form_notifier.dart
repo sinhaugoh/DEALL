@@ -1,10 +1,18 @@
-import 'package:deall/retailer/infrastructure/product_repository.dart';
+import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:deall/core/infrastructure/image_picking_repository.dart';
+import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/add_product_form_state.dart';
+import 'package:deall/retailer/infrastructure/product_repository.dart';
+
 
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   ProductListRepository _productRepository;
-  AddProductFormNotifier(this._productRepository) : super(AddProductFormState.initial());
+  final ImagePickingRepository _imagePickingRepository;
+
+  AddProductFormNotifier(this._productRepository, this._imagePickingRepository) : super(AddProductFormState.initial());
 
   void prodNameChanged(String name){
     state = state.copyWith(name: name);
@@ -18,8 +26,8 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = state.copyWith(discountPrice: discountPrice);
   }
 
-  void prodImageChanged(String image){
-    state = state.copyWith(image: image);
+  void prodImageChanged(File? imageFile){
+    state = state.copyWith(imageFile: imageFile);
   }
 
   void prodDescriptionChanged(String description){
@@ -36,5 +44,17 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
 
   void addProduct() async {
     // await _productRepository
+  }
+
+  Future<void> pickImage() async {
+    final failureOrSuccess = await _imagePickingRepository.pickImage();
+    failureOrSuccess.fold(
+      (f) => null,
+      (file) => state = state.copyWith(imageFile: file),
+    );
+  }
+
+  void deleteImage() {
+    state = state.copyWith(imageFile: null);
   }
 }

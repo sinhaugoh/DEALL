@@ -1,3 +1,4 @@
+import 'package:deall/core/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'product_list_item.dart';
@@ -7,10 +8,18 @@ class ProductListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // state.map()
-    return ListView.builder( 
-      itemCount: 1,
-      itemBuilder: (context, index) => const ProductItem(/* pass data */),
+    final state = ref.watch(productListNotifierProvider);
+    return state.map(
+      initial: (_) => const Center(child: Text("initial")),
+      noConnection: (_) => const Center(child: Text("No connection")),
+      loading: (_) => const Center(child: CircularProgressIndicator()),
+      failure: (failure) => Center(child: Text("$failure failure")),
+      loaded: (loaded) => ListView.builder(
+        itemCount: loaded.products.length,
+        itemBuilder: (context, index) => ProductItem(
+          productData: loaded.products[index],
+        ),
+      ),
     );
   }
 }

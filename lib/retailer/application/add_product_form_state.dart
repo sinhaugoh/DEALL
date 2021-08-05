@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'add_product_form_state.freezed.dart';
@@ -9,10 +10,14 @@ class AddProductFormState with _$AddProductFormState {
     required bool hasConnection,
     required bool showErrorMessage,
     required bool isSaving,
+    required bool successful,
+    required String? nameErrorMessage,
+    required String? usualPriceErrorMessage,
+    required String? discountPriceErrorMessage,
     required String name,
     required double usualPrice,
     required double discountPrice,
-    required String image,
+    required File? imageFile,
     required String description,
     required bool availability,
   }) = _AddProductFormState;
@@ -21,10 +26,14 @@ class AddProductFormState with _$AddProductFormState {
         hasConnection: true,
         showErrorMessage: false,
         isSaving: false,
+        successful: false,
+        nameErrorMessage: null,
+        usualPriceErrorMessage: null,
+        discountPriceErrorMessage: null,
         name: '',
         usualPrice: 0.0,
         discountPrice: 0.0,
-        image: '',
+        imageFile: null,
         description: '',
         availability: true,
       );

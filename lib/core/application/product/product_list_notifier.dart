@@ -18,6 +18,9 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
         cancelledOperation: (_) {
           state = const ProductListState.failure("Operation cancelled.");
         },
+        noConnection: (_) {
+          state = const ProductListState.failure("No connection");
+        },
         orElse: () {
           state = const ProductListState.failure("Unknown error.");
         },

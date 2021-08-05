@@ -1,9 +1,10 @@
+import 'package:deall/core/application/product/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  // final Product productData;
-  // const ProductItem({Key? key, required this.retailerData}) : super(key: key);
-  const ProductItem({Key? key}) : super(key: key);
+  final Product productData;
+  const ProductItem({Key? key, required this.productData}) : super(key: key);
+  // const ProductItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,9 @@ class ProductItem extends StatelessWidget {
               flex: 6,
               child: Column(
                 children:  [
-                  const Flexible(
+                  Flexible(
                     flex: 3,
-                    child: Text("product name"),
+                    child: Text(productData.name),
                   ),
                   const Flexible(
                     flex: 5,
@@ -43,13 +44,13 @@ class ProductItem extends StatelessWidget {
                   Flexible(
                     flex: 3,
                     child: Wrap(
-                      children: const [
-                        Text('\$15.99',
-                          style: TextStyle(
+                      children: [
+                        Text(productData.usualPrice.toString(),
+                          style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                           ),
                         ),
-                        Text('\$9.99',
+                        Text(productData.discountPrice.toString(),
                         ),
                       ],
                     ),
