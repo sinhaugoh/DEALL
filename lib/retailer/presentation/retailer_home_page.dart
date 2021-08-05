@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:connectivity/connectivity.dart';
 import 'package:deall/core/presentation/widgets/drawer_widget.dart';
 import 'package:deall/core/shared/providers.dart';
-import 'package:deall/retailer/application/retailer_initialisation_notifier.dart';
+import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +37,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<RetailerInitialisationNotifierState>(
+    ref.listen<RetailerNotifierState>(
       retailerInitialisationNotifierProvider,
       (state) {
         state.when(
@@ -72,7 +72,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         );
       },
     );
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('DEALL'),
@@ -92,10 +92,23 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
           return Column(
             children: [
               Switch(
-                onChanged: (value) {},
+                onChanged: (value) {
+                  ref
+                      .read(retailerInitialisationNotifierProvider.notifier)
+                      .toggleVisibility();
+                },
                 value: retailer.visibility,
               ),
-              Text(retailer.toString()),
+              // Expanded(
+              //   child: ListView.builder(
+              //       itemCount: 20,
+              //       itemBuilder: (context, index) {
+              //         return Text(
+              //           index.toString(),
+              //           style: TextStyle(fontSize: 30),
+              //         );
+              //       }),
+              // ),
             ],
           );
         },
@@ -118,10 +131,3 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     );
   }
 }
-
-// Switch(
-//         onChanged: (value) {},
-//         value: ref.watch<bool>(
-//           retailerLocalStateProvider.select((state) => state.state.visibility),
-//         ),
-//       ),
