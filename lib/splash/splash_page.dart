@@ -11,10 +11,18 @@ class SplashPage extends ConsumerWidget {
     WidgetsBinding.instance?.addPostFrameCallback(
         (_) => ref.watch(splashHasRenderedProvider).state = true);
     //TODO: implement splash page
-    return Scaffold(
-      backgroundColor: Colors.red.shade400,
-      body: const Center(
-        child: Text('Splash Page'),
+    return const Scaffold(
+      backgroundColor: Color(0xFFF86B6B),
+    );
+  }
+}
+
+
+        // child: Text('test'),
+        // child: Image.asset(
+        //   Images.logoIconNoBorder,
+        //   fit: BoxFit.scaleDown,
+        // ),
         // child: Column(
         //   children: [
         //     const Text('this is splash page!'),
@@ -32,7 +40,3 @@ class SplashPage extends ConsumerWidget {
         //         child: const Text('become retailer')),
         //   ],
         // ),
-      ),
-    );
-  }
-}
