@@ -89,9 +89,8 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
       appBar: AppBar(
         title: const Text('DEALL'),
       ),
-      //TODO: change to retailer drawer\
       drawer: const RetailerDrawer(),
-      body: ref.watch(retailerInitialisationNotifierProvider).when(
+      body: ref.watch(retailerNotifierProvider).when(
         initial: () {
           return Container();
         },
