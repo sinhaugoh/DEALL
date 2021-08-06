@@ -16,6 +16,7 @@ class SignInForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: FormTextField(
@@ -47,6 +48,7 @@ class SignInForm extends ConsumerWidget {
                 ],
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Align(
@@ -54,6 +56,7 @@ class SignInForm extends ConsumerWidget {
                 child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, decoration: TextDecoration.underline),)
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ConstrainedBox(
@@ -76,12 +79,14 @@ class SignInForm extends ConsumerWidget {
                 ),
               ),
             ),
+
             Divider(
               thickness: 2,
               indent: 20,
               endIndent: 20,
               height: 50,
             ),
+
             Center(child: Text("Don't have an account? Sign up.")),
 
             //SIGN UP PART TEST
