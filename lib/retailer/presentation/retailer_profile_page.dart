@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/presentation/widgets/drawer_widget.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,11 @@ class RetailerProfilePage extends ConsumerWidget {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  if (retailer.image != '') Image.network(retailer.image),
+                  if (retailer.image != '')
+                    CachedNetworkImage(
+                      imageUrl: retailer.image,
+                      placeholder: (context, url) => const CircularProgressIndicator(),
+                    ),
                   Text(retailer.description),
                   Text(retailer.operatingHours),
                   Text(retailer.addressLine()),
