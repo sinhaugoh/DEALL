@@ -44,7 +44,7 @@ class ProductItem extends StatelessWidget {
                   Flexible(
                     flex: 3,
                     child: Wrap(
-                        children: productData.discountPrice != 0
+                        children: productData.discountedPrice != 0
                             ? [
                                 Text(
                                   productData.usualPrice.toString(),
@@ -53,7 +53,7 @@ class ProductItem extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  productData.discountPrice.toString(),
+                                  productData.discountedPrice.toString(),
                                 ),
                               ]
                             : [

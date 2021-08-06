@@ -27,8 +27,8 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = state.copyWith(usualPrice: usualPrice);
   }
 
-  void prodDiscountPriceChanged(double discountPrice){
-    state = state.copyWith(discountPrice: discountPrice);
+  void prodDiscountPriceChanged(double discountedPrice){
+    state = state.copyWith(discountedPrice: discountedPrice);
   }
 
   void prodImageChanged(File? imageFile){
@@ -88,7 +88,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         id: '',
         name: state.name,
         usualPrice: state.usualPrice,
-        discountPrice: state.discountPrice,
+        discountedPrice: state.discountedPrice,
         image: state.imageFile.toString(),
         description: state.description,
         availability: state.availability,

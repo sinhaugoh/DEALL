@@ -12,10 +12,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) {
-  return _ProductDTO.fromJson(json);
-}
-
 /// @nodoc
 class _$ProductDTOTearOff {
   const _$ProductDTOTearOff();
@@ -24,7 +20,7 @@ class _$ProductDTOTearOff {
       {required String id,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required String image,
       required String description,
       required bool availability,
@@ -34,16 +30,12 @@ class _$ProductDTOTearOff {
       id: id,
       name: name,
       usualPrice: usualPrice,
-      discountPrice: discountPrice,
+      discountedPrice: discountedPrice,
       image: image,
       description: description,
       availability: availability,
       dateModified: dateModified,
     );
-  }
-
-  ProductDTO fromJson(Map<String, Object> json) {
-    return ProductDTO.fromJson(json);
   }
 }
 
@@ -55,14 +47,13 @@ mixin _$ProductDTO {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
   @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
   FieldValue? get dateModified => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductDTOCopyWith<ProductDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -77,7 +68,7 @@ abstract class $ProductDTOCopyWith<$Res> {
       {String id,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       String image,
       String description,
       bool availability,
@@ -98,7 +89,7 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -117,9 +108,9 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       image: image == freezed
           ? _value.image
@@ -151,7 +142,7 @@ abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
       {String id,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       String image,
       String description,
       bool availability,
@@ -174,7 +165,7 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -193,9 +184,9 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       image: image == freezed
           ? _value.image
@@ -218,22 +209,19 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_ProductDTO extends _ProductDTO {
   const _$_ProductDTO(
       {required this.id,
       required this.name,
       required this.usualPrice,
-      required this.discountPrice,
+      required this.discountedPrice,
       required this.image,
       required this.description,
       required this.availability,
       @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required this.dateModified})
       : super._();
-
-  factory _$_ProductDTO.fromJson(Map<String, dynamic> json) =>
-      _$_$_ProductDTOFromJson(json);
 
   @override
   final String id;
@@ -242,7 +230,7 @@ class _$_ProductDTO extends _ProductDTO {
   @override
   final double usualPrice;
   @override
-  final double discountPrice;
+  final double discountedPrice;
   @override
   final String image;
   @override
@@ -255,7 +243,7 @@ class _$_ProductDTO extends _ProductDTO {
 
   @override
   String toString() {
-    return 'ProductDTO(id: $id, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, image: $image, description: $description, availability: $availability, dateModified: $dateModified)';
+    return 'ProductDTO(id: $id, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, image: $image, description: $description, availability: $availability, dateModified: $dateModified)';
   }
 
   @override
@@ -269,9 +257,9 @@ class _$_ProductDTO extends _ProductDTO {
             (identical(other.usualPrice, usualPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.usualPrice, usualPrice)) &&
-            (identical(other.discountPrice, discountPrice) ||
+            (identical(other.discountedPrice, discountedPrice) ||
                 const DeepCollectionEquality()
-                    .equals(other.discountPrice, discountPrice)) &&
+                    .equals(other.discountedPrice, discountedPrice)) &&
             (identical(other.image, image) ||
                 const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.description, description) ||
@@ -291,7 +279,7 @@ class _$_ProductDTO extends _ProductDTO {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
-      const DeepCollectionEquality().hash(discountPrice) ^
+      const DeepCollectionEquality().hash(discountedPrice) ^
       const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(availability) ^
@@ -301,11 +289,6 @@ class _$_ProductDTO extends _ProductDTO {
   @override
   _$ProductDTOCopyWith<_ProductDTO> get copyWith =>
       __$ProductDTOCopyWithImpl<_ProductDTO>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_ProductDTOToJson(this);
-  }
 }
 
 abstract class _ProductDTO extends ProductDTO {
@@ -313,16 +296,13 @@ abstract class _ProductDTO extends ProductDTO {
       {required String id,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required String image,
       required String description,
       required bool availability,
       @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required FieldValue? dateModified}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
-
-  factory _ProductDTO.fromJson(Map<String, dynamic> json) =
-      _$_ProductDTO.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -331,7 +311,7 @@ abstract class _ProductDTO extends ProductDTO {
   @override
   double get usualPrice => throw _privateConstructorUsedError;
   @override
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   @override
   String get image => throw _privateConstructorUsedError;
   @override

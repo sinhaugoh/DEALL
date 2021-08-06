@@ -104,7 +104,6 @@ class AddProductForm extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
                 label: 'Description',
-                obscureText: true,
                 onChanged: ref
                     .read(addProductFormNotifierProvider.notifier)
                     .prodDescriptionChanged,

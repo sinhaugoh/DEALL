@@ -9,7 +9,7 @@ class Product with _$Product {
     required String id,
     required String name,
     required double usualPrice,
-    required double discountPrice,
+    required double discountedPrice,
     required String image,
     required String description,
     required bool availability,

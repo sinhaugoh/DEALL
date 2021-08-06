@@ -25,7 +25,7 @@ class _$AddProductFormStateTearOff {
       required String? usualPriceErrorMessage,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required File? imageFile,
       required String description,
       required bool availability}) {
@@ -38,7 +38,7 @@ class _$AddProductFormStateTearOff {
       usualPriceErrorMessage: usualPriceErrorMessage,
       name: name,
       usualPrice: usualPrice,
-      discountPrice: discountPrice,
+      discountedPrice: discountedPrice,
       imageFile: imageFile,
       description: description,
       availability: availability,
@@ -59,7 +59,7 @@ mixin _$AddProductFormState {
   String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
@@ -83,7 +83,7 @@ abstract class $AddProductFormStateCopyWith<$Res> {
       String? usualPriceErrorMessage,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       File? imageFile,
       String description,
       bool availability});
@@ -108,7 +108,7 @@ class _$AddProductFormStateCopyWithImpl<$Res>
     Object? usualPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -146,9 +146,9 @@ class _$AddProductFormStateCopyWithImpl<$Res>
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -182,7 +182,7 @@ abstract class _$AddProductFormStateCopyWith<$Res>
       String? usualPriceErrorMessage,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       File? imageFile,
       String description,
       bool availability});
@@ -209,7 +209,7 @@ class __$AddProductFormStateCopyWithImpl<$Res>
     Object? usualPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -247,9 +247,9 @@ class __$AddProductFormStateCopyWithImpl<$Res>
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -279,7 +279,7 @@ class _$_AddProductFormState extends _AddProductFormState {
       required this.usualPriceErrorMessage,
       required this.name,
       required this.usualPrice,
-      required this.discountPrice,
+      required this.discountedPrice,
       required this.imageFile,
       required this.description,
       required this.availability})
@@ -302,7 +302,7 @@ class _$_AddProductFormState extends _AddProductFormState {
   @override
   final double usualPrice;
   @override
-  final double discountPrice;
+  final double discountedPrice;
   @override
   final File? imageFile;
   @override
@@ -312,7 +312,7 @@ class _$_AddProductFormState extends _AddProductFormState {
 
   @override
   String toString() {
-    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, imageFile: $imageFile, description: $description, availability: $availability)';
+    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, imageFile: $imageFile, description: $description, availability: $availability)';
   }
 
   @override
@@ -342,9 +342,9 @@ class _$_AddProductFormState extends _AddProductFormState {
             (identical(other.usualPrice, usualPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.usualPrice, usualPrice)) &&
-            (identical(other.discountPrice, discountPrice) ||
+            (identical(other.discountedPrice, discountedPrice) ||
                 const DeepCollectionEquality()
-                    .equals(other.discountPrice, discountPrice)) &&
+                    .equals(other.discountedPrice, discountedPrice)) &&
             (identical(other.imageFile, imageFile) ||
                 const DeepCollectionEquality()
                     .equals(other.imageFile, imageFile)) &&
@@ -367,7 +367,7 @@ class _$_AddProductFormState extends _AddProductFormState {
       const DeepCollectionEquality().hash(usualPriceErrorMessage) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
-      const DeepCollectionEquality().hash(discountPrice) ^
+      const DeepCollectionEquality().hash(discountedPrice) ^
       const DeepCollectionEquality().hash(imageFile) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(availability);
@@ -389,7 +389,7 @@ abstract class _AddProductFormState extends AddProductFormState {
       required String? usualPriceErrorMessage,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required File? imageFile,
       required String description,
       required bool availability}) = _$_AddProductFormState;
@@ -412,7 +412,7 @@ abstract class _AddProductFormState extends AddProductFormState {
   @override
   double get usualPrice => throw _privateConstructorUsedError;
   @override
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   @override
   File? get imageFile => throw _privateConstructorUsedError;
   @override

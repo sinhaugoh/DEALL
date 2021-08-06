@@ -20,7 +20,7 @@ class _$ProductTearOff {
       {required String id,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required String image,
       required String description,
       required bool availability}) {
@@ -28,7 +28,7 @@ class _$ProductTearOff {
       id: id,
       name: name,
       usualPrice: usualPrice,
-      discountPrice: discountPrice,
+      discountedPrice: discountedPrice,
       image: image,
       description: description,
       availability: availability,
@@ -44,7 +44,7 @@ mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $ProductCopyWith<$Res> {
       {String id,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       String image,
       String description,
       bool availability});
@@ -80,7 +80,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -98,9 +98,9 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       image: image == freezed
           ? _value.image
@@ -127,7 +127,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {String id,
       String name,
       double usualPrice,
-      double discountPrice,
+      double discountedPrice,
       String image,
       String description,
       bool availability});
@@ -147,7 +147,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
-    Object? discountPrice = freezed,
+    Object? discountedPrice = freezed,
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -165,9 +165,9 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.usualPrice
           : usualPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      discountPrice: discountPrice == freezed
-          ? _value.discountPrice
-          : discountPrice // ignore: cast_nullable_to_non_nullable
+      discountedPrice: discountedPrice == freezed
+          ? _value.discountedPrice
+          : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
       image: image == freezed
           ? _value.image
@@ -192,7 +192,7 @@ class _$_Product extends _Product {
       {required this.id,
       required this.name,
       required this.usualPrice,
-      required this.discountPrice,
+      required this.discountedPrice,
       required this.image,
       required this.description,
       required this.availability})
@@ -205,7 +205,7 @@ class _$_Product extends _Product {
   @override
   final double usualPrice;
   @override
-  final double discountPrice;
+  final double discountedPrice;
   @override
   final String image;
   @override
@@ -215,7 +215,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, image: $image, description: $description, availability: $availability)';
+    return 'Product(id: $id, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, image: $image, description: $description, availability: $availability)';
   }
 
   @override
@@ -229,9 +229,9 @@ class _$_Product extends _Product {
             (identical(other.usualPrice, usualPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.usualPrice, usualPrice)) &&
-            (identical(other.discountPrice, discountPrice) ||
+            (identical(other.discountedPrice, discountedPrice) ||
                 const DeepCollectionEquality()
-                    .equals(other.discountPrice, discountPrice)) &&
+                    .equals(other.discountedPrice, discountedPrice)) &&
             (identical(other.image, image) ||
                 const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.description, description) ||
@@ -248,7 +248,7 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
-      const DeepCollectionEquality().hash(discountPrice) ^
+      const DeepCollectionEquality().hash(discountedPrice) ^
       const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(availability);
@@ -264,7 +264,7 @@ abstract class _Product extends Product {
       {required String id,
       required String name,
       required double usualPrice,
-      required double discountPrice,
+      required double discountedPrice,
       required String image,
       required String description,
       required bool availability}) = _$_Product;
@@ -277,7 +277,7 @@ abstract class _Product extends Product {
   @override
   double get usualPrice => throw _privateConstructorUsedError;
   @override
-  double get discountPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   @override
   String get image => throw _privateConstructorUsedError;
   @override

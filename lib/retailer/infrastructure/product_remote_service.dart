@@ -35,7 +35,7 @@ class ProductListRemoteService {
           'id': id,
           'name': newProduct.name,
           'usualPrice': newProduct.usualPrice,
-          'discountPrice': newProduct.discountPrice,
+          'discountedPrice': newProduct.discountedPrice,
           'image': newProduct.image,
           'description': newProduct.description,
           'availability': newProduct.availability,
