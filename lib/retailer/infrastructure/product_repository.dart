@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/infrastructure/product/product_dto.dart';
@@ -42,10 +43,10 @@ class ProductListRepository {
     }
   }
 
-  Future<Either<FirestoreFailures, void>> addProduct(Product newProduct) async{
+  Future<Either<FirestoreFailures, void>> addProduct(Product newProduct, String uid) async{
     try{
       final newProductDTO = ProductDTO.fromDomain(newProduct);
-      await _productRemoteService.addProduct(newProductDTO);
+      await _productRemoteService.addProduct(newProductDTO, uid);
       return right(null);
     }
     on FirebaseException catch(e) {

@@ -23,7 +23,6 @@ class _$AddProductFormStateTearOff {
       required bool successful,
       required String? nameErrorMessage,
       required String? usualPriceErrorMessage,
-      required String? discountPriceErrorMessage,
       required String name,
       required double usualPrice,
       required double discountPrice,
@@ -37,7 +36,6 @@ class _$AddProductFormStateTearOff {
       successful: successful,
       nameErrorMessage: nameErrorMessage,
       usualPriceErrorMessage: usualPriceErrorMessage,
-      discountPriceErrorMessage: discountPriceErrorMessage,
       name: name,
       usualPrice: usualPrice,
       discountPrice: discountPrice,
@@ -59,7 +57,6 @@ mixin _$AddProductFormState {
   bool get successful => throw _privateConstructorUsedError;
   String? get nameErrorMessage => throw _privateConstructorUsedError;
   String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
-  String? get discountPriceErrorMessage => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountPrice => throw _privateConstructorUsedError;
@@ -84,7 +81,6 @@ abstract class $AddProductFormStateCopyWith<$Res> {
       bool successful,
       String? nameErrorMessage,
       String? usualPriceErrorMessage,
-      String? discountPriceErrorMessage,
       String name,
       double usualPrice,
       double discountPrice,
@@ -110,7 +106,6 @@ class _$AddProductFormStateCopyWithImpl<$Res>
     Object? successful = freezed,
     Object? nameErrorMessage = freezed,
     Object? usualPriceErrorMessage = freezed,
-    Object? discountPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
@@ -142,10 +137,6 @@ class _$AddProductFormStateCopyWithImpl<$Res>
       usualPriceErrorMessage: usualPriceErrorMessage == freezed
           ? _value.usualPriceErrorMessage
           : usualPriceErrorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discountPriceErrorMessage: discountPriceErrorMessage == freezed
-          ? _value.discountPriceErrorMessage
-          : discountPriceErrorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       name: name == freezed
           ? _value.name
@@ -189,7 +180,6 @@ abstract class _$AddProductFormStateCopyWith<$Res>
       bool successful,
       String? nameErrorMessage,
       String? usualPriceErrorMessage,
-      String? discountPriceErrorMessage,
       String name,
       double usualPrice,
       double discountPrice,
@@ -217,7 +207,6 @@ class __$AddProductFormStateCopyWithImpl<$Res>
     Object? successful = freezed,
     Object? nameErrorMessage = freezed,
     Object? usualPriceErrorMessage = freezed,
-    Object? discountPriceErrorMessage = freezed,
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountPrice = freezed,
@@ -249,10 +238,6 @@ class __$AddProductFormStateCopyWithImpl<$Res>
       usualPriceErrorMessage: usualPriceErrorMessage == freezed
           ? _value.usualPriceErrorMessage
           : usualPriceErrorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discountPriceErrorMessage: discountPriceErrorMessage == freezed
-          ? _value.discountPriceErrorMessage
-          : discountPriceErrorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       name: name == freezed
           ? _value.name
@@ -292,7 +277,6 @@ class _$_AddProductFormState extends _AddProductFormState {
       required this.successful,
       required this.nameErrorMessage,
       required this.usualPriceErrorMessage,
-      required this.discountPriceErrorMessage,
       required this.name,
       required this.usualPrice,
       required this.discountPrice,
@@ -314,8 +298,6 @@ class _$_AddProductFormState extends _AddProductFormState {
   @override
   final String? usualPriceErrorMessage;
   @override
-  final String? discountPriceErrorMessage;
-  @override
   final String name;
   @override
   final double usualPrice;
@@ -330,7 +312,7 @@ class _$_AddProductFormState extends _AddProductFormState {
 
   @override
   String toString() {
-    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountPriceErrorMessage: $discountPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, imageFile: $imageFile, description: $description, availability: $availability)';
+    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountPrice: $discountPrice, imageFile: $imageFile, description: $description, availability: $availability)';
   }
 
   @override
@@ -355,11 +337,6 @@ class _$_AddProductFormState extends _AddProductFormState {
             (identical(other.usualPriceErrorMessage, usualPriceErrorMessage) ||
                 const DeepCollectionEquality().equals(
                     other.usualPriceErrorMessage, usualPriceErrorMessage)) &&
-            (identical(other.discountPriceErrorMessage,
-                    discountPriceErrorMessage) ||
-                const DeepCollectionEquality().equals(
-                    other.discountPriceErrorMessage,
-                    discountPriceErrorMessage)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.usualPrice, usualPrice) ||
@@ -388,7 +365,6 @@ class _$_AddProductFormState extends _AddProductFormState {
       const DeepCollectionEquality().hash(successful) ^
       const DeepCollectionEquality().hash(nameErrorMessage) ^
       const DeepCollectionEquality().hash(usualPriceErrorMessage) ^
-      const DeepCollectionEquality().hash(discountPriceErrorMessage) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
       const DeepCollectionEquality().hash(discountPrice) ^
@@ -411,7 +387,6 @@ abstract class _AddProductFormState extends AddProductFormState {
       required bool successful,
       required String? nameErrorMessage,
       required String? usualPriceErrorMessage,
-      required String? discountPriceErrorMessage,
       required String name,
       required double usualPrice,
       required double discountPrice,
@@ -432,8 +407,6 @@ abstract class _AddProductFormState extends AddProductFormState {
   String? get nameErrorMessage => throw _privateConstructorUsedError;
   @override
   String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
-  @override
-  String? get discountPriceErrorMessage => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

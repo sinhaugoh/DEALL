@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
@@ -27,6 +28,7 @@ class AddProductForm extends ConsumerWidget {
       thousandSeparator: ',',
       initialValue: 0.00,
     );
+    final uid = ref.read(firebaseAuthServiceProvider).getUserId();
     return Form(
       child: SingleChildScrollView(
         child: Column(
@@ -85,19 +87,13 @@ class AddProductForm extends ConsumerWidget {
               child: FormTextField(
                 label: 'Discount Price',
                 controller: discountPriceController,
-                errorText: ref.watch(addProductFormNotifierProvider
-                        .select((state) => state.showErrorMessage))
-                    ? ref.watch(addProductFormNotifierProvider
-                        .select((state) => state.discountPriceErrorMessage))
-                    : null,
                 onChanged: (value) {
                   ref
                       .read(addProductFormNotifierProvider.notifier)
-                      .prodUsualPriceChanged(
+                      .prodDiscountPriceChanged(
                           discountPriceController.numberValue);
                 },
                 keyboardType: const TextInputType.numberWithOptions(),
-                maxLength: 8,
                 prefixText: _currency,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
@@ -125,7 +121,7 @@ class AddProductForm extends ConsumerWidget {
 
                   ref
                       .read(addProductFormNotifierProvider.notifier)
-                      .addProduct();
+                      .addProduct(uid);
                 },
                 child: const Text('Add Product'),
               ),

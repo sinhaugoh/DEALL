@@ -8,7 +8,6 @@ import 'package:deall/retailer/application/add_product_form_state.dart';
 import 'package:deall/retailer/infrastructure/retailer_remote_service.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
 
-
 final retailerRemoteServiceProvider = Provider(
   (ref) => RetailerRemoteService(
     ref.watch(firestoreProvider),
@@ -23,7 +22,8 @@ final retailerRepositoryProvider = Provider(
   ),
 );
 
-final retailerNotifierProvider = StateNotifierProvider.autoDispose<RetailerNotifier, RetailerNotifierState>(
+final retailerNotifierProvider =
+    StateNotifierProvider.autoDispose<RetailerNotifier, RetailerNotifierState>(
   (ref) => RetailerNotifier(
     ref.watch(retailerRepositoryProvider),
   ),
@@ -34,6 +34,7 @@ final retailerNotifierProvider = StateNotifierProvider.autoDispose<RetailerNotif
 final addProductFormNotifierProvider = StateNotifierProvider.autoDispose<
         AddProductFormNotifier, AddProductFormState>(
     (ref) => AddProductFormNotifier(
+          ref.watch(firebaseAuthProvider),
           ref.watch(productListRepoProvider),
           ref.watch(imagePickingRepositoryProvider),
         ));

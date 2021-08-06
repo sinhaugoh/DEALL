@@ -28,7 +28,7 @@ class ProductItem extends StatelessWidget {
             Flexible(
               flex: 6,
               child: Column(
-                children:  [
+                children: [
                   Flexible(
                     flex: 3,
                     child: Text(productData.name),
@@ -44,16 +44,21 @@ class ProductItem extends StatelessWidget {
                   Flexible(
                     flex: 3,
                     child: Wrap(
-                      children: [
-                        Text(productData.usualPrice.toString(),
-                          style: const TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        ),
-                        Text(productData.discountPrice.toString(),
-                        ),
-                      ],
-                    ),
+                        children: productData.discountPrice != 0
+                            ? [
+                                Text(
+                                  productData.usualPrice.toString(),
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                                Text(
+                                  productData.discountPrice.toString(),
+                                ),
+                              ]
+                            : [
+                                Text(productData.usualPrice.toString()),
+                              ]),
                   ),
                 ],
               ),
