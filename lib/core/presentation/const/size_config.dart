@@ -12,6 +12,7 @@ class SizeConfig{
   static double heightMultiplier = 0;
 
   void init(BoxConstraints constraints, Orientation orientation){
+  
     // if(orientation == Orientation.portrait){
     //   _screenWidth = constraints.maxWidth;
     //   _screenHeight = constraints.maxHeight;
@@ -30,7 +31,7 @@ class SizeConfig{
     heightMultiplier = textMultiplier = _blockSizeVertical;
     imageMultiplier = _blockSizeHorizontal;
 
-    print('test');
+    print('horizontal: ');
     print(_blockSizeHorizontal);
     print(_blockSizeVertical);
   }

@@ -54,24 +54,14 @@ class AppWidget extends ConsumerWidget {
         );
       });
     }
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return OrientationBuilder(
-          builder: (context, orientation) {
-            SizeConfig().init(constraints, orientation);
             
-            return MaterialApp.router(
-              title: 'DEALL',
-              theme: ThemeData(
-                primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
-              ),
-              routeInformationParser: appRouter.defaultRouteParser(),
-              routerDelegate: appRouter.delegate(),
-            );
-          }
-        );
-      }
+    return MaterialApp.router(
+      title: 'DEALL',
+      theme: ThemeData(
+        primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
+      ),
+      routeInformationParser: appRouter.defaultRouteParser(),
+      routerDelegate: appRouter.delegate(),
     );
   }
 }

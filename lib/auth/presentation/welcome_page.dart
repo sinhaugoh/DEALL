@@ -9,44 +9,29 @@ class WelcomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final mediaQuery = MediaQuery.of(context).size;
-    // SizeConfig().init(mediaQuery.width, mediaQuery.height);
-    // print('welcome page');
-    // print(SizeConfig.heightMultiplier);
-
-      return LayoutBuilder(
-        builder: (context, constraints) {
-          return OrientationBuilder(
-            builder: (context, orientation) {
-              SizeConfig().init(constraints, orientation);
-              
-                return Scaffold(
-                  body: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            AutoRouter.of(context).push(const SignInRoute());
-                          },
-                          child: const Text('sign in'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            AutoRouter.of(context).push(const SignUpRoute());
-                          },
-                          child: const Text('sign up'),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-            }
-          );
-        }
-      );
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).push(const SignInRoute());
+              },
+              child: const Text('sign in'),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).push(const SignUpRoute());
+              },
+              child: const Text('sign up'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
