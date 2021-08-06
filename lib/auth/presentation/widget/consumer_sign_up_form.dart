@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +18,15 @@ class ConsumerSignUpForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            
+            Text(
+              'Sign up now for exclusive deals!',
+              textAlign: TextAlign.center,
+              //insert style
+            ),
+
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
               child: FormTextField(
                 label: 'Email',
                 errorText: ref.watch(consumerSignUpFormNotifierProvider
@@ -30,8 +39,9 @@ class ConsumerSignUpForm extends ConsumerWidget {
                     .emailChanged,
               ),
             ),
+
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: FormTextField(
                 label: 'Password',
                 obscureText: true,
@@ -48,8 +58,28 @@ class ConsumerSignUpForm extends ConsumerWidget {
                 ],
               ),
             ),
+
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+              child: FormTextField(
+                label: 'Confirm Password',
+                obscureText: true,
+                // errorText: ref.watch(consumerSignUpFormNotifierProvider
+                //         .select((state) => state.showErrorMessage))
+                //     ? ref.watch(consumerSignUpFormNotifierProvider
+                //         .select((state) => state.passwordErrorMessage))
+                //     : null,
+                onChanged: ref
+                    .read(consumerSignUpFormNotifierProvider.notifier)
+                    .passwordChanged,
+                // inputFormatters: [
+                //   FilteringTextInputFormatter.deny(RegExp(r"\s")),
+                // ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
               child: ElevatedButton(
                 onPressed: () {
                   //dismiss the keyboard
@@ -60,9 +90,25 @@ class ConsumerSignUpForm extends ConsumerWidget {
                       .read(consumerSignUpFormNotifierProvider.notifier)
                       .signUp();
                 },
-                child: const Text('Create Account'),
+                child: const Text('Sign-up'),
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30))
+                    ),
+                  //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                ),
               ),
             ),
+
+            Divider(
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+              height: 50,
+            ),
+
+            Center(child: Text("Already have an account? Sign-in.")),
+
           ],
         ),
       ),
