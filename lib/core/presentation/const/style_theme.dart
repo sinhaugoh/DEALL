@@ -5,7 +5,8 @@ import 'package:deall/core/presentation/const/size_config.dart';
 class StyleTheme{
   StyleTheme._();
 
-  static const Color appBackgroundColor = Color(0xFFFFF7EC);
+  // static const Color appBackgroundColor = Color(0xFFFFF7EC);
+  static const Color appBackgroundColor = Colors.white;
   static const Color appBarBackgroundColor = Color(0xFFF86B6B);
   // static const Color selectedTabBackgroundColor = Color();
   // static const Color unselectedTabBackgroundColor = Color(0xFFF86B6B);
@@ -19,10 +20,10 @@ class StyleTheme{
   );
 
   static final TextTheme lightTextTheme = TextTheme(
-    headline6: _titleLight,
-    subtitle2: _subTitleLight,
+    headline1: _titleLight,
+    subtitle1: _subTitleLight,
     button: _buttonLight,
-    headline4: _greetingLight,
+    headline2: _greetingLight,
     headline3: _searchLight,
     bodyText2: _selectedTabLight,
     bodyText1: _unSelectedTabLight,  
@@ -40,7 +41,7 @@ class StyleTheme{
   );
 
   static final TextStyle _buttonLight = TextStyle(
-    color: Colors.black,
+    color: Colors.white,
     fontSize: 2.5 * SizeConfig.textMultiplier,
   );
 
