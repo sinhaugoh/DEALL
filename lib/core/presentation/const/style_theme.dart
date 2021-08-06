@@ -21,9 +21,9 @@ class StyleTheme{
 
   static final TextTheme lightTextTheme = TextTheme(
     headline1: _titleLight,
-    subtitle1: _subTitleLight,
+    subtitle2: _subTitleLight,
     button: _buttonLight,
-    headline2: _greetingLight,
+    headline4: _greetingLight,
     headline3: _searchLight,
     bodyText2: _selectedTabLight,
     bodyText1: _unSelectedTabLight,  
@@ -41,7 +41,7 @@ class StyleTheme{
   );
 
   static final TextStyle _buttonLight = TextStyle(
-    color: Colors.white,
+    color: Colors.black,
     fontSize: 2.5 * SizeConfig.textMultiplier,
   );
 
