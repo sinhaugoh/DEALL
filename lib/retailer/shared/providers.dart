@@ -19,7 +19,7 @@ final retailerRepositoryProvider = Provider(
   ),
 );
 
-final retailerInitialisationNotifierProvider = StateNotifierProvider.autoDispose<RetailerNotifier, RetailerNotifierState>(
+final retailerNotifierProvider = StateNotifierProvider.autoDispose<RetailerNotifier, RetailerNotifierState>(
   (ref) => RetailerNotifier(
     ref.watch(retailerRepositoryProvider),
   ),
