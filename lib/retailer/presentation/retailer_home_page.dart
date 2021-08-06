@@ -28,7 +28,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     super.initState();
     Future.microtask(
       () => ref
-          .read(retailerInitialisationNotifierProvider.notifier)
+          .read(retailerNotifierProvider.notifier)
           .getRetailer(),
     );
     retrieveUserIDAndGetPageInfo(ref);
@@ -50,7 +50,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   @override
   Widget build(BuildContext context) {
     ref.listen<RetailerNotifierState>(
-      retailerInitialisationNotifierProvider,
+      retailerNotifierProvider,
       (state) {
         state.when(
           initial: () {},
@@ -73,7 +73,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   .listen((result) {
                 if (result != ConnectivityResult.none) {
                   ref
-                      .read(retailerInitialisationNotifierProvider.notifier)
+                      .read(retailerNotifierProvider.notifier)
                       .getRetailer();
                   _connectivityStreamSubscription?.cancel();
                 }
@@ -89,7 +89,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
       appBar: AppBar(
         title: const Text('DEALL'),
       ),
-      //TODO: change to retailer drawer
+      //TODO: change to retailer drawer\
       drawer: const RetailerDrawer(),
       body: ref.watch(retailerInitialisationNotifierProvider).when(
         initial: () {
@@ -106,7 +106,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               Switch(
                 onChanged: (value) {
                   ref
-                      .read(retailerInitialisationNotifierProvider.notifier)
+                      .read(retailerNotifierProvider.notifier)
                       .toggleVisibility();
                 },
                 value: retailer.visibility,

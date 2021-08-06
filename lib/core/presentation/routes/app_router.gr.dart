@@ -13,8 +13,8 @@ import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
-import '../../../retailer/presentation/add_product_page.dart' as _i11;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
+import '../../../retailer/presentation/retailer_profile_page.dart' as _i11;
 import '../../../splash/splash_page.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -63,10 +63,10 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i10.RetailerSignUpPage();
         }),
-    AddProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    RetailerProfileRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i11.AddProductPage();
+          return const _i11.RetailerProfilePage();
         })
   };
 
@@ -82,7 +82,8 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/consumer-sign-up-page'),
         _i1.RouteConfig(RetailerSignUpRoute.name,
             path: '/retailer-sign-up-page'),
-        _i1.RouteConfig(AddProductRoute.name, path: '/add-product-page')
+        _i1.RouteConfig(RetailerProfileRoute.name,
+            path: '/retailer-profile-page')
       ];
 }
 
@@ -134,8 +135,8 @@ class RetailerSignUpRoute extends _i1.PageRouteInfo {
   static const String name = 'RetailerSignUpRoute';
 }
 
-class AddProductRoute extends _i1.PageRouteInfo {
-  const AddProductRoute() : super(name, path: '/add-product-page');
+class RetailerProfileRoute extends _i1.PageRouteInfo {
+  const RetailerProfileRoute() : super(name, path: '/retailer-profile-page');
 
-  static const String name = 'AddProductRoute';
+  static const String name = 'RetailerProfileRoute';
 }

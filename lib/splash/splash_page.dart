@@ -1,3 +1,4 @@
+import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,8 +12,18 @@ class SplashPage extends ConsumerWidget {
     WidgetsBinding.instance?.addPostFrameCallback(
         (_) => ref.watch(splashHasRenderedProvider).state = true);
     //TODO: implement splash page
-    return const Scaffold(
-      backgroundColor: Color(0xFFF86B6B),
+    //Initialize layout and orientation settings
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig().init(constraints, orientation);
+            return const Scaffold(
+              backgroundColor: Color(0xFFF86B6B),
+            );
+          }
+        );
+      }
     );
   }
 }
