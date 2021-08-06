@@ -71,7 +71,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
 AppBar enterLocationAppBar() {
   return AppBar(
-    title: const TextField(),
+    title: Text('Appbar'),
   );
 }
 
