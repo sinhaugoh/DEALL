@@ -16,9 +16,6 @@ class RetailerProfilePage extends ConsumerWidget {
         .watch(retailerNotifierProvider)
         .maybeMap(loaded: (loadedState) => loadedState.retailer, orElse: () {});
 
-    final hasConnection = ref.watch(retailerNotifierProvider).maybeMap(
-        loaded: (loadedState) => loadedState.hasConnection, orElse: () {});
-
     return Scaffold(
       appBar: AppBar(
         title: Text(retailer?.name ?? ''),
