@@ -1,10 +1,5 @@
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:dartz/dartz.dart';
-
-import 'package:deall/consumer/shared/providers.dart';
-import 'package:deall/retailer/infrastructure/retailer_repository.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
@@ -13,11 +8,10 @@ import 'package:deall/retailer/infrastructure/product_repository.dart';
 
 
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
-  final FirebaseAuth _firebaseAuth;
   final ProductListRepository _productRepository;
   final ImagePickingRepository _imagePickingRepository;
 
-  AddProductFormNotifier(this._firebaseAuth, this._productRepository, this._imagePickingRepository) : super(AddProductFormState.initial());
+  AddProductFormNotifier(this._productRepository, this._imagePickingRepository) : super(AddProductFormState.initial());
 
   void prodNameChanged(String name){
     state = state.copyWith(name: name);
@@ -71,6 +65,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       ),
       (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
     );
+    state = stateCopy;
   }
 
   Future<void> addProduct(String uid) async {
@@ -93,6 +88,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         description: state.description,
         availability: state.availability,
       );
+      
       final failureOrSuccess = await _productRepository.addProduct(newProduct, uid);
 
       failureOrSuccess.fold((firestoreFailure) {

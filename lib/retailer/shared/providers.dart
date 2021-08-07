@@ -34,7 +34,6 @@ final retailerNotifierProvider =
 final addProductFormNotifierProvider = StateNotifierProvider.autoDispose<
         AddProductFormNotifier, AddProductFormState>(
     (ref) => AddProductFormNotifier(
-          ref.watch(firebaseAuthProvider),
           ref.watch(productListRepoProvider),
           ref.watch(imagePickingRepositoryProvider),
         ));
