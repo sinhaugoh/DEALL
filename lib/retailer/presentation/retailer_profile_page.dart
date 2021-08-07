@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/drawer_widget.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +16,27 @@ class RetailerProfilePage extends ConsumerWidget {
         .watch(retailerNotifierProvider)
         .maybeMap(loaded: (loadedState) => loadedState.retailer, orElse: () {});
 
+    final hasConnection = ref.watch(retailerNotifierProvider).maybeMap(
+        loaded: (loadedState) => loadedState.hasConnection, orElse: () {});
+
     return Scaffold(
       appBar: AppBar(
         title: Text(retailer?.name ?? ''),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.edit))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              AutoRouter.of(context).push(
+                  EditProfileRoute(retailer: retailer ?? Retailer.initial()));
+            },
+            icon: const Icon(Icons.edit),
+          )
+        ],
       ),
       drawer: const ConsumerDrawer(),
       body: retailer == null
           ? const Center(
-              child: CircularProgressIndicator(),
+            //TODO: implement no connection page
+              child: Text('No connection!'),
             )
           : SingleChildScrollView(
               child: Column(
@@ -29,7 +44,8 @@ class RetailerProfilePage extends ConsumerWidget {
                   if (retailer.image != '')
                     CachedNetworkImage(
                       imageUrl: retailer.image,
-                      placeholder: (context, url) => const CircularProgressIndicator(),
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
                     ),
                   Text(retailer.description),
                   Text(retailer.operatingHours),

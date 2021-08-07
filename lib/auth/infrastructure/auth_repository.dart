@@ -50,6 +50,11 @@ class AuthRepository {
     }
   }
 
+  ///DO NOT use before authenticated
+  String getUserId() {
+    return _firebaseAuthService.getUserId();
+  }
+
   Future<Either<AuthFailure, AppUser>> signIn({
     required String email,
     required String password,
@@ -122,8 +127,9 @@ class AuthRepository {
 
       String imageString = '';
       if (imageFile != null) {
-        imageString = await _imagePickingRemoteService.uploadShopLogoToCloudStorage(
-            userId: _firebaseAuthService.getUserId(), file: imageFile);
+        imageString =
+            await _imagePickingRemoteService.uploadShopLogoToCloudStorage(
+                userId: _firebaseAuthService.getUserId(), file: imageFile);
       }
 
       await _initialUserCreationService.createRetailer(
