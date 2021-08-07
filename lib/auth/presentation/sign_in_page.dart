@@ -54,46 +54,55 @@ class SignInPage extends ConsumerWidget {
           color: Colors.black
         ),
       ),
-      body: Column(
-        children: [
+      body: Container(
 
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18.0),
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                constraints: BoxConstraints(maxWidth: 200),
-                // color: Colors.blue,
-                child: FittedBox(
-                  child: Image.asset(
-                    Images.logoText
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          Expanded(
-            flex: 3,
-            child: Container(
-              // color: Colors.grey,
-                  child: SafeArea(
-                    child: Stack(
-                      children: [
-                        const SignInForm(),
-                        SavingInProgressOverlay(
-                            isSaving: ref.watch(signInFormNotifierProvider
-                                .select((state) => state.isSaving))),
-                      ],
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        constraints: BoxConstraints(maxWidth: 200),
+                        // color: Colors.blue,
+                        child: FittedBox(
+                          child: Image.asset(
+                            Images.logoText
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-              
-            ),
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      // color: Colors.grey,
+                          child: SafeArea(
+                            child: Stack(
+                              children: [
+                                const SignInForm(),
+                                
+                              ],
+                            ),
+                          ),
+                      
+                    ),
+                  ),
+                ],
+              ),
+
+SavingInProgressOverlay(
+                                    isSaving: ref.watch(signInFormNotifierProvider
+                                        .select((state) => state.isSaving))),
+            ],
           ),
 
+          
 
-        ],
+
       ),
     );
   }
