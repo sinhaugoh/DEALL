@@ -49,7 +49,7 @@ class EditProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Edit Profile'),
       ),
       body: SafeArea(
         child: Stack(
