@@ -15,7 +15,7 @@ class StyleTheme{
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: StyleTheme.appBackgroundColor,
     brightness: Brightness.light,
-    textTheme: lightTextTheme,
+    // textTheme: lightTextTheme,
     primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
   );
 
