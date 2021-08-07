@@ -8,6 +8,7 @@ class SearchBarWithFilterButton extends StatelessWidget {
     final mq = MediaQuery.of(context);
     return Container(
       color: Colors.yellow,
+      alignment: Alignment.center,
       height: mq.size.height * 0.1,
       child: Text('serach bar and filter')
     );

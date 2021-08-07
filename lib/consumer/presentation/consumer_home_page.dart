@@ -71,7 +71,13 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
 AppBar enterLocationAppBar() {
   return AppBar(
-    title: Text('Appbar'),
+    title: Text('test'),
+    actions: [
+      IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+      // IconButton(onPressed: (){}, icon: Icon(Icons.favorite)),
+      IconButton(onPressed: (){}, icon: Icon(Icons.person)),
+      // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
+    ],
   );
 }
 
