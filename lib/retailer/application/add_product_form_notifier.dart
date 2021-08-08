@@ -57,18 +57,34 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       ),
       (r) => stateCopy = stateCopy.copyWith(nameErrorMessage: null),
     );
-    //validate name
-    final usualPriceValidate = validateNotEmpty(state.name);
+    //validate usualPrice
+    final usualPriceValidate = validateUsualPrice(state.usualPrice);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
-        empty: () {
+        invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
-            usualPriceErrorMessage: 'Usual price of product cannot be empty',
+            usualPriceErrorMessage:
+                'Usual price of product must be greater than \$0.00',
           );
         },
         orElse: () {},
       ),
       (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
+    );
+    //validate discounted price
+    final discountedPriceValidate =
+        validateDiscountedPrice(state.discountedPrice, state.usualPrice);
+    discountedPriceValidate.fold(
+      (valueFailure) => valueFailure.maybeWhen(
+        invalidPriceValue: () {
+          stateCopy = stateCopy.copyWith(
+            discountedPriceErrorMessage:
+                'Discounted price of product must be lesser than usual price',
+          );
+        },
+        orElse: () {},
+      ),
+      (r) => stateCopy = stateCopy.copyWith(discountedPriceErrorMessage: null),
     );
     state = stateCopy;
   }
@@ -78,7 +94,8 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
 
     //if the input are valid
     if (state.nameErrorMessage == null &&
-        state.usualPriceErrorMessage == null) {
+        state.usualPriceErrorMessage == null &&
+        state.discountedPriceErrorMessage == null) {
       state = state.copyWith(
         isSaving: true,
         hasConnection: true,
@@ -121,31 +138,31 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
             availability: state.availability,
           );
         });
-
-        final failureOrSuccess =
-            await _productRepository.addProduct(newProduct, uid);
-
-        failureOrSuccess.fold((firestoreFailure) {
-          firestoreFailure.maybeWhen(
-            noConnection: () {
-              state = state.copyWith(
-                hasConnection: false,
-                isSaving: false,
-              );
-            },
-            orElse: () {
-              state = state.copyWith(
-                isSaving: false,
-              );
-            },
-          );
-        }, (_) {
-          state = state.copyWith(
-            isSaving: false,
-            successful: true,
-          );
-        });
       }
+
+      final failureOrSuccess =
+          await _productRepository.addProduct(newProduct, uid);
+
+      failureOrSuccess.fold((firestoreFailure) {
+        firestoreFailure.maybeWhen(
+          noConnection: () {
+            state = state.copyWith(
+              hasConnection: false,
+              isSaving: false,
+            );
+          },
+          orElse: () {
+            state = state.copyWith(
+              isSaving: false,
+            );
+          },
+        );
+      }, (_) {
+        state = state.copyWith(
+          isSaving: false,
+          successful: true,
+        );
+      });
     }
   }
 

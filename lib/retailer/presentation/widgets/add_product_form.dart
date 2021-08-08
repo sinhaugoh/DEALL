@@ -23,7 +23,7 @@ class AddProductForm extends ConsumerWidget {
       thousandSeparator: ',',
       initialValue: 0.00,
     );
-    final discountPriceController = MoneyMaskedTextController(
+    final discountedPriceController = MoneyMaskedTextController(
       decimalSeparator: '.',
       thousandSeparator: ',',
       initialValue: 0.00,
@@ -86,12 +86,17 @@ class AddProductForm extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
                 label: 'Discount Price',
-                controller: discountPriceController,
+                controller: discountedPriceController,
+                errorText: ref.watch(addProductFormNotifierProvider
+                        .select((state) => state.showErrorMessage))
+                    ? ref.watch(addProductFormNotifierProvider
+                        .select((state) => state.discountedPriceErrorMessage))
+                    : null,
                 onChanged: (value) {
                   ref
                       .read(addProductFormNotifierProvider.notifier)
                       .prodDiscountPriceChanged(
-                          discountPriceController.numberValue);
+                          discountedPriceController.numberValue);
                 },
                 keyboardType: const TextInputType.numberWithOptions(),
                 prefixText: _currency,

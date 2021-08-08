@@ -24,14 +24,6 @@ class _$FirestoreFailuresTearOff {
     return const ObjectNotFound();
   }
 
-  ResourceExhausted resourceExhausted() {
-    return const ResourceExhausted();
-  }
-
-  ServiceUnavailable serviceUnavailable() {
-    return const ServiceUnavailable();
-  }
-
   Unknown unknown() {
     return const Unknown();
   }
@@ -50,8 +42,6 @@ mixin _$FirestoreFailures {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
     required TResult Function() unknown,
     required TResult Function() noConnection,
   }) =>
@@ -60,8 +50,6 @@ mixin _$FirestoreFailures {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
     TResult Function()? unknown,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -71,8 +59,6 @@ mixin _$FirestoreFailures {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
     required TResult Function(Unknown value) unknown,
     required TResult Function(NoConnection value) noConnection,
   }) =>
@@ -81,8 +67,6 @@ mixin _$FirestoreFailures {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
     TResult Function(Unknown value)? unknown,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -149,8 +133,6 @@ class _$CancelledOperation extends CancelledOperation {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
     required TResult Function() unknown,
     required TResult Function() noConnection,
   }) {
@@ -162,8 +144,6 @@ class _$CancelledOperation extends CancelledOperation {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
     TResult Function()? unknown,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -179,8 +159,6 @@ class _$CancelledOperation extends CancelledOperation {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
     required TResult Function(Unknown value) unknown,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -192,8 +170,6 @@ class _$CancelledOperation extends CancelledOperation {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
     TResult Function(Unknown value)? unknown,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -252,8 +228,6 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
     required TResult Function() unknown,
     required TResult Function() noConnection,
   }) {
@@ -265,8 +239,6 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
     TResult Function()? unknown,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -282,8 +254,6 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
     required TResult Function(Unknown value) unknown,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -295,8 +265,6 @@ class _$ObjectNotFound extends ObjectNotFound {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
     TResult Function(Unknown value)? unknown,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -311,212 +279,6 @@ class _$ObjectNotFound extends ObjectNotFound {
 abstract class ObjectNotFound extends FirestoreFailures {
   const factory ObjectNotFound() = _$ObjectNotFound;
   const ObjectNotFound._() : super._();
-}
-
-/// @nodoc
-abstract class $ResourceExhaustedCopyWith<$Res> {
-  factory $ResourceExhaustedCopyWith(
-          ResourceExhausted value, $Res Function(ResourceExhausted) then) =
-      _$ResourceExhaustedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ResourceExhaustedCopyWithImpl<$Res>
-    extends _$FirestoreFailuresCopyWithImpl<$Res>
-    implements $ResourceExhaustedCopyWith<$Res> {
-  _$ResourceExhaustedCopyWithImpl(
-      ResourceExhausted _value, $Res Function(ResourceExhausted) _then)
-      : super(_value, (v) => _then(v as ResourceExhausted));
-
-  @override
-  ResourceExhausted get _value => super._value as ResourceExhausted;
-}
-
-/// @nodoc
-
-class _$ResourceExhausted extends ResourceExhausted {
-  const _$ResourceExhausted() : super._();
-
-  @override
-  String toString() {
-    return 'FirestoreFailures.resourceExhausted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ResourceExhausted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() cancelledOperation,
-    required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
-    required TResult Function() unknown,
-    required TResult Function() noConnection,
-  }) {
-    return resourceExhausted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledOperation,
-    TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
-    TResult Function()? unknown,
-    TResult Function()? noConnection,
-    required TResult orElse(),
-  }) {
-    if (resourceExhausted != null) {
-      return resourceExhausted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CancelledOperation value) cancelledOperation,
-    required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(NoConnection value) noConnection,
-  }) {
-    return resourceExhausted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledOperation value)? cancelledOperation,
-    TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(NoConnection value)? noConnection,
-    required TResult orElse(),
-  }) {
-    if (resourceExhausted != null) {
-      return resourceExhausted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ResourceExhausted extends FirestoreFailures {
-  const factory ResourceExhausted() = _$ResourceExhausted;
-  const ResourceExhausted._() : super._();
-}
-
-/// @nodoc
-abstract class $ServiceUnavailableCopyWith<$Res> {
-  factory $ServiceUnavailableCopyWith(
-          ServiceUnavailable value, $Res Function(ServiceUnavailable) then) =
-      _$ServiceUnavailableCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ServiceUnavailableCopyWithImpl<$Res>
-    extends _$FirestoreFailuresCopyWithImpl<$Res>
-    implements $ServiceUnavailableCopyWith<$Res> {
-  _$ServiceUnavailableCopyWithImpl(
-      ServiceUnavailable _value, $Res Function(ServiceUnavailable) _then)
-      : super(_value, (v) => _then(v as ServiceUnavailable));
-
-  @override
-  ServiceUnavailable get _value => super._value as ServiceUnavailable;
-}
-
-/// @nodoc
-
-class _$ServiceUnavailable extends ServiceUnavailable {
-  const _$ServiceUnavailable() : super._();
-
-  @override
-  String toString() {
-    return 'FirestoreFailures.serviceUnavailable()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServiceUnavailable);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() cancelledOperation,
-    required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
-    required TResult Function() unknown,
-    required TResult Function() noConnection,
-  }) {
-    return serviceUnavailable();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledOperation,
-    TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
-    TResult Function()? unknown,
-    TResult Function()? noConnection,
-    required TResult orElse(),
-  }) {
-    if (serviceUnavailable != null) {
-      return serviceUnavailable();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CancelledOperation value) cancelledOperation,
-    required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(NoConnection value) noConnection,
-  }) {
-    return serviceUnavailable(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledOperation value)? cancelledOperation,
-    TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(NoConnection value)? noConnection,
-    required TResult orElse(),
-  }) {
-    if (serviceUnavailable != null) {
-      return serviceUnavailable(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ServiceUnavailable extends FirestoreFailures {
-  const factory ServiceUnavailable() = _$ServiceUnavailable;
-  const ServiceUnavailable._() : super._();
 }
 
 /// @nodoc
@@ -558,8 +320,6 @@ class _$Unknown extends Unknown {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
     required TResult Function() unknown,
     required TResult Function() noConnection,
   }) {
@@ -571,8 +331,6 @@ class _$Unknown extends Unknown {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
     TResult Function()? unknown,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -588,8 +346,6 @@ class _$Unknown extends Unknown {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
     required TResult Function(Unknown value) unknown,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -601,8 +357,6 @@ class _$Unknown extends Unknown {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
     TResult Function(Unknown value)? unknown,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
@@ -661,8 +415,6 @@ class _$NoConnection extends NoConnection {
   TResult when<TResult extends Object?>({
     required TResult Function() cancelledOperation,
     required TResult Function() objectNotFound,
-    required TResult Function() resourceExhausted,
-    required TResult Function() serviceUnavailable,
     required TResult Function() unknown,
     required TResult Function() noConnection,
   }) {
@@ -674,8 +426,6 @@ class _$NoConnection extends NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cancelledOperation,
     TResult Function()? objectNotFound,
-    TResult Function()? resourceExhausted,
-    TResult Function()? serviceUnavailable,
     TResult Function()? unknown,
     TResult Function()? noConnection,
     required TResult orElse(),
@@ -691,8 +441,6 @@ class _$NoConnection extends NoConnection {
   TResult map<TResult extends Object?>({
     required TResult Function(CancelledOperation value) cancelledOperation,
     required TResult Function(ObjectNotFound value) objectNotFound,
-    required TResult Function(ResourceExhausted value) resourceExhausted,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
     required TResult Function(Unknown value) unknown,
     required TResult Function(NoConnection value) noConnection,
   }) {
@@ -704,8 +452,6 @@ class _$NoConnection extends NoConnection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CancelledOperation value)? cancelledOperation,
     TResult Function(ObjectNotFound value)? objectNotFound,
-    TResult Function(ResourceExhausted value)? resourceExhausted,
-    TResult Function(ServiceUnavailable value)? serviceUnavailable,
     TResult Function(Unknown value)? unknown,
     TResult Function(NoConnection value)? noConnection,
     required TResult orElse(),
