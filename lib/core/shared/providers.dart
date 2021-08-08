@@ -5,8 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:deall/core/application/product/product_list_notifier.dart';
-import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
 import 'package:deall/retailer/infrastructure/product_repository.dart';
@@ -39,7 +37,3 @@ final productListRepoProvider = Provider(
     ref.watch(firestoreProvider),
   ),
 );
-
-final productListNotifierProvider =
-    StateNotifierProvider<ProductListNotifier, ProductListState>(
-        (ref) => ProductListNotifier(ref.watch(productListRepoProvider)));

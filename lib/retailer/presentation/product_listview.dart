@@ -1,4 +1,4 @@
-import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'product_list_item.dart';

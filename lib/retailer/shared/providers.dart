@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/application/product/product_list_notifier.dart';
+import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/retailer_edit_profile_form_notifier.dart';
 import 'package:deall/retailer/application/retailer_notifier.dart';
@@ -8,6 +10,7 @@ import 'package:deall/retailer/application/add_product_form_notifier.dart';
 import 'package:deall/retailer/application/add_product_form_state.dart';
 import 'package:deall/retailer/infrastructure/retailer_remote_service.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
+
 
 final retailerRemoteServiceProvider = Provider(
   (ref) => RetailerRemoteService(
@@ -48,3 +51,7 @@ final addProductFormNotifierProvider = StateNotifierProvider.autoDispose<
     ref.watch(authRepositoryProvider),
   ),
 );
+
+final productListNotifierProvider =
+    StateNotifierProvider<ProductListNotifier, ProductListState>(
+        (ref) => ProductListNotifier(ref.watch(productListRepoProvider)));
