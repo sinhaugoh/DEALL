@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:dartz/dartz.dart';
+import 'package:deall/auth/infrastructure/auth_repository.dart';
+import 'package:deall/core/application/image_picking_failure.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/value_validator.dart';
@@ -6,38 +9,40 @@ import 'package:deall/core/infrastructure/image_picking_repository.dart';
 import 'package:deall/retailer/application/add_product_form_state.dart';
 import 'package:deall/retailer/infrastructure/product_repository.dart';
 
-
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   final ProductListRepository _productRepository;
   final ImagePickingRepository _imagePickingRepository;
+  final AuthRepository _authRepository;
 
-  AddProductFormNotifier(this._productRepository, this._imagePickingRepository) : super(AddProductFormState.initial());
+  AddProductFormNotifier(this._productRepository, this._imagePickingRepository,
+      this._authRepository)
+      : super(AddProductFormState.initial());
 
-  void prodNameChanged(String name){
+  void prodNameChanged(String name) {
     state = state.copyWith(name: name);
   }
 
-  void prodUsualPriceChanged(double usualPrice){
+  void prodUsualPriceChanged(double usualPrice) {
     state = state.copyWith(usualPrice: usualPrice);
   }
 
-  void prodDiscountPriceChanged(double discountedPrice){
+  void prodDiscountPriceChanged(double discountedPrice) {
     state = state.copyWith(discountedPrice: discountedPrice);
   }
 
-  void prodImageChanged(File? imageFile){
+  void prodImageChanged(File? imageFile) {
     state = state.copyWith(imageFile: imageFile);
   }
 
-  void prodDescriptionChanged(String description){
+  void prodDescriptionChanged(String description) {
     state = state.copyWith(description: description);
   }
 
-  void prodAvailabilityChanged(){
+  void prodAvailabilityChanged() {
     state = state.copyWith(availability: !state.availability);
   }
 
-  void _validateInputs(){
+  void _validateInputs() {
     var stateCopy = state.copyWith(showErrorMessage: true);
     //validate name
     final nameValidate = validateNotEmpty(state.name);
@@ -68,7 +73,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = stateCopy;
   }
 
-  Future<void> addProduct(String uid) async {
+  Future<void> addProduct() async {
     _validateInputs();
 
     //if the input are valid
@@ -79,38 +84,68 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         hasConnection: true,
       );
 
-      final newProduct = Product(
-        id: '',
+      final uid = _authRepository.getUserId();
+      final pid = _productRepository.getProductId(uid);
+
+      // if state.imageFile == null
+      var newProduct = Product(
+        id: pid,
         name: state.name,
         usualPrice: state.usualPrice,
         discountedPrice: state.discountedPrice,
-        image: state.imageFile.toString(),
+        image: '',
         description: state.description,
         availability: state.availability,
       );
-      
-      final failureOrSuccess = await _productRepository.addProduct(newProduct, uid);
 
-      failureOrSuccess.fold((firestoreFailure) {
-        firestoreFailure.maybeWhen(
-          noConnection: () {
-            state = state.copyWith(
-              hasConnection: false,
-              isSaving: false,
-            );
-          },
-          orElse: () {
+      if (state.imageFile != null) {
+        final result =
+            await _imagePickingRepository.uploadProductImageToCloudStorage(
+                userId: uid, file: state.imageFile!, productId: pid);
+
+        result.fold((imagePickingFailure) {
+          imagePickingFailure.maybeWhen(orElse: () {
             state = state.copyWith(
               isSaving: false,
+              hasFailureUploadingImage: true,
             );
-          },
-        );
-      }, (_) {
-        state = state.copyWith(
-          isSaving: false,
-          successful: true,
-        );
-      });
+          });
+        }, (filePath) {
+          newProduct = Product(
+            id: pid,
+            name: state.name,
+            usualPrice: state.usualPrice,
+            discountedPrice: state.discountedPrice,
+            image: filePath,
+            description: state.description,
+            availability: state.availability,
+          );
+        });
+
+        final failureOrSuccess =
+            await _productRepository.addProduct(newProduct, uid);
+
+        failureOrSuccess.fold((firestoreFailure) {
+          firestoreFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+              );
+            },
+          );
+        }, (_) {
+          state = state.copyWith(
+            isSaving: false,
+            successful: true,
+          );
+        });
+      }
     }
   }
 

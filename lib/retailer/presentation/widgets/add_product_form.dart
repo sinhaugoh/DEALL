@@ -120,7 +120,7 @@ class AddProductForm extends ConsumerWidget {
 
                   ref
                       .read(addProductFormNotifierProvider.notifier)
-                      .addProduct(uid);
+                      .addProduct();
                 },
                 child: const Text('Add Product'),
               ),

@@ -5,7 +5,7 @@ import 'package:deall/core/application/product/product.dart';
 part 'product_dto.freezed.dart';
 
 FieldValue? _dateModifiedFromJson(Object? json) {
-  return json as FieldValue?;
+  return null;
 }
 
 Object? _dateModifiedToJson(FieldValue? value) {
@@ -27,10 +27,10 @@ class ProductDTO with _$ProductDTO {
       fromJson: _dateModifiedFromJson,
       toJson: _dateModifiedToJson,
     )
-    required FieldValue? dateModified,
+        required FieldValue? dateModified,
   }) = _ProductDTO;
 
-  factory ProductDTO.fromDomain(Product product){
+  factory ProductDTO.fromDomain(Product product) {
     return ProductDTO(
       id: product.id,
       name: product.name,
@@ -43,7 +43,7 @@ class ProductDTO with _$ProductDTO {
     );
   }
 
-  Product toDomain(){
+  Product toDomain() {
     return Product(
       id: id,
       name: name,
@@ -65,9 +65,21 @@ class ProductDTO with _$ProductDTO {
       image: json['image'] as String,
       description: json['description'] as String,
       availability: json['availability'] as bool,
-      // dateModified: json['dateModified'] as FieldValue,
       dateModified: null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'usualPrice': usualPrice,
+      'discountedPrice': discountedPrice,
+      'image': image,
+      'description': description,
+      'availability': availability,
+      'dateModified': dateModified,
+    };
   }
 }
 

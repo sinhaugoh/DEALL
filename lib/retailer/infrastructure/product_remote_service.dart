@@ -18,28 +18,11 @@ class ProductListRemoteService {
   }
 
   Future<void> addProduct(ProductDTO newProduct, String uid) async {
-    // add product to collection logic
-    String? id;
     await _firestore
         .collection('retailers')
         .doc(uid)
         .collection("products")
-        .add({}).then((value) {
-      id = value.id;
-    });
-    await _firestore
-        .collection('retailers')
-        .doc(uid)
-        .collection("products")
-        .doc(id).set({
-          'id': id,
-          'name': newProduct.name,
-          'usualPrice': newProduct.usualPrice,
-          'discountedPrice': newProduct.discountedPrice,
-          'image': newProduct.image,
-          'description': newProduct.description,
-          'availability': newProduct.availability,
-          'dateModified': FieldValue.serverTimestamp(),
-        });
+        .doc(newProduct.id)
+        .set(newProduct.toJson());
   }
 }

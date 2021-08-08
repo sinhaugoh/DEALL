@@ -21,7 +21,6 @@ import 'package:deall/splash/splash_page.dart';
     MaterialRoute(page: ConsumerSignUpPage),
     MaterialRoute(page: AddProductPage),
     MaterialRoute(page: RetailerSignUpPage),
-    MaterialRoute(page: AddProductPage),
     MaterialRoute(page: RetailerProfilePage),
   ],
   replaceInRouteName: 'Page,Route',

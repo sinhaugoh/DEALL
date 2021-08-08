@@ -9,8 +9,9 @@ import 'package:deall/retailer/infrastructure/product_remote_service.dart';
 
 class ProductListRepository {
   final ProductListRemoteService _productRemoteService;
+  final FirebaseFirestore _firestore;
 
-  ProductListRepository(this._productRemoteService);
+  ProductListRepository(this._productRemoteService, this._firestore);
 
   Future<Either<FirestoreFailures, List<Product>>> getProductList(String uid) async {
     try {
@@ -41,6 +42,11 @@ class ProductListRepository {
       }
       return left(const FirestoreFailures.unknown());
     }
+  }
+
+  String getProductId(String uid){
+    final ref = _firestore.collection('retailers').doc(uid).collection('products').doc();
+    return ref.id;
   }
 
   Future<Either<FirestoreFailures, void>> addProduct(Product newProduct, String uid) async{

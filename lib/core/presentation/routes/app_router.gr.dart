@@ -89,7 +89,6 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(AddProductRoute.name, path: '/add-product-page'),
         _i1.RouteConfig(RetailerSignUpRoute.name,
             path: '/retailer-sign-up-page'),
-        _i1.RouteConfig(AddProductRoute.name, path: '/add-product-page'),
         _i1.RouteConfig(RetailerProfileRoute.name,
             path: '/retailer-profile-page')
       ];

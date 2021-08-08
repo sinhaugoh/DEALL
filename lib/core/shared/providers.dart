@@ -33,8 +33,12 @@ final imagePickingRepositoryProvider = Provider((ref) => ImagePickingRepository(
 final productListRemoteServiceProvider =
     Provider((ref) => ProductListRemoteService(ref.watch(firestoreProvider)));
 
-final productListRepoProvider = Provider((ref) =>
-    ProductListRepository(ref.watch(productListRemoteServiceProvider)));
+final productListRepoProvider = Provider(
+  (ref) => ProductListRepository(
+    ref.watch(productListRemoteServiceProvider),
+    ref.watch(firestoreProvider),
+  ),
+);
 
 final productListNotifierProvider =
     StateNotifierProvider<ProductListNotifier, ProductListState>(

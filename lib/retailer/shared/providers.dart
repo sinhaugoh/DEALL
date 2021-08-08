@@ -32,8 +32,10 @@ final retailerNotifierProvider =
 // final retailerLocalStateProvider = StateProvider<Retailer>((ref) => Retailer.initial());
 
 final addProductFormNotifierProvider = StateNotifierProvider.autoDispose<
-        AddProductFormNotifier, AddProductFormState>(
-    (ref) => AddProductFormNotifier(
-          ref.watch(productListRepoProvider),
-          ref.watch(imagePickingRepositoryProvider),
-        ));
+    AddProductFormNotifier, AddProductFormState>(
+  (ref) => AddProductFormNotifier(
+    ref.watch(productListRepoProvider),
+    ref.watch(imagePickingRepositoryProvider),
+    ref.watch(authRepositoryProvider),
+  ),
+);
