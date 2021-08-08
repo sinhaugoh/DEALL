@@ -60,6 +60,15 @@ class RetailerNotifier extends StateNotifier<RetailerNotifierState> {
     );
   }
 
+  void setRetailer(Retailer retailer) {
+    state.maybeMap(
+      loaded: (loadedState) {
+        state = loadedState.copyWith(retailer: retailer);
+      },
+      orElse: () {},
+    );
+  }
+
   Future<void> toggleVisibility() async {
     state.maybeMap(
       loaded: (loadedState) async {

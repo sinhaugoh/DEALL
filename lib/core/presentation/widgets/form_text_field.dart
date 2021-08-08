@@ -10,6 +10,7 @@ class FormTextField extends StatelessWidget {
   final int? maxLength;
   final int? minLines;
   final int? maxLines;
+  final String? initialValue;
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController? controller;
   final void Function(String value) onChanged;
@@ -23,6 +24,7 @@ class FormTextField extends StatelessWidget {
     this.inputFormatters,
     this.maxLength,
     this.minLines,
+    this.initialValue,
     this.maxLines = 1,
     this.controller,
     required this.onChanged,
@@ -33,6 +35,7 @@ class FormTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      initialValue: initialValue,
       maxLines: maxLines,
       minLines: minLines,
       maxLength: maxLength,

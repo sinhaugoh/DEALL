@@ -35,6 +35,10 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       Invocation.method(#getFirebaseUser, []),
       returnValue: Future<_i5.AppUser?>.value()) as _i4.Future<_i5.AppUser?>);
   @override
+  String getUserId() =>
+      (super.noSuchMethod(Invocation.method(#getUserId, []), returnValue: '')
+          as String);
+  @override
   _i4.Future<_i2.Either<_i6.AuthFailure, _i5.AppUser>> signIn(
           {String? email, String? password}) =>
       (super.noSuchMethod(
