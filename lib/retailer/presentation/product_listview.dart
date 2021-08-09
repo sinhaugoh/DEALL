@@ -10,7 +10,7 @@ class ProductListView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(productListNotifierProvider);
     return state.map(
-      initial: (_) => const Center(child: Text("initial")),
+      initial: (_) => Container(),
       noConnection: (_) => const Center(child: Text("No connection")),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       failure: (failure) => Center(child: Text("$failure failure")),

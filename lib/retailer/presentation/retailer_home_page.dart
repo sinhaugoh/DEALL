@@ -26,25 +26,16 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-      () => ref
-          .read(retailerNotifierProvider.notifier)
-          .getRetailer(),
-    );
-    retrieveUserIDAndGetPageInfo(ref);
+    Future.microtask(() {
+      ref.read(retailerNotifierProvider.notifier).getRetailer();
+      ref.read(productListNotifierProvider.notifier).getProductStream();
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
     _connectivityStreamSubscription?.cancel();
-  }
-
-  Future<void> retrieveUserIDAndGetPageInfo(WidgetRef ref) async {
-    final String uid = await Future.microtask(
-        () => ref.read(firebaseAuthServiceProvider).getUserId());
-    Future.microtask(() =>
-        ref.read(productListNotifierProvider.notifier).getProductList(uid));
   }
 
   @override
@@ -72,9 +63,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   .onConnectivityChanged
                   .listen((result) {
                 if (result != ConnectivityResult.none) {
-                  ref
-                      .read(retailerNotifierProvider.notifier)
-                      .getRetailer();
+                  ref.read(retailerNotifierProvider.notifier).getRetailer();
                   _connectivityStreamSubscription?.cancel();
                 }
               });
