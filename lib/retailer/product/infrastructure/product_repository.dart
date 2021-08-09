@@ -2,16 +2,18 @@ import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deall/retailer/product/infrastructure/product_remote_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/infrastructure/product/product_dto.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
 
-class ProductListRepository {
+class ProductRepository {
   final ProductListRemoteService _productRemoteService;
+  final InternetConnectionChecker _internetConnectionChecker;
 
-  ProductListRepository(this._productRemoteService);
+  ProductRepository(this._productRemoteService, this._internetConnectionChecker);
 
   Stream<Either<FirestoreFailures, List<Product>>> getProductStream() async* {
     yield* _productRemoteService.getProductStream().map((list) =>
@@ -43,6 +45,23 @@ class ProductListRepository {
         return left(const FirestoreFailures.cancelledOperation());
       }
       return left(const FirestoreFailures.unknown());
+    }
+  }
+
+  Future<Either<FirestoreFailures, Unit>> updateProduct(Product product) async {
+    if(!await _internetConnectionChecker.hasConnection) {
+      return left(const FirestoreFailures.noConnection());
+    }
+
+    try{
+      await _productRemoteService.updateProduct(ProductDTO.fromDomain(product));
+      return right(unit);
+    } on FirebaseException catch(e) {
+      if(e.code == 'not-found') {
+        return left(const FirestoreFailures.objectNotFound());
+      } else {
+        return left(const FirestoreFailures.unknown());
+      }
     }
   }
 }

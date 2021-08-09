@@ -14,7 +14,7 @@ class ProductListRemoteService {
         .collection('retailers')
         .doc(userId)
         .collection('products')
-        .orderBy('dateModified', descending: true)
+        .orderBy('name')
         .snapshots()
         .map(
           (querySnap) => querySnap.docs
@@ -30,6 +30,18 @@ class ProductListRemoteService {
         .collection("products")
         .doc(newProduct.id)
         .set(newProduct.toJson());
+  }
+
+  Future<void> updateProduct(ProductDTO productDTO) async {
+    final userId = _firebaseAuth.currentUser!.uid;
+    final productId = productDTO.id;
+
+    await _firestore
+        .collection('retailers')
+        .doc(userId)
+        .collection('products')
+        .doc(productId)
+        .update(productDTO.toJson());
   }
 
   String generateNewProductId(String uid) {
