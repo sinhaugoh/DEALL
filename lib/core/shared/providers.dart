@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:deall/auth/shared/providers.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -29,7 +30,10 @@ final imagePickingRepositoryProvider = Provider((ref) => ImagePickingRepository(
 
 // Product providers
 final productListRemoteServiceProvider =
-    Provider((ref) => ProductListRemoteService(ref.watch(firestoreProvider)));
+    Provider((ref) => ProductListRemoteService(
+          ref.watch(firestoreProvider),
+          ref.watch(firebaseAuthProvider),
+        ));
 
 final productListRepoProvider = Provider(
   (ref) => ProductListRepository(
