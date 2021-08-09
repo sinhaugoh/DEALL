@@ -12,7 +12,11 @@ class SplashPage extends ConsumerWidget {
         (_) => ref.watch(splashHasRenderedProvider).state = true);
     //TODO: implement splash page
     return const Scaffold(
-      backgroundColor: Color(0xFFF86B6B),
+      // backgroundColor: Color(0xFFF86B6B),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: CircularProgressIndicator()
+      ),
     );
   }
 }

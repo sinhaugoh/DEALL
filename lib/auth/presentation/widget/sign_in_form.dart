@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,7 @@ class SignInForm extends ConsumerWidget {
                     ref.read(signInFormNotifierProvider.notifier).emailChanged,
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: FormTextField(
@@ -102,7 +105,18 @@ class SignInForm extends ConsumerWidget {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child:  Text('Consumer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
+                        child:  InkWell(
+                          onTap: (){
+                            AutoRouter.of(context).push(const ConsumerSignUpRoute());
+                          },
+                          child: Text(
+                            'Consumer',
+                            style: TextStyle(
+                              color: Colors.redAccent, 
+                              decoration: TextDecoration.underline
+                            )
+                          ),
+                        )
                       ),
                     ),
 
@@ -120,7 +134,18 @@ class SignInForm extends ConsumerWidget {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Retailer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
+                        child: InkWell(
+                          onTap: (){
+                            AutoRouter.of(context).push(const RetailerSignUpRoute());
+                          },
+                          child: Text(
+                            'Retailer',
+                            style: TextStyle(
+                              color: Colors.redAccent, 
+                              decoration: TextDecoration.underline
+                            )
+                          ),
+                        )
                       ),
                     ),
                         

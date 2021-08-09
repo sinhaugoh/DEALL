@@ -68,16 +68,14 @@ class SignInPage extends ConsumerWidget {
                         alignment: Alignment.bottomCenter,
                         constraints: BoxConstraints(maxWidth: 200),
                         // color: Colors.blue,
-                        child: FittedBox(
-                          child: Image.asset(
-                            Images.logoText
-                          ),
+                        child: Image.asset(
+                          Images.logoText
                         ),
                       ),
                     ),
                   ),
                   Expanded(
-                    flex: 4,
+                    flex: 3,
                     child: Container(
                       // color: Colors.grey,
                           child: SafeArea(
@@ -94,9 +92,10 @@ class SignInPage extends ConsumerWidget {
                 ],
               ),
 
-SavingInProgressOverlay(
-                                    isSaving: ref.watch(signInFormNotifierProvider
-                                        .select((state) => state.isSaving))),
+              SavingInProgressOverlay(
+                isSaving: ref.watch(signInFormNotifierProvider
+                    .select((state) => state.isSaving))
+              ),
             ],
           ),
 
