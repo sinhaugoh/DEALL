@@ -1,4 +1,5 @@
 import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,7 +8,7 @@ class ProductItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productData = ref.watch(productProvider);
+    final product = ref.watch(productProvider);
     final mq = MediaQuery.of(context);
     return Container(
       padding: EdgeInsets.only(
@@ -31,7 +32,7 @@ class ProductItem extends ConsumerWidget {
                 children: [
                   Flexible(
                     flex: 3,
-                    child: Text(productData.name),
+                    child: Text(product.name),
                   ),
                   const Flexible(
                     flex: 5,
@@ -44,28 +45,31 @@ class ProductItem extends ConsumerWidget {
                   Flexible(
                     flex: 3,
                     child: Wrap(
-                        children: productData.discountedPrice != 0
+                        children: product.discountedPrice != 0
                             ? [
                                 Text(
-                                  productData.usualPrice.toString(),
+                                  product.usualPrice.toString(),
                                   style: const TextStyle(
                                     decoration: TextDecoration.lineThrough,
                                   ),
                                 ),
                                 Text(
-                                  productData.discountedPrice.toString(),
+                                  product.discountedPrice.toString(),
                                 ),
                               ]
                             : [
-                                Text(productData.usualPrice.toString()),
+                                Text(product.usualPrice.toString()),
                               ]),
                   ),
                 ],
               ),
             ),
             Switch(
-              value: productData.availability,
-              onChanged: (value) {},
+              value: product.availability,
+              onChanged: (value) {
+                ref.read(productStateNotifierProvider.notifier).updateProduct(
+                    product.copyWith(availability: !product.availability));
+              },
             ),
           ],
         ),

@@ -8,7 +8,7 @@ import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
 
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
-  final ProductListRepository _productRepository;
+  final ProductRepository _productRepository;
   final ImagePickingRepository _imagePickingRepository;
   final AuthRepository _authRepository;
 
