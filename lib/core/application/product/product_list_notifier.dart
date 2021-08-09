@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
+import 'package:deall/retailer/product/infrastructure/product_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/retailer/infrastructure/product_repository.dart';
 import 'product_list_state.dart';
 
 class ProductListNotifier extends StateNotifier<ProductListState> {

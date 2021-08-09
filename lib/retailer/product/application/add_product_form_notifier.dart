@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
+import 'package:deall/retailer/product/application/add_product_form_state.dart';
+import 'package:deall/retailer/product/infrastructure/product_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
-import 'package:deall/retailer/application/add_product_form_state.dart';
-import 'package:deall/retailer/infrastructure/product_repository.dart';
 
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   final ProductListRepository _productRepository;

@@ -1,6 +1,4 @@
-import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/shared/providers.dart';
-import 'package:deall/retailer/presentation/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -64,6 +62,10 @@ class ProductItem extends ConsumerWidget {
                   ),
                 ],
               ),
+            ),
+            Switch(
+              value: productData.availability,
+              onChanged: (value) {},
             ),
           ],
         ),

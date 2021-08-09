@@ -6,7 +6,6 @@ part of 'product_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$_ProductDTO _$_$_ProductDTOFromJson(Map<String, dynamic> json) {
   return _$_ProductDTO(
     id: json['id'] as String,
@@ -20,7 +19,6 @@ _$_ProductDTO _$_$_ProductDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$_ProductDTOToJson(_$_ProductDTO instance) =>
     <String, dynamic>{
       'id': instance.id,

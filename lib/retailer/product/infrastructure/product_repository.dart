@@ -1,18 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:deall/retailer/product/infrastructure/product_remote_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/infrastructure/product/product_dto.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
-import 'package:deall/retailer/infrastructure/product_remote_service.dart';
 
 class ProductListRepository {
   final ProductListRemoteService _productRemoteService;
-  final FirebaseFirestore _firestore;
 
-  ProductListRepository(this._productRemoteService, this._firestore);
+  ProductListRepository(this._productRemoteService);
 
   Stream<Either<FirestoreFailures, List<Product>>> getProductStream() async* {
     yield* _productRemoteService.getProductStream().map((list) =>

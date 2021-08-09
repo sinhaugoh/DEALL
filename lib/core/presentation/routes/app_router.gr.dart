@@ -13,10 +13,10 @@ import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
-import '../../../retailer/presentation/add_product_page.dart' as _i10;
 import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
 import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
+import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
 import '../../../splash/splash_page.dart' as _i3;
 import '../../application/retailer/retailer.dart' as _i14;
 

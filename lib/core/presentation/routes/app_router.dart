@@ -7,7 +7,7 @@ import 'package:deall/auth/presentation/welcome_page.dart';
 import 'package:deall/consumer/presentation/consumer_home_page.dart';
 import 'package:deall/retailer/presentation/edit_profile_page.dart';
 import 'package:deall/retailer/presentation/retailer_home_page.dart';
-import 'package:deall/retailer/presentation/add_product_page.dart';
+import 'package:deall/retailer/product/presentation/add_product_page.dart';
 import 'package:deall/retailer/presentation/retailer_profile_page.dart';
 import 'package:deall/splash/splash_page.dart';
 
