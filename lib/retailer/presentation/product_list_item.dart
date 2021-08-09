@@ -1,13 +1,15 @@
 import 'package:deall/core/application/product/product.dart';
+import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/presentation/product_listview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductItem extends StatelessWidget {
-  final Product productData;
-  const ProductItem({Key? key, required this.productData}) : super(key: key);
-  // const ProductItem({Key? key}) : super(key: key);
+class ProductItem extends ConsumerWidget {
+  const ProductItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productData = ref.watch(productProvider);
     final mq = MediaQuery.of(context);
     return Container(
       padding: EdgeInsets.only(
