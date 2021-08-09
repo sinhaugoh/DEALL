@@ -20,66 +20,108 @@ class RetailerItem extends StatelessWidget {
       width: mq.size.width * 0.9,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.grey,
-        elevation: 2,
-        child: ListTile(
-          isThreeLine: true,
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),//or 15.0
-            child: Container(
-              // height: 200.0, //doesnt work
-              // width: 100.0,
-              color: Color(0xffFF0E58),
-              child: Image.asset(Images.logoIconNoBorder),
-            ),
-          ),
-          title: Text(retailerData.name),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Divider(),
-              Text(
-                "${retailerData.operatingHours} \n ${retailerData.description.toString()}",
-                maxLines: 5,
-                overflow: TextOverflow.ellipsis,
+        // color: Colors.grey,
+        shadowColor: Colors.grey.withOpacity(0.5),
+        elevation: 6,
+        child: Row(
+          children: [
+
+            Expanded(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  // width: 50,
+                  // height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 20.0,
+                        // spreadRadius: 2.0
+                      ),
+                    ],
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage("${retailerData.image}")  == '' ? 
+                         AssetImage("${retailerData.image}") : AssetImage(Images.logoIconNoBorder)
+                    )
+                  ),
+                ),
               ),
-            ],
-          ),
-          // subtitle: Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Text('${retailerData.operatingHours}'),
-          //     // Divider(),
-          //     Text(retailerData.description.toString())
-          //   ],
-          // ),
-          trailing: Icon(Icons.add),
+            ),
+
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  // tileColor: Colors.red,
+                  isThreeLine: true,
+                  title: Text(
+                    retailerData.name,
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "\n${retailerData.operatingHours}",
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      Divider(
+                        thickness: 1,
+                      ),
+                      Text(
+                         "${retailerData.description.toString()}",
+                        //  style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  trailing: Icon(Icons.add),
+                )
+              )
+            )
+
+          ],
         ),
-        // child: Row(
-        //   children: [
-        //     Flexible(
-        //       flex: 3,
-        //       //image
-        //       child: Padding(
-        //         padding: EdgeInsets.all(8.0),
-        //         child: Placeholder(),
-        //       ),
-        //     ),
-        //     Flexible(
-        //       flex: 6,
-        //       child: Card(
-        //         child: Column(
-        //           children: <Widget>[
-        //             ListTile(
-        //               leading: Icon(Icons.album)
-        //             )
-        //           ],
-        //         )
-        //       )
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
 }
+
+// ListTile(
+//               isThreeLine: true,
+//               leading: ClipRRect(
+//                 borderRadius: BorderRadius.circular(20.0),//or 15.0
+//                 child: Container(
+//                   // height: 200.0, //doesnt work
+//                   // width: 100.0,
+//                   color: Color(0xffFF0E58),
+//                   child: Image.asset(Images.logoIconNoBorder),
+//                 ),
+//               ),
+//               title: Text(retailerData.name),
+//               subtitle: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Divider(),
+//                   Text(
+//                     "${retailerData.operatingHours} \n ${retailerData.description.toString()}",
+//                     maxLines: 5,
+//                     overflow: TextOverflow.ellipsis,
+//                   ),
+//                 ],
+//               ),
+//               // subtitle: Column(
+//               //   crossAxisAlignment: CrossAxisAlignment.start,
+//               //   children: [
+//               //     Text('${retailerData.operatingHours}'),
+//               //     // Divider(),
+//               //     Text(retailerData.description.toString())
+//               //   ],
+//               // ),
+//               trailing: Icon(Icons.add),
+//             ),
