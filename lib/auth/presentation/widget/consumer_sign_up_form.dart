@@ -1,8 +1,11 @@
 import 'dart:ffi';
 
+import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,15 +38,12 @@ class ConsumerSignUpForm extends ConsumerWidget {
         ),
 
         Expanded(
-          flex: 4,
+          flex: 3,
           child: Form(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                
-                
-
                 Text(
                   'Sign up now for exclusive deals!',
                   textAlign: TextAlign.center,
@@ -84,26 +84,6 @@ class ConsumerSignUpForm extends ConsumerWidget {
                   ),
                 ),
 
-                //CONFIRM PW FORM
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-                //   child: FormTextField(
-                //     label: 'Confirm Password',
-                //     obscureText: true,
-                //     // errorText: ref.watch(consumerSignUpFormNotifierProvider
-                //     //         .select((state) => state.showErrorMessage))
-                //     //     ? ref.watch(consumerSignUpFormNotifierProvider
-                //     //         .select((state) => state.passwordErrorMessage))
-                //     //     : null,
-                //     onChanged: ref
-                //         .read(consumerSignUpFormNotifierProvider.notifier)
-                //         .passwordChanged,
-                //     // inputFormatters: [
-                //     //   FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                //     // ],
-                //   ),
-                // ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
                   child: ElevatedButton(
@@ -133,9 +113,23 @@ class ConsumerSignUpForm extends ConsumerWidget {
                   height: 50,
                 ),
 
-                Center(child: Text("Already have an account? Sign-in."))
-
-                
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Already have an account? '),
+                      InkWell(
+                        onTap: (){
+                          AutoRouter.of(context).push(const SignInRoute());
+                        },
+                        child: Text(
+                          'Sign in.',
+                          style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline)
+                        ),
+                      )
+                    ],
+                  )
+                )
 
               ],
             ),
