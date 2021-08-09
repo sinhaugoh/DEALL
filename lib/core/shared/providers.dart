@@ -12,7 +12,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
 
-
 final connectivityProvider = Provider((ref) => Connectivity());
 final firestoreProvider = Provider((ref) => FirebaseFirestore.instance);
 final internetConnectionCheckerProvider =
@@ -41,7 +40,8 @@ final productListRemoteServiceProvider =
         ));
 
 final productListRepoProvider = Provider(
-  (ref) => ProductListRepository(
+  (ref) => ProductRepository(
     ref.watch(productListRemoteServiceProvider),
+    ref.watch(internetConnectionCheckerProvider),
   ),
 );
