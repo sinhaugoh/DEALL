@@ -8,14 +8,6 @@ class RetailerRemoteService {
 
   RetailerRemoteService(this._firebaseFirestore, this._firebaseAuth);
 
-  // Stream<RetailerDTO> getRetailerStream() async* {
-  //   final userId = _firebaseAuth.currentUser!.uid;
-  //   final documentSnapshotStream =
-  //        _firebaseFirestore.collection('retailers').doc(userId).snapshots();
-  //   yield* documentSnapshotStream.map((snap) => RetailerDTO.fromJson(snap.data()!));
-  //   // yeild RetailerDTO.fromJson(documentSnapshot.data()!);
-  // }
-
   Future<RetailerDTO> getRetailer() async {
     final userId = _firebaseAuth.currentUser!.uid;
     final documentSnapshot =

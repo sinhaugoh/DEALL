@@ -14,28 +14,6 @@ class RetailerRepository {
   RetailerRepository(
       this._retailerRemoteService, this._internetConnectionChecker);
 
-  // Stream<Either<RetailerFailure, Retailer>> getRetailerStream() async* {
-  //   yield* _retailerRemoteService
-  //       .getRetailerStream()
-  //       .map(
-  //         (retailerDTO) =>
-  //             right<RetailerFailure, Retailer>(retailerDTO.toDomain()),
-  //       )
-  //       .onErrorReturnWith((e, _) {
-  //     if (e is FirebaseAuthException) {
-  //       return left(RetailerFailure.authentication('${e.code}: ${e.message}'));
-  //     } else if (e is FirebaseException) {
-  //       if (e.code == 'not-found') {
-  //         return left(const RetailerFailure.notFound());
-  //       } else {
-  //         return left(RetailerFailure.unexpected('${e.code}: ${e.message}'));
-  //       }
-  //     } else {
-  //       return left(const RetailerFailure.unexpected('Unexpected Error'));
-  //     }
-  //   });
-  // }
-
   Future<Either<RetailerFailure, Retailer>> getRetailer() async {
     if(! await _internetConnectionChecker.hasConnection) {
       return left(const RetailerFailure.noConnection());
