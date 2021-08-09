@@ -1,11 +1,11 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
-import 'package:flutter/gestures.dart';
+// import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +26,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 18.0),
             child: Container(
               alignment: Alignment.bottomCenter,
-              constraints: BoxConstraints(maxWidth: 200),
+              constraints: const BoxConstraints(maxWidth: 200),
               // color: Colors.blue,
               child: FittedBox(
                 child: Image.asset(
@@ -44,7 +44,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   'Sign up now for exclusive deals!',
                   textAlign: TextAlign.center,
                   //insert style
@@ -96,17 +96,17 @@ class ConsumerSignUpForm extends ConsumerWidget {
                           .read(consumerSignUpFormNotifierProvider.notifier)
                           .signUp();
                     },
-                    child: const Text('Sign-up'),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))
                         ),
                       //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                     ),
+                    child: const Text('Sign-up'),
                   ),
                 ),
 
-                Divider(
+                const Divider(
                   thickness: 2,
                   indent: 20,
                   endIndent: 20,
@@ -117,12 +117,12 @@ class ConsumerSignUpForm extends ConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an account? '),
+                      const Text('Already have an account? '),
                       InkWell(
                         onTap: (){
                           AutoRouter.of(context).push(const SignInRoute());
                         },
-                        child: Text(
+                        child: const Text(
                           'Sign in.',
                           style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline)
                         ),

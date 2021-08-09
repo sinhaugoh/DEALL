@@ -31,9 +31,9 @@ class SizeConfig{
     heightMultiplier = textMultiplier = _blockSizeVertical;
     imageMultiplier = _blockSizeHorizontal;
 
-    print('horizontal: ');
-    print(_blockSizeHorizontal);
-    print(_blockSizeVertical);
+    // print('horizontal: ');
+    // print(_blockSizeHorizontal);
+    // print(_blockSizeVertical);
   }
 
 }
