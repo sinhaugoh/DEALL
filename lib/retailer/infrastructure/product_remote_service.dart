@@ -31,4 +31,13 @@ class ProductListRemoteService {
         .doc(newProduct.id)
         .set(newProduct.toJson());
   }
+
+  String generateNewProductId(String uid) {
+    final ref = _firestore
+        .collection('retailers')
+        .doc(uid)
+        .collection('products')
+        .doc();
+    return ref.id;
+  }
 }

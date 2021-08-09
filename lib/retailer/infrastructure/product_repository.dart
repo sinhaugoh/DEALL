@@ -27,12 +27,7 @@ class ProductListRepository {
   }
 
   String generateNewProductId(String uid) {
-    final ref = _firestore
-        .collection('retailers')
-        .doc(uid)
-        .collection('products')
-        .doc();
-    return ref.id;
+    return _productRemoteService.generateNewProductId(uid);
   }
 
   Future<Either<FirestoreFailures, void>> addProduct(
