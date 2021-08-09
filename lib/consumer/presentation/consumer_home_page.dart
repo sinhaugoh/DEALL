@@ -102,10 +102,10 @@ Widget consumerHomePageBody(MediaQueryData mq) {
     height: mq.size.height * 0.9,
     child: Column(
       children: const [
-        // Flexible(
-        //   child: SearchBarWithFilterButton(), //search bar + filter icon
-        // ),
-        Divider(height: 15),
+        Flexible(
+          child: SearchBarWithFilterButton(), //search bar + filter icon
+        ),
+        // Divider(height: 15),
         Flexible(
           flex: 10,
           child: RetailerListView(), // retailer list
