@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'product_list_state.dart';
 
 class ProductListNotifier extends StateNotifier<ProductListState> {
-  final ProductListRepository _repo;
+  final ProductRepository _repo;
 
   ProductListNotifier(this._repo) : super(const ProductListState.initial());
 

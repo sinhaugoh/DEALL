@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/retailer/product/application/add_product_form_state.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
-import 'package:deall/retailer/shared/providers.dart';
 import 'package:deall/retailer/product/presentation/widgets/add_product_form.dart';
 
 
