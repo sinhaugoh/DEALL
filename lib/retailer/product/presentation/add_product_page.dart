@@ -44,7 +44,7 @@ class AddProductPage extends ConsumerWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            const AddProductForm(),
+            AddProductForm(),
             SavingInProgressOverlay(
               isSaving: ref.watch(addProductFormNotifierProvider
                   .select((state) => state.isSaving)),

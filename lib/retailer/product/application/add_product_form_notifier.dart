@@ -114,7 +114,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       final productId = _productRepository.generateNewProductId(uid);
 
       // if state.imageFile == null
-      final newProduct = Product(
+      var newProduct = Product(
         id: productId,
         name: state.name,
         usualPrice: state.usualPrice,
@@ -136,34 +136,42 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
               hasFailureUploadingImage: true,
             );
           });
-        }, (filePath) {
-          newProduct.copyWith(image: filePath);
+        }, (filePath) async {
+          newProduct = Product(
+            id: productId,
+            name: state.name,
+            usualPrice: state.usualPrice,
+            discountedPrice: state.discountedPrice,
+            image: filePath,
+            description: state.description,
+            availability: state.availability,
+          );
+
+          final failureOrSuccess =
+              await _productRepository.addProduct(newProduct, uid);
+
+          failureOrSuccess.fold((firestoreFailure) {
+            firestoreFailure.maybeWhen(
+              noConnection: () {
+                state = state.copyWith(
+                  hasConnection: false,
+                  isSaving: false,
+                );
+              },
+              orElse: () {
+                state = state.copyWith(
+                  isSaving: false,
+                );
+              },
+            );
+          }, (_) {
+            state = state.copyWith(
+              isSaving: false,
+              successful: true,
+            );
+          });
         });
       }
-
-      final failureOrSuccess =
-          await _productRepository.addProduct(newProduct, uid);
-
-      failureOrSuccess.fold((firestoreFailure) {
-        firestoreFailure.maybeWhen(
-          noConnection: () {
-            state = state.copyWith(
-              hasConnection: false,
-              isSaving: false,
-            );
-          },
-          orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-            );
-          },
-        );
-      }, (_) {
-        state = state.copyWith(
-          isSaving: false,
-          successful: true,
-        );
-      });
     }
   }
 

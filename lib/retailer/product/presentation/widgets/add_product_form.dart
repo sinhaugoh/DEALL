@@ -8,16 +8,12 @@ import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 
 class AddProductForm extends ConsumerWidget {
-  const AddProductForm({Key? key}) : super(key: key);
+  AddProductForm({Key? key}) : super(key: key);
 
   String get _currency =>
       NumberFormat.compactSimpleCurrency(locale: 'en').currencySymbol;
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final image = ref.watch(
-        addProductFormNotifierProvider.select((state) => state.imageFile));
-    final usualPriceController = MoneyMaskedTextController(
+  final usualPriceController = MoneyMaskedTextController(
       decimalSeparator: '.',
       thousandSeparator: ',',
       initialValue: 0.00,
@@ -28,6 +24,11 @@ class AddProductForm extends ConsumerWidget {
       initialValue: 0.00,
     );
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final image = ref.watch(
+        addProductFormNotifierProvider.select((state) => state.imageFile));
+    
     return Form(
       child: SingleChildScrollView(
         child: Column(
