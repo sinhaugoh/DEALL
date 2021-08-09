@@ -1,9 +1,9 @@
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/retailer/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 
