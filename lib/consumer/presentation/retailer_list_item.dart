@@ -19,29 +19,41 @@ class RetailerItem extends StatelessWidget {
       height: mq.size.height * 0.2,
       width: mq.size.width * 0.9,
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Colors.grey,
         elevation: 2,
         child: ListTile(
+          isThreeLine: true,
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),//or 15.0
             child: Container(
-              height: 200.0, //doesnt work
-              width: 100.0,
+              // height: 200.0, //doesnt work
+              // width: 100.0,
               color: Color(0xffFF0E58),
-              // child: Icon(Icons.volume_up, color: Colors.white, size: 50.0),
+              child: Image.asset(Images.logoIconNoBorder),
             ),
           ),
           title: Text(retailerData.name),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('${retailerData.operatingHours}'),
               Divider(),
-              Text(retailerData.description.toString())
+              Text(
+                "${retailerData.operatingHours} \n ${retailerData.description.toString()}",
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
-          trailing: Text('trail'),
+          // subtitle: Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Text('${retailerData.operatingHours}'),
+          //     // Divider(),
+          //     Text(retailerData.description.toString())
+          //   ],
+          // ),
+          trailing: Icon(Icons.add),
         ),
         // child: Row(
         //   children: [
