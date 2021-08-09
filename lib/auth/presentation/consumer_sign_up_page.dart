@@ -4,6 +4,7 @@ import 'package:deall/auth/presentation/widget/consumer_sign_up_form.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,16 +39,21 @@ class ConsumerSignUpPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        // title: const Text('Sign In'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black
+        ),
       ),
+
       body: SafeArea(
         child: Stack(
           children: [
             const ConsumerSignUpForm(),
             SavingInProgressOverlay(
-              isSaving: ref.watch(consumerSignUpFormNotifierProvider
-                  .select((state) => state.isSaving)),
-            ),
+                isSaving: ref.watch(signInFormNotifierProvider
+                    .select((state) => state.isSaving))),
           ],
         ),
       ),
