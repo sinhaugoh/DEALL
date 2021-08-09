@@ -19,81 +19,54 @@ class RetailerItem extends StatelessWidget {
       height: mq.size.height * 0.2,
       width: mq.size.width * 0.9,
       child: Card(
-        // color: Colors.grey,
+        color: Colors.grey,
         elevation: 2,
-        child: Row(
-          children: [
-            Flexible(
-              flex: 3,
-              //image
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Placeholder(),
-              ),
+        child: ListTile(
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),//or 15.0
+            child: Container(
+              height: 200.0, //doesnt work
+              width: 100.0,
+              color: Color(0xffFF0E58),
+              // child: Icon(Icons.volume_up, color: Colors.white, size: 50.0),
             ),
-            Flexible(
-              flex: 6,
-              child: Column(
-                children: [
-                  Flexible(
-                    flex: 3,
-                    child: Container(
-                      color: Colors.cyan,
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: ConstrainedBox(
-                          //adjust constraints
-                          constraints: BoxConstraints(maxHeight: 50),
-                          child: Text(
-                            retailerData.name,
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                      )
-                    ), //shop name
-                  ),
-                  Flexible(
-                    flex: 3,
-                    child: Container(
-                      color: Colors.red,
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: ConstrainedBox(
-                          //adjust constraints
-                          constraints: BoxConstraints(maxHeight: 100),
-                          child: Text(
-                              "54class SearchBarWithFilterButton extends StatelessWidget3m, ${retailerData.operatingHours}",
-                              overflow: TextOverflow.ellipsis,//dist and opening hours
-                            ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 5,
-                    child: Container(
-                      color: Colors.green,
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(maxHeight: 100),
-                          child: Text(
-                            retailerData.description.toString(),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                          ),
-                        ),
-                      ),
-                    ), //shop description
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
+          title: Text(retailerData.name),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('${retailerData.operatingHours}'),
+              Divider(),
+              Text(retailerData.description.toString())
+            ],
+          ),
+          trailing: Text('trail'),
         ),
+        // child: Row(
+        //   children: [
+        //     Flexible(
+        //       flex: 3,
+        //       //image
+        //       child: Padding(
+        //         padding: EdgeInsets.all(8.0),
+        //         child: Placeholder(),
+        //       ),
+        //     ),
+        //     Flexible(
+        //       flex: 6,
+        //       child: Card(
+        //         child: Column(
+        //           children: <Widget>[
+        //             ListTile(
+        //               leading: Icon(Icons.album)
+        //             )
+        //           ],
+        //         )
+        //       )
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
