@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
@@ -28,7 +27,7 @@ class AddProductForm extends ConsumerWidget {
       thousandSeparator: ',',
       initialValue: 0.00,
     );
-    final uid = ref.read(firebaseAuthServiceProvider).getUserId();
+
     return Form(
       child: SingleChildScrollView(
         child: Column(

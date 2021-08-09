@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:dartz/dartz.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
-import 'package:deall/core/application/image_picking_failure.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/value_validator.dart';
@@ -129,7 +127,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       final productId = _productRepository.generateNewProductId(uid);
 
       // if state.imageFile == null
-      var newProduct = Product(
+      final newProduct = Product(
         id: productId,
         name: state.name,
         usualPrice: state.usualPrice,
