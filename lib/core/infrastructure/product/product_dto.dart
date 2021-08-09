@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:deall/core/application/product/product.dart';
 
 part 'product_dto.freezed.dart';
+part 'product_dto.g.dart';
 
 FieldValue? _dateModifiedFromJson(Object? json) {
   return null;
@@ -54,81 +55,6 @@ class ProductDTO with _$ProductDTO {
       availability: availability,
     );
   }
-
-  // factory ProductDTO.fromJson(Map<String, dynamic> json) => _$ProductDTOFromJson(json);
-  factory ProductDTO.fromJson(Map<String, dynamic> json) {
-    return ProductDTO(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      usualPrice: json['usualPrice'] as double,
-      discountedPrice: json['discountedPrice'] as double,
-      image: json['image'] as String,
-      description: json['description'] as String,
-      availability: json['availability'] as bool,
-      dateModified: null,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'usualPrice': usualPrice,
-      'discountedPrice': discountedPrice,
-      'image': image,
-      'description': description,
-      'availability': availability,
-      'dateModified': dateModified,
-    };
-  }
+  
+  factory ProductDTO.fromJson(Map<String, dynamic> json) => _$ProductDTOFromJson(json);
 }
-
-// factory ProductDTO.fromJson(Map<String, dynamic> json) {
-//     return ProductDTO(
-//       id: json['id'] as String,
-//       name: json['name'] as String,
-//       usualPrice: json['usualPrice'] as double,
-//       discountedPrice: json['discountedPrice'] as double,
-//       image: json['image'] as String,
-//       description: json['description'] as String,
-//       availability: json['availability'] as bool,
-//       dateModified: json['dateCreated'] as FieldValue,
-//     );
-//   }
-
-  // ///for creating NEW product
-  // Map<String, dynamic> toJson() {
-  //   return {
-  //     'id': id,
-  //     'name': name,
-  //     'usualPrice': usualPrice,
-  //     'discountedPrice': discountedPrice,
-  //     'image': image,
-  //     'description': description,
-  //     'availability': availability,
-  //     'dateCreated': dateCreated,
-  //   };
-  // }
-
-  // ///for updating EXISTING product
-  // Map<String, dynamic> toJsonWithoutDateCreated() {
-  //   return {
-  //     'id': id,
-  //     'name': name,
-  //     'usualPrice': usualPrice,
-  //     'discountedPrice': discountedPrice,
-  //     'image': image,
-  //     'description': description,
-  //     'availability': availability,
-  //   };
-  // }
-
-// class ServerTimestampConverter implements JsonConverter <FieldValue, Object>{
-//   @override
-//   FieldValue fromJson(Object json) {
-//     return FieldValue.serverTimestamp();
-//   }
-
-//   @override
-//   Object toJson(FieldValue object) => object;
-// }

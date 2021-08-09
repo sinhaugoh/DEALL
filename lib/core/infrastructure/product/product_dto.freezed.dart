@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) {
+  return _ProductDTO.fromJson(json);
+}
+
 /// @nodoc
 class _$ProductDTOTearOff {
   const _$ProductDTOTearOff();
@@ -37,6 +41,10 @@ class _$ProductDTOTearOff {
       dateModified: dateModified,
     );
   }
+
+  ProductDTO fromJson(Map<String, Object> json) {
+    return ProductDTO.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -54,6 +62,7 @@ mixin _$ProductDTO {
   @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
   FieldValue? get dateModified => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductDTOCopyWith<ProductDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -209,7 +218,7 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_ProductDTO extends _ProductDTO {
   const _$_ProductDTO(
       {required this.id,
@@ -222,6 +231,9 @@ class _$_ProductDTO extends _ProductDTO {
       @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required this.dateModified})
       : super._();
+
+  factory _$_ProductDTO.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductDTOFromJson(json);
 
   @override
   final String id;
@@ -289,6 +301,11 @@ class _$_ProductDTO extends _ProductDTO {
   @override
   _$ProductDTOCopyWith<_ProductDTO> get copyWith =>
       __$ProductDTOCopyWithImpl<_ProductDTO>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductDTOToJson(this);
+  }
 }
 
 abstract class _ProductDTO extends ProductDTO {
@@ -303,6 +320,9 @@ abstract class _ProductDTO extends ProductDTO {
       @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required FieldValue? dateModified}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
+
+  factory _ProductDTO.fromJson(Map<String, dynamic> json) =
+      _$_ProductDTO.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;

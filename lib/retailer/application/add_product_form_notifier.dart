@@ -58,6 +58,18 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(nameErrorMessage: null),
     );
     //validate usualPrice
+    final usualPriceValidateNotEmpty = validateNotEmpty(state.usualPrice.toString());
+    usualPriceValidateNotEmpty.fold(
+      (valueFailure) => valueFailure.maybeWhen(
+        empty: () {
+          stateCopy = stateCopy.copyWith(
+            usualPriceErrorMessage: 'This field cannot be empty',
+          );
+        },
+        orElse: () {},
+      ),
+      (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
+    );
     final usualPriceValidate = validateUsualPrice(state.usualPrice);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
@@ -72,6 +84,18 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
     );
     //validate discounted price
+    final discountedPriceValidateNotEmpty = validateNotEmpty(state.discountedPrice.toString());
+    discountedPriceValidateNotEmpty.fold(
+      (valueFailure) => valueFailure.maybeWhen(
+        empty: () {
+          stateCopy = stateCopy.copyWith(
+            discountedPriceErrorMessage: 'This field cannot be empty',
+          );
+        },
+        orElse: () {},
+      ),
+      (r) => stateCopy = stateCopy.copyWith(discountedPriceErrorMessage: null),
+    );
     final discountedPriceValidate =
         validateDiscountedPrice(state.discountedPrice, state.usualPrice);
     discountedPriceValidate.fold(
@@ -102,11 +126,11 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       );
 
       final uid = _authRepository.getUserId();
-      final pid = _productRepository.getProductId(uid);
+      final productId = _productRepository.generateNewProductId(uid);
 
       // if state.imageFile == null
       var newProduct = Product(
-        id: pid,
+        id: productId,
         name: state.name,
         usualPrice: state.usualPrice,
         discountedPrice: state.discountedPrice,
@@ -118,7 +142,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       if (state.imageFile != null) {
         final result =
             await _imagePickingRepository.uploadProductImageToCloudStorage(
-                userId: uid, file: state.imageFile!, productId: pid);
+                userId: uid, file: state.imageFile!, productId: productId);
 
         result.fold((imagePickingFailure) {
           imagePickingFailure.maybeWhen(orElse: () {
@@ -128,15 +152,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
             );
           });
         }, (filePath) {
-          newProduct = Product(
-            id: pid,
-            name: state.name,
-            usualPrice: state.usualPrice,
-            discountedPrice: state.discountedPrice,
-            image: filePath,
-            description: state.description,
-            availability: state.availability,
-          );
+          newProduct.copyWith(image: filePath);
         });
       }
 
