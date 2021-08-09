@@ -56,18 +56,6 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(nameErrorMessage: null),
     );
     //validate usualPrice
-    final usualPriceValidateNotEmpty = validateNotEmpty(state.usualPrice.toString());
-    usualPriceValidateNotEmpty.fold(
-      (valueFailure) => valueFailure.maybeWhen(
-        empty: () {
-          stateCopy = stateCopy.copyWith(
-            usualPriceErrorMessage: 'This field cannot be empty',
-          );
-        },
-        orElse: () {},
-      ),
-      (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
-    );
     final usualPriceValidate = validateUsualPrice(state.usualPrice);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
@@ -82,18 +70,6 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
     );
     //validate discounted price
-    final discountedPriceValidateNotEmpty = validateNotEmpty(state.discountedPrice.toString());
-    discountedPriceValidateNotEmpty.fold(
-      (valueFailure) => valueFailure.maybeWhen(
-        empty: () {
-          stateCopy = stateCopy.copyWith(
-            discountedPriceErrorMessage: 'This field cannot be empty',
-          );
-        },
-        orElse: () {},
-      ),
-      (r) => stateCopy = stateCopy.copyWith(discountedPriceErrorMessage: null),
-    );
     final discountedPriceValidate =
         validateDiscountedPrice(state.discountedPrice, state.usualPrice);
     discountedPriceValidate.fold(
@@ -101,7 +77,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
             discountedPriceErrorMessage:
-                'Discounted price of product must be lesser than usual price',
+                'Discounted price of product must be lesser than usual price and greater than \$0.00',
           );
         },
         orElse: () {},

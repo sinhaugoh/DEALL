@@ -36,9 +36,15 @@ Either<ValueFailure, Unit> validateNotEmpty(String input) =>
     input != '' ? right(unit) : left(const ValueFailure.empty());
 
 Either<ValueFailure, Unit> validateUsualPrice(double input) {
-  return input >= 0.0 && input <= 10000 ? right(unit) : left(const ValueFailure.invalidPriceValue());
+  if(input == 0){
+    return left(const ValueFailure.empty());
+  }
+  return input > 0.0 && input < 10000 ? right(unit) : left(const ValueFailure.invalidPriceValue());
 }
 
 Either<ValueFailure, Unit> validateDiscountedPrice(double input, double usualPrice) {
-  return input >= 0.0 && input <= 10000 && input < usualPrice ? right(unit) : left(const ValueFailure.invalidPriceValue());
+  if(input == 0){
+    return left(const ValueFailure.empty());
+  }
+  return input > 0.0 && input < 10000 && input < usualPrice ? right(unit) : left(const ValueFailure.invalidPriceValue());
 }
