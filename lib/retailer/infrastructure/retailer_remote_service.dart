@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:deall/core/infrastructure/retailer_dto.dart';
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class RetailerRemoteService {

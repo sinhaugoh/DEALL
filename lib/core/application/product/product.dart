@@ -15,3 +15,4 @@ class Product with _$Product {
     required bool availability,
   }) = _Product;
 }
+

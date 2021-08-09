@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';

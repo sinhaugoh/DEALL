@@ -9,4 +9,5 @@ class ValueFailure with _$ValueFailure {
   const factory ValueFailure.invalidEmail() = InvalidEmail;
   const factory ValueFailure.invalidPassword() = InvalidPassword;
   const factory ValueFailure.incorrectLength(int length) = IncorrectLength;
+  const factory ValueFailure.invalidPriceValue() = InvalidPriceValue;
 }

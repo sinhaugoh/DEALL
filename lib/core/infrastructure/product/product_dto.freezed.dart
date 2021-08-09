@@ -28,7 +28,7 @@ class _$ProductDTOTearOff {
       required String image,
       required String description,
       required bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required FieldValue? dateModified}) {
     return _ProductDTO(
       id: id,
@@ -59,7 +59,7 @@ mixin _$ProductDTO {
   String get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
   FieldValue? get dateModified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ abstract class $ProductDTOCopyWith<$Res> {
       String image,
       String description,
       bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           FieldValue? dateModified});
 }
 
@@ -155,7 +155,7 @@ abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
       String image,
       String description,
       bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           FieldValue? dateModified});
 }
 
@@ -228,7 +228,7 @@ class _$_ProductDTO extends _ProductDTO {
       required this.image,
       required this.description,
       required this.availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required this.dateModified})
       : super._();
 
@@ -250,7 +250,7 @@ class _$_ProductDTO extends _ProductDTO {
   @override
   final bool availability;
   @override
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
   final FieldValue? dateModified;
 
   @override
@@ -317,7 +317,7 @@ abstract class _ProductDTO extends ProductDTO {
       required String image,
       required String description,
       required bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
           required FieldValue? dateModified}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
 
@@ -339,7 +339,7 @@ abstract class _ProductDTO extends ProductDTO {
   @override
   bool get availability => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
+  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dateModifiedToJson)
   FieldValue? get dateModified => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

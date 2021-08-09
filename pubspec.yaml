@@ -17,6 +17,7 @@ dependencies:
   connectivity: ^3.0.6
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.1
+  extended_masked_text: ^2.2.1
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
   firebase_storage: ^10.0.1

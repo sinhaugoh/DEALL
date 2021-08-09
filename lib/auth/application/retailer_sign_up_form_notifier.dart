@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:deall/auth/infrastructure/auth_repository.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/form_error_message.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';

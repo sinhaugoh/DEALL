@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
 
-import 'package:deall/core/presentation/widgets/drawer_widget.dart';
+import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/consumer/presentation/retailer_listview.dart';
 import 'package:deall/consumer/presentation/widgets/search_bar_filter.dart';

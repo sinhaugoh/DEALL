@@ -10,7 +10,7 @@ import 'package:deall/auth/infrastructure/initial_user_creation_service.dart'
     as _i6;
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart'
     as _i8;
-import 'package:deall/core/infrastructure/retailer_dto.dart' as _i7;
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart' as _i7;
 import 'package:firebase_auth/firebase_auth.dart' as _i2;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i3;

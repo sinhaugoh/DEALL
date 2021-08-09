@@ -1,12 +1,16 @@
 import 'dart:async';
-
-import 'package:connectivity/connectivity.dart';
-import 'package:deall/core/presentation/widgets/drawer_widget.dart';
-import 'package:deall/core/shared/providers.dart';
-import 'package:deall/retailer/application/retailer_notifier.dart';
-import 'package:deall/retailer/shared/providers.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:connectivity/connectivity.dart';
+
+import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
+import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/application/retailer_notifier.dart';
+import 'package:deall/retailer/presentation/product_listview.dart';
+import 'package:deall/retailer/shared/providers.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
   const RetailerHomePage({Key? key}) : super(key: key);
@@ -27,12 +31,20 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
           .read(retailerNotifierProvider.notifier)
           .getRetailer(),
     );
+    retrieveUserIDAndGetPageInfo(ref);
   }
 
   @override
   void dispose() {
     super.dispose();
     _connectivityStreamSubscription?.cancel();
+  }
+
+  Future<void> retrieveUserIDAndGetPageInfo(WidgetRef ref) async {
+    final String uid = await Future.microtask(
+        () => ref.read(firebaseAuthServiceProvider).getUserId());
+    Future.microtask(() =>
+        ref.read(productListNotifierProvider.notifier).getProductList(uid));
   }
 
   @override
@@ -72,13 +84,12 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         );
       },
     );
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('DEALL'),
       ),
-      //TODO: change to retailer drawer
-      drawer: const ConsumerDrawer(),
+      drawer: const RetailerDrawer(),
       body: ref.watch(retailerNotifierProvider).when(
         initial: () {
           return Container();
@@ -99,16 +110,18 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                 },
                 value: retailer.visibility,
               ),
-              // Expanded(
-              //   child: ListView.builder(
-              //       itemCount: 20,
-              //       itemBuilder: (context, index) {
-              //         return Text(
-              //           index.toString(),
-              //           style: TextStyle(fontSize: 30),
-              //         );
-              //       }),
-              // ),
+              TextButton(
+                onPressed: () {
+                  AutoRouter.of(context).push(const AddProductRoute());
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.add_circle),
+                  trailing: Text("Add Product"),
+                ),
+              ),
+              const Expanded(
+                child: ProductListView(),
+              ),
             ],
           );
         },

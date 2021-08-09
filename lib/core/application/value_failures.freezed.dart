@@ -33,6 +33,10 @@ class _$ValueFailureTearOff {
       length,
     );
   }
+
+  InvalidPriceValue invalidPriceValue() {
+    return const InvalidPriceValue();
+  }
 }
 
 /// @nodoc
@@ -46,6 +50,7 @@ mixin _$ValueFailure {
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
     required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$ValueFailure {
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
     TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +69,7 @@ mixin _$ValueFailure {
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
     required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +78,7 @@ mixin _$ValueFailure {
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
     TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +141,7 @@ class _$Empty extends Empty {
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
     required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return empty();
   }
@@ -144,6 +153,7 @@ class _$Empty extends Empty {
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
     TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -159,6 +169,7 @@ class _$Empty extends Empty {
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
     required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return empty(this);
   }
@@ -170,6 +181,7 @@ class _$Empty extends Empty {
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
     TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -227,6 +239,7 @@ class _$InvalidEmail extends InvalidEmail {
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
     required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return invalidEmail();
   }
@@ -238,6 +251,7 @@ class _$InvalidEmail extends InvalidEmail {
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
     TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -253,6 +267,7 @@ class _$InvalidEmail extends InvalidEmail {
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
     required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return invalidEmail(this);
   }
@@ -264,6 +279,7 @@ class _$InvalidEmail extends InvalidEmail {
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
     TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -322,6 +338,7 @@ class _$InvalidPassword extends InvalidPassword {
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
     required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return invalidPassword();
   }
@@ -333,6 +350,7 @@ class _$InvalidPassword extends InvalidPassword {
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
     TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -348,6 +366,7 @@ class _$InvalidPassword extends InvalidPassword {
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
     required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return invalidPassword(this);
   }
@@ -359,6 +378,7 @@ class _$InvalidPassword extends InvalidPassword {
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
     TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -442,6 +462,7 @@ class _$IncorrectLength extends IncorrectLength {
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
     required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return incorrectLength(length);
   }
@@ -453,6 +474,7 @@ class _$IncorrectLength extends IncorrectLength {
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
     TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (incorrectLength != null) {
@@ -468,6 +490,7 @@ class _$IncorrectLength extends IncorrectLength {
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
     required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return incorrectLength(this);
   }
@@ -479,6 +502,7 @@ class _$IncorrectLength extends IncorrectLength {
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
     TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (incorrectLength != null) {
@@ -496,4 +520,103 @@ abstract class IncorrectLength extends ValueFailure {
   @JsonKey(ignore: true)
   $IncorrectLengthCopyWith<IncorrectLength> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidPriceValueCopyWith<$Res> {
+  factory $InvalidPriceValueCopyWith(
+          InvalidPriceValue value, $Res Function(InvalidPriceValue) then) =
+      _$InvalidPriceValueCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidPriceValueCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $InvalidPriceValueCopyWith<$Res> {
+  _$InvalidPriceValueCopyWithImpl(
+      InvalidPriceValue _value, $Res Function(InvalidPriceValue) _then)
+      : super(_value, (v) => _then(v as InvalidPriceValue));
+
+  @override
+  InvalidPriceValue get _value => super._value as InvalidPriceValue;
+}
+
+/// @nodoc
+
+class _$InvalidPriceValue extends InvalidPriceValue {
+  const _$InvalidPriceValue() : super._();
+
+  @override
+  String toString() {
+    return 'ValueFailure.invalidPriceValue()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidPriceValue);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
+  }) {
+    return invalidPriceValue();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (invalidPriceValue != null) {
+      return invalidPriceValue();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
+  }) {
+    return invalidPriceValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (invalidPriceValue != null) {
+      return invalidPriceValue(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPriceValue extends ValueFailure {
+  const factory InvalidPriceValue() = _$InvalidPriceValue;
+  const InvalidPriceValue._() : super._();
 }

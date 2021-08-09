@@ -5,12 +5,14 @@ class FormTextField extends StatelessWidget {
   final String label;
   final String? errorText;
   final bool obscureText;
+  final String? prefixText;
   final TextInputType? keyboardType;
   final int? maxLength;
   final int? minLines;
   final int? maxLines;
   final String? initialValue;
   final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController? controller;
   final void Function(String value) onChanged;
 
   const FormTextField({
@@ -18,11 +20,13 @@ class FormTextField extends StatelessWidget {
     this.errorText,
     this.keyboardType,
     this.obscureText = false,
+    this.prefixText,
     this.inputFormatters,
     this.maxLength,
     this.minLines,
     this.initialValue,
     this.maxLines = 1,
+    this.controller,
     required this.onChanged,
     required this.label,
   }) : super(key: key);
@@ -30,6 +34,7 @@ class FormTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       initialValue: initialValue,
       maxLines: maxLines,
       minLines: minLines,
@@ -40,6 +45,7 @@ class FormTextField extends StatelessWidget {
         labelText: label,
         border: const OutlineInputBorder(),
         errorText: errorText,
+        prefixText: prefixText,
       ),
       onChanged: onChanged,
       inputFormatters: inputFormatters,

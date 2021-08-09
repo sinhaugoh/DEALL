@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/application/image_picking_failure.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
