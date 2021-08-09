@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
+import 'package:deall/retailer/product/application/product_notifier.dart';
 import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -72,6 +74,31 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         );
       },
     );
+
+    ref.listen<ProductNotifierState>(productStateNotifierProvider, (state) {
+      state.maybeWhen(
+          failure: (firestoreFailures) => firestoreFailures.when(
+                cancelledOperation: () {},
+                objectNotFound: () {},
+                unknown: () {
+                  //TODO: use theme snackbar instead
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Unexpected error. Please contact support.'),
+                    duration: Duration(seconds: 5),
+                    behavior: SnackBarBehavior.floating,
+                  ));
+                },
+                noConnection: () {
+                  //TODO: use theme snackbar instead
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('No connection'),
+                    duration: Duration(seconds: 5),
+                    behavior: SnackBarBehavior.floating,
+                  ));
+                },
+              ),
+          orElse: () {});
+    });
 
     return Scaffold(
       appBar: AppBar(
