@@ -71,10 +71,26 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
 AppBar enterLocationAppBar() {
   return AppBar(
-    title: Text('test'),
+    title: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search',
+          prefixIcon: Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          fillColor: Colors.white,
+          filled: true,
+          contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+          suffixIcon: IconButton(onPressed: (){
+            
+          }, icon: Icon(Icons.arrow_forward))
+        ),
+      ),
+    ),
     actions: [
-      IconButton(onPressed: (){}, icon: Icon(Icons.search)),
-      // IconButton(onPressed: (){}, icon: Icon(Icons.favorite)),
       IconButton(onPressed: (){}, icon: Icon(Icons.person)),
       // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
     ],
