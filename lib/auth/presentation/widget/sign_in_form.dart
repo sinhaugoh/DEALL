@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,7 @@ class SignInForm extends ConsumerWidget {
                     ref.read(signInFormNotifierProvider.notifier).emailChanged,
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: FormTextField(
@@ -49,8 +52,8 @@ class SignInForm extends ConsumerWidget {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, decoration: TextDecoration.underline),)
@@ -60,7 +63,7 @@ class SignInForm extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(height: 40),
+                constraints: const BoxConstraints.tightFor(height: 40),
                 child: ElevatedButton(
                   onPressed: () {
                     //dismiss the keyboard
@@ -69,29 +72,29 @@ class SignInForm extends ConsumerWidget {
 
                     ref.read(signInFormNotifierProvider.notifier).signIn();
                   },
-                  child: const Text('Sign In'),
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30))
                      ),
                     //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                   ),
+                  child: const Text('Sign In'),
                 ),
               ),
             ),
 
-            Divider(
+            const Divider(
               thickness: 2,
               indent: 20,
               endIndent: 20,
               height: 50,
             ),
 
-            Center(child: Text("Don't have an account? Sign up.")),
+            const Center(child: Text("Don't have an account? Sign up.")),
 
             //SIGN UP PART TEST
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: IntrinsicHeight(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -102,12 +105,23 @@ class SignInForm extends ConsumerWidget {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child:  Text('Consumer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
+                        child:  InkWell(
+                          onTap: (){
+                            AutoRouter.of(context).push(const ConsumerSignUpRoute());
+                          },
+                          child: const Text(
+                            'Consumer',
+                            style: TextStyle(
+                              color: Colors.redAccent, 
+                              decoration: TextDecoration.underline
+                            )
+                          ),
+                        )
                       ),
                     ),
 
                     // SizedBox(width: 10,),
-                    Container(
+                    const SizedBox(
                       height: 20,
                       child: VerticalDivider(
                         color: Colors.black54,
@@ -120,7 +134,18 @@ class SignInForm extends ConsumerWidget {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Retailer',style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline))
+                        child: InkWell(
+                          onTap: (){
+                            AutoRouter.of(context).push(const RetailerSignUpRoute());
+                          },
+                          child: const Text(
+                            'Retailer',
+                            style: TextStyle(
+                              color: Colors.redAccent, 
+                              decoration: TextDecoration.underline
+                            )
+                          ),
+                        )
                       ),
                     ),
                         
