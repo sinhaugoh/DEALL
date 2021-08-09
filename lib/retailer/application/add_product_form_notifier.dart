@@ -59,10 +59,15 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     final usualPriceValidate = validateUsualPrice(state.usualPrice);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
+        empty: () {
+          stateCopy = stateCopy.copyWith(
+            usualPriceErrorMessage: 'Usual price of product must not be empty',
+          );
+        },
         invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
             usualPriceErrorMessage:
-                'Usual price of product must be greater than \$0.00',
+                'Usual price of product must be between \$0.00 and \$10,000.00',
           );
         },
         orElse: () {},
@@ -74,10 +79,16 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         validateDiscountedPrice(state.discountedPrice, state.usualPrice);
     discountedPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
+        empty: () {
+          stateCopy = stateCopy.copyWith(
+            discountedPriceErrorMessage:
+                'Discounted price of product must not be empty',
+          );
+        },
         invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
             discountedPriceErrorMessage:
-                'Discounted price of product must be lesser than usual price and greater than \$0.00',
+                'Discounted price of product must be lesser than usual price',
           );
         },
         orElse: () {},
