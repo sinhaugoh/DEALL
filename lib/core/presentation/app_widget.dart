@@ -45,7 +45,7 @@ class AppWidget extends ConsumerWidget {
           },
           notAuthenticated: () {
             appRouter.pushAndPopUntil(
-              const SignInRoute(),
+              const WelcomeRoute(),
               predicate: (route) => false,
             );
           },
