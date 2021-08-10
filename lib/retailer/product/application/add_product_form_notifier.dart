@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/value_validator.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
-import 'package:deall/retailer/shared/providers.dart';
 
 class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   final ProductRepository _productRepository;
@@ -165,8 +164,6 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
           isSaving: false,
           successful: true,
         );
-        usualPriceController.updateValue(0);
-        discountedPriceController.updateValue(0);
       });
     }
   }

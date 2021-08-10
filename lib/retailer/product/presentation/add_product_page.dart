@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,7 +10,9 @@ import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:deall/retailer/product/presentation/widgets/add_product_form.dart';
 
 class AddProductPage extends ConsumerWidget {
-  const AddProductPage({Key? key}) : super(key: key);
+  final MoneyMaskedTextController usualPriceController;
+  final MoneyMaskedTextController discountedPriceController;
+  const AddProductPage(this.usualPriceController, this.discountedPriceController, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,7 +46,7 @@ class AddProductPage extends ConsumerWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            const AddProductForm(),
+            AddProductForm(usualPriceController, discountedPriceController),
             SavingInProgressOverlay(
               isSaving: ref.watch(addProductFormNotifierProvider
                   .select((state) => state.isSaving)),

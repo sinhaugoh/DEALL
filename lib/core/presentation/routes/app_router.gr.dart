@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:extended_masked_text/extended_masked_text.dart' as _i14;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../../auth/presentation/consumer_sign_up_page.dart' as _i9;
@@ -18,7 +19,7 @@ import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
 import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
 import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
 import '../../../splash/splash_page.dart' as _i3;
-import '../../application/retailer/retailer.dart' as _i14;
+import '../../application/retailer/retailer.dart' as _i15;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -63,8 +64,11 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     AddProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i10.AddProductPage();
+        builder: (data) {
+          final args = data.argsAs<AddProductRouteArgs>();
+          return _i10.AddProductPage(
+              args.usualPriceController, args.discountedPriceController,
+              key: args.key);
         }),
     RetailerSignUpRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -145,10 +149,32 @@ class ConsumerSignUpRoute extends _i1.PageRouteInfo {
   static const String name = 'ConsumerSignUpRoute';
 }
 
-class AddProductRoute extends _i1.PageRouteInfo {
-  const AddProductRoute() : super(name, path: '/add-product-page');
+class AddProductRoute extends _i1.PageRouteInfo<AddProductRouteArgs> {
+  AddProductRoute(
+      {required _i14.MoneyMaskedTextController usualPriceController,
+      required _i14.MoneyMaskedTextController discountedPriceController,
+      _i2.Key? key})
+      : super(name,
+            path: '/add-product-page',
+            args: AddProductRouteArgs(
+                usualPriceController: usualPriceController,
+                discountedPriceController: discountedPriceController,
+                key: key));
 
   static const String name = 'AddProductRoute';
+}
+
+class AddProductRouteArgs {
+  const AddProductRouteArgs(
+      {required this.usualPriceController,
+      required this.discountedPriceController,
+      this.key});
+
+  final _i14.MoneyMaskedTextController usualPriceController;
+
+  final _i14.MoneyMaskedTextController discountedPriceController;
+
+  final _i2.Key? key;
 }
 
 class RetailerSignUpRoute extends _i1.PageRouteInfo {
@@ -164,7 +190,7 @@ class RetailerProfileRoute extends _i1.PageRouteInfo {
 }
 
 class EditProfileRoute extends _i1.PageRouteInfo<EditProfileRouteArgs> {
-  EditProfileRoute({_i2.Key? key, required _i14.Retailer retailer})
+  EditProfileRoute({_i2.Key? key, required _i15.Retailer retailer})
       : super(name,
             path: '/edit-profile-page',
             args: EditProfileRouteArgs(key: key, retailer: retailer));
@@ -177,5 +203,5 @@ class EditProfileRouteArgs {
 
   final _i2.Key? key;
 
-  final _i14.Retailer retailer;
+  final _i15.Retailer retailer;
 }

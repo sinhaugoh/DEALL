@@ -5,7 +5,6 @@ import 'package:deall/retailer/application/retailer_edit_profile_form_notifier.d
 import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/infrastructure/retailer_remote_service.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
-import 'package:extended_masked_text/extended_masked_text.dart';
 
 final retailerRemoteServiceProvider = Provider(
   (ref) => RetailerRemoteService(
@@ -37,13 +36,4 @@ final retailerEditProfileNotifierProvider = StateNotifierProvider.autoDispose<
   ),
 );
 // final retailerLocalStateProvider = StateProvider<Retailer>((ref) => Retailer.initial());
-final usualPriceController = MoneyMaskedTextController(
-  decimalSeparator: '.',
-  thousandSeparator: ',',
-  initialValue: 0.00,
-);
-final discountedPriceController = MoneyMaskedTextController(
-  decimalSeparator: '.',
-  thousandSeparator: ',',
-  initialValue: 0.00,
-);
+
