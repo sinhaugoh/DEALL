@@ -5,11 +5,14 @@ import 'package:dartz/dartz.dart';
 import 'package:deall/core/application/image_picking_failure.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
 import 'package:flutter/services.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ImagePickingRepository {
   final ImagePickingRemoteService _imagePickingRemoteService;
+  final InternetConnectionChecker _internetConnectionChecker;
 
-  ImagePickingRepository(this._imagePickingRemoteService);
+  ImagePickingRepository(
+      this._imagePickingRemoteService, this._internetConnectionChecker);
 
   Future<Either<ImagePickingFailure, File>> pickImage() async {
     try {
@@ -28,6 +31,10 @@ class ImagePickingRepository {
     required String userId,
     required File file,
   }) async {
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const ImagePickingFailure.noConnection());
+    }
+
     try {
       return right(
           await _imagePickingRemoteService.uploadShopLogoToCloudStorage(
@@ -44,6 +51,10 @@ class ImagePickingRepository {
     required File file,
     required String productId,
   }) async {
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const ImagePickingFailure.noConnection());
+    }
+
     try {
       return right(
           await _imagePickingRemoteService.uploadProductImageToCloudStorage(
