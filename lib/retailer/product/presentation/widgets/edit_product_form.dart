@@ -25,7 +25,8 @@ class EditProductForm extends ConsumerWidget {
             if (!ref.watch(editProductFormStateNotifierProvider
                 .select((state) => state.hasInitialImageChanged)) && imageString != '')
               CachedNetworkImage(
-                  imageUrl: imageString),
+                  imageUrl: imageString,
+                  placeholder: (context ,_) => const CircularProgressIndicator(),),
             if (image != null) Image.file(image),
             ElevatedButton(
               onPressed: () {
