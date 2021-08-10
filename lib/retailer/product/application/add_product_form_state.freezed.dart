@@ -22,6 +22,7 @@ class _$AddProductFormStateTearOff {
       required bool isSaving,
       required bool successful,
       required bool hasFailureUploadingImage,
+      required bool hasFirebaseFailure,
       required String? nameErrorMessage,
       required String? usualPriceErrorMessage,
       required String? discountedPriceErrorMessage,
@@ -37,6 +38,7 @@ class _$AddProductFormStateTearOff {
       isSaving: isSaving,
       successful: successful,
       hasFailureUploadingImage: hasFailureUploadingImage,
+      hasFirebaseFailure: hasFirebaseFailure,
       nameErrorMessage: nameErrorMessage,
       usualPriceErrorMessage: usualPriceErrorMessage,
       discountedPriceErrorMessage: discountedPriceErrorMessage,
@@ -60,6 +62,7 @@ mixin _$AddProductFormState {
   bool get isSaving => throw _privateConstructorUsedError;
   bool get successful => throw _privateConstructorUsedError;
   bool get hasFailureUploadingImage => throw _privateConstructorUsedError;
+  bool get hasFirebaseFailure => throw _privateConstructorUsedError;
   String? get nameErrorMessage => throw _privateConstructorUsedError;
   String? get usualPriceErrorMessage => throw _privateConstructorUsedError;
   String? get discountedPriceErrorMessage => throw _privateConstructorUsedError;
@@ -86,6 +89,7 @@ abstract class $AddProductFormStateCopyWith<$Res> {
       bool isSaving,
       bool successful,
       bool hasFailureUploadingImage,
+      bool hasFirebaseFailure,
       String? nameErrorMessage,
       String? usualPriceErrorMessage,
       String? discountedPriceErrorMessage,
@@ -113,6 +117,7 @@ class _$AddProductFormStateCopyWithImpl<$Res>
     Object? isSaving = freezed,
     Object? successful = freezed,
     Object? hasFailureUploadingImage = freezed,
+    Object? hasFirebaseFailure = freezed,
     Object? nameErrorMessage = freezed,
     Object? usualPriceErrorMessage = freezed,
     Object? discountedPriceErrorMessage = freezed,
@@ -143,6 +148,10 @@ class _$AddProductFormStateCopyWithImpl<$Res>
       hasFailureUploadingImage: hasFailureUploadingImage == freezed
           ? _value.hasFailureUploadingImage
           : hasFailureUploadingImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasFirebaseFailure: hasFirebaseFailure == freezed
+          ? _value.hasFirebaseFailure
+          : hasFirebaseFailure // ignore: cast_nullable_to_non_nullable
               as bool,
       nameErrorMessage: nameErrorMessage == freezed
           ? _value.nameErrorMessage
@@ -197,6 +206,7 @@ abstract class _$AddProductFormStateCopyWith<$Res>
       bool isSaving,
       bool successful,
       bool hasFailureUploadingImage,
+      bool hasFirebaseFailure,
       String? nameErrorMessage,
       String? usualPriceErrorMessage,
       String? discountedPriceErrorMessage,
@@ -226,6 +236,7 @@ class __$AddProductFormStateCopyWithImpl<$Res>
     Object? isSaving = freezed,
     Object? successful = freezed,
     Object? hasFailureUploadingImage = freezed,
+    Object? hasFirebaseFailure = freezed,
     Object? nameErrorMessage = freezed,
     Object? usualPriceErrorMessage = freezed,
     Object? discountedPriceErrorMessage = freezed,
@@ -256,6 +267,10 @@ class __$AddProductFormStateCopyWithImpl<$Res>
       hasFailureUploadingImage: hasFailureUploadingImage == freezed
           ? _value.hasFailureUploadingImage
           : hasFailureUploadingImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasFirebaseFailure: hasFirebaseFailure == freezed
+          ? _value.hasFirebaseFailure
+          : hasFirebaseFailure // ignore: cast_nullable_to_non_nullable
               as bool,
       nameErrorMessage: nameErrorMessage == freezed
           ? _value.nameErrorMessage
@@ -306,6 +321,7 @@ class _$_AddProductFormState extends _AddProductFormState {
       required this.isSaving,
       required this.successful,
       required this.hasFailureUploadingImage,
+      required this.hasFirebaseFailure,
       required this.nameErrorMessage,
       required this.usualPriceErrorMessage,
       required this.discountedPriceErrorMessage,
@@ -328,6 +344,8 @@ class _$_AddProductFormState extends _AddProductFormState {
   @override
   final bool hasFailureUploadingImage;
   @override
+  final bool hasFirebaseFailure;
+  @override
   final String? nameErrorMessage;
   @override
   final String? usualPriceErrorMessage;
@@ -348,7 +366,7 @@ class _$_AddProductFormState extends _AddProductFormState {
 
   @override
   String toString() {
-    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, hasFailureUploadingImage: $hasFailureUploadingImage, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountedPriceErrorMessage: $discountedPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, imageFile: $imageFile, description: $description, availability: $availability)';
+    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, hasFailureUploadingImage: $hasFailureUploadingImage, hasFirebaseFailure: $hasFirebaseFailure, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountedPriceErrorMessage: $discountedPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, imageFile: $imageFile, description: $description, availability: $availability)';
   }
 
   @override
@@ -371,14 +389,16 @@ class _$_AddProductFormState extends _AddProductFormState {
                 const DeepCollectionEquality().equals(
                     other.hasFailureUploadingImage,
                     hasFailureUploadingImage)) &&
+            (identical(other.hasFirebaseFailure, hasFirebaseFailure) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasFirebaseFailure, hasFirebaseFailure)) &&
             (identical(other.nameErrorMessage, nameErrorMessage) ||
                 const DeepCollectionEquality()
                     .equals(other.nameErrorMessage, nameErrorMessage)) &&
             (identical(other.usualPriceErrorMessage, usualPriceErrorMessage) ||
                 const DeepCollectionEquality().equals(
                     other.usualPriceErrorMessage, usualPriceErrorMessage)) &&
-            (identical(other.discountedPriceErrorMessage,
-                    discountedPriceErrorMessage) ||
+            (identical(other.discountedPriceErrorMessage, discountedPriceErrorMessage) ||
                 const DeepCollectionEquality().equals(
                     other.discountedPriceErrorMessage,
                     discountedPriceErrorMessage)) &&
@@ -409,6 +429,7 @@ class _$_AddProductFormState extends _AddProductFormState {
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(successful) ^
       const DeepCollectionEquality().hash(hasFailureUploadingImage) ^
+      const DeepCollectionEquality().hash(hasFirebaseFailure) ^
       const DeepCollectionEquality().hash(nameErrorMessage) ^
       const DeepCollectionEquality().hash(usualPriceErrorMessage) ^
       const DeepCollectionEquality().hash(discountedPriceErrorMessage) ^
@@ -433,6 +454,7 @@ abstract class _AddProductFormState extends AddProductFormState {
       required bool isSaving,
       required bool successful,
       required bool hasFailureUploadingImage,
+      required bool hasFirebaseFailure,
       required String? nameErrorMessage,
       required String? usualPriceErrorMessage,
       required String? discountedPriceErrorMessage,
@@ -454,6 +476,8 @@ abstract class _AddProductFormState extends AddProductFormState {
   bool get successful => throw _privateConstructorUsedError;
   @override
   bool get hasFailureUploadingImage => throw _privateConstructorUsedError;
+  @override
+  bool get hasFirebaseFailure => throw _privateConstructorUsedError;
   @override
   String? get nameErrorMessage => throw _privateConstructorUsedError;
   @override

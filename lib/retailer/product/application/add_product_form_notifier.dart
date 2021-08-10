@@ -131,6 +131,12 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
 
         result.fold((imagePickingFailure) {
           imagePickingFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
             orElse: () {
               state = state.copyWith(
                 isSaving: false,
@@ -142,29 +148,33 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
           newProduct = newProduct.copyWith(image: filePath);
         });
       }
-      final failureOrSuccess =
-          await _productRepository.addProduct(newProduct, uid);
 
-      failureOrSuccess.fold((firestoreFailure) {
-        firestoreFailure.maybeWhen(
-          noConnection: () {
-            state = state.copyWith(
-              hasConnection: false,
-              isSaving: false,
-            );
-          },
-          orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-            );
-          },
-        );
-      }, (_) {
-        state = state.copyWith(
-          isSaving: false,
-          successful: true,
-        );
-      });
+      if (!state.hasFailureUploadingImage && state.hasConnection) {
+        final failureOrSuccess =
+            await _productRepository.addProduct(newProduct, uid);
+
+        failureOrSuccess.fold((firestoreFailure) {
+          firestoreFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+                hasFirebaseFailure: true,
+              );
+            },
+          );
+        }, (_) {
+          state = state.copyWith(
+            isSaving: false,
+            successful: true,
+          );
+        });
+      }
     }
   }
 
