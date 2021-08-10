@@ -9,6 +9,7 @@ import 'package:deall/retailer/presentation/edit_profile_page.dart';
 import 'package:deall/retailer/presentation/retailer_home_page.dart';
 import 'package:deall/retailer/product/presentation/add_product_page.dart';
 import 'package:deall/retailer/presentation/retailer_profile_page.dart';
+import 'package:deall/retailer/product/presentation/edit_product_page.dart';
 import 'package:deall/splash/splash_page.dart';
 
 @MaterialAutoRouter(
@@ -24,6 +25,7 @@ import 'package:deall/splash/splash_page.dart';
     MaterialRoute(page: RetailerSignUpPage),
     MaterialRoute(page: RetailerProfilePage),
     MaterialRoute(page: EditProfilePage),
+    MaterialRoute(page: EditProductPage),
   ],
   replaceInRouteName: 'Page,Route',
 )
