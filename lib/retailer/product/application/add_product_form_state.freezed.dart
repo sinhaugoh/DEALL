@@ -28,6 +28,8 @@ class _$AddProductFormStateTearOff {
       required String name,
       required double usualPrice,
       required double discountedPrice,
+      required String usualPriceString,
+      required String discountedPriceString,
       required File? imageFile,
       required String description,
       required bool availability}) {
@@ -43,6 +45,8 @@ class _$AddProductFormStateTearOff {
       name: name,
       usualPrice: usualPrice,
       discountedPrice: discountedPrice,
+      usualPriceString: usualPriceString,
+      discountedPriceString: discountedPriceString,
       imageFile: imageFile,
       description: description,
       availability: availability,
@@ -66,6 +70,8 @@ mixin _$AddProductFormState {
   String get name => throw _privateConstructorUsedError;
   double get usualPrice => throw _privateConstructorUsedError;
   double get discountedPrice => throw _privateConstructorUsedError;
+  String get usualPriceString => throw _privateConstructorUsedError;
+  String get discountedPriceString => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
@@ -92,6 +98,8 @@ abstract class $AddProductFormStateCopyWith<$Res> {
       String name,
       double usualPrice,
       double discountedPrice,
+      String usualPriceString,
+      String discountedPriceString,
       File? imageFile,
       String description,
       bool availability});
@@ -119,6 +127,8 @@ class _$AddProductFormStateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountedPrice = freezed,
+    Object? usualPriceString = freezed,
+    Object? discountedPriceString = freezed,
     Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -168,6 +178,14 @@ class _$AddProductFormStateCopyWithImpl<$Res>
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
+      usualPriceString: usualPriceString == freezed
+          ? _value.usualPriceString
+          : usualPriceString // ignore: cast_nullable_to_non_nullable
+              as String,
+      discountedPriceString: discountedPriceString == freezed
+          ? _value.discountedPriceString
+          : discountedPriceString // ignore: cast_nullable_to_non_nullable
+              as String,
       imageFile: imageFile == freezed
           ? _value.imageFile
           : imageFile // ignore: cast_nullable_to_non_nullable
@@ -203,6 +221,8 @@ abstract class _$AddProductFormStateCopyWith<$Res>
       String name,
       double usualPrice,
       double discountedPrice,
+      String usualPriceString,
+      String discountedPriceString,
       File? imageFile,
       String description,
       bool availability});
@@ -232,6 +252,8 @@ class __$AddProductFormStateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? usualPrice = freezed,
     Object? discountedPrice = freezed,
+    Object? usualPriceString = freezed,
+    Object? discountedPriceString = freezed,
     Object? imageFile = freezed,
     Object? description = freezed,
     Object? availability = freezed,
@@ -281,6 +303,14 @@ class __$AddProductFormStateCopyWithImpl<$Res>
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
               as double,
+      usualPriceString: usualPriceString == freezed
+          ? _value.usualPriceString
+          : usualPriceString // ignore: cast_nullable_to_non_nullable
+              as String,
+      discountedPriceString: discountedPriceString == freezed
+          ? _value.discountedPriceString
+          : discountedPriceString // ignore: cast_nullable_to_non_nullable
+              as String,
       imageFile: imageFile == freezed
           ? _value.imageFile
           : imageFile // ignore: cast_nullable_to_non_nullable
@@ -312,6 +342,8 @@ class _$_AddProductFormState extends _AddProductFormState {
       required this.name,
       required this.usualPrice,
       required this.discountedPrice,
+      required this.usualPriceString,
+      required this.discountedPriceString,
       required this.imageFile,
       required this.description,
       required this.availability})
@@ -340,6 +372,10 @@ class _$_AddProductFormState extends _AddProductFormState {
   @override
   final double discountedPrice;
   @override
+  final String usualPriceString;
+  @override
+  final String discountedPriceString;
+  @override
   final File? imageFile;
   @override
   final String description;
@@ -348,7 +384,7 @@ class _$_AddProductFormState extends _AddProductFormState {
 
   @override
   String toString() {
-    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, hasFirebaseFailure: $hasFirebaseFailure, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountedPriceErrorMessage: $discountedPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, imageFile: $imageFile, description: $description, availability: $availability)';
+    return 'AddProductFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, hasFirebaseFailure: $hasFirebaseFailure, nameErrorMessage: $nameErrorMessage, usualPriceErrorMessage: $usualPriceErrorMessage, discountedPriceErrorMessage: $discountedPriceErrorMessage, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, usualPriceString: $usualPriceString, discountedPriceString: $discountedPriceString, imageFile: $imageFile, description: $description, availability: $availability)';
   }
 
   @override
@@ -389,6 +425,12 @@ class _$_AddProductFormState extends _AddProductFormState {
             (identical(other.discountedPrice, discountedPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.discountedPrice, discountedPrice)) &&
+            (identical(other.usualPriceString, usualPriceString) ||
+                const DeepCollectionEquality()
+                    .equals(other.usualPriceString, usualPriceString)) &&
+            (identical(other.discountedPriceString, discountedPriceString) ||
+                const DeepCollectionEquality().equals(
+                    other.discountedPriceString, discountedPriceString)) &&
             (identical(other.imageFile, imageFile) ||
                 const DeepCollectionEquality()
                     .equals(other.imageFile, imageFile)) &&
@@ -414,6 +456,8 @@ class _$_AddProductFormState extends _AddProductFormState {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(usualPrice) ^
       const DeepCollectionEquality().hash(discountedPrice) ^
+      const DeepCollectionEquality().hash(usualPriceString) ^
+      const DeepCollectionEquality().hash(discountedPriceString) ^
       const DeepCollectionEquality().hash(imageFile) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(availability);
@@ -438,6 +482,8 @@ abstract class _AddProductFormState extends AddProductFormState {
       required String name,
       required double usualPrice,
       required double discountedPrice,
+      required String usualPriceString,
+      required String discountedPriceString,
       required File? imageFile,
       required String description,
       required bool availability}) = _$_AddProductFormState;
@@ -465,6 +511,10 @@ abstract class _AddProductFormState extends AddProductFormState {
   double get usualPrice => throw _privateConstructorUsedError;
   @override
   double get discountedPrice => throw _privateConstructorUsedError;
+  @override
+  String get usualPriceString => throw _privateConstructorUsedError;
+  @override
+  String get discountedPriceString => throw _privateConstructorUsedError;
   @override
   File? get imageFile => throw _privateConstructorUsedError;
   @override

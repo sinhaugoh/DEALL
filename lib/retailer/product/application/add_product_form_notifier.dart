@@ -20,12 +20,12 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = state.copyWith(name: name);
   }
 
-  void prodUsualPriceChanged(double usualPrice) {
-    state = state.copyWith(usualPrice: usualPrice);
+  void prodUsualPriceChanged(String usualPrice) {
+    state = state.copyWith(usualPriceString: usualPrice);
   }
 
-  void prodDiscountPriceChanged(double discountedPrice) {
-    state = state.copyWith(discountedPrice: discountedPrice);
+  void prodDiscountPriceChanged(String discountedPrice) {
+    state = state.copyWith(discountedPriceString: discountedPrice);
   }
 
   void prodImageChanged(File? imageFile) {
@@ -56,7 +56,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(nameErrorMessage: null),
     );
     //validate usualPrice
-    final usualPriceValidate = validateUsualPrice(state.usualPrice);
+    final usualPriceValidate = validateUsualPrice(stateCopy.usualPriceString);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
         empty: () {
@@ -67,16 +67,19 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
             usualPriceErrorMessage:
-                'Usual price of product must be between \$0.00 and \$10,000.00',
+                'Usual price of product must be between \$0.02 and \$10,000.00',
           );
         },
         orElse: () {},
       ),
-      (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
+      (price) => stateCopy = stateCopy.copyWith(
+        usualPriceErrorMessage: null,
+        usualPrice: price,
+      ),
     );
     //validate discounted price
-    final discountedPriceValidate =
-        validateDiscountedPrice(state.discountedPrice, state.usualPrice);
+    final discountedPriceValidate = validateDiscountedPrice(
+        stateCopy.discountedPriceString, stateCopy.usualPrice);
     discountedPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
         empty: () {
@@ -93,12 +96,19 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         },
         orElse: () {},
       ),
-      (r) => stateCopy = stateCopy.copyWith(discountedPriceErrorMessage: null),
+      (price) => stateCopy = stateCopy.copyWith(
+        discountedPriceErrorMessage: null,
+        discountedPrice: price,
+      ),
     );
     state = stateCopy;
   }
 
   Future<void> addProduct() async {
+    state = state.copyWith(
+      hasConnection: true,
+      hasFirebaseFailure: false,
+    );
     _validateInputs();
 
     //if the input are valid
