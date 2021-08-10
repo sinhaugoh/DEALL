@@ -21,10 +21,13 @@ class RetailerProfilePage extends ConsumerWidget {
         title: Text(retailer?.name ?? ''),
         actions: [
           IconButton(
-            onPressed: () {
-              AutoRouter.of(context).push(
-                  EditProfileRoute(retailer: retailer ?? Retailer.initial()));
-            },
+            
+            onPressed: retailer == null
+                ? () {}
+                : () {
+                    AutoRouter.of(context)
+                        .push(EditProfileRoute(retailer: retailer));
+                  },
             icon: const Icon(Icons.edit),
           )
         ],
@@ -32,7 +35,7 @@ class RetailerProfilePage extends ConsumerWidget {
       drawer: const ConsumerDrawer(),
       body: retailer == null
           ? const Center(
-            //TODO: implement no connection page
+              //TODO: implement no connection page
               child: Text('No connection!'),
             )
           : SingleChildScrollView(

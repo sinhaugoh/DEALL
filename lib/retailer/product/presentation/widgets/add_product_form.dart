@@ -1,14 +1,16 @@
 import 'package:deall/retailer/product/shared/providers.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
-import 'package:extended_masked_text/extended_masked_text.dart';
 
 class AddProductForm extends ConsumerWidget {
-  const AddProductForm({Key? key}) : super(key: key);
+  final MoneyMaskedTextController usualPriceController;
+  final MoneyMaskedTextController discountedPriceController;
+  const AddProductForm(this.usualPriceController, this.discountedPriceController, {Key? key}) : super(key: key);
 
   String get _currency =>
       NumberFormat.compactSimpleCurrency(locale: 'en').currencySymbol;
@@ -17,17 +19,6 @@ class AddProductForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final image = ref.watch(
         addProductFormNotifierProvider.select((state) => state.imageFile));
-    final usualPriceController = MoneyMaskedTextController(
-      decimalSeparator: '.',
-      thousandSeparator: ',',
-      initialValue: 0.00,
-    );
-    final discountedPriceController = MoneyMaskedTextController(
-      decimalSeparator: '.',
-      thousandSeparator: ',',
-      initialValue: 0.00,
-    );
-
     return Form(
       child: SingleChildScrollView(
         child: Column(

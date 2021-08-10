@@ -27,6 +27,7 @@ final imagePickingRemoteServiceProvider =
         ));
 final imagePickingRepositoryProvider = Provider((ref) => ImagePickingRepository(
       ref.watch(imagePickingRemoteServiceProvider),
+      ref.watch(internetConnectionCheckerProvider),
     ));
 
 // Product providers

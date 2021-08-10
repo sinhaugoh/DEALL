@@ -11,7 +11,7 @@ class AddProductFormState with _$AddProductFormState {
     required bool showErrorMessage,
     required bool isSaving,
     required bool successful,
-    required bool hasFailureUploadingImage,
+    required bool hasFirebaseFailure,
     required String? nameErrorMessage,
     required String? usualPriceErrorMessage,
     required String? discountedPriceErrorMessage,
@@ -28,7 +28,7 @@ class AddProductFormState with _$AddProductFormState {
         showErrorMessage: false,
         isSaving: false,
         successful: false,
-        hasFailureUploadingImage: false,
+        hasFirebaseFailure: false,
         nameErrorMessage: null,
         usualPriceErrorMessage: null,
         discountedPriceErrorMessage: null,
@@ -37,6 +37,6 @@ class AddProductFormState with _$AddProductFormState {
         discountedPrice: 0.0,
         imageFile: null,
         description: '',
-        availability: true,
+        availability: false,
       );
 }
