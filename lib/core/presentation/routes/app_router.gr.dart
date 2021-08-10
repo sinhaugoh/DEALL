@@ -13,12 +13,13 @@ import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
+import '../../../consumer/presentation/retailer_detail_page.dart' as _i14;
 import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
 import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
 import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
 import '../../../splash/splash_page.dart' as _i3;
-import '../../application/retailer/retailer.dart' as _i14;
+import '../../application/retailer/retailer.dart' as _i15;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -81,6 +82,11 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<EditProfileRouteArgs>();
           return _i13.EditProfilePage(key: args.key, retailer: args.retailer);
+        }),
+    RetailerDetailRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i14.RetailerDetailPage();
         })
   };
 
@@ -99,7 +105,8 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/retailer-sign-up-page'),
         _i1.RouteConfig(RetailerProfileRoute.name,
             path: '/retailer-profile-page'),
-        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page')
+        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page'),
+        _i1.RouteConfig(RetailerDetailRoute.name, path: '/retailer-detail-page')
       ];
 }
 
@@ -164,7 +171,7 @@ class RetailerProfileRoute extends _i1.PageRouteInfo {
 }
 
 class EditProfileRoute extends _i1.PageRouteInfo<EditProfileRouteArgs> {
-  EditProfileRoute({_i2.Key? key, required _i14.Retailer retailer})
+  EditProfileRoute({_i2.Key? key, required _i15.Retailer retailer})
       : super(name,
             path: '/edit-profile-page',
             args: EditProfileRouteArgs(key: key, retailer: retailer));
@@ -177,5 +184,11 @@ class EditProfileRouteArgs {
 
   final _i2.Key? key;
 
-  final _i14.Retailer retailer;
+  final _i15.Retailer retailer;
+}
+
+class RetailerDetailRoute extends _i1.PageRouteInfo {
+  const RetailerDetailRoute() : super(name, path: '/retailer-detail-page');
+
+  static const String name = 'RetailerDetailRoute';
 }

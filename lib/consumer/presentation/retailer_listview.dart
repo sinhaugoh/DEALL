@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:deall/consumer/shared/providers.dart';
 
+import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/consumer/presentation/retailer_list_item.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 
 class RetailerListView extends ConsumerWidget {
   const RetailerListView({Key? key}) : super(key: key);
@@ -25,7 +27,9 @@ class RetailerListView extends ConsumerWidget {
               currentRetailerItemIndex.overrideWithValue(index),
             ],
             child: GestureDetector(
-              // onTap: ,
+              onTap: () {
+                AutoRouter.of(context).popAndPush(const RetailerDetailRoute());
+              },
               child: const RetailerItem(),
             ),
           ),
