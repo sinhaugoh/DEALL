@@ -17,9 +17,9 @@ class ProductRepository {
       this._productRemoteService, this._internetConnectionChecker);
 
   Future<Either<FirestoreFailures, List<Product>>> getProductList(
-      String uid) async {
+      String uen) async {
     try {
-      return _productRemoteService.getProductList(uid).then((list) =>
+      return _productRemoteService.getProductList(uen).then((list) =>
           right<FirestoreFailures, List<Product>>(
               list.map((productDTO) => productDTO.toDomain()).toList()));
     } on FirebaseException catch (e) {

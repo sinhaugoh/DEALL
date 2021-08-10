@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:deall/consumer/shared/providers.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,17 +20,21 @@ class RetailerDetailPageState extends ConsumerState<RetailerDetailPage> {
   @override
   void initState() {
     super.initState();
+    final index = ref.watch(currentRetailerItemIndex);
+    final retailerData = retailerList[index];
     Future.microtask(() {
-      
+      ref
+          .read(productListNotifierProvider.notifier)
+          .getProductList(retailerData.uen);
     });
   }
 
-   @override
+  @override
   void dispose() {
     super.dispose();
     _connectivityStreamSubscription?.cancel();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final index = ref.watch(currentRetailerItemIndex);

@@ -16,6 +16,22 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
   StreamSubscription<Either<FirestoreFailures, List<Product>>>?
       _productListStreamSubscription;
 
+  Future<void> getProductList(String uen) async {
+    state = const ProductListState.loading();
+
+    final getListResult = await _repo.getProductList(uen);
+    getListResult.fold((failure) {
+      failure.maybeMap(
+        objectNotFound: (_) {
+          state = const ProductListState.failure("Object not found.");
+        },
+        orElse: () {
+          state = const ProductListState.failure("Unknown error.");
+        },
+      );
+    }, (productList) => state = ProductListState.loaded(productList));
+  }
+
   void getProductStream() {
     state = const ProductListState.loading();
     _productListStreamSubscription =
