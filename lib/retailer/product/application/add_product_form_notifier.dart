@@ -140,7 +140,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
             orElse: () {
               state = state.copyWith(
                 isSaving: false,
-                hasFailureUploadingImage: true,
+                hasFirebaseFailure: true,
               );
             },
           );
@@ -149,7 +149,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         });
       }
 
-      if (!state.hasFailureUploadingImage && state.hasConnection) {
+      if (!state.hasFirebaseFailure && state.hasConnection) {
         final failureOrSuccess =
             await _productRepository.addProduct(newProduct, uid);
 

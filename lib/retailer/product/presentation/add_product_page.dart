@@ -12,7 +12,10 @@ import 'package:deall/retailer/product/presentation/widgets/add_product_form.dar
 class AddProductPage extends ConsumerWidget {
   final MoneyMaskedTextController usualPriceController;
   final MoneyMaskedTextController discountedPriceController;
-  const AddProductPage(this.usualPriceController, this.discountedPriceController, {Key? key}) : super(key: key);
+  const AddProductPage(
+      this.usualPriceController, this.discountedPriceController,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,21 +26,23 @@ class AddProductPage extends ConsumerWidget {
           predicate: (_) => false,
         );
       }
-    });
 
-    ref.listen<bool>(
-      addProductFormNotifierProvider.select((state) => state.hasConnection),
-      (state) {
-        if (state == false) {
-          //TODO: use theme snackbar instead
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('No connection'),
-            duration: Duration(seconds: 5),
-            behavior: SnackBarBehavior.floating,
-          ));
-        }
-      },
-    );
+      if (!state.hasConnection) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('No connection'),
+          duration: Duration(seconds: 5),
+          behavior: SnackBarBehavior.floating,
+        ));
+      }
+
+      if (state.hasFirebaseFailure) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('An unexpected error occurred'),
+          duration: Duration(seconds: 5),
+          behavior: SnackBarBehavior.floating,
+        ));
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
