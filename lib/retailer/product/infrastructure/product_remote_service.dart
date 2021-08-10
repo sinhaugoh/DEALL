@@ -44,6 +44,9 @@ class ProductListRemoteService {
         .update(productDTO.toJson());
   }
 
+  Future<void> deleteProduct(ProductDTO productDTO) async =>
+      _firestore.collection('retailers').doc(productDTO.id).delete();
+
   String generateNewProductId(String uid) {
     final ref = _firestore
         .collection('retailers')
