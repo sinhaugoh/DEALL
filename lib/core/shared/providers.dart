@@ -40,7 +40,7 @@ final productListRemoteServiceProvider =
           ref.watch(firebaseAuthProvider),
         ));
 
-final productListRepoProvider = Provider(
+final productRepoProvider = Provider(
   (ref) => ProductRepository(
     ref.watch(productListRemoteServiceProvider),
     ref.watch(internetConnectionCheckerProvider),
