@@ -8,6 +8,16 @@ class ProductListRemoteService {
 
   ProductListRemoteService(this._firestore, this._firebaseAuth);
 
+  Future<List<ProductDTO>> getProductList(String uid) => _firestore
+      .collection('retailers')
+      .doc(uid)
+      .collection('products')
+      .get()
+      .then((querySnapshot) => querySnapshot.docs
+          .map((queryDocSnapshot) =>
+              ProductDTO.fromJson(queryDocSnapshot.data()))
+          .toList());
+
   Stream<List<ProductDTO>> getProductStream() async* {
     final userId = _firebaseAuth.currentUser!.uid;
     yield* _firestore

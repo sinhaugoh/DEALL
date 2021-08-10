@@ -13,13 +13,33 @@ class ProductRepository {
   final ProductListRemoteService _productRemoteService;
   final InternetConnectionChecker _internetConnectionChecker;
 
-  ProductRepository(this._productRemoteService, this._internetConnectionChecker);
+  ProductRepository(
+      this._productRemoteService, this._internetConnectionChecker);
+
+  Future<Either<FirestoreFailures, List<Product>>> getProductList(
+      String uid) async {
+    try {
+      return _productRemoteService.getProductList(uid).then((list) =>
+          right<FirestoreFailures, List<Product>>(
+              list.map((productDTO) => productDTO.toDomain()).toList()));
+    } on FirebaseException catch (e) {
+      if (e.code ==
+          FirebaseException(
+                  code: 'not_found', plugin: "No object found.")
+              .code) {
+        return left(const FirestoreFailures.objectNotFound());
+      }
+      return left(const FirestoreFailures.unknown());
+    }
+  }
 
   Stream<Either<FirestoreFailures, List<Product>>> getProductStream() async* {
-    yield* _productRemoteService.getProductStream().map((list) =>
-        right<FirestoreFailures, List<Product>>(list.map((productDTO) => productDTO.toDomain()).toList()))
-    .onErrorReturnWith((error, _) {
-      if(error is FirebaseException && error.code == 'not_found') {
+    yield* _productRemoteService
+        .getProductStream()
+        .map((list) => right<FirestoreFailures, List<Product>>(
+            list.map((productDTO) => productDTO.toDomain()).toList()))
+        .onErrorReturnWith((error, _) {
+      if (error is FirebaseException && error.code == 'not_found') {
         return left(const FirestoreFailures.objectNotFound());
       } else {
         return left(const FirestoreFailures.unknown());
@@ -49,15 +69,15 @@ class ProductRepository {
   }
 
   Future<Either<FirestoreFailures, Unit>> updateProduct(Product product) async {
-    if(!await _internetConnectionChecker.hasConnection) {
+    if (!await _internetConnectionChecker.hasConnection) {
       return left(const FirestoreFailures.noConnection());
     }
 
-    try{
+    try {
       await _productRemoteService.updateProduct(ProductDTO.fromDomain(product));
       return right(unit);
-    } on FirebaseException catch(e) {
-      if(e.code == 'not-found') {
+    } on FirebaseException catch (e) {
+      if (e.code == 'not-found') {
         return left(const FirestoreFailures.objectNotFound());
       } else {
         return left(const FirestoreFailures.unknown());
