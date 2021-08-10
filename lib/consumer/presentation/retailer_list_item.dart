@@ -1,12 +1,13 @@
-import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/consumer/shared/providers.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-class RetailerItem extends StatelessWidget {
-  final Retailer retailerData;
-  const RetailerItem({Key? key, required this.retailerData}) : super(key: key);
+class RetailerItem extends ConsumerWidget {
+  const RetailerItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final index = ref.watch(currentRetailerItemIndex);
     final mq = MediaQuery.of(context);
     return Container(
       padding: EdgeInsets.only(
@@ -30,17 +31,17 @@ class RetailerItem extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 3,
-                    child: Text(retailerData.name), //shop name
+                    child: Text(retailerList[index].name), //shop name
                   ),
                   Flexible(
                     flex: 3,
                     child: Text(
-                        "543m, ${retailerData.operatingHours}"), //dist and opening hours
+                        "543m, ${retailerList[index].operatingHours}"), //dist and opening hours
                   ),
                   Flexible(
                     flex: 5,
                     child: Text(
-                      retailerData.description.toString(),
+                      retailerList[index].description.toString(),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ), //shop description

@@ -24,6 +24,7 @@ import 'package:deall/splash/splash_page.dart';
     MaterialRoute(page: RetailerSignUpPage),
     MaterialRoute(page: RetailerProfilePage),
     MaterialRoute(page: EditProfilePage),
+    // MaterialRoute(page: ConsumerShopDetailPage),
   ],
   replaceInRouteName: 'Page,Route',
 )
