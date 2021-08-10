@@ -95,17 +95,17 @@ AppBar enterLocationAppBar() {
     title: Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 30),
-        child: Image.asset(Images.logoText)
+        child: Image.asset(Images.logoTextWhite)
       ),
     ),
     actions: [
       // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
       IconButton(onPressed: (){}, icon: Icon(Icons.person)),
     ],
-    backgroundColor: Colors.white,
+    // backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(
-      color: Colors.black
+      color: Colors.white
     ),
   );
 }
