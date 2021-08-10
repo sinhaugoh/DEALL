@@ -22,7 +22,19 @@ class ConsumerDrawer extends ConsumerWidget {
                     fit: BoxFit.cover,
                   ),
                 )
-              )
+              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: NetworkImage(
+              //       'https://static.vecteezy.com/system/resources/thumbnails/000/223/249/small/ketogenic-diet-food-vector.jpg',
+              //     ),
+              //     fit: BoxFit.cover
+              //   ),
+              // ),
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //     colors: [Colors.red, Colors.redAccent])
+              // ),
             ),
             
             ListTile(
