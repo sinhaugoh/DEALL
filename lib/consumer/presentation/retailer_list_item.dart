@@ -8,7 +8,6 @@ class RetailerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var imageURL = retailerData.image.toString();
     final mq = MediaQuery.of(context);
     return Container(
       // color: Colors.tealAccent,
