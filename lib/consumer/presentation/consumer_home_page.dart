@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:deall/consumer/application/retailer_list_state.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -71,29 +72,41 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
 AppBar enterLocationAppBar() {
   return AppBar(
-    title: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: 'Search',
-          prefixIcon: Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide.none,
-          ),
-          fillColor: Colors.white,
-          filled: true,
-          contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
-          suffixIcon: IconButton(onPressed: (){
+    // title: Padding(
+    //   padding: const EdgeInsets.all(8.0),
+    //   child: TextField(
+    //     decoration: InputDecoration(
+    //       hintText: 'Search',
+    //       prefixIcon: Icon(Icons.search),
+    //       border: OutlineInputBorder(
+    //         borderRadius: BorderRadius.circular(10),
+    //         borderSide: BorderSide.none,
+    //       ),
+    //       fillColor: Colors.white,
+    //       filled: true,
+    //       contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+    //       suffixIcon: IconButton(onPressed: (){
 
-          }, icon: Icon(Icons.arrow_forward))
-        ),
+    //       }, icon: Icon(Icons.arrow_forward))
+    //     ),
+    //   ),
+    // ),
+
+    title: Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: 30),
+        child: Image.asset(Images.logoText)
       ),
     ),
     actions: [
-      IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
-      // IconButton(onPressed: (){}, icon: Icon(Icons.person)),
+      // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
+      IconButton(onPressed: (){}, icon: Icon(Icons.person)),
     ],
+    backgroundColor: Colors.white,
+    elevation: 0,
+    iconTheme: IconThemeData(
+      color: Colors.black
+    ),
   );
 }
 
