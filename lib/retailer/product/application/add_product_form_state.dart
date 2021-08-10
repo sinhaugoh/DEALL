@@ -37,6 +37,6 @@ class AddProductFormState with _$AddProductFormState {
         discountedPrice: 0.0,
         imageFile: null,
         description: '',
-        availability: true,
+        availability: false,
       );
 }
