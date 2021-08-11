@@ -17,9 +17,9 @@ class RetailerListView extends ConsumerWidget {
       loading: (_) => const Center(child: CircularProgressIndicator()),
       failure: (failure) => Center(child: Text("$failure failure")),
       loaded: (loaded) => ListView.builder(
-        itemCount: loaded.retailers.length,
+        itemCount: loaded.filteredRetailers.length,
         itemBuilder: (context, index) => RetailerItem(
-          retailerData: loaded.retailers[index],
+          retailerData: loaded.filteredRetailers[index],
         ),
       ),
     );
