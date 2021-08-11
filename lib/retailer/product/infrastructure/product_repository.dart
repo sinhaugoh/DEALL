@@ -66,6 +66,15 @@ class ProductRepository {
     );
   }
 
+  Future<Either<FirestoreFailures, Unit>> updateProductList(
+      List<Product> productList) async {
+    return _handleException(
+      () => _productRemoteService.updateProductList(productList
+          .map((product) => ProductDTO.fromDomain(product))
+          .toList()),
+    );
+  }
+
   Future<Either<FirestoreFailures, Unit>> _handleException(
       Future<void> Function() action) async {
     if (!await _internetConnectionChecker.hasConnection) {

@@ -54,6 +54,22 @@ class ProductListRemoteService {
         .delete();
   }
 
+  Future<void> updateProductList(List<ProductDTO> productList) async {
+    final userId = _firebaseAuth.currentUser!.uid;
+    final batch = _firestore.batch();
+
+    for (final product in productList) {
+      final documentRef = _firestore
+          .collection('retailers')
+          .doc(userId)
+          .collection('products')
+          .doc(product.id);
+      batch.update(documentRef, product.toJson());
+    }
+
+    return batch.commit();
+  }
+
   String generateNewProductId(String uid) {
     final ref = _firestore
         .collection('retailers')
