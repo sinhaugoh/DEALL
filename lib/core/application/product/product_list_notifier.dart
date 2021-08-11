@@ -21,10 +21,50 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
     _productListStreamSubscription =
         _repo.getProductStream().listen((failureOrProductList) {
       failureOrProductList.fold(
-        (f) => state = const ProductListState.failure('Unexpected error. Please contact support'),
+        (f) => state = const ProductListState.failure(
+            'Unexpected error. Please contact support'),
         (productList) => state = ProductListState.loaded(productList),
       );
     });
+  }
+
+  Future<void> toggleAllOn() async {
+    _toggleAll(availability: true);
+  }
+
+    Future<void> toggleAllOff() async {
+    _toggleAll(availability: false);
+  }
+
+  Future<void> _toggleAll({required bool availability}) async {
+        state.maybeMap(
+      loaded: (loadedState) async {
+        Loaded loadedStateCopy = loadedState.copyWith(
+          hasConnection: true,
+          hasFirebaseFailure: false,
+        );
+        final toggledProduct = loadedStateCopy.products
+            .map(
+              (product) => product.copyWith(availability: availability),
+            )
+            .toList();
+
+        final successOrFailure = await _repo.updateProductList(toggledProduct);
+        successOrFailure.fold(
+          (f) => f.maybeWhen(
+              noConnection: () =>
+                  loadedStateCopy = loadedStateCopy.copyWith(hasConnection: false),
+              orElse: () {
+                loadedStateCopy =
+                    loadedStateCopy.copyWith(hasFirebaseFailure: true);
+              }),
+          (r) => loadedStateCopy = loadedStateCopy.copyWith(products: toggledProduct),
+        );
+
+        state = loadedStateCopy;
+      },
+      orElse: () {},
+    );
   }
 
   @override
