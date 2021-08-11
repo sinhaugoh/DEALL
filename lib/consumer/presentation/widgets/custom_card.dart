@@ -1,6 +1,7 @@
 import 'package:deall/core/application/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer retailerData;
@@ -88,22 +89,42 @@ class CustomCard extends StatelessWidget {
                   isThreeLine: true,
                   title: Text(
                     retailerData.name,
+                    //remove
+                    style: GoogleFonts.averiaSansLibre(
+                      // textStyle: Theme.of(context).textTheme.headline4,
+                      fontSize: 18,
+                      // fontWeight: FontWeight.w700,
+                      // fontStyle: FontStyle.italic,
+                    ),
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 5,),
                       Text(
-                        "\n${retailerData.operatingHours}",
+                        "${retailerData.operatingHours}",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: Colors.grey),
+                        style: GoogleFonts.cantarell(
+                          // textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 12,
+                          // fontWeight: FontWeight.w700,
+                          // fontStyle: FontStyle.italic,
+                        ),
                       ),
-                      Divider(
-                        thickness: 1,
-                      ),
+                      // Divider(
+                      //   thickness: 1,
+                      // ),
+                      SizedBox(height: 5,),
                       Text(
-                         "${retailerData.description.toString()}",
-                        //  style: TextStyle(color: Colors.grey),
+                        "${retailerData.description.toString()}",
+                        style: GoogleFonts.cantarell(
+                          // textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 12,
+                          color: Colors.grey
+                          // fontWeight: FontWeight.w700,
+                          // fontStyle: FontStyle.italic,
+                        ),
                       )
                     ],
                   ),
