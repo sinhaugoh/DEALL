@@ -12,7 +12,7 @@ class CustomCard extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         // color: Colors.grey,
         shadowColor: Colors.grey.withOpacity(0.5),
-        elevation: 5,
+        elevation: 2,
         child: Row(
           children: [
 

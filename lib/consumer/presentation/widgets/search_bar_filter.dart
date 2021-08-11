@@ -21,23 +21,41 @@ class SearchBarWithFilterButton extends StatelessWidget {
 
       child: Padding(
         padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
-        child: TextField(
-          decoration: InputDecoration(
-            hintText: 'Search',
-            prefixIcon: Icon(Icons.search),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              child: SearchBar()
             ),
-            fillColor: Colors.grey.withOpacity(0.1),
-            filled: true,
-            contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
-            suffixIcon: IconButton(onPressed: (){
-              //filter menu
-            }, 
-            icon: Icon(Icons.filter_alt_outlined))
-          ),
+            // SizedBox(width: 15,),
+            IconButton(onPressed: (){
+              
+            }, icon: Icon(Icons.filter_alt_outlined))
+        ],)
+      ),
+    );
+  }
+}
+
+class SearchBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        
+        hintText: 'Search',
+        prefixIcon: Icon(Icons.search),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
+        fillColor: Colors.grey.withOpacity(0.1),
+        filled: true,
+        contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+        suffixIcon: IconButton(onPressed: (){
+          //filter menu
+        }, 
+        icon: Icon(Icons.arrow_forward)),
       ),
     );
   }
