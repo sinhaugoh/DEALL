@@ -237,12 +237,16 @@ class EditProductFormNotifier
   }
 
   Future<void> deleteProduct() async {
+    state = state.copyWith(
+      hasConnection: true,
+      hasFirebaseFailure: false,
+    );
     final successOrFailure =
         await _productRepository.deleteProduct(state.product);
 
     successOrFailure.fold(
       (f) => f.maybeWhen(
-        noConnection: () => state.copyWith(
+        noConnection: () => state = state.copyWith(
           hasConnection: false,
           isSaving: false,
         ),

@@ -12,21 +12,21 @@ class EditProductForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final image = ref.watch(editProductFormStateNotifierProvider
         .select((state) => state.imageFile));
-    
-    final imageString = ref
-                      .read(editProductFormStateNotifierProvider)
-                      .product
-                      .image;
+
+    final imageString =
+        ref.read(editProductFormStateNotifierProvider).product.image;
 
     return Form(
       child: SingleChildScrollView(
         child: Column(
           children: [
             if (!ref.watch(editProductFormStateNotifierProvider
-                .select((state) => state.hasInitialImageChanged)) && imageString != '')
+                    .select((state) => state.hasInitialImageChanged)) &&
+                imageString != '')
               CachedNetworkImage(
-                  imageUrl: imageString,
-                  placeholder: (context ,_) => const CircularProgressIndicator(),),
+                imageUrl: imageString,
+                placeholder: (context, _) => const CircularProgressIndicator(),
+              ),
             if (image != null) Image.file(image),
             ElevatedButton(
               onPressed: () {
@@ -120,20 +120,39 @@ class EditProductForm extends ConsumerWidget {
               ),
             ),
             //availability default true
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () {
-                  //dismiss the keyboard
-                  final currentFocus = FocusScope.of(context);
-                  currentFocus.unfocus();
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      //dismiss the keyboard
+                      final currentFocus = FocusScope.of(context);
+                      currentFocus.unfocus();
 
-                  ref
-                      .read(editProductFormStateNotifierProvider.notifier)
-                      .updateProduct();
-                },
-                child: const Text('Update'),
-              ),
+                      ref
+                          .read(editProductFormStateNotifierProvider.notifier)
+                          .updateProduct();
+                    },
+                    child: const Text('Update'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      //dismiss the keyboard
+                      final currentFocus = FocusScope.of(context);
+                      currentFocus.unfocus();
+
+                      ref
+                          .read(editProductFormStateNotifierProvider.notifier)
+                          .deleteProduct();
+                    },
+                    child: const Text('Delete'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
