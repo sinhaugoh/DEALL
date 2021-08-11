@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
-  final Retailer retailerData;
+  final Retailer? retailerData;
 
-  const CustomCard({Key? key, required this.retailerData}) : super(key: key);
+  const CustomCard({Key? key, this.retailerData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,57 +25,16 @@ class CustomCard extends StatelessWidget {
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
-              // retailerData.image.toString() == '' ? 
-                  // FittedBox(
-                  //   clipBehavior: Clip.hardEdge,
-                  //   child: Image.asset(
-                  //     Images.imageNotFound, 
-                  //     fit: BoxFit.cover,
-                  //     // width: MediaQuery.of(context).size.width,
-                  //     // height: MediaQuery.of(context).size.height,
-                  //     scale: 1.1,
-                  //   ),
-                  // ) : Image.network(retailerData.image, fit: BoxFit.cover,
-
-                // width: 350,
-                // height: 340,
-                // borderRadius: BorderRadius.circular(20.0),
-
-                // decoration: BoxDecoration(
-                //   // image: AssetImage('image-not-found.png'),
-                  // borderRadius: BorderRadius.circular(20),
-                //       color: Colors.blue,
-                //   boxShadow: [
-                //     BoxShadow(
-                //       color: Colors.grey.withOpacity(0.1),
-                //       blurRadius: 20.0,
-                      
-                //       // spreadRadius: 2.0
-                //     ),
-                //   ],
-                //   image: DecorationImage(
-                //     image: retailerData.image.toString() == '' ? FileImage(Images.imageNotFound) : NetworkImage(retailerData.image),
-                //     fit: BoxFit.cover,
-                //   )
-                // ),
-
-                // child: FadeInImage(
-                //   width: mediaQuery.size.width,
-                //   height: mediaQuery.size.height,
-                //   image: NetworkImage(retailerData.image), 
-                //   placeholder: AssetImage(Images.logo),
-                //   fit: BoxFit.cover,
-                // ),
 
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
-                  child: retailerData.image.toString() == '' ? 
+                  child: retailerData?.image.toString() == '' ? 
                     Image.asset(
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
                       // width: MediaQuery.of(context).size.width,
                       // height: MediaQuery.of(context).size.height,
-                    ) : Image.network(retailerData.image, fit: BoxFit.cover,),
+                    ) : Image.network('${retailerData?.image}', fit: BoxFit.cover,),
                 ),
               ),
             ),
@@ -88,7 +47,7 @@ class CustomCard extends StatelessWidget {
                   // tileColor: Colors.red,
                   isThreeLine: true,
                   title: Text(
-                    retailerData.name,
+                    '${retailerData?.name}',
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -102,7 +61,7 @@ class CustomCard extends StatelessWidget {
                     children: [
                       SizedBox(height: 5,),
                       Text(
-                        "${retailerData.operatingHours}",
+                        "${retailerData?.operatingHours}",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
@@ -117,7 +76,7 @@ class CustomCard extends StatelessWidget {
                       // ),
                       SizedBox(height: 5,),
                       Text(
-                        "${retailerData.description.toString()}",
+                        "${retailerData?.description.toString()}",
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
                           fontSize: 12,
