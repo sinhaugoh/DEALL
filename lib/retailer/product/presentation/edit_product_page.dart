@@ -32,7 +32,6 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
       if (state.hasUpdated || state.hasDeleted) {
         AutoRouter.of(context).pop();
       }
-      print('has connection: ${state.hasConnection}');
       if (!state.hasConnection) {
         //TODO: use theme snackbar instead
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
