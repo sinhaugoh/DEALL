@@ -8,7 +8,7 @@ class RetailerListRemoteService {
 
   Future<List<RetailerDTO>> getRetailerList() async {
     final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await _firestore.collection('retailers').where('visibility', isEqualTo: true).get();
+        await _firestore.collection('retailers').get();
     return querySnapshot.docs
         .map((doc) => RetailerDTO.fromJson(doc.data()))
         .toList();
