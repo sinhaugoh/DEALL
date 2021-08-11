@@ -114,7 +114,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       final productId = _productRepository.generateNewProductId(uid);
 
       // if state.imageFile == null
-      final newProduct = Product(
+      var newProduct = Product(
         id: productId,
         name: state.name,
         usualPrice: state.usualPrice,
@@ -130,40 +130,51 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
                 userId: uid, file: state.imageFile!, productId: productId);
 
         result.fold((imagePickingFailure) {
-          imagePickingFailure.maybeWhen(orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-              hasFailureUploadingImage: true,
-            );
-          });
-        }, (filePath) {
-          newProduct.copyWith(image: filePath);
+          imagePickingFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+                hasFirebaseFailure: true,
+              );
+            },
+          );
+        }, (filePath) async {
+          newProduct = newProduct.copyWith(image: filePath);
         });
       }
 
-      final failureOrSuccess =
-          await _productRepository.addProduct(newProduct, uid);
+      if (!state.hasFirebaseFailure && state.hasConnection) {
+        final failureOrSuccess =
+            await _productRepository.addProduct(newProduct, uid);
 
-      failureOrSuccess.fold((firestoreFailure) {
-        firestoreFailure.maybeWhen(
-          noConnection: () {
-            state = state.copyWith(
-              hasConnection: false,
-              isSaving: false,
-            );
-          },
-          orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-            );
-          },
-        );
-      }, (_) {
-        state = state.copyWith(
-          isSaving: false,
-          successful: true,
-        );
-      });
+        failureOrSuccess.fold((firestoreFailure) {
+          firestoreFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+                hasFirebaseFailure: true,
+              );
+            },
+          );
+        }, (_) {
+          state = state.copyWith(
+            isSaving: false,
+            successful: true,
+          );
+        });
+      }
     }
   }
 

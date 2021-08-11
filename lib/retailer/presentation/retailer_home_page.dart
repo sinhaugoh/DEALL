@@ -6,6 +6,7 @@ import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
@@ -23,6 +24,17 @@ class RetailerHomePage extends ConsumerStatefulWidget {
 
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
+
+  final usualPriceController = MoneyMaskedTextController(
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+    initialValue: 0.00,
+  );
+  final discountedPriceController = MoneyMaskedTextController(
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+    initialValue: 0.00,
+  );
 
   @override
   void initState() {
@@ -127,7 +139,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               ),
               TextButton(
                 onPressed: () {
-                  AutoRouter.of(context).push(const AddProductRoute());
+                  AutoRouter.of(context).push(AddProductRoute(usualPriceController: usualPriceController, discountedPriceController: discountedPriceController));
                 },
                 child: const ListTile(
                   leading: Icon(Icons.add_circle),
