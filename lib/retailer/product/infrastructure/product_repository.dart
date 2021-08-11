@@ -53,6 +53,9 @@ class ProductRepository {
 
   Future<Either<FirestoreFailures, void>> addProduct(
       Product newProduct, String uid) async {
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const FirestoreFailures.noConnection());
+    }
     try {
       final newProductDTO = ProductDTO.fromDomain(newProduct);
       await _productRemoteService.addProduct(newProductDTO, uid);
@@ -69,12 +72,25 @@ class ProductRepository {
   }
 
   Future<Either<FirestoreFailures, Unit>> updateProduct(Product product) async {
+    return _handleException(
+      () => _productRemoteService.updateProduct(ProductDTO.fromDomain(product)),
+    );
+  }
+
+  Future<Either<FirestoreFailures, Unit>> deleteProduct(Product product) async {
+    return _handleException(
+      () => _productRemoteService.deleteProduct(ProductDTO.fromDomain(product)),
+    );
+  }
+
+  Future<Either<FirestoreFailures, Unit>> _handleException(
+      Future<void> Function() action) async {
     if (!await _internetConnectionChecker.hasConnection) {
       return left(const FirestoreFailures.noConnection());
     }
 
     try {
-      await _productRemoteService.updateProduct(ProductDTO.fromDomain(product));
+      await action();
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.code == 'not-found') {
