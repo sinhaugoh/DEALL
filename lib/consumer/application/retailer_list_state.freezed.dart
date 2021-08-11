@@ -28,9 +28,10 @@ class _$RetailerListStateTearOff {
     return const Loading();
   }
 
-  Loaded loaded(List<Retailer> retailers) {
+  Loaded loaded(List<Retailer> retailers, List<Retailer> filteredRetailers) {
     return Loaded(
       retailers,
+      filteredRetailers,
     );
   }
 
@@ -51,7 +52,9 @@ mixin _$RetailerListState {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +63,9 @@ mixin _$RetailerListState {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -143,7 +148,9 @@ class _$Initial extends Initial {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -155,7 +162,9 @@ class _$Initial extends Initial {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -242,7 +251,9 @@ class _$NoConnection extends NoConnection {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) {
     return noConnection();
@@ -254,7 +265,9 @@ class _$NoConnection extends NoConnection {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -338,7 +351,9 @@ class _$Loading extends Loading {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -350,7 +365,9 @@ class _$Loading extends Loading {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -398,7 +415,7 @@ abstract class Loading extends RetailerListState {
 abstract class $LoadedCopyWith<$Res> {
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
       _$LoadedCopyWithImpl<$Res>;
-  $Res call({List<Retailer> retailers});
+  $Res call({List<Retailer> retailers, List<Retailer> filteredRetailers});
 }
 
 /// @nodoc
@@ -413,11 +430,16 @@ class _$LoadedCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? retailers = freezed,
+    Object? filteredRetailers = freezed,
   }) {
     return _then(Loaded(
       retailers == freezed
           ? _value.retailers
           : retailers // ignore: cast_nullable_to_non_nullable
+              as List<Retailer>,
+      filteredRetailers == freezed
+          ? _value.filteredRetailers
+          : filteredRetailers // ignore: cast_nullable_to_non_nullable
               as List<Retailer>,
     ));
   }
@@ -426,14 +448,16 @@ class _$LoadedCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Loaded extends Loaded {
-  const _$Loaded(this.retailers) : super._();
+  const _$Loaded(this.retailers, this.filteredRetailers) : super._();
 
   @override
   final List<Retailer> retailers;
+  @override
+  final List<Retailer> filteredRetailers;
 
   @override
   String toString() {
-    return 'RetailerListState.loaded(retailers: $retailers)';
+    return 'RetailerListState.loaded(retailers: $retailers, filteredRetailers: $filteredRetailers)';
   }
 
   @override
@@ -442,12 +466,17 @@ class _$Loaded extends Loaded {
         (other is Loaded &&
             (identical(other.retailers, retailers) ||
                 const DeepCollectionEquality()
-                    .equals(other.retailers, retailers)));
+                    .equals(other.retailers, retailers)) &&
+            (identical(other.filteredRetailers, filteredRetailers) ||
+                const DeepCollectionEquality()
+                    .equals(other.filteredRetailers, filteredRetailers)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(retailers);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(retailers) ^
+      const DeepCollectionEquality().hash(filteredRetailers);
 
   @JsonKey(ignore: true)
   @override
@@ -460,10 +489,12 @@ class _$Loaded extends Loaded {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) {
-    return loaded(retailers);
+    return loaded(retailers, filteredRetailers);
   }
 
   @override
@@ -472,12 +503,14 @@ class _$Loaded extends Loaded {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(retailers);
+      return loaded(retailers, filteredRetailers);
     }
     return orElse();
   }
@@ -512,10 +545,12 @@ class _$Loaded extends Loaded {
 }
 
 abstract class Loaded extends RetailerListState {
-  const factory Loaded(List<Retailer> retailers) = _$Loaded;
+  const factory Loaded(
+      List<Retailer> retailers, List<Retailer> filteredRetailers) = _$Loaded;
   const Loaded._() : super._();
 
   List<Retailer> get retailers => throw _privateConstructorUsedError;
+  List<Retailer> get filteredRetailers => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedCopyWith<Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -585,7 +620,9 @@ class _$Failure extends Failure {
     required TResult Function() initial,
     required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailers) loaded,
+    required TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)
+        loaded,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -597,7 +634,9 @@ class _$Failure extends Failure {
     TResult Function()? initial,
     TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailers)? loaded,
+    TResult Function(
+            List<Retailer> retailers, List<Retailer> filteredRetailers)?
+        loaded,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
