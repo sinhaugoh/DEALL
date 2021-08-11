@@ -10,27 +10,23 @@ class SearchBarWithFilterButton extends StatelessWidget {
       // color: Colors.yellow,
       alignment: Alignment.center,
       height: mq.size.height * 0.1,
-      // child: Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      //   child: IconButton(
-      //     onPressed: (){}, 
-      //     icon: Icon(Icons.filter_alt_outlined),
-      //     color: Colors.grey,
-      //   ),
-      // )
 
       child: Padding(
         padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(
-              child: SearchBar()
-            ),
-            // SizedBox(width: 15,),
-            IconButton(onPressed: (){
+            // #1
+            Flexible(child: SearchBar()), 
+            // #2
+            IconButton(
+              color: Colors.grey,
+              onPressed: (){
               
-            }, icon: Icon(Icons.filter_alt_outlined))
+              }, 
+              icon: Icon(
+                Icons.filter_alt_outlined)
+              ),
         ],)
       ),
     );

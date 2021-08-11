@@ -92,6 +92,7 @@ AppBar enterLocationAppBar() {
     //   ),
     // ),
 
+    toolbarHeight: 70,
     title: Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 30),
@@ -115,6 +116,7 @@ Widget consumerHomePageBody(MediaQueryData mq) {
     height: mq.size.height * 0.9,
     child: Column(
       children: const [
+        Divider(thickness: 0, color: Colors.white, height: 12,),
         Flexible(
           child: SearchBarWithFilterButton(), //search bar + filter icon
         ),
