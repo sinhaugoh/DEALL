@@ -18,9 +18,8 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
 
   Future<void> getProductList(String uen) async {
     state = const ProductListState.loading();
-
-    final getListResult = await _repo.getProductList(uen);
-    getListResult.fold((failure) {
+    final failureOrProductList = await _repo.getProductList(uen);
+    failureOrProductList.fold((failure) {
       failure.maybeMap(
         objectNotFound: (_) {
           state = const ProductListState.failure("Object not found.");

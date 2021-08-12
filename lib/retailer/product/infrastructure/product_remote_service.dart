@@ -10,15 +10,23 @@ class ProductListRemoteService {
 
   ProductListRemoteService(this._firestore, this._firebaseAuth);
 
-  Future<List<ProductDTO>> getProductList(String uen) => _firestore
-      .collection('retailers')
-      .where('uen', isEqualTo: uen)
-      .limit(1)
-      .get()
-      .then((querySnapshot) => querySnapshot.docs
-          .map((queryDocSnapshot) =>
-              ProductDTO.fromJson(queryDocSnapshot.data()))
-          .toList());
+  Future<List<ProductDTO>> getProductList(String uen) async {
+    final currentRetailerId = await _firestore
+        .collection('retailers')
+        .where('uen', isEqualTo: uen)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs.first.id);
+
+    return _firestore
+        .collection('retailers')
+        .doc(currentRetailerId)
+        .collection('products')
+        .get()
+        .then((querySnapshot) => querySnapshot.docs
+            .map((queryDocSnapshot) =>
+                ProductDTO.fromJson(queryDocSnapshot.data()))
+            .toList());
+  }
 
   Stream<List<ProductDTO>> getProductStream() async* {
     final userId = _firebaseAuth.currentUser!.uid;

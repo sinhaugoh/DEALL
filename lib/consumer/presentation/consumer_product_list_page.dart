@@ -7,14 +7,14 @@ import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/shared/providers.dart';
-import 'package:deall/retailer/product/application/product_notifier.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ConsumerProductListPage extends ConsumerStatefulWidget {
   final Retailer retailerData;
-  const ConsumerProductListPage(this.retailerData, {Key? key}) : super(key: key);
+  const ConsumerProductListPage(this.retailerData, {Key? key})
+      : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -23,7 +23,7 @@ class ConsumerProductListPage extends ConsumerStatefulWidget {
 
 class ConsumerProductListPageState
     extends ConsumerState<ConsumerProductListPage> {
-  // StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
+  StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
 
   @override
   void initState() {
@@ -35,11 +35,11 @@ class ConsumerProductListPageState
     });
   }
 
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _connectivityStreamSubscription?.cancel();
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    _connectivityStreamSubscription?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +49,17 @@ class ConsumerProductListPageState
       (state) {
         state.maybeWhen(
           noConnection: () {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('No connection'),
-              duration: Duration(seconds: 5),
-              behavior: SnackBarBehavior.floating,
-            ));
+            _connectivityStreamSubscription = ref
+                .read(connectivityProvider)
+                .onConnectivityChanged
+                .listen((result) {
+              if (result != ConnectivityResult.none) {
+                ref
+                    .read(productNotifierProvider.notifier)
+                    .getProductList(widget.retailerData.uen);
+                _connectivityStreamSubscription?.cancel();
+              }
+            });
           },
           failure: (firestoreFailures) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -78,10 +84,10 @@ class ConsumerProductListPageState
         noConnection: (noConnection) =>
             const Center(child: Text("No connection")),
         failure: (failure) => Center(child: Text("$failure failure")),
-        loaded: (loaded) => loadedBody(loaded.products, context, widget.retailerData),
+        loaded: (loaded) =>
+            loadedBody(loaded.products, context, widget.retailerData),
       ),
     );
-    
   }
 }
 
