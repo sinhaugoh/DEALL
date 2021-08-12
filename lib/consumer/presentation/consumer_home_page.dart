@@ -50,6 +50,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
     final mq = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false, //prevent searchbar resize
       appBar: enterLocationAppBar(),
       drawer: const ConsumerDrawer(),
       body: RefreshIndicator(

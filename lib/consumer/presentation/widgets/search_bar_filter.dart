@@ -13,60 +13,62 @@ class SearchBarWithFilterButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mq = MediaQuery.of(context);
     return Container(
-      // color: Colors.yellow,
-      alignment: Alignment.center,
-      height: mq.size.height * 0.1,
+    // color: Colors.yellow,
+    alignment: Alignment.center,
+    height: mq.size.height * 0.1,
 
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
+      child: IntrinsicHeight(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // #1
-            // Expanded(child: SearchBar()), 
-            Expanded(
-              child: TextField(
-                controller: textEditingController,
-                onSubmitted:
-                    ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
-                decoration: InputDecoration(
-                  
-                  hintText: 'Search',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none,
-                  ),
-                  fillColor: Colors.grey.withOpacity(0.1),
-                  filled: true,
-                  contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
-                  suffixIcon: IconButton(onPressed: (){
-                    //filter menu
-                  }, 
-                  icon: Icon(Icons.arrow_forward)),
-                // child: TextField(
-                //   controller: textEditingController,
-                //   onSubmitted:
-                //       ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
-                // ),
-                ),
-              ),
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      // #1
+      // Expanded(child: SearchBar()), 
+      Expanded(
+        child: TextField(
+          controller: textEditingController,
+          onSubmitted:
+              ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
+          decoration: InputDecoration(
+            
+            hintText: 'Search',
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
             ),
-            // #2
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                color: Colors.grey,
-                onPressed: (){
-                
-                }, 
-                icon: Icon(
-                  Icons.filter_alt_outlined)
-                ),
-            ),
-        ],)
+            fillColor: Colors.grey.withOpacity(0.1),
+            filled: true,
+            contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+            suffixIcon: IconButton(onPressed: (){
+              //filter menu
+            }, 
+            icon: Icon(Icons.arrow_forward)),
+          // child: TextField(
+          //   controller: textEditingController,
+          //   onSubmitted:
+          //       ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
+          // ),
+          ),
+        ),
       ),
-    );
+      // #2
+      Align(
+        alignment: Alignment.centerRight,
+        child: IconButton(
+          color: Colors.grey,
+          onPressed: (){
+          
+          }, 
+          icon: Icon(
+            Icons.filter_alt_outlined)
+          ),
+      ),
+        ],),
+      )
+    ),
+        );
   }
 }
 
