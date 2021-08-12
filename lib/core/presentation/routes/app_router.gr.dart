@@ -13,7 +13,7 @@ import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
-import '../../../consumer/presentation/retailer_detail_page.dart' as _i15;
+import '../../../consumer/presentation/consumer_product_list_page.dart' as _i15;
 import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
 import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
@@ -91,10 +91,10 @@ class AppRouter extends _i1.RootStackRouter {
           final args = data.argsAs<EditProductRouteArgs>();
           return _i14.EditProductPage(key: args.key, product: args.product);
         }),
-    RetailerDetailRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    ConsumerProductListRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i15.RetailerDetailPage();
+          return const _i15.ConsumerProductListPage();
         })
   };
 
@@ -115,7 +115,8 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/retailer-profile-page'),
         _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page'),
         _i1.RouteConfig(EditProductRoute.name, path: '/edit-product-page'),
-        _i1.RouteConfig(RetailerDetailRoute.name, path: '/retailer-detail-page')
+        _i1.RouteConfig(ConsumerProductListRoute.name,
+            path: '/consumer-product-list-page')
       ];
 }
 
@@ -213,8 +214,9 @@ class EditProductRouteArgs {
   final _i17.Product product;
 }
 
-class RetailerDetailRoute extends _i1.PageRouteInfo {
-  const RetailerDetailRoute() : super(name, path: '/retailer-detail-page');
+class ConsumerProductListRoute extends _i1.PageRouteInfo {
+  const ConsumerProductListRoute()
+      : super(name, path: '/consumer-product-list-page');
 
-  static const String name = 'RetailerDetailRoute';
+  static const String name = 'ConsumerProductListRoute';
 }

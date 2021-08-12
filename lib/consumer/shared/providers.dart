@@ -1,3 +1,4 @@
+import 'package:deall/core/application/product/product.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/consumer/application/retailer_list_notifier.dart';
@@ -19,5 +20,6 @@ final retailerListNotifierProvider =
     StateNotifierProvider.autoDispose<RetailerListNotifier, RetailerListState>(
         (ref) => RetailerListNotifier(ref.watch(retailerListRepoProvider)));
 
-final currentRetailerItemIndex = Provider<int>((_)=> throw UnimplementedError());
-var retailerList = <Retailer>[];
+final currentRetailerItem = Provider<Retailer>((_)=> throw UnimplementedError());
+
+final currentProductItem = Provider<Product>((_)=> throw UnimplementedError());
