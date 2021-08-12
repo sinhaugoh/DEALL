@@ -1,4 +1,4 @@
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
