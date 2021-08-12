@@ -20,8 +20,16 @@ class RetailerListView extends ConsumerWidget {
       failure: (failure) => Center(child: Text("$failure failure")),
       loaded: (loaded) => ListView.builder(
         itemCount: loaded.filteredRetailers.length,
-        itemBuilder: (context, index) => RetailerItem(
-          retailerData: loaded.filteredRetailers[index],
+        itemBuilder: (context, index) => ProviderScope(
+          overrides: [
+            currentRetailerItem.overrideWithValue(loaded.filteredRetailers[index]),
+          ],
+          child: GestureDetector(
+              onTap: () {
+                AutoRouter.of(context)
+                    .popAndPush(ConsumerProductListRoute(retailerData: loaded.filteredRetailers[index]));
+              },
+              child: const RetailerItem()),
         ),
       ),
     );

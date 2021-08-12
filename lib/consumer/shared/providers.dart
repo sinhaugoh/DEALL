@@ -20,6 +20,6 @@ final retailerListNotifierProvider =
     StateNotifierProvider.autoDispose<RetailerListNotifier, RetailerListState>(
         (ref) => RetailerListNotifier(ref.watch(retailerListRepoProvider)));
 
-final currentRetailerItem = Provider<Retailer>((_)=> throw UnimplementedError());
+final currentRetailerItem = Provider.autoDispose<Retailer>((ref) => throw UnimplementedError());
 
-final currentProductItem = Provider<Product>((_)=> throw UnimplementedError());
+final currentProductItem = Provider.autoDispose<Product>((ref) => throw UnimplementedError());

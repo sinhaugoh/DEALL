@@ -93,8 +93,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     ConsumerProductListRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i15.ConsumerProductListPage();
+        builder: (data) {
+          final args = data.argsAs<ConsumerProductListRouteArgs>();
+          return _i15.ConsumerProductListPage(args.retailerData, key: args.key);
         })
   };
 
@@ -214,9 +215,21 @@ class EditProductRouteArgs {
   final _i17.Product product;
 }
 
-class ConsumerProductListRoute extends _i1.PageRouteInfo {
-  const ConsumerProductListRoute()
-      : super(name, path: '/consumer-product-list-page');
+class ConsumerProductListRoute
+    extends _i1.PageRouteInfo<ConsumerProductListRouteArgs> {
+  ConsumerProductListRoute({required _i16.Retailer retailerData, _i2.Key? key})
+      : super(name,
+            path: '/consumer-product-list-page',
+            args: ConsumerProductListRouteArgs(
+                retailerData: retailerData, key: key));
 
   static const String name = 'ConsumerProductListRoute';
+}
+
+class ConsumerProductListRouteArgs {
+  const ConsumerProductListRouteArgs({required this.retailerData, this.key});
+
+  final _i16.Retailer retailerData;
+
+  final _i2.Key? key;
 }
