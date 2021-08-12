@@ -1,12 +1,18 @@
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
+import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
+  final ProductListView? productListView;
 
-  const CustomCard({Key? key, this.retailerData}) : super(key: key);
+  const CustomCard({
+    Key? key, 
+    this.retailerData,
+    this.productListView,
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +57,7 @@ class CustomCard extends StatelessWidget {
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 18,
+                      fontSize: 19,
                       // fontWeight: FontWeight.w700,
                       // fontStyle: FontStyle.italic,
                     ),
@@ -66,7 +72,7 @@ class CustomCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 12,
+                          fontSize: 13,
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,
                         ),
