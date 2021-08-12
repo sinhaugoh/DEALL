@@ -1,6 +1,5 @@
 import 'package:deall/consumer/presentation/widgets/custom_card.dart';
-import 'package:deall/core/application/retailer.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:flutter/material.dart';
 
 class RetailerItem extends StatelessWidget {

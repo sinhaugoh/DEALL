@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
 import 'package:deall/retailer/application/retailer_edit_profile_form_notifier.dart';
 import 'package:deall/retailer/presentation/widget/edit_profile_form.dart';

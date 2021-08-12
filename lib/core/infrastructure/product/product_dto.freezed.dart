@@ -27,9 +27,7 @@ class _$ProductDTOTearOff {
       required double discountedPrice,
       required String image,
       required String description,
-      required bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-          required FieldValue? dateModified}) {
+      required bool availability}) {
     return _ProductDTO(
       id: id,
       name: name,
@@ -38,7 +36,6 @@ class _$ProductDTOTearOff {
       image: image,
       description: description,
       availability: availability,
-      dateModified: dateModified,
     );
   }
 
@@ -59,8 +56,6 @@ mixin _$ProductDTO {
   String get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get availability => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-  FieldValue? get dateModified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -80,9 +75,7 @@ abstract class $ProductDTOCopyWith<$Res> {
       double discountedPrice,
       String image,
       String description,
-      bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-          FieldValue? dateModified});
+      bool availability});
 }
 
 /// @nodoc
@@ -102,7 +95,6 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
-    Object? dateModified = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -133,10 +125,6 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
               as bool,
-      dateModified: dateModified == freezed
-          ? _value.dateModified
-          : dateModified // ignore: cast_nullable_to_non_nullable
-              as FieldValue?,
     ));
   }
 }
@@ -154,9 +142,7 @@ abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
       double discountedPrice,
       String image,
       String description,
-      bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-          FieldValue? dateModified});
+      bool availability});
 }
 
 /// @nodoc
@@ -178,7 +164,6 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
     Object? image = freezed,
     Object? description = freezed,
     Object? availability = freezed,
-    Object? dateModified = freezed,
   }) {
     return _then(_ProductDTO(
       id: id == freezed
@@ -209,10 +194,6 @@ class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
               as bool,
-      dateModified: dateModified == freezed
-          ? _value.dateModified
-          : dateModified // ignore: cast_nullable_to_non_nullable
-              as FieldValue?,
     ));
   }
 }
@@ -227,9 +208,7 @@ class _$_ProductDTO extends _ProductDTO {
       required this.discountedPrice,
       required this.image,
       required this.description,
-      required this.availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-          required this.dateModified})
+      required this.availability})
       : super._();
 
   factory _$_ProductDTO.fromJson(Map<String, dynamic> json) =>
@@ -249,13 +228,10 @@ class _$_ProductDTO extends _ProductDTO {
   final String description;
   @override
   final bool availability;
-  @override
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-  final FieldValue? dateModified;
 
   @override
   String toString() {
-    return 'ProductDTO(id: $id, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, image: $image, description: $description, availability: $availability, dateModified: $dateModified)';
+    return 'ProductDTO(id: $id, name: $name, usualPrice: $usualPrice, discountedPrice: $discountedPrice, image: $image, description: $description, availability: $availability)';
   }
 
   @override
@@ -279,10 +255,7 @@ class _$_ProductDTO extends _ProductDTO {
                     .equals(other.description, description)) &&
             (identical(other.availability, availability) ||
                 const DeepCollectionEquality()
-                    .equals(other.availability, availability)) &&
-            (identical(other.dateModified, dateModified) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateModified, dateModified)));
+                    .equals(other.availability, availability)));
   }
 
   @override
@@ -294,8 +267,7 @@ class _$_ProductDTO extends _ProductDTO {
       const DeepCollectionEquality().hash(discountedPrice) ^
       const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(availability) ^
-      const DeepCollectionEquality().hash(dateModified);
+      const DeepCollectionEquality().hash(availability);
 
   @JsonKey(ignore: true)
   @override
@@ -316,9 +288,7 @@ abstract class _ProductDTO extends ProductDTO {
       required double discountedPrice,
       required String image,
       required String description,
-      required bool availability,
-      @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-          required FieldValue? dateModified}) = _$_ProductDTO;
+      required bool availability}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
 
   factory _ProductDTO.fromJson(Map<String, dynamic> json) =
@@ -338,9 +308,6 @@ abstract class _ProductDTO extends ProductDTO {
   String get description => throw _privateConstructorUsedError;
   @override
   bool get availability => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(fromJson: _dateModifiedFromJson, toJson: _dataModifiedToJson)
-  FieldValue? get dateModified => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductDTOCopyWith<_ProductDTO> get copyWith =>

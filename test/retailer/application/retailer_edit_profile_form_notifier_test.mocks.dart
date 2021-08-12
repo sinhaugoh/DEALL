@@ -10,7 +10,7 @@ import 'package:deall/auth/application/app_user.dart' as _i8;
 import 'package:deall/auth/application/auth_failure.dart' as _i9;
 import 'package:deall/auth/infrastructure/auth_repository.dart' as _i7;
 import 'package:deall/core/application/image_picking_failure.dart' as _i5;
-import 'package:deall/core/application/retailer.dart' as _i10;
+import 'package:deall/core/application/retailer/retailer.dart' as _i10;
 import 'package:deall/core/infrastructure/image_picking_repository.dart' as _i3;
 import 'package:deall/retailer/application/retailer_failure.dart' as _i12;
 import 'package:deall/retailer/infrastructure/retailer_repository.dart' as _i11;

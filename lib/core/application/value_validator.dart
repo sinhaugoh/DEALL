@@ -34,3 +34,35 @@ Either<ValueFailure, Unit> validatePostal(String input) {
 
 Either<ValueFailure, Unit> validateNotEmpty(String input) =>
     input != '' ? right(unit) : left(const ValueFailure.empty());
+
+Either<ValueFailure, double> validateUsualPrice(String input) {
+  if (input == '') {
+    return left(const ValueFailure.empty());
+  }
+
+  try {
+    final convertedInput = double.parse(input);
+    return convertedInput > 0.01 && convertedInput < 10000
+        ? right(convertedInput)
+        : left(const ValueFailure.invalidPriceValue());
+  } catch (_) {
+    return left(const ValueFailure.invalidPriceValue());
+  }
+}
+
+Either<ValueFailure, double> validateDiscountedPrice(
+    String input, double usualPrice) {
+  if (input == '') {
+    return left(const ValueFailure.empty());
+  }
+  try {
+    final convertedInput = double.parse(input);
+    return convertedInput > 0.0 &&
+            convertedInput < 10000 &&
+            convertedInput < usualPrice
+        ? right(convertedInput)
+        : left(const ValueFailure.invalidPriceValue());
+  } catch (e) {
+    return left(const ValueFailure.invalidPriceValue());
+  }
+}

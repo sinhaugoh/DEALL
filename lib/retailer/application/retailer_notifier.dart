@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/retailer/application/retailer_failure.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

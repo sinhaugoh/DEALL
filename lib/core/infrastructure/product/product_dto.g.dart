@@ -15,7 +15,6 @@ _$_ProductDTO _$_$_ProductDTOFromJson(Map<String, dynamic> json) {
     image: json['image'] as String,
     description: json['description'] as String,
     availability: json['availability'] as bool,
-    dateModified: _dateModifiedFromJson(json['dateModified']),
   );
 }
 
@@ -28,5 +27,4 @@ Map<String, dynamic> _$_$_ProductDTOToJson(_$_ProductDTO instance) =>
       'image': instance.image,
       'description': instance.description,
       'availability': instance.availability,
-      'dateModified': _dataModifiedToJson(instance.dateModified),
     };

@@ -1,12 +1,18 @@
 import 'dart:async';
-
+import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/application/product/product_list_state.dart';
+import 'package:deall/retailer/product/application/product_notifier.dart';
+import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:deall/core/presentation/widgets/drawer_widget.dart';
+
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/shared/providers.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
   const RetailerHomePage({Key? key}) : super(key: key);
@@ -22,11 +28,10 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-      () => ref
-          .read(retailerNotifierProvider.notifier)
-          .getRetailer(),
-    );
+    Future.microtask(() {
+      ref.read(retailerNotifierProvider.notifier).getRetailer();
+      ref.read(productListNotifierProvider.notifier).getProductStream();
+    });
   }
 
   @override
@@ -60,9 +65,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   .onConnectivityChanged
                   .listen((result) {
                 if (result != ConnectivityResult.none) {
-                  ref
-                      .read(retailerNotifierProvider.notifier)
-                      .getRetailer();
+                  ref.read(retailerNotifierProvider.notifier).getRetailer();
                   _connectivityStreamSubscription?.cancel();
                 }
               });
@@ -72,13 +75,65 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         );
       },
     );
-    
+
+    ref.listen<ProductNotifierState>(productStateNotifierProvider, (state) {
+      state.maybeWhen(
+          failure: (firestoreFailures) => firestoreFailures.when(
+                cancelledOperation: () {},
+                objectNotFound: () {},
+                unknown: () {
+                  //TODO: use theme snackbar instead
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Unexpected error. Please contact support.'),
+                    duration: Duration(seconds: 5),
+                    behavior: SnackBarBehavior.floating,
+                  ));
+                },
+                noConnection: () {
+                  //TODO: use theme snackbar instead
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('No connection'),
+                    duration: Duration(seconds: 5),
+                    behavior: SnackBarBehavior.floating,
+                  ));
+                },
+              ),
+          orElse: () {});
+    });
+
+    ref.listen<ProductListState>(productListNotifierProvider, (state) {
+      state.when(
+        initial: () {},
+        loading: () {},
+        loaded: (_, hasConnection, hasFirebaseFailure) {
+          if (!hasConnection) {
+            //TODO: use theme snackbar instead
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('No connection'),
+              duration: Duration(seconds: 5),
+              behavior: SnackBarBehavior.floating,
+            ));
+          }
+
+          if (hasFirebaseFailure) {
+            //TODO: use theme snackbar instead
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Unexpected error. Please contact support.'),
+              duration: Duration(seconds: 5),
+              behavior: SnackBarBehavior.floating,
+            ));
+          }
+        },
+        noConnection: () {},
+        failure: (_) {},
+      );
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('DEALL'),
       ),
-      //TODO: change to retailer drawer
-      drawer: const ConsumerDrawer(),
+      drawer: const RetailerDrawer(),
       body: ref.watch(retailerNotifierProvider).when(
         initial: () {
           return Container();
@@ -99,16 +154,38 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                 },
                 value: retailer.visibility,
               ),
-              // Expanded(
-              //   child: ListView.builder(
-              //       itemCount: 20,
-              //       itemBuilder: (context, index) {
-              //         return Text(
-              //           index.toString(),
-              //           style: TextStyle(fontSize: 30),
-              //         );
-              //       }),
-              // ),
+              TextButton(
+                onPressed: () {
+                  AutoRouter.of(context).push(const AddProductRoute());
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.add_circle),
+                  trailing: Text("Add Product"),
+                ),
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(productListNotifierProvider.notifier)
+                          .toggleAllOn();
+                    },
+                    child: const Text('Show All'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(productListNotifierProvider.notifier)
+                          .toggleAllOff();
+                    },
+                    child: const Text('Hide All'),
+                  ),
+                ],
+              ),
+              const Expanded(
+                child: ProductListView(),
+              ),
             ],
           );
         },

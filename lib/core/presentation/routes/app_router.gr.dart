@@ -8,16 +8,19 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../../auth/presentation/consumer_sign_up_page.dart' as _i9;
-import '../../../auth/presentation/retailer_sign_up_page.dart' as _i10;
+import '../../../auth/presentation/retailer_sign_up_page.dart' as _i11;
 import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
-import '../../../retailer/presentation/edit_profile_page.dart' as _i12;
+import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
-import '../../../retailer/presentation/retailer_profile_page.dart' as _i11;
+import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
+import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
+import '../../../retailer/product/presentation/edit_product_page.dart' as _i14;
 import '../../../splash/splash_page.dart' as _i3;
-import '../../application/retailer.dart' as _i13;
+import '../../application/product/product.dart' as _i16;
+import '../../application/retailer/retailer.dart' as _i15;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -60,21 +63,32 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i9.ConsumerSignUpPage();
         }),
+    AddProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i10.AddProductPage();
+        }),
     RetailerSignUpRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.RetailerSignUpPage();
+          return const _i11.RetailerSignUpPage();
         }),
     RetailerProfileRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i11.RetailerProfilePage();
+          return const _i12.RetailerProfilePage();
         }),
     EditProfileRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<EditProfileRouteArgs>();
-          return _i12.EditProfilePage(key: args.key, retailer: args.retailer);
+          return _i13.EditProfilePage(key: args.key, retailer: args.retailer);
+        }),
+    EditProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EditProductRouteArgs>();
+          return _i14.EditProductPage(key: args.key, product: args.product);
         })
   };
 
@@ -88,11 +102,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SignUpRoute.name, path: '/sign-up-page'),
         _i1.RouteConfig(ConsumerSignUpRoute.name,
             path: '/consumer-sign-up-page'),
+        _i1.RouteConfig(AddProductRoute.name, path: '/add-product-page'),
         _i1.RouteConfig(RetailerSignUpRoute.name,
             path: '/retailer-sign-up-page'),
         _i1.RouteConfig(RetailerProfileRoute.name,
             path: '/retailer-profile-page'),
-        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page')
+        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page'),
+        _i1.RouteConfig(EditProductRoute.name, path: '/edit-product-page')
       ];
 }
 
@@ -138,6 +154,12 @@ class ConsumerSignUpRoute extends _i1.PageRouteInfo {
   static const String name = 'ConsumerSignUpRoute';
 }
 
+class AddProductRoute extends _i1.PageRouteInfo {
+  const AddProductRoute() : super(name, path: '/add-product-page');
+
+  static const String name = 'AddProductRoute';
+}
+
 class RetailerSignUpRoute extends _i1.PageRouteInfo {
   const RetailerSignUpRoute() : super(name, path: '/retailer-sign-up-page');
 
@@ -151,7 +173,7 @@ class RetailerProfileRoute extends _i1.PageRouteInfo {
 }
 
 class EditProfileRoute extends _i1.PageRouteInfo<EditProfileRouteArgs> {
-  EditProfileRoute({_i2.Key? key, required _i13.Retailer retailer})
+  EditProfileRoute({_i2.Key? key, required _i15.Retailer retailer})
       : super(name,
             path: '/edit-profile-page',
             args: EditProfileRouteArgs(key: key, retailer: retailer));
@@ -164,5 +186,22 @@ class EditProfileRouteArgs {
 
   final _i2.Key? key;
 
-  final _i13.Retailer retailer;
+  final _i15.Retailer retailer;
+}
+
+class EditProductRoute extends _i1.PageRouteInfo<EditProductRouteArgs> {
+  EditProductRoute({_i2.Key? key, required _i16.Product product})
+      : super(name,
+            path: '/edit-product-page',
+            args: EditProductRouteArgs(key: key, product: product));
+
+  static const String name = 'EditProductRoute';
+}
+
+class EditProductRouteArgs {
+  const EditProductRouteArgs({this.key, required this.product});
+
+  final _i2.Key? key;
+
+  final _i16.Product product;
 }
