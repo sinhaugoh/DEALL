@@ -24,9 +24,12 @@ class _$ProductListStateTearOff {
     return const Loading();
   }
 
-  Loaded loaded(List<Product> products) {
+  Loaded loaded(List<Product> products,
+      {bool hasConnection = true, bool hasFirebaseFailure = false}) {
     return Loaded(
       products,
+      hasConnection: hasConnection,
+      hasFirebaseFailure: hasFirebaseFailure,
     );
   }
 
@@ -50,7 +53,9 @@ mixin _$ProductListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) =>
@@ -59,7 +64,9 @@ mixin _$ProductListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -142,7 +149,9 @@ class _$Initial extends Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) {
@@ -154,7 +163,9 @@ class _$Initial extends Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -238,7 +249,9 @@ class _$Loading extends Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) {
@@ -250,7 +263,9 @@ class _$Loading extends Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -299,7 +314,8 @@ abstract class Loading extends ProductListState {
 abstract class $LoadedCopyWith<$Res> {
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
       _$LoadedCopyWithImpl<$Res>;
-  $Res call({List<Product> products});
+  $Res call(
+      {List<Product> products, bool hasConnection, bool hasFirebaseFailure});
 }
 
 /// @nodoc
@@ -314,12 +330,22 @@ class _$LoadedCopyWithImpl<$Res> extends _$ProductListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = freezed,
+    Object? hasConnection = freezed,
+    Object? hasFirebaseFailure = freezed,
   }) {
     return _then(Loaded(
       products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasFirebaseFailure: hasFirebaseFailure == freezed
+          ? _value.hasFirebaseFailure
+          : hasFirebaseFailure // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -327,14 +353,22 @@ class _$LoadedCopyWithImpl<$Res> extends _$ProductListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Loaded extends Loaded {
-  const _$Loaded(this.products) : super._();
+  const _$Loaded(this.products,
+      {this.hasConnection = true, this.hasFirebaseFailure = false})
+      : super._();
 
   @override
   final List<Product> products;
+  @JsonKey(defaultValue: true)
+  @override
+  final bool hasConnection;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool hasFirebaseFailure;
 
   @override
   String toString() {
-    return 'ProductListState.loaded(products: $products)';
+    return 'ProductListState.loaded(products: $products, hasConnection: $hasConnection, hasFirebaseFailure: $hasFirebaseFailure)';
   }
 
   @override
@@ -343,12 +377,21 @@ class _$Loaded extends Loaded {
         (other is Loaded &&
             (identical(other.products, products) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)));
+                    .equals(other.products, products)) &&
+            (identical(other.hasConnection, hasConnection) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasConnection, hasConnection)) &&
+            (identical(other.hasFirebaseFailure, hasFirebaseFailure) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasFirebaseFailure, hasFirebaseFailure)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(products);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(hasConnection) ^
+      const DeepCollectionEquality().hash(hasFirebaseFailure);
 
   @JsonKey(ignore: true)
   @override
@@ -360,11 +403,13 @@ class _$Loaded extends Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) {
-    return loaded(products);
+    return loaded(products, hasConnection, hasFirebaseFailure);
   }
 
   @override
@@ -372,13 +417,15 @@ class _$Loaded extends Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(products);
+      return loaded(products, hasConnection, hasFirebaseFailure);
     }
     return orElse();
   }
@@ -413,10 +460,13 @@ class _$Loaded extends Loaded {
 }
 
 abstract class Loaded extends ProductListState {
-  const factory Loaded(List<Product> products) = _$Loaded;
+  const factory Loaded(List<Product> products,
+      {bool hasConnection, bool hasFirebaseFailure}) = _$Loaded;
   const Loaded._() : super._();
 
   List<Product> get products => throw _privateConstructorUsedError;
+  bool get hasConnection => throw _privateConstructorUsedError;
+  bool get hasFirebaseFailure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedCopyWith<Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -463,7 +513,9 @@ class _$NoConnection extends NoConnection {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) {
@@ -475,7 +527,9 @@ class _$NoConnection extends NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -584,7 +638,9 @@ class _$Failure extends Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
+    required TResult Function(
+            List<Product> products, bool hasConnection, bool hasFirebaseFailure)
+        loaded,
     required TResult Function() noConnection,
     required TResult Function(String message) failure,
   }) {
@@ -596,7 +652,9 @@ class _$Failure extends Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
+    TResult Function(List<Product> products, bool hasConnection,
+            bool hasFirebaseFailure)?
+        loaded,
     TResult Function()? noConnection,
     TResult Function(String message)? failure,
     required TResult orElse(),

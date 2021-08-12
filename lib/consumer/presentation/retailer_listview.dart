@@ -18,22 +18,12 @@ class RetailerListView extends ConsumerWidget {
       noConnection: (_) => const Center(child: Text("No connection")),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       failure: (failure) => Center(child: Text("$failure failure")),
-      loaded: (loaded) {
-        return ListView.builder(
-          itemCount: loaded.retailers.length,
-          itemBuilder: (context, index) => ProviderScope(
-            overrides: [
-              currentRetailerItem.overrideWithValue(loaded.retailers[index]),
-            ],
-            child: GestureDetector(
-              onTap: () {
-                AutoRouter.of(context).popAndPush(const ConsumerProductListRoute());
-              },
-              child: const RetailerItem(),
-            ),
-          ),
-        );
-      },
+      loaded: (loaded) => ListView.builder(
+        itemCount: loaded.filteredRetailers.length,
+        itemBuilder: (context, index) => RetailerItem(
+          retailerData: loaded.filteredRetailers[index],
+        ),
+      ),
     );
   }
 }

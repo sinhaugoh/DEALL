@@ -1,17 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:deall/core/application/product/product.dart';
 
 part 'product_dto.freezed.dart';
 part 'product_dto.g.dart';
-
-FieldValue? _dateModifiedFromJson(Object? json) {
-  return null;
-}
-
-Object? _dateModifiedToJson(FieldValue? value) {
-  return value;
-}
 
 @freezed
 class ProductDTO with _$ProductDTO {
@@ -24,11 +15,6 @@ class ProductDTO with _$ProductDTO {
     required String image,
     required String description,
     required bool availability,
-    @JsonKey(
-      fromJson: _dateModifiedFromJson,
-      toJson: _dateModifiedToJson,
-    )
-        required FieldValue? dateModified,
   }) = _ProductDTO;
 
   factory ProductDTO.fromDomain(Product product) {
@@ -40,7 +26,6 @@ class ProductDTO with _$ProductDTO {
       image: product.image,
       description: product.description,
       availability: product.availability,
-      dateModified: FieldValue.serverTimestamp(),
     );
   }
 

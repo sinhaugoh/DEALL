@@ -9,6 +9,9 @@ class RetailerListState with _$RetailerListState {
   const factory RetailerListState.initial() = Initial;
   const factory RetailerListState.noConnection() = NoConnection;
   const factory RetailerListState.loading() = Loading;
-  const factory RetailerListState.loaded(List<Retailer> retailers) = Loaded;
+  const factory RetailerListState.loaded(
+    List<Retailer> retailers,
+    List<Retailer> filteredRetailers,
+  ) = Loaded;
   const factory RetailerListState.failure(String message) = Failure;
 }
