@@ -6,18 +6,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
-  final ProductListView? productListView;
+  // final ProductListView? productListView;
 
   const CustomCard({
     Key? key, 
     this.retailerData,
-    this.productListView,
+    // this.productListView,
     }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-
+    // var data = retailerData ?? productListView;
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         // color: Colors.grey,
