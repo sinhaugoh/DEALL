@@ -28,7 +28,14 @@ class ConsumerDrawer extends ConsumerWidget {
         //TODO: need to choose which one to display for diff user type
         ListTile(
           leading: const Text("Favourites"),
-          onTap: () {},
+          onTap: () {
+            if (AutoRouter.of(context).current.name !=
+                FavouriteRetailerRoute.name) {
+              AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
+            } else {
+              AutoRouter.of(context).pop();
+            }
+          },
         ),
         ListTile(
           leading: const Text("Profile"),
