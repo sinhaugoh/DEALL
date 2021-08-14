@@ -14,14 +14,16 @@ import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
 import '../../../consumer/presentation/consumer_product_list_page.dart' as _i15;
+import '../../../consumer/presentation/consumer_retailer_detail_page.dart'
+    as _i16;
 import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
 import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
 import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
 import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
 import '../../../retailer/product/presentation/edit_product_page.dart' as _i14;
 import '../../../splash/splash_page.dart' as _i3;
-import '../../application/product/product.dart' as _i17;
-import '../../application/retailer/retailer.dart' as _i16;
+import '../../application/product/product.dart' as _i18;
+import '../../application/retailer/retailer.dart' as _i17;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -96,6 +98,13 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<ConsumerProductListRouteArgs>();
           return _i15.ConsumerProductListPage(args.retailerData, key: args.key);
+        }),
+    ConsumerRetailerDetailRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<ConsumerRetailerDetailRouteArgs>();
+          return _i16.ConsumerRetailerDetailPage(args.retailerData,
+              key: args.key);
         })
   };
 
@@ -117,7 +126,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page'),
         _i1.RouteConfig(EditProductRoute.name, path: '/edit-product-page'),
         _i1.RouteConfig(ConsumerProductListRoute.name,
-            path: '/consumer-product-list-page')
+            path: '/consumer-product-list-page'),
+        _i1.RouteConfig(ConsumerRetailerDetailRoute.name,
+            path: '/consumer-retailer-detail-page')
       ];
 }
 
@@ -182,7 +193,7 @@ class RetailerProfileRoute extends _i1.PageRouteInfo {
 }
 
 class EditProfileRoute extends _i1.PageRouteInfo<EditProfileRouteArgs> {
-  EditProfileRoute({_i2.Key? key, required _i16.Retailer retailer})
+  EditProfileRoute({_i2.Key? key, required _i17.Retailer retailer})
       : super(name,
             path: '/edit-profile-page',
             args: EditProfileRouteArgs(key: key, retailer: retailer));
@@ -195,11 +206,11 @@ class EditProfileRouteArgs {
 
   final _i2.Key? key;
 
-  final _i16.Retailer retailer;
+  final _i17.Retailer retailer;
 }
 
 class EditProductRoute extends _i1.PageRouteInfo<EditProductRouteArgs> {
-  EditProductRoute({_i2.Key? key, required _i17.Product product})
+  EditProductRoute({_i2.Key? key, required _i18.Product product})
       : super(name,
             path: '/edit-product-page',
             args: EditProductRouteArgs(key: key, product: product));
@@ -212,12 +223,12 @@ class EditProductRouteArgs {
 
   final _i2.Key? key;
 
-  final _i17.Product product;
+  final _i18.Product product;
 }
 
 class ConsumerProductListRoute
     extends _i1.PageRouteInfo<ConsumerProductListRouteArgs> {
-  ConsumerProductListRoute({required _i16.Retailer retailerData, _i2.Key? key})
+  ConsumerProductListRoute({required _i17.Retailer retailerData, _i2.Key? key})
       : super(name,
             path: '/consumer-product-list-page',
             args: ConsumerProductListRouteArgs(
@@ -229,7 +240,27 @@ class ConsumerProductListRoute
 class ConsumerProductListRouteArgs {
   const ConsumerProductListRouteArgs({required this.retailerData, this.key});
 
-  final _i16.Retailer retailerData;
+  final _i17.Retailer retailerData;
+
+  final _i2.Key? key;
+}
+
+class ConsumerRetailerDetailRoute
+    extends _i1.PageRouteInfo<ConsumerRetailerDetailRouteArgs> {
+  ConsumerRetailerDetailRoute(
+      {required _i17.Retailer retailerData, _i2.Key? key})
+      : super(name,
+            path: '/consumer-retailer-detail-page',
+            args: ConsumerRetailerDetailRouteArgs(
+                retailerData: retailerData, key: key));
+
+  static const String name = 'ConsumerRetailerDetailRoute';
+}
+
+class ConsumerRetailerDetailRouteArgs {
+  const ConsumerRetailerDetailRouteArgs({required this.retailerData, this.key});
+
+  final _i17.Retailer retailerData;
 
   final _i2.Key? key;
 }

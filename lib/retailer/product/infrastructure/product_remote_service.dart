@@ -21,6 +21,7 @@ class ProductListRemoteService {
         .collection('retailers')
         .doc(currentRetailerId)
         .collection('products')
+        .where('availability', isEqualTo: true)
         .get()
         .then((querySnapshot) => querySnapshot.docs
             .map((queryDocSnapshot) =>

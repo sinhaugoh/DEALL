@@ -1,11 +1,14 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:deall/consumer/presentation/widgets/consumer_product_item.dart';
 import 'package:deall/consumer/shared/providers.dart';
+import 'package:deall/consumer/presentation/consumer_retailer_detail_page.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -128,8 +131,8 @@ Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
               ),
             ),
             child: Column(
-              children: const [
-                Flexible(
+              children: [
+                const Flexible(
                   flex: 7,
                   child: Padding(
                     padding: EdgeInsets.only(left: 30, right: 30),
@@ -137,7 +140,12 @@ Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
                   ),
                 ),
                 Flexible(
-                  child: Text("Show Details"),
+                  child: GestureDetector(
+                    onTap: (){
+                      AutoRouter.of(context)
+                    .push(ConsumerRetailerDetailRoute(retailerData: retailerData));
+                    },
+                    child: const Text("Show Details")),
                 ),
               ],
             ),

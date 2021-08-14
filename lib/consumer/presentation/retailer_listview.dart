@@ -27,7 +27,7 @@ class RetailerListView extends ConsumerWidget {
           child: GestureDetector(
               onTap: () {
                 AutoRouter.of(context)
-                    .popAndPush(ConsumerProductListRoute(retailerData: loaded.filteredRetailers[index]));
+                    .push(ConsumerProductListRoute(retailerData: loaded.filteredRetailers[index]));
               },
               child: const RetailerItem()),
         ),

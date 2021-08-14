@@ -6,6 +6,7 @@ import 'package:deall/auth/presentation/sign_up_page.dart';
 import 'package:deall/auth/presentation/welcome_page.dart';
 import 'package:deall/consumer/presentation/consumer_home_page.dart';
 import 'package:deall/consumer/presentation/consumer_product_list_page.dart';
+import 'package:deall/consumer/presentation/consumer_retailer_detail_page.dart';
 import 'package:deall/retailer/presentation/edit_profile_page.dart';
 import 'package:deall/retailer/presentation/retailer_home_page.dart';
 import 'package:deall/retailer/product/presentation/add_product_page.dart';
@@ -28,6 +29,7 @@ import 'package:deall/splash/splash_page.dart';
     MaterialRoute(page: EditProfilePage),
     MaterialRoute(page: EditProductPage),
     MaterialRoute(page: ConsumerProductListPage),
+    MaterialRoute(page: ConsumerRetailerDetailPage),
   ],
   replaceInRouteName: 'Page,Route',
 )
