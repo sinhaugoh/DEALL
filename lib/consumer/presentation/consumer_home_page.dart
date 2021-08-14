@@ -35,7 +35,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
   @override
   void dispose() {
     super.dispose();
-    subscription!.cancel();
+    subscription?.cancel();
     _textEditingController.dispose();
   }
 
