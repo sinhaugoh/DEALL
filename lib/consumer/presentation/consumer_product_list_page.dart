@@ -47,73 +47,72 @@ class ConsumerProductListPageState
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(productNotifierProvider);
+
+    Future<void> checkConnectivityAndGetProductList() async {
+      _connectivityStreamSubscription = Connectivity()
+          .onConnectivityChanged
+          .listen((ConnectivityResult result) async {
+        if (result != ConnectivityResult.none) {
+          Future.microtask(() async {
+            await ref
+                .read(productListNotifierProvider.notifier)
+                .getProductList(widget.retailerData.uen);
+          });
+          _connectivityStreamSubscription?.cancel();
+        }
+      });
+    }
+
     ref.listen<ProductListState>(
       productListNotifierProvider,
       (state) {
-        state.maybeWhen(
-          noConnection: () {
-            _connectivityStreamSubscription = ref
-                .read(connectivityProvider)
-                .onConnectivityChanged
-                .listen((result) {
-              if (result != ConnectivityResult.none) {
-                ref
-                    .read(productNotifierProvider.notifier)
-                    .getProductList(widget.retailerData.uen);
-                _connectivityStreamSubscription?.cancel();
-              }
-            });
-          },
-          failure: (firestoreFailures) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('An unexpected error occurred.'),
-              duration: Duration(seconds: 5),
-              behavior: SnackBarBehavior.floating,
-            ));
-          },
-          orElse: () {},
-        );
+        if (state == const ProductListState.noConnection()) {
+          checkConnectivityAndGetProductList();
+        }
       },
     );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.retailerData.name),
       ),
-      body: state.map(
-        initial: (_) => const Center(),
-        loading: (_) => const Center(
-          child: CircularProgressIndicator(),
-        ),
-        noConnection: (noConnection) =>
-            const Center(child: Text("No connection")),
-        failure: (failure) => Center(child: Text("$failure failure")),
-        loaded: (loaded) =>
-            loadedBody(loaded.products, context, widget.retailerData),
-      ),
-    );
-  }
-}
-
-Widget loadedBody(
-    List<Product> productList, BuildContext context, Retailer retailerData) {
-  return Column(
-    children: [
-      Expanded(
-        child: upperPortionOfPage(context, retailerData),
-      ),
-      Expanded(
-        child: ListView.builder(
-          itemCount: productList.length,
-          itemBuilder: (context, index) => ProviderScope(
-            overrides: [
-              currentProductItem.overrideWithValue(productList[index])
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await ref
+              .read(productListNotifierProvider.notifier)
+              .getProductList(widget.retailerData.uen);
+        },
+        child: state.map(
+          initial: (_) => const Center(),
+          loading: (_) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          noConnection: (noConnection) =>
+              const Center(child: Text("No connection")),
+          failure: (failure) => Center(child: Text("$failure failure")),
+          loaded: (loaded) => Column(
+            children: [
+              Expanded(
+                child: upperPortionOfPage(context, widget.retailerData),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: loaded.products.length,
+                  itemBuilder: (context, index) => ProviderScope(
+                    overrides: [
+                      currentProductItem
+                          .overrideWithValue(loaded.products[index])
+                    ],
+                    child: const ConsumerProductItem(),
+                  ),
+                ),
+              ),
             ],
-            child: const ConsumerProductItem(),
           ),
         ),
       ),
-    ],
-  );
+    );
+  }
 }
 
 Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
@@ -141,11 +140,11 @@ Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
                 ),
                 Flexible(
                   child: GestureDetector(
-                    onTap: (){
-                      AutoRouter.of(context)
-                    .push(ConsumerRetailerDetailRoute(retailerData: retailerData));
-                    },
-                    child: const Text("Show Details")),
+                      onTap: () {
+                        AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                            retailerData: retailerData));
+                      },
+                      child: const Text("Show Details")),
                 ),
               ],
             ),
