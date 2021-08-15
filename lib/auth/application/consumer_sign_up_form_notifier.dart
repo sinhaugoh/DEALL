@@ -19,6 +19,7 @@ class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
     required String? passwordErrorMessage,
     required String email,
     required String password,
+    required bool hidePassword,
   }) = _ConsumerSignUpFormState;
 
   factory ConsumerSignUpFormState.initial() => const ConsumerSignUpFormState(
@@ -30,15 +31,16 @@ class ConsumerSignUpFormState with _$ConsumerSignUpFormState {
         passwordErrorMessage: null,
         email: '',
         password: '',
+        hidePassword: true,
       );
 }
 
-class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> {
+class ConsumerSignUpFormNotifier
+    extends StateNotifier<ConsumerSignUpFormState> {
   final AuthRepository _authRepository;
 
-  ConsumerSignUpFormNotifier(this._authRepository) : super(ConsumerSignUpFormState.initial());
-
-
+  ConsumerSignUpFormNotifier(this._authRepository)
+      : super(ConsumerSignUpFormState.initial());
 
   void emailChanged(String email) {
     state = state.copyWith(email: email);
@@ -56,7 +58,8 @@ class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> 
     emailValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
           invalidEmail: () {
-            stateCopy = stateCopy.copyWith(emailErrorMessage: FormErrorMessage.emailErrorMessage);
+            stateCopy = stateCopy.copyWith(
+                emailErrorMessage: FormErrorMessage.emailErrorMessage);
           },
           orElse: () {}),
       (r) {
@@ -79,6 +82,10 @@ class ConsumerSignUpFormNotifier extends StateNotifier<ConsumerSignUpFormState> 
     );
 
     state = stateCopy;
+  }
+
+  void toggleShowPassword() {
+    state = state.copyWith(hidePassword: !state.hidePassword);
   }
 
   Future<void> signUp() async {

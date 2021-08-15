@@ -21,7 +21,8 @@ class _$RetailerDTOTearOff {
   const _$RetailerDTOTearOff();
 
   _RetailerDTO call(
-      {required String name,
+      {required String id,
+      required String name,
       required String block,
       required String street,
       required String unit,
@@ -32,6 +33,7 @@ class _$RetailerDTOTearOff {
       required bool visibility,
       required String uen}) {
     return _RetailerDTO(
+      id: id,
       name: name,
       block: block,
       street: street,
@@ -55,6 +57,7 @@ const $RetailerDTO = _$RetailerDTOTearOff();
 
 /// @nodoc
 mixin _$RetailerDTO {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get block => throw _privateConstructorUsedError;
   String get street => throw _privateConstructorUsedError;
@@ -78,7 +81,8 @@ abstract class $RetailerDTOCopyWith<$Res> {
           RetailerDTO value, $Res Function(RetailerDTO) then) =
       _$RetailerDTOCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String block,
       String street,
       String unit,
@@ -100,6 +104,7 @@ class _$RetailerDTOCopyWithImpl<$Res> implements $RetailerDTOCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? block = freezed,
     Object? street = freezed,
@@ -112,6 +117,10 @@ class _$RetailerDTOCopyWithImpl<$Res> implements $RetailerDTOCopyWith<$Res> {
     Object? uen = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -164,7 +173,8 @@ abstract class _$RetailerDTOCopyWith<$Res>
       __$RetailerDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String block,
       String street,
       String unit,
@@ -188,6 +198,7 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? block = freezed,
     Object? street = freezed,
@@ -200,6 +211,10 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
     Object? uen = freezed,
   }) {
     return _then(_RetailerDTO(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -248,7 +263,8 @@ class __$RetailerDTOCopyWithImpl<$Res> extends _$RetailerDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RetailerDTO extends _RetailerDTO {
   const _$_RetailerDTO(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.block,
       required this.street,
       required this.unit,
@@ -263,6 +279,8 @@ class _$_RetailerDTO extends _RetailerDTO {
   factory _$_RetailerDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_RetailerDTOFromJson(json);
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -286,13 +304,15 @@ class _$_RetailerDTO extends _RetailerDTO {
 
   @override
   String toString() {
-    return 'RetailerDTO(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
+    return 'RetailerDTO(id: $id, name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RetailerDTO &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.block, block) ||
@@ -322,6 +342,7 @@ class _$_RetailerDTO extends _RetailerDTO {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(block) ^
       const DeepCollectionEquality().hash(street) ^
@@ -346,7 +367,8 @@ class _$_RetailerDTO extends _RetailerDTO {
 
 abstract class _RetailerDTO extends RetailerDTO {
   const factory _RetailerDTO(
-      {required String name,
+      {required String id,
+      required String name,
       required String block,
       required String street,
       required String unit,
@@ -361,6 +383,8 @@ abstract class _RetailerDTO extends RetailerDTO {
   factory _RetailerDTO.fromJson(Map<String, dynamic> json) =
       _$_RetailerDTO.fromJson;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

@@ -24,7 +24,8 @@ class _$SignInFormStateTearOff {
       required String? passwordErrorMessage,
       required String email,
       required String password,
-      required UserType userType}) {
+      required UserType userType,
+      required bool hidePassword}) {
     return _SignInFormState(
       hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
@@ -34,6 +35,7 @@ class _$SignInFormStateTearOff {
       email: email,
       password: password,
       userType: userType,
+      hidePassword: hidePassword,
     );
   }
 }
@@ -51,6 +53,7 @@ mixin _$SignInFormState {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   UserType get userType => throw _privateConstructorUsedError;
+  bool get hidePassword => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInFormStateCopyWith<SignInFormState> get copyWith =>
@@ -70,7 +73,8 @@ abstract class $SignInFormStateCopyWith<$Res> {
       String? passwordErrorMessage,
       String email,
       String password,
-      UserType userType});
+      UserType userType,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -92,6 +96,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? userType = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_value.copyWith(
       hasConnection: hasConnection == freezed
@@ -126,6 +131,10 @@ class _$SignInFormStateCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -145,7 +154,8 @@ abstract class _$SignInFormStateCopyWith<$Res>
       String? passwordErrorMessage,
       String email,
       String password,
-      UserType userType});
+      UserType userType,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -169,6 +179,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? userType = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_SignInFormState(
       hasConnection: hasConnection == freezed
@@ -203,6 +214,10 @@ class __$SignInFormStateCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -218,7 +233,8 @@ class _$_SignInFormState extends _SignInFormState {
       required this.passwordErrorMessage,
       required this.email,
       required this.password,
-      required this.userType})
+      required this.userType,
+      required this.hidePassword})
       : super._();
 
   @override
@@ -237,10 +253,12 @@ class _$_SignInFormState extends _SignInFormState {
   final String password;
   @override
   final UserType userType;
+  @override
+  final bool hidePassword;
 
   @override
   String toString() {
-    return 'SignInFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password, userType: $userType)';
+    return 'SignInFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password, userType: $userType, hidePassword: $hidePassword)';
   }
 
   @override
@@ -269,7 +287,10 @@ class _$_SignInFormState extends _SignInFormState {
                     .equals(other.password, password)) &&
             (identical(other.userType, userType) ||
                 const DeepCollectionEquality()
-                    .equals(other.userType, userType)));
+                    .equals(other.userType, userType)) &&
+            (identical(other.hidePassword, hidePassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.hidePassword, hidePassword)));
   }
 
   @override
@@ -282,7 +303,8 @@ class _$_SignInFormState extends _SignInFormState {
       const DeepCollectionEquality().hash(passwordErrorMessage) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(userType);
+      const DeepCollectionEquality().hash(userType) ^
+      const DeepCollectionEquality().hash(hidePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -299,7 +321,8 @@ abstract class _SignInFormState extends SignInFormState {
       required String? passwordErrorMessage,
       required String email,
       required String password,
-      required UserType userType}) = _$_SignInFormState;
+      required UserType userType,
+      required bool hidePassword}) = _$_SignInFormState;
   const _SignInFormState._() : super._();
 
   @override
@@ -318,6 +341,8 @@ abstract class _SignInFormState extends SignInFormState {
   String get password => throw _privateConstructorUsedError;
   @override
   UserType get userType => throw _privateConstructorUsedError;
+  @override
+  bool get hidePassword => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>

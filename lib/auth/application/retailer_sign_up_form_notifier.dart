@@ -28,6 +28,7 @@ class RetailerSignUpFormState with _$RetailerSignUpFormState {
     required String password,
     required Retailer retailer,
     required File? imageFile,
+    required bool hidePassword,
   }) = _RetailerSignUpFormState;
 
   factory RetailerSignUpFormState.initial() => RetailerSignUpFormState(
@@ -44,6 +45,7 @@ class RetailerSignUpFormState with _$RetailerSignUpFormState {
         password: '',
         retailer: Retailer.initial(),
         imageFile: null,
+        hidePassword: true,
       );
 }
 
@@ -189,6 +191,10 @@ class RetailerSignUpFormNotifier
 
   void deleteImage() {
     state = state.copyWith(imageFile: null);
+  }
+
+  void toggleShowPassword() {
+    state = state.copyWith(hidePassword: !state.hidePassword);
   }
 
   Future<void> signUp() async {
