@@ -52,7 +52,8 @@ class RetailerSignUpForm extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
                 label: 'Password',
-                obscureText: true,
+                obscureText: ref.watch(retailerSignUpFormNotifierProvider
+                    .select((state) => state.hidePassword)),
                 errorText: ref.watch(retailerSignUpFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(retailerSignUpFormNotifierProvider
@@ -64,6 +65,17 @@ class RetailerSignUpForm extends ConsumerWidget {
                 inputFormatters: [
                   FilteringTextInputFormatter.deny(RegExp(r"\s")),
                 ],
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    ref
+                        .read(retailerSignUpFormNotifierProvider.notifier)
+                        .toggleShowPassword();
+                  },
+                  icon: ref.watch(retailerSignUpFormNotifierProvider
+                          .select((state) => state.hidePassword))
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
+                ),
               ),
             ),
             Padding(

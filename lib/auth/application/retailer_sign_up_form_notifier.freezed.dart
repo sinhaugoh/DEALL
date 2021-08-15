@@ -29,7 +29,8 @@ class _$RetailerSignUpFormStateTearOff {
       required String email,
       required String password,
       required Retailer retailer,
-      required File? imageFile}) {
+      required File? imageFile,
+      required bool hidePassword}) {
     return _RetailerSignUpFormState(
       hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
@@ -44,6 +45,7 @@ class _$RetailerSignUpFormStateTearOff {
       password: password,
       retailer: retailer,
       imageFile: imageFile,
+      hidePassword: hidePassword,
     );
   }
 }
@@ -66,6 +68,7 @@ mixin _$RetailerSignUpFormState {
   String get password => throw _privateConstructorUsedError;
   Retailer get retailer => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
+  bool get hidePassword => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RetailerSignUpFormStateCopyWith<RetailerSignUpFormState> get copyWith =>
@@ -90,7 +93,8 @@ abstract class $RetailerSignUpFormStateCopyWith<$Res> {
       String email,
       String password,
       Retailer retailer,
-      File? imageFile});
+      File? imageFile,
+      bool hidePassword});
 
   $RetailerCopyWith<$Res> get retailer;
 }
@@ -119,6 +123,7 @@ class _$RetailerSignUpFormStateCopyWithImpl<$Res>
     Object? password = freezed,
     Object? retailer = freezed,
     Object? imageFile = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_value.copyWith(
       hasConnection: hasConnection == freezed
@@ -173,6 +178,10 @@ class _$RetailerSignUpFormStateCopyWithImpl<$Res>
           ? _value.imageFile
           : imageFile // ignore: cast_nullable_to_non_nullable
               as File?,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -204,7 +213,8 @@ abstract class _$RetailerSignUpFormStateCopyWith<$Res>
       String email,
       String password,
       Retailer retailer,
-      File? imageFile});
+      File? imageFile,
+      bool hidePassword});
 
   @override
   $RetailerCopyWith<$Res> get retailer;
@@ -237,6 +247,7 @@ class __$RetailerSignUpFormStateCopyWithImpl<$Res>
     Object? password = freezed,
     Object? retailer = freezed,
     Object? imageFile = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_RetailerSignUpFormState(
       hasConnection: hasConnection == freezed
@@ -291,6 +302,10 @@ class __$RetailerSignUpFormStateCopyWithImpl<$Res>
           ? _value.imageFile
           : imageFile // ignore: cast_nullable_to_non_nullable
               as File?,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -311,7 +326,8 @@ class _$_RetailerSignUpFormState extends _RetailerSignUpFormState {
       required this.email,
       required this.password,
       required this.retailer,
-      required this.imageFile})
+      required this.imageFile,
+      required this.hidePassword})
       : super._();
 
   @override
@@ -340,10 +356,12 @@ class _$_RetailerSignUpFormState extends _RetailerSignUpFormState {
   final Retailer retailer;
   @override
   final File? imageFile;
+  @override
+  final bool hidePassword;
 
   @override
   String toString() {
-    return 'RetailerSignUpFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, nameErrorMessage: $nameErrorMessage, postalCodeErrorMessage: $postalCodeErrorMessage, uenErrorMessage: $uenErrorMessage, email: $email, password: $password, retailer: $retailer, imageFile: $imageFile)';
+    return 'RetailerSignUpFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, nameErrorMessage: $nameErrorMessage, postalCodeErrorMessage: $postalCodeErrorMessage, uenErrorMessage: $uenErrorMessage, email: $email, password: $password, retailer: $retailer, imageFile: $imageFile, hidePassword: $hidePassword)';
   }
 
   @override
@@ -387,7 +405,10 @@ class _$_RetailerSignUpFormState extends _RetailerSignUpFormState {
                     .equals(other.retailer, retailer)) &&
             (identical(other.imageFile, imageFile) ||
                 const DeepCollectionEquality()
-                    .equals(other.imageFile, imageFile)));
+                    .equals(other.imageFile, imageFile)) &&
+            (identical(other.hidePassword, hidePassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.hidePassword, hidePassword)));
   }
 
   @override
@@ -405,7 +426,8 @@ class _$_RetailerSignUpFormState extends _RetailerSignUpFormState {
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(retailer) ^
-      const DeepCollectionEquality().hash(imageFile);
+      const DeepCollectionEquality().hash(imageFile) ^
+      const DeepCollectionEquality().hash(hidePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -428,7 +450,8 @@ abstract class _RetailerSignUpFormState extends RetailerSignUpFormState {
       required String email,
       required String password,
       required Retailer retailer,
-      required File? imageFile}) = _$_RetailerSignUpFormState;
+      required File? imageFile,
+      required bool hidePassword}) = _$_RetailerSignUpFormState;
   const _RetailerSignUpFormState._() : super._();
 
   @override
@@ -457,6 +480,8 @@ abstract class _RetailerSignUpFormState extends RetailerSignUpFormState {
   Retailer get retailer => throw _privateConstructorUsedError;
   @override
   File? get imageFile => throw _privateConstructorUsedError;
+  @override
+  bool get hidePassword => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$RetailerSignUpFormStateCopyWith<_RetailerSignUpFormState> get copyWith =>

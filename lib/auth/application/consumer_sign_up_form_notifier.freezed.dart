@@ -24,7 +24,8 @@ class _$ConsumerSignUpFormStateTearOff {
       required String? emailErrorMessage,
       required String? passwordErrorMessage,
       required String email,
-      required String password}) {
+      required String password,
+      required bool hidePassword}) {
     return _ConsumerSignUpFormState(
       hasConnection: hasConnection,
       showErrorMessage: showErrorMessage,
@@ -34,6 +35,7 @@ class _$ConsumerSignUpFormStateTearOff {
       passwordErrorMessage: passwordErrorMessage,
       email: email,
       password: password,
+      hidePassword: hidePassword,
     );
   }
 }
@@ -51,6 +53,7 @@ mixin _$ConsumerSignUpFormState {
   String? get passwordErrorMessage => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  bool get hidePassword => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ConsumerSignUpFormStateCopyWith<ConsumerSignUpFormState> get copyWith =>
@@ -70,7 +73,8 @@ abstract class $ConsumerSignUpFormStateCopyWith<$Res> {
       String? emailErrorMessage,
       String? passwordErrorMessage,
       String email,
-      String password});
+      String password,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -92,6 +96,7 @@ class _$ConsumerSignUpFormStateCopyWithImpl<$Res>
     Object? passwordErrorMessage = freezed,
     Object? email = freezed,
     Object? password = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_value.copyWith(
       hasConnection: hasConnection == freezed
@@ -126,6 +131,10 @@ class _$ConsumerSignUpFormStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -145,7 +154,8 @@ abstract class _$ConsumerSignUpFormStateCopyWith<$Res>
       String? emailErrorMessage,
       String? passwordErrorMessage,
       String email,
-      String password});
+      String password,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -170,6 +180,7 @@ class __$ConsumerSignUpFormStateCopyWithImpl<$Res>
     Object? passwordErrorMessage = freezed,
     Object? email = freezed,
     Object? password = freezed,
+    Object? hidePassword = freezed,
   }) {
     return _then(_ConsumerSignUpFormState(
       hasConnection: hasConnection == freezed
@@ -204,6 +215,10 @@ class __$ConsumerSignUpFormStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      hidePassword: hidePassword == freezed
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -219,7 +234,8 @@ class _$_ConsumerSignUpFormState extends _ConsumerSignUpFormState {
       required this.emailErrorMessage,
       required this.passwordErrorMessage,
       required this.email,
-      required this.password})
+      required this.password,
+      required this.hidePassword})
       : super._();
 
   @override
@@ -238,10 +254,12 @@ class _$_ConsumerSignUpFormState extends _ConsumerSignUpFormState {
   final String email;
   @override
   final String password;
+  @override
+  final bool hidePassword;
 
   @override
   String toString() {
-    return 'ConsumerSignUpFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password)';
+    return 'ConsumerSignUpFormState(hasConnection: $hasConnection, showErrorMessage: $showErrorMessage, isSaving: $isSaving, successful: $successful, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage, email: $email, password: $password, hidePassword: $hidePassword)';
   }
 
   @override
@@ -270,7 +288,10 @@ class _$_ConsumerSignUpFormState extends _ConsumerSignUpFormState {
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                    .equals(other.password, password)) &&
+            (identical(other.hidePassword, hidePassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.hidePassword, hidePassword)));
   }
 
   @override
@@ -283,7 +304,8 @@ class _$_ConsumerSignUpFormState extends _ConsumerSignUpFormState {
       const DeepCollectionEquality().hash(emailErrorMessage) ^
       const DeepCollectionEquality().hash(passwordErrorMessage) ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(hidePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -301,7 +323,8 @@ abstract class _ConsumerSignUpFormState extends ConsumerSignUpFormState {
       required String? emailErrorMessage,
       required String? passwordErrorMessage,
       required String email,
-      required String password}) = _$_ConsumerSignUpFormState;
+      required String password,
+      required bool hidePassword}) = _$_ConsumerSignUpFormState;
   const _ConsumerSignUpFormState._() : super._();
 
   @override
@@ -320,6 +343,8 @@ abstract class _ConsumerSignUpFormState extends ConsumerSignUpFormState {
   String get email => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
+  @override
+  bool get hidePassword => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ConsumerSignUpFormStateCopyWith<_ConsumerSignUpFormState> get copyWith =>
