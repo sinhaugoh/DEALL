@@ -8,6 +8,7 @@ part 'retailer_dto.g.dart';
 class RetailerDTO with _$RetailerDTO {
   const RetailerDTO._();
   const factory RetailerDTO({
+    required String id,
     required String name,
     required String block,
     required String street,
@@ -22,6 +23,7 @@ class RetailerDTO with _$RetailerDTO {
 
   factory RetailerDTO.fromDomain(Retailer retailer) {
     return RetailerDTO(
+      id: retailer.id,
       name: retailer.name,
       block: retailer.block,
       street: retailer.street,
@@ -37,6 +39,7 @@ class RetailerDTO with _$RetailerDTO {
 
   Retailer toDomain() {
     return Retailer(
+      id: id,
       name: name,
       block: block,
       street: street,
