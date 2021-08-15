@@ -21,6 +21,9 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
     final failureOrProductList = await _repo.getProductList(uen);
     failureOrProductList.fold((failure) {
       failure.maybeMap(
+        noConnection: (_) {
+          state = const ProductListState.noConnection();
+        },
         objectNotFound: (_) {
           state = const ProductListState.failure("Object not found.");
         },

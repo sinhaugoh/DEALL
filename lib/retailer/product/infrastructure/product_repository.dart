@@ -19,13 +19,15 @@ class ProductRepository {
   Future<Either<FirestoreFailures, List<Product>>> getProductList(
       String uen) async {
     try {
+      if(! await _internetConnectionChecker.hasConnection) {
+      return left(const FirestoreFailures.noConnection());
+    }
       return _productRemoteService.getProductList(uen).then((list) =>
           right<FirestoreFailures, List<Product>>(
               list.map((productDTO) => productDTO.toDomain()).toList()));
     } on FirebaseException catch (e) {
       if (e.code ==
-          FirebaseException(
-                  code: 'not_found', plugin: "No object found.")
+          FirebaseException(code: 'not_found', plugin: "No object found.")
               .code) {
         return left(const FirestoreFailures.objectNotFound());
       }

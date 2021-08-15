@@ -41,34 +41,46 @@ class ConsumerProductListPageState
   @override
   void dispose() {
     super.dispose();
-    _connectivityStreamSubscription?.cancel();
+    _connectivityStreamSubscription!.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(productNotifierProvider);
 
-    Future<void> checkConnectivityAndGetProductList() async {
-      _connectivityStreamSubscription = Connectivity()
-          .onConnectivityChanged
-          .listen((ConnectivityResult result) async {
-        if (result != ConnectivityResult.none) {
-          Future.microtask(() async {
-            await ref
-                .read(productListNotifierProvider.notifier)
-                .getProductList(widget.retailerData.uen);
-          });
-          _connectivityStreamSubscription?.cancel();
-        }
-      });
-    }
-
     ref.listen<ProductListState>(
-      productListNotifierProvider,
+      productNotifierProvider,
       (state) {
-        if (state == const ProductListState.noConnection()) {
-          checkConnectivityAndGetProductList();
-        }
+        state.when(
+          initial: () {},
+          loading: () {},
+          loaded: (_, hasConnection, hasFirebaseFailure) {},
+          noConnection: () {
+            //TODO: use theme snackbar instead
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('No connection'),
+              duration: Duration(seconds: 5),
+              behavior: SnackBarBehavior.floating,
+            ));
+            _connectivityStreamSubscription = ref
+                  .read(connectivityProvider)
+                  .onConnectivityChanged
+                  .listen((result) {
+                if (result != ConnectivityResult.none) {
+                  ref.read(productNotifierProvider.notifier).getProductList(widget.retailerData.uen);
+                  _connectivityStreamSubscription?.cancel();
+                }
+              });
+          },
+          failure: (failure) {
+            //TODO: use theme snackbar instead
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Unexpected error. Please contact support.'),
+              duration: Duration(seconds: 5),
+              behavior: SnackBarBehavior.floating,
+            ));
+          },
+        );
       },
     );
 
@@ -76,26 +88,26 @@ class ConsumerProductListPageState
       appBar: AppBar(
         title: Text(widget.retailerData.name),
       ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await ref
-              .read(productListNotifierProvider.notifier)
-              .getProductList(widget.retailerData.uen);
-        },
-        child: state.map(
-          initial: (_) => const Center(),
-          loading: (_) => const Center(
-            child: CircularProgressIndicator(),
+      body: Column(
+        children: [
+          Expanded(
+            child: upperPortionOfPage(context, widget.retailerData),
           ),
-          noConnection: (noConnection) =>
-              const Center(child: Text("No connection")),
-          failure: (failure) => Center(child: Text("$failure failure")),
-          loaded: (loaded) => Column(
-            children: [
-              Expanded(
-                child: upperPortionOfPage(context, widget.retailerData),
+          Expanded(
+            child: state.map(
+              initial: (_) => const Center(),
+              loading: (_) => const Center(
+                child: CircularProgressIndicator(),
               ),
-              Expanded(
+              noConnection: (noConnection) =>
+                  const Center(child: Text("Please check your device's connection.")),
+              failure: (failure) => Center(child: Text("$failure failure")),
+              loaded: (loaded) => RefreshIndicator(
+                onRefresh: () async {
+                  await ref
+                      .read(productListNotifierProvider.notifier)
+                      .getProductList(widget.retailerData.uen);
+                },
                 child: ListView.builder(
                   itemCount: loaded.products.length,
                   itemBuilder: (context, index) => ProviderScope(
@@ -107,9 +119,9 @@ class ConsumerProductListPageState
                   ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
