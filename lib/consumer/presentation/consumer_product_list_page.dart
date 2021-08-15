@@ -34,7 +34,7 @@ class ConsumerProductListPageState
     Future.microtask(() {
       ref
           .read(productNotifierProvider.notifier)
-          .getProductList(widget.retailerData.uen);
+          .getProductList(widget.retailerData.id);
     });
   }
 
@@ -67,7 +67,7 @@ class ConsumerProductListPageState
                   .onConnectivityChanged
                   .listen((result) {
                 if (result != ConnectivityResult.none) {
-                  ref.read(productNotifierProvider.notifier).getProductList(widget.retailerData.uen);
+                  ref.read(productNotifierProvider.notifier).getProductList(widget.retailerData.id);
                   _connectivityStreamSubscription?.cancel();
                 }
               });
@@ -106,7 +106,7 @@ class ConsumerProductListPageState
                 onRefresh: () async {
                   await ref
                       .read(productListNotifierProvider.notifier)
-                      .getProductList(widget.retailerData.uen);
+                      .getProductList(widget.retailerData.id);
                 },
                 child: ListView.builder(
                   itemCount: loaded.products.length,

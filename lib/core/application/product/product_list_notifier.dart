@@ -16,9 +16,9 @@ class ProductListNotifier extends StateNotifier<ProductListState> {
   StreamSubscription<Either<FirestoreFailures, List<Product>>>?
       _productListStreamSubscription;
 
-  Future<void> getProductList(String uen) async {
+  Future<void> getProductList(String retailerId) async {
     state = const ProductListState.loading();
-    final failureOrProductList = await _repo.getProductList(uen);
+    final failureOrProductList = await _repo.getProductList(retailerId);
     failureOrProductList.fold((failure) {
       failure.maybeMap(
         noConnection: (_) {
