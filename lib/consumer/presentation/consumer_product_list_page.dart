@@ -38,7 +38,7 @@ class ConsumerProductListPageState
   @override
   void dispose() {
     super.dispose();
-    _connectivityStreamSubscription!.cancel();
+    _connectivityStreamSubscription?.cancel();
   }
 
   @override
