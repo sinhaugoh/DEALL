@@ -54,11 +54,6 @@ class ConsumerProductListPageState
           loaded: (_, hasConnection, hasFirebaseFailure) {},
           noConnection: () {
             //TODO: use theme snackbar instead
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('No connection'),
-              duration: Duration(seconds: 5),
-              behavior: SnackBarBehavior.floating,
-            ));
             _connectivityStreamSubscription = ref
                   .read(connectivityProvider)
                   .onConnectivityChanged
