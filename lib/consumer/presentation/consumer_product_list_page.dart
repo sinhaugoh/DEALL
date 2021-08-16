@@ -105,7 +105,7 @@ class ConsumerProductListPageState
               loaded: (loaded) => RefreshIndicator(
                 onRefresh: () async {
                   await ref
-                      .read(productListNotifierProvider.notifier)
+                      .read(productNotifierProvider.notifier)
                       .getProductList(widget.retailerData.id);
                 },
                 child: ListView.builder(
