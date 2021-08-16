@@ -1,3 +1,4 @@
+import 'package:deall/consumer/presentation/retailer_list_item.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,9 @@ class FavouriteRetailerPage extends ConsumerWidget {
             return ListView.builder(
                 itemCount: retailerList.length,
                 itemBuilder: (context, index) {
-                  return Text(retailerList[index].toString());
+                  return ProviderScope(overrides: [
+                    currentRetailerItem.overrideWithValue(retailerList[index]),
+                  ], child: const RetailerItem());
                 });
           },
           failure: (firestoreFailure) {
