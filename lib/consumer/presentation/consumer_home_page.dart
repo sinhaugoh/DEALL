@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:deall/consumer/application/retailer_list_state.dart';
+import 'package:deall/consumer/favourite_retailers/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -26,9 +27,12 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() async{
+    Future.microtask(() async {
       await ref.read(retailerListNotifierProvider.notifier).getRetailerList();
       ref.read(retailerListNotifierProvider.notifier).searchWithTerm('');
+      ref
+          .read(favouriteRetailerStateNotifierProvider.notifier)
+          .getRetailerList();
     });
   }
 
@@ -70,8 +74,15 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
         .listen((ConnectivityResult result) async {
       if (result != ConnectivityResult.none) {
         Future.microtask(() async {
-          await ref.read(retailerListNotifierProvider.notifier).getRetailerList();
-          ref.read(retailerListNotifierProvider.notifier).searchWithTerm(_textEditingController.text);
+          await ref
+              .read(retailerListNotifierProvider.notifier)
+              .getRetailerList();
+          ref
+              .read(retailerListNotifierProvider.notifier)
+              .searchWithTerm(_textEditingController.text);
+          ref
+              .read(favouriteRetailerStateNotifierProvider.notifier)
+              .getRetailerList();
         });
         subscription?.cancel();
       }

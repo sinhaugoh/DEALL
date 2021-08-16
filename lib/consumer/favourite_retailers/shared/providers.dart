@@ -16,6 +16,6 @@ final favouriteRetailerRepositoryProvider =
         ));
 
 final favouriteRetailerStateNotifierProvider =
-    StateNotifierProvider.autoDispose<FavouriteRetailerNotifier, FavouriteRetailerState>(
+    StateNotifierProvider<FavouriteRetailerNotifier, FavouriteRetailerState>(
         (ref) => FavouriteRetailerNotifier(
             ref.watch(favouriteRetailerRepositoryProvider)));
