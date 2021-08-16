@@ -35,4 +35,26 @@ class FavouriteRetailerRepository {
       }
     }
   }
+
+  Future<Either<FirestoreFailures, Unit>> updateFavouriteRetailerList(
+      List<Retailer> retailerList) async {
+    if (!await _internetConnectionChecker.hasConnection) {
+      return const Left(FirestoreFailures.noConnection());
+    }
+    final retailerIdList = retailerList.map((retailer) => retailer.id).toList();
+
+    try {
+      await _favouriteListRemoteService.updateFavouriteRetailerList(
+        retailerIdList: retailerIdList,
+        userId: _authRepository.getUserId(),
+      );
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.code == 'not-found') {
+        return left(const FirestoreFailures.objectNotFound());
+      } else {
+        return left(const FirestoreFailures.unknown());
+      }
+    }
+  }
 }
