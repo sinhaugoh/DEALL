@@ -24,12 +24,7 @@ class RetailerListView extends ConsumerWidget {
           overrides: [
             currentRetailerItem.overrideWithValue(loaded.filteredRetailers[index]),
           ],
-          child: GestureDetector(
-              onTap: () {
-                AutoRouter.of(context)
-                    .push(ConsumerProductListRoute(retailerData: loaded.filteredRetailers[index]));
-              },
-              child: const RetailerItem()),
+          child: const RetailerItem(),
         ),
       ),
     );

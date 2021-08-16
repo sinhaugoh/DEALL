@@ -30,4 +30,13 @@ class FavouriteRetailerRemoteService {
 
     return retailerList;
   }
+
+  Future<void> updateFavouriteRetailerList({
+    required List<String> retailerIdList,
+    required String userId,
+  }) {
+    return _firebaseFirestore.collection('consumers').doc(userId).update({
+      'favourites': retailerIdList,
+    });
+  }
 }
