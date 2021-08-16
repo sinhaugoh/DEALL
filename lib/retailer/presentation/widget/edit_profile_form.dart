@@ -42,7 +42,7 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
             if (!ref.watch<bool>(
               retailerEditProfileNotifierProvider
                   .select((state) => state.hasInitialImageChanged),
-            ))
+            )&& widget.retailer.image.isNotEmpty)
               CachedNetworkImage(
                 imageUrl: widget.retailer.image,
                 placeholder: (context, url) =>
