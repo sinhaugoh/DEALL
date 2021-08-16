@@ -24,9 +24,10 @@ class _$FavouriteRetailerStateTearOff {
     return const Loading();
   }
 
-  Loaded loaded(List<Retailer> retailerList) {
+  Loaded loaded(List<Retailer> retailerList, {bool hasConnection = true}) {
     return Loaded(
       retailerList,
+      hasConnection: hasConnection,
     );
   }
 
@@ -46,7 +47,8 @@ mixin _$FavouriteRetailerState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailerList) loaded,
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
+        loaded,
     required TResult Function(FirestoreFailures failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +56,7 @@ mixin _$FavouriteRetailerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailerList)? loaded,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
     TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) =>
@@ -135,7 +137,8 @@ class _$Initial extends Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailerList) loaded,
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
+        loaded,
     required TResult Function(FirestoreFailures failure) failure,
   }) {
     return initial();
@@ -146,7 +149,7 @@ class _$Initial extends Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailerList)? loaded,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
     TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
@@ -228,7 +231,8 @@ class _$Loading extends Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailerList) loaded,
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
+        loaded,
     required TResult Function(FirestoreFailures failure) failure,
   }) {
     return loading();
@@ -239,7 +243,7 @@ class _$Loading extends Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailerList)? loaded,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
     TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
@@ -285,7 +289,7 @@ abstract class Loading extends FavouriteRetailerState {
 abstract class $LoadedCopyWith<$Res> {
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
       _$LoadedCopyWithImpl<$Res>;
-  $Res call({List<Retailer> retailerList});
+  $Res call({List<Retailer> retailerList, bool hasConnection});
 }
 
 /// @nodoc
@@ -301,12 +305,17 @@ class _$LoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? retailerList = freezed,
+    Object? hasConnection = freezed,
   }) {
     return _then(Loaded(
       retailerList == freezed
           ? _value.retailerList
           : retailerList // ignore: cast_nullable_to_non_nullable
               as List<Retailer>,
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -314,14 +323,17 @@ class _$LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Loaded extends Loaded {
-  const _$Loaded(this.retailerList) : super._();
+  const _$Loaded(this.retailerList, {this.hasConnection = true}) : super._();
 
   @override
   final List<Retailer> retailerList;
+  @JsonKey(defaultValue: true)
+  @override
+  final bool hasConnection;
 
   @override
   String toString() {
-    return 'FavouriteRetailerState.loaded(retailerList: $retailerList)';
+    return 'FavouriteRetailerState.loaded(retailerList: $retailerList, hasConnection: $hasConnection)';
   }
 
   @override
@@ -330,12 +342,17 @@ class _$Loaded extends Loaded {
         (other is Loaded &&
             (identical(other.retailerList, retailerList) ||
                 const DeepCollectionEquality()
-                    .equals(other.retailerList, retailerList)));
+                    .equals(other.retailerList, retailerList)) &&
+            (identical(other.hasConnection, hasConnection) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasConnection, hasConnection)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(retailerList);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(retailerList) ^
+      const DeepCollectionEquality().hash(hasConnection);
 
   @JsonKey(ignore: true)
   @override
@@ -347,10 +364,11 @@ class _$Loaded extends Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailerList) loaded,
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
+        loaded,
     required TResult Function(FirestoreFailures failure) failure,
   }) {
-    return loaded(retailerList);
+    return loaded(retailerList, hasConnection);
   }
 
   @override
@@ -358,12 +376,12 @@ class _$Loaded extends Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailerList)? loaded,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
     TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(retailerList);
+      return loaded(retailerList, hasConnection);
     }
     return orElse();
   }
@@ -396,10 +414,12 @@ class _$Loaded extends Loaded {
 }
 
 abstract class Loaded extends FavouriteRetailerState {
-  const factory Loaded(List<Retailer> retailerList) = _$Loaded;
+  const factory Loaded(List<Retailer> retailerList, {bool hasConnection}) =
+      _$Loaded;
   const Loaded._() : super._();
 
   List<Retailer> get retailerList => throw _privateConstructorUsedError;
+  bool get hasConnection => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedCopyWith<Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -478,7 +498,8 @@ class _$Failure extends Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Retailer> retailerList) loaded,
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
+        loaded,
     required TResult Function(FirestoreFailures failure) failure,
   }) {
     return failure(this.failure);
@@ -489,7 +510,7 @@ class _$Failure extends Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Retailer> retailerList)? loaded,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
     TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
