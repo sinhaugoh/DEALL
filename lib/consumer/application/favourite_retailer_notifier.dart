@@ -1,4 +1,4 @@
-import 'package:deall/consumer/favourite_retailers/infrastructure/favourite_retailer_repository.dart';
+import 'package:deall/consumer/infrastructure/favourite_retailer_repository.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

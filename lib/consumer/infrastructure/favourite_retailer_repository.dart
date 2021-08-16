@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:deall/auth/infrastructure/auth_repository.dart';
-import 'package:deall/consumer/favourite_retailers/infrastructure/favourite_retailer_remote_service.dart';
+import 'package:deall/consumer/infrastructure/favourite_retailer_remote_service.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';

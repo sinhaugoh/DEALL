@@ -1,11 +1,8 @@
 import 'dart:async';
-
 import 'package:deall/consumer/application/retailer_list_state.dart';
-import 'package:deall/consumer/favourite_retailers/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
-
 import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/consumer/presentation/retailer_listview.dart';
