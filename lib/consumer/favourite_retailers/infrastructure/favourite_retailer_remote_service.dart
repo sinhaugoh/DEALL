@@ -21,7 +21,10 @@ class FavouriteRetailerRemoteService {
             .collection('retailers')
             .doc(retailerId)
             .get();
-        retailerList.add(RetailerDTO.fromJson(retailerDoc.data()!));
+
+        final json = retailerDoc.data()!;
+        json['id'] = retailerDoc.id;
+        retailerList.add(RetailerDTO.fromJson(json));
       }
     }
 
