@@ -109,6 +109,7 @@ class RetailerEditProfileFormNotifier
 
   void deleteImage() {
     state = state.copyWith(
+      retailer: state.retailer.copyWith(image: ''),
       imageFile: null,
       hasInitialImageChanged: true,
     );
