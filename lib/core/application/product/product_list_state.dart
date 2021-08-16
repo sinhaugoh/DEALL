@@ -13,6 +13,7 @@ class ProductListState with _$ProductListState {
     @Default(true) bool hasConnection,
     @Default(false) bool hasFirebaseFailure,
   }) = Loaded;
+
   const factory ProductListState.noConnection() = NoConnection;
   const factory ProductListState.failure(String message) = Failure;
 }

@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deall/core/infrastructure/product/product_dto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +9,19 @@ class ProductListRemoteService {
   final FirebaseAuth _firebaseAuth;
 
   ProductListRemoteService(this._firestore, this._firebaseAuth);
+
+  Future<List<ProductDTO>> getProductList(String retailerId) async {
+    return _firestore
+        .collection('retailers')
+        .doc(retailerId)
+        .collection('products')
+        .where('availability', isEqualTo: true)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs
+            .map((queryDocSnapshot) =>
+                ProductDTO.fromJson(queryDocSnapshot.data()))
+            .toList());
+  }
 
   Stream<List<ProductDTO>> getProductStream() async* {
     final userId = _firebaseAuth.currentUser!.uid;
