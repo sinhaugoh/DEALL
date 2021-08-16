@@ -28,7 +28,7 @@ class FavouriteRetailerPage extends ConsumerWidget {
               child: CircularProgressIndicator(),
             );
           },
-          loaded: (retailerList) {
+          loaded: (retailerList, _) {
             return ListView.builder(
                 itemCount: retailerList.length,
                 itemBuilder: (context, index) {

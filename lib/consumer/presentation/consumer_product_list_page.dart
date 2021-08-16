@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:deall/consumer/application/favourite_retailer_notifier.dart';
 import 'package:deall/consumer/presentation/widgets/consumer_product_item.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
@@ -44,6 +45,22 @@ class ConsumerProductListPageState
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(productNotifierProvider);
+    ref.listen<FavouriteRetailerState>(favouriteRetailerStateNotifierProvider,
+        (state) {
+      state.maybeWhen(
+        loaded: (_, hasConnection) {
+          if (!hasConnection) {
+            //TODO: use theme snackbar instead
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('No connection'),
+              duration: Duration(seconds: 5),
+              behavior: SnackBarBehavior.floating,
+            ));
+          }
+        },
+        orElse: () {},
+      );
+    });
 
     ref.listen<ProductListState>(
       productNotifierProvider,
@@ -55,14 +72,16 @@ class ConsumerProductListPageState
           noConnection: () {
             //TODO: use theme snackbar instead
             _connectivityStreamSubscription = ref
-                  .read(connectivityProvider)
-                  .onConnectivityChanged
-                  .listen((result) {
-                if (result != ConnectivityResult.none) {
-                  ref.read(productNotifierProvider.notifier).getProductList(widget.retailerData.id);
-                  _connectivityStreamSubscription?.cancel();
-                }
-              });
+                .read(connectivityProvider)
+                .onConnectivityChanged
+                .listen((result) {
+              if (result != ConnectivityResult.none) {
+                ref
+                    .read(productNotifierProvider.notifier)
+                    .getProductList(widget.retailerData.id);
+                _connectivityStreamSubscription?.cancel();
+              }
+            });
           },
           failure: (failure) {
             //TODO: use theme snackbar instead
@@ -83,7 +102,7 @@ class ConsumerProductListPageState
       body: Column(
         children: [
           Expanded(
-            child: upperPortionOfPage(context, widget.retailerData),
+            child: upperPortionOfPage(context, widget.retailerData, ref),
           ),
           Expanded(
             child: state.map(
@@ -91,8 +110,8 @@ class ConsumerProductListPageState
               loading: (_) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              noConnection: (noConnection) =>
-                  const Center(child: Text("Please check your device's connection.")),
+              noConnection: (noConnection) => const Center(
+                  child: Text("Please check your device's connection.")),
               failure: (failure) => Center(child: Text("$failure failure")),
               loaded: (loaded) => RefreshIndicator(
                 onRefresh: () async {
@@ -119,7 +138,8 @@ class ConsumerProductListPageState
   }
 }
 
-Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
+Widget upperPortionOfPage(
+    BuildContext context, Retailer retailerData, WidgetRef ref) {
   final mq = MediaQuery.of(context);
   return SizedBox(
     height: mq.size.height * 0.5,
@@ -149,6 +169,27 @@ Widget upperPortionOfPage(BuildContext context, Retailer retailerData) {
                             retailerData: retailerData));
                       },
                       child: const Text("Show Details")),
+                ),
+                IconButton(
+                  onPressed: () {
+                    ref
+                        .read(favouriteRetailerStateNotifierProvider.notifier)
+                        .toggleFavouriteRetailer(retailerData);
+                  },
+                  icon: ref
+                      .watch(favouriteRetailerStateNotifierProvider)
+                      .maybeWhen(
+                        loaded: (retailerList, _) {
+                          if (retailerList.contains(retailerData)) {
+                            return const Icon(Icons.favorite);
+                          } else {
+                            return const Icon(Icons.favorite_border_outlined);
+                          }
+                        },
+                        orElse: () => const Icon(
+                          Icons.favorite_border_outlined,
+                        ),
+                      ),
                 ),
               ],
             ),
