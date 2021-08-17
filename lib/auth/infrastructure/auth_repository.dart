@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/application/app_user.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -15,9 +20,10 @@ class AuthRepository {
   final FirebaseAuthService _firebaseAuthService;
   final InitialUserCreationService _initialUserCreationService;
   final InternetConnectionChecker _internetConnectionChecker;
+  final ImagePickingRemoteService _imagePickingRemoteService;
 
   AuthRepository(this._firebaseAuthService, this._initialUserCreationService,
-      this._internetConnectionChecker);
+      this._internetConnectionChecker, this._imagePickingRemoteService);
 
   UserType _convertFromStringToUserType(String? userTypeString) {
     UserType userType = UserType.unknown;
@@ -42,6 +48,11 @@ class AuthRepository {
         userType: _convertFromStringToUserType(firebaseUser.displayName),
       );
     }
+  }
+
+  ///DO NOT use before authenticated
+  String getUserId() {
+    return _firebaseAuthService.getUserId();
   }
 
   Future<Either<AuthFailure, AppUser>> signIn({
@@ -99,11 +110,51 @@ class AuthRepository {
     }
   }
 
+  Future<Either<AuthFailure, Unit>> retailerSignUp({
+    required String email,
+    required String password,
+    required Retailer retailer,
+    required File? imageFile,
+  }) async {
+    //check for internet connection
+    if (!await _internetConnectionChecker.hasConnection) {
+      return left(const AuthFailure.noConnection());
+    }
+
+    try {
+      await _firebaseAuthService.retailerSignUp(
+          email: email, password: password);
+
+      String imageString = '';
+      if (imageFile != null) {
+        imageString =
+            await _imagePickingRemoteService.uploadShopLogoToCloudStorage(
+                userId: _firebaseAuthService.getUserId(), file: imageFile);
+      }
+
+      await _initialUserCreationService.createRetailer(
+        _firebaseAuthService.getUserId(),
+        RetailerDTO.fromDomain(retailer.copyWith(image: imageString)),
+      );
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return left(const AuthFailure.server('Email already in use'));
+      }
+
+      //could come from either firebase auth or storage
+      return left(AuthFailure.unexpectedError(e.code));
+    } catch (e) {
+      return left(const AuthFailure.unexpectedError('Unexpected error'));
+    }
+  }
+
   Future<Either<AuthFailure, Unit>> signOut() async {
     try {
       await _firebaseAuthService.signOut();
       return right(unit);
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       return left(AuthFailure.server(e.code));
     }
   }

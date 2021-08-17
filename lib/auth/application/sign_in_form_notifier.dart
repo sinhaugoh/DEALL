@@ -20,6 +20,7 @@ class SignInFormState with _$SignInFormState {
     required String email,
     required String password,
     required UserType userType,
+    required bool hidePassword,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => const SignInFormState(
@@ -31,6 +32,7 @@ class SignInFormState with _$SignInFormState {
         email: '',
         password: '',
         userType: UserType.unknown,
+        hidePassword: true,
       );
 }
 
@@ -79,6 +81,10 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     );
 
     state = stateCopy;
+  }
+
+  void toggleShowPassword() {
+    state = state.copyWith(hidePassword: !state.hidePassword);
   }
 
   Future<void> signIn() async {

@@ -3,10 +3,14 @@
 // Do not manually edit this file.
 
 import 'dart:async' as _i5;
+import 'dart:io' as _i9;
 
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart' as _i4;
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart'
     as _i6;
+import 'package:deall/core/infrastructure/image_picking_remote_service.dart'
+    as _i8;
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart' as _i7;
 import 'package:firebase_auth/firebase_auth.dart' as _i2;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i3;
@@ -70,6 +74,15 @@ class MockFirebaseAuthService extends _i1.Mock
                   Future<_i2.UserCredential>.value(_FakeUserCredential()))
           as _i5.Future<_i2.UserCredential>);
   @override
+  _i5.Future<_i2.UserCredential> retailerSignUp(
+          {String? email, String? password}) =>
+      (super.noSuchMethod(
+              Invocation.method(
+                  #retailerSignUp, [], {#email: email, #password: password}),
+              returnValue:
+                  Future<_i2.UserCredential>.value(_FakeUserCredential()))
+          as _i5.Future<_i2.UserCredential>);
+  @override
   _i5.Future<void> signOut() =>
       (super.noSuchMethod(Invocation.method(#signOut, []),
           returnValue: Future<void>.value(),
@@ -88,6 +101,11 @@ class MockInitialUserCreationService extends _i1.Mock
   @override
   _i5.Future<void> createConsumer(String? id) =>
       (super.noSuchMethod(Invocation.method(#createConsumer, [id]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
+  @override
+  _i5.Future<void> createRetailer(String? id, _i7.RetailerDTO? retailerDTO) =>
+      (super.noSuchMethod(Invocation.method(#createRetailer, [id, retailerDTO]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
 }
@@ -309,4 +327,33 @@ class MockFirebaseAuthException extends _i1.Mock
       (super.noSuchMethod(Invocation.getter(#code), returnValue: '') as String);
   @override
   String toString() => super.toString();
+}
+
+/// A class which mocks [ImagePickingRemoteService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockImagePickingRemoteService extends _i1.Mock
+    implements _i8.ImagePickingRemoteService {
+  MockImagePickingRemoteService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i9.File?> pickImageFromGallery() =>
+      (super.noSuchMethod(Invocation.method(#pickImageFromGallery, []),
+          returnValue: Future<_i9.File?>.value()) as _i5.Future<_i9.File?>);
+  @override
+  _i5.Future<String> uploadShopLogoToCloudStorage(
+          {String? userId, _i9.File? file}) =>
+      (super.noSuchMethod(
+          Invocation.method(#uploadShopLogoToCloudStorage, [],
+              {#userId: userId, #file: file}),
+          returnValue: Future<String>.value('')) as _i5.Future<String>);
+  @override
+  _i5.Future<String> uploadProductImageToCloudStorage(
+          {String? userId, String? productId, _i9.File? file}) =>
+      (super.noSuchMethod(
+          Invocation.method(#uploadProductImageToCloudStorage, [],
+              {#userId: userId, #productId: productId, #file: file}),
+          returnValue: Future<String>.value('')) as _i5.Future<String>);
 }

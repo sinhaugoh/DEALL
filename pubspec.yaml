@@ -9,29 +9,37 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   auto_route: ^2.2.0
+  cached_network_image: ^3.1.0
   cloud_firestore: ^2.4.0
+  connectivity: ^3.0.6
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.1
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
   firebase_storage: ^10.0.1
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^1.2.0
   flutter_riverpod: ^1.0.0-dev.5
   freezed_annotation: ^0.14.1+3
   google_fonts: ^2.1.0
   image_picker: ^0.8.2
   internet_connection_checker: ^0.0.1+2
-  connectivity: ^3.0.6
   json_annotation: ^4.0.1
   path: ^1.8.0
+  rxdart: ^0.27.1
+
+flutter_native_splash:
+  color: "#F86B6B"
+  image: assets/images/logo_icon_noborder_1.5x.png
+  android: true
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   auto_route_generator: ^2.1.0
   build_runner: ^2.0.6
+  flutter_test:
+    sdk: flutter
   freezed: ^0.14.1+3
   json_serializable: ^4.1.1
   lint: ^1.5.3
@@ -39,3 +47,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/

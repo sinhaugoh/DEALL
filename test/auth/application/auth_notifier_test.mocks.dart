@@ -3,11 +3,13 @@
 // Do not manually edit this file.
 
 import 'dart:async' as _i4;
+import 'dart:io' as _i8;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:deall/auth/application/app_user.dart' as _i5;
 import 'package:deall/auth/application/auth_failure.dart' as _i6;
 import 'package:deall/auth/infrastructure/auth_repository.dart' as _i3;
+import 'package:deall/core/application/retailer/retailer.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -33,6 +35,10 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       Invocation.method(#getFirebaseUser, []),
       returnValue: Future<_i5.AppUser?>.value()) as _i4.Future<_i5.AppUser?>);
   @override
+  String getUserId() =>
+      (super.noSuchMethod(Invocation.method(#getUserId, []), returnValue: '')
+          as String);
+  @override
   _i4.Future<_i2.Either<_i6.AuthFailure, _i5.AppUser>> signIn(
           {String? email, String? password}) =>
       (super.noSuchMethod(
@@ -46,6 +52,22 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       (super.noSuchMethod(
               Invocation.method(
                   #consumerSignUp, [], {#email: email, #password: password}),
+              returnValue: Future<_i2.Either<_i6.AuthFailure, _i2.Unit>>.value(
+                  _FakeEither<_i6.AuthFailure, _i2.Unit>()))
+          as _i4.Future<_i2.Either<_i6.AuthFailure, _i2.Unit>>);
+  @override
+  _i4.Future<_i2.Either<_i6.AuthFailure, _i2.Unit>> retailerSignUp(
+          {String? email,
+          String? password,
+          _i7.Retailer? retailer,
+          _i8.File? imageFile}) =>
+      (super.noSuchMethod(
+              Invocation.method(#retailerSignUp, [], {
+                #email: email,
+                #password: password,
+                #retailer: retailer,
+                #imageFile: imageFile
+              }),
               returnValue: Future<_i2.Either<_i6.AuthFailure, _i2.Unit>>.value(
                   _FakeEither<_i6.AuthFailure, _i2.Unit>()))
           as _i4.Future<_i2.Either<_i6.AuthFailure, _i2.Unit>>);

@@ -27,6 +27,16 @@ class _$ValueFailureTearOff {
   InvalidPassword invalidPassword() {
     return const InvalidPassword();
   }
+
+  IncorrectLength incorrectLength(int length) {
+    return IncorrectLength(
+      length,
+    );
+  }
+
+  InvalidPriceValue invalidPriceValue() {
+    return const InvalidPriceValue();
+  }
 }
 
 /// @nodoc
@@ -39,6 +49,8 @@ mixin _$ValueFailure {
     required TResult Function() empty,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +58,8 @@ mixin _$ValueFailure {
     TResult Function()? empty,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +68,8 @@ mixin _$ValueFailure {
     required TResult Function(Empty value) empty,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +77,8 @@ mixin _$ValueFailure {
     TResult Function(Empty value)? empty,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +140,8 @@ class _$Empty extends Empty {
     required TResult Function() empty,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return empty();
   }
@@ -132,6 +152,8 @@ class _$Empty extends Empty {
     TResult Function()? empty,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -146,6 +168,8 @@ class _$Empty extends Empty {
     required TResult Function(Empty value) empty,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return empty(this);
   }
@@ -156,6 +180,8 @@ class _$Empty extends Empty {
     TResult Function(Empty value)? empty,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -212,6 +238,8 @@ class _$InvalidEmail extends InvalidEmail {
     required TResult Function() empty,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return invalidEmail();
   }
@@ -222,6 +250,8 @@ class _$InvalidEmail extends InvalidEmail {
     TResult Function()? empty,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -236,6 +266,8 @@ class _$InvalidEmail extends InvalidEmail {
     required TResult Function(Empty value) empty,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return invalidEmail(this);
   }
@@ -246,6 +278,8 @@ class _$InvalidEmail extends InvalidEmail {
     TResult Function(Empty value)? empty,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -303,6 +337,8 @@ class _$InvalidPassword extends InvalidPassword {
     required TResult Function() empty,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
   }) {
     return invalidPassword();
   }
@@ -313,6 +349,8 @@ class _$InvalidPassword extends InvalidPassword {
     TResult Function()? empty,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -327,6 +365,8 @@ class _$InvalidPassword extends InvalidPassword {
     required TResult Function(Empty value) empty,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
   }) {
     return invalidPassword(this);
   }
@@ -337,6 +377,8 @@ class _$InvalidPassword extends InvalidPassword {
     TResult Function(Empty value)? empty,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -349,4 +391,232 @@ class _$InvalidPassword extends InvalidPassword {
 abstract class InvalidPassword extends ValueFailure {
   const factory InvalidPassword() = _$InvalidPassword;
   const InvalidPassword._() : super._();
+}
+
+/// @nodoc
+abstract class $IncorrectLengthCopyWith<$Res> {
+  factory $IncorrectLengthCopyWith(
+          IncorrectLength value, $Res Function(IncorrectLength) then) =
+      _$IncorrectLengthCopyWithImpl<$Res>;
+  $Res call({int length});
+}
+
+/// @nodoc
+class _$IncorrectLengthCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $IncorrectLengthCopyWith<$Res> {
+  _$IncorrectLengthCopyWithImpl(
+      IncorrectLength _value, $Res Function(IncorrectLength) _then)
+      : super(_value, (v) => _then(v as IncorrectLength));
+
+  @override
+  IncorrectLength get _value => super._value as IncorrectLength;
+
+  @override
+  $Res call({
+    Object? length = freezed,
+  }) {
+    return _then(IncorrectLength(
+      length == freezed
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IncorrectLength extends IncorrectLength {
+  const _$IncorrectLength(this.length) : super._();
+
+  @override
+  final int length;
+
+  @override
+  String toString() {
+    return 'ValueFailure.incorrectLength(length: $length)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is IncorrectLength &&
+            (identical(other.length, length) ||
+                const DeepCollectionEquality().equals(other.length, length)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(length);
+
+  @JsonKey(ignore: true)
+  @override
+  $IncorrectLengthCopyWith<IncorrectLength> get copyWith =>
+      _$IncorrectLengthCopyWithImpl<IncorrectLength>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
+  }) {
+    return incorrectLength(length);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (incorrectLength != null) {
+      return incorrectLength(length);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
+  }) {
+    return incorrectLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (incorrectLength != null) {
+      return incorrectLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IncorrectLength extends ValueFailure {
+  const factory IncorrectLength(int length) = _$IncorrectLength;
+  const IncorrectLength._() : super._();
+
+  int get length => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $IncorrectLengthCopyWith<IncorrectLength> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidPriceValueCopyWith<$Res> {
+  factory $InvalidPriceValueCopyWith(
+          InvalidPriceValue value, $Res Function(InvalidPriceValue) then) =
+      _$InvalidPriceValueCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidPriceValueCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $InvalidPriceValueCopyWith<$Res> {
+  _$InvalidPriceValueCopyWithImpl(
+      InvalidPriceValue _value, $Res Function(InvalidPriceValue) _then)
+      : super(_value, (v) => _then(v as InvalidPriceValue));
+
+  @override
+  InvalidPriceValue get _value => super._value as InvalidPriceValue;
+}
+
+/// @nodoc
+
+class _$InvalidPriceValue extends InvalidPriceValue {
+  const _$InvalidPriceValue() : super._();
+
+  @override
+  String toString() {
+    return 'ValueFailure.invalidPriceValue()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidPriceValue);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function(int length) incorrectLength,
+    required TResult Function() invalidPriceValue,
+  }) {
+    return invalidPriceValue();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function(int length)? incorrectLength,
+    TResult Function()? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (invalidPriceValue != null) {
+      return invalidPriceValue();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(IncorrectLength value) incorrectLength,
+    required TResult Function(InvalidPriceValue value) invalidPriceValue,
+  }) {
+    return invalidPriceValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(IncorrectLength value)? incorrectLength,
+    TResult Function(InvalidPriceValue value)? invalidPriceValue,
+    required TResult orElse(),
+  }) {
+    if (invalidPriceValue != null) {
+      return invalidPriceValue(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPriceValue extends ValueFailure {
+  const factory InvalidPriceValue() = _$InvalidPriceValue;
+  const InvalidPriceValue._() : super._();
 }

@@ -8,13 +8,24 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../../auth/presentation/consumer_sign_up_page.dart' as _i9;
-import '../../../auth/presentation/retailer_sign_up_page.dart' as _i10;
+import '../../../auth/presentation/retailer_sign_up_page.dart' as _i11;
 import '../../../auth/presentation/sign_in_page.dart' as _i7;
 import '../../../auth/presentation/sign_up_page.dart' as _i8;
 import '../../../auth/presentation/welcome_page.dart' as _i4;
+import '../../../consumer/favourite_retailers/presentation/favourite_retailer_page.dart'
+    as _i17;
 import '../../../consumer/presentation/consumer_home_page.dart' as _i5;
-import '../../../retailer/home/presentation/retailer_home_page.dart' as _i6;
+import '../../../consumer/presentation/consumer_product_list_page.dart' as _i15;
+import '../../../consumer/presentation/consumer_retailer_detail_page.dart'
+    as _i16;
+import '../../../retailer/presentation/edit_profile_page.dart' as _i13;
+import '../../../retailer/presentation/retailer_home_page.dart' as _i6;
+import '../../../retailer/presentation/retailer_profile_page.dart' as _i12;
+import '../../../retailer/product/presentation/add_product_page.dart' as _i10;
+import '../../../retailer/product/presentation/edit_product_page.dart' as _i14;
 import '../../../splash/splash_page.dart' as _i3;
+import '../../application/product/product.dart' as _i19;
+import '../../application/retailer/retailer.dart' as _i18;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -57,10 +68,50 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i9.ConsumerSignUpPage();
         }),
+    AddProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i10.AddProductPage();
+        }),
     RetailerSignUpRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.RetailerSignUpPage();
+          return const _i11.RetailerSignUpPage();
+        }),
+    RetailerProfileRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i12.RetailerProfilePage();
+        }),
+    EditProfileRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EditProfileRouteArgs>();
+          return _i13.EditProfilePage(key: args.key, retailer: args.retailer);
+        }),
+    EditProductRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EditProductRouteArgs>();
+          return _i14.EditProductPage(key: args.key, product: args.product);
+        }),
+    ConsumerProductListRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<ConsumerProductListRouteArgs>();
+          return _i15.ConsumerProductListPage(args.retailerData, key: args.key);
+        }),
+    ConsumerRetailerDetailRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<ConsumerRetailerDetailRouteArgs>();
+          return _i16.ConsumerRetailerDetailPage(args.retailerData,
+              key: args.key);
+        }),
+    FavouriteRetailerRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i17.FavouriteRetailerPage();
         })
   };
 
@@ -74,8 +125,19 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SignUpRoute.name, path: '/sign-up-page'),
         _i1.RouteConfig(ConsumerSignUpRoute.name,
             path: '/consumer-sign-up-page'),
+        _i1.RouteConfig(AddProductRoute.name, path: '/add-product-page'),
         _i1.RouteConfig(RetailerSignUpRoute.name,
-            path: '/retailer-sign-up-page')
+            path: '/retailer-sign-up-page'),
+        _i1.RouteConfig(RetailerProfileRoute.name,
+            path: '/retailer-profile-page'),
+        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-page'),
+        _i1.RouteConfig(EditProductRoute.name, path: '/edit-product-page'),
+        _i1.RouteConfig(ConsumerProductListRoute.name,
+            path: '/consumer-product-list-page'),
+        _i1.RouteConfig(ConsumerRetailerDetailRoute.name,
+            path: '/consumer-retailer-detail-page'),
+        _i1.RouteConfig(FavouriteRetailerRoute.name,
+            path: '/favourite-retailer-page')
       ];
 }
 
@@ -121,8 +183,100 @@ class ConsumerSignUpRoute extends _i1.PageRouteInfo {
   static const String name = 'ConsumerSignUpRoute';
 }
 
+class AddProductRoute extends _i1.PageRouteInfo {
+  const AddProductRoute() : super(name, path: '/add-product-page');
+
+  static const String name = 'AddProductRoute';
+}
+
 class RetailerSignUpRoute extends _i1.PageRouteInfo {
   const RetailerSignUpRoute() : super(name, path: '/retailer-sign-up-page');
 
   static const String name = 'RetailerSignUpRoute';
+}
+
+class RetailerProfileRoute extends _i1.PageRouteInfo {
+  const RetailerProfileRoute() : super(name, path: '/retailer-profile-page');
+
+  static const String name = 'RetailerProfileRoute';
+}
+
+class EditProfileRoute extends _i1.PageRouteInfo<EditProfileRouteArgs> {
+  EditProfileRoute({_i2.Key? key, required _i18.Retailer retailer})
+      : super(name,
+            path: '/edit-profile-page',
+            args: EditProfileRouteArgs(key: key, retailer: retailer));
+
+  static const String name = 'EditProfileRoute';
+}
+
+class EditProfileRouteArgs {
+  const EditProfileRouteArgs({this.key, required this.retailer});
+
+  final _i2.Key? key;
+
+  final _i18.Retailer retailer;
+}
+
+class EditProductRoute extends _i1.PageRouteInfo<EditProductRouteArgs> {
+  EditProductRoute({_i2.Key? key, required _i19.Product product})
+      : super(name,
+            path: '/edit-product-page',
+            args: EditProductRouteArgs(key: key, product: product));
+
+  static const String name = 'EditProductRoute';
+}
+
+class EditProductRouteArgs {
+  const EditProductRouteArgs({this.key, required this.product});
+
+  final _i2.Key? key;
+
+  final _i19.Product product;
+}
+
+class ConsumerProductListRoute
+    extends _i1.PageRouteInfo<ConsumerProductListRouteArgs> {
+  ConsumerProductListRoute({required _i18.Retailer retailerData, _i2.Key? key})
+      : super(name,
+            path: '/consumer-product-list-page',
+            args: ConsumerProductListRouteArgs(
+                retailerData: retailerData, key: key));
+
+  static const String name = 'ConsumerProductListRoute';
+}
+
+class ConsumerProductListRouteArgs {
+  const ConsumerProductListRouteArgs({required this.retailerData, this.key});
+
+  final _i18.Retailer retailerData;
+
+  final _i2.Key? key;
+}
+
+class ConsumerRetailerDetailRoute
+    extends _i1.PageRouteInfo<ConsumerRetailerDetailRouteArgs> {
+  ConsumerRetailerDetailRoute(
+      {required _i18.Retailer retailerData, _i2.Key? key})
+      : super(name,
+            path: '/consumer-retailer-detail-page',
+            args: ConsumerRetailerDetailRouteArgs(
+                retailerData: retailerData, key: key));
+
+  static const String name = 'ConsumerRetailerDetailRoute';
+}
+
+class ConsumerRetailerDetailRouteArgs {
+  const ConsumerRetailerDetailRouteArgs({required this.retailerData, this.key});
+
+  final _i18.Retailer retailerData;
+
+  final _i2.Key? key;
+}
+
+class FavouriteRetailerRoute extends _i1.PageRouteInfo {
+  const FavouriteRetailerRoute()
+      : super(name, path: '/favourite-retailer-page');
+
+  static const String name = 'FavouriteRetailerRoute';
 }
