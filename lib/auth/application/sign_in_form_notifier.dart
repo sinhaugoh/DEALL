@@ -42,7 +42,7 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
   SignInFormNotifier(this._authRepository) : super(SignInFormState.initial());
 
   void emailChanged(String email) {
-    state = state.copyWith(email: email);
+    state = state.copyWith(email: email.trim());
   }
 
   void passwordChanged(String password) {
