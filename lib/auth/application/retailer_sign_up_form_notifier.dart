@@ -58,7 +58,7 @@ class RetailerSignUpFormNotifier
       : super(RetailerSignUpFormState.initial());
 
   void emailChanged(String email) {
-    state = state.copyWith(email: email);
+    state = state.copyWith(email: email.trim());
   }
 
   void passwordChanged(String password) {
@@ -66,19 +66,19 @@ class RetailerSignUpFormNotifier
   }
 
   void nameChanged(String name) {
-    state = state.copyWith.retailer(name: name);
+    state = state.copyWith.retailer(name: name.trim());
   }
 
   void blockChanged(String block) {
-    state = state.copyWith.retailer(block: block);
+    state = state.copyWith.retailer(block: block.trim());
   }
 
   void streetChanged(String street) {
-    state = state.copyWith.retailer(street: street);
+    state = state.copyWith.retailer(street: street.trim());
   }
 
   void unitChanged(String unit) {
-    state = state.copyWith.retailer(unit: unit);
+    state = state.copyWith.retailer(unit: unit.trim());
   }
 
   void postalCodeChanged(String postalCode) {
@@ -86,15 +86,15 @@ class RetailerSignUpFormNotifier
   }
 
   void operatingHoursChanged(String operatingHours) {
-    state = state.copyWith.retailer(operatingHours: operatingHours);
+    state = state.copyWith.retailer(operatingHours: operatingHours.trim());
   }
 
   void descriptionChanged(String description) {
-    state = state.copyWith.retailer(description: description);
+    state = state.copyWith.retailer(description: description.trim());
   }
 
   void uenChanged(String uen) {
-    state = state.copyWith.retailer(uen: uen);
+    state = state.copyWith.retailer(uen: uen.trim());
   }
 
   void imageChanged(File imageFile) {
