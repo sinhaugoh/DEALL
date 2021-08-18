@@ -2,8 +2,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:deall/core/application/retailer.dart';
-import 'package:deall/core/infrastructure/retailer_dto.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart';
 
 import 'retailer_dto_test.mocks.dart';
 
@@ -15,6 +15,8 @@ void main() {
     test('should return Retailer object with the same field values after converting RetailerDTO object', () {
       final mockRetailerDTO = MockRetailerDTO();
       const retailerTest = Retailer(
+        id: 'test id',
+        uen: 'test uen',
         name: 'test name',
         block: 'test block',
         street: 'test street',

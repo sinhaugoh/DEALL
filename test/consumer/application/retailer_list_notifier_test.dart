@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/consumer/infrastructure/retailer_list_repository.dart';
-import 'package:deall/consumer/infrastructure/firestore_failures.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:deall/consumer/shared/providers.dart';
-import 'package:deall/core/application/retailer.dart';
+import 'package:deall/core/application/retailer/retailer.dart';
 
 
 import 'retailer_list_notifier_test.mocks.dart';
@@ -70,6 +70,8 @@ void main() {
 // based on 'retailer' collection in firebase
   const List<Retailer> firebaseList = [
     Retailer(
+      id: 'SeFlKi',
+      uen: '',
       name: 'Bad & Poor Cake',
       block: 'Bedok Town Center',
       street: 'Bedok North Street 1',
@@ -81,6 +83,8 @@ void main() {
       visibility: true,
     ),
     Retailer(
+      id: 'pAMo6dB',
+      uen: '',
       name: 'Sum Cake',
       block: '32A',
       street: 'Chai Chee Ave',
@@ -92,6 +96,8 @@ void main() {
       visibility: true,
     ),
     Retailer(
+      id: 'sle1F4u',
+      uen: '',
       name: 'WcDonalds',
       block: '311 Bedok Mall',
       street: 'New Upper Changi Road Bedok Mall',
@@ -103,6 +109,8 @@ void main() {
       visibility: true,
     ),
     Retailer(
+      id: 'zYR2JUN',
+      uen: '',
       name: 'Jall & Jick',
       block: '32A',
       street: 'Chai Chee Ave',

@@ -5,10 +5,10 @@
 import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:deall/consumer/infrastructure/firestore_failures.dart' as _i5;
 import 'package:deall/consumer/infrastructure/retailer_list_repository.dart'
     as _i3;
-import 'package:deall/core/application/retailer.dart' as _i6;
+import 'package:deall/core/application/retailer/retailer.dart' as _i6;
+import 'package:deall/core/infrastructure/firestore_failures.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values

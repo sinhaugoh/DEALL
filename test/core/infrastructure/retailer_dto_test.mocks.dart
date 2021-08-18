@@ -2,8 +2,8 @@
 // in deall/test/core/infrastructure/retailer_dto_test.dart.
 // Do not manually edit this file.
 
-import 'package:deall/core/application/retailer.dart' as _i3;
-import 'package:deall/core/infrastructure/retailer_dto.dart' as _i2;
+import 'package:deall/core/application/retailer/retailer.dart' as _i3;
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,6 +28,9 @@ class MockRetailerDTO extends _i1.Mock implements _i2.RetailerDTO {
   }
 
   @override
+  String get id =>
+      (super.noSuchMethod(Invocation.getter(#id), returnValue: '') as String);
+  @override
   String get name =>
       (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
   @override
@@ -50,9 +53,20 @@ class MockRetailerDTO extends _i1.Mock implements _i2.RetailerDTO {
       (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
           as String);
   @override
+  String get description =>
+      (super.noSuchMethod(Invocation.getter(#description), returnValue: '')
+          as String);
+  @override
+  String get image =>
+      (super.noSuchMethod(Invocation.getter(#image), returnValue: '')
+          as String);
+  @override
   bool get visibility =>
       (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
           as bool);
+  @override
+  String get uen =>
+      (super.noSuchMethod(Invocation.getter(#uen), returnValue: '') as String);
   @override
   _i2.$RetailerDTOCopyWith<_i2.RetailerDTO> get copyWith =>
       (super.noSuchMethod(Invocation.getter(#copyWith),

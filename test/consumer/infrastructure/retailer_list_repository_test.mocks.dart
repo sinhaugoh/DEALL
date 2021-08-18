@@ -5,11 +5,11 @@
 import 'dart:async' as _i5;
 
 import 'package:cloud_firestore/cloud_firestore.dart' as _i7;
-import 'package:deall/consumer/infrastructure/firestore_failures.dart' as _i6;
 import 'package:deall/consumer/infrastructure/retailer_list_remote_service.dart'
     as _i4;
-import 'package:deall/core/application/retailer.dart' as _i2;
-import 'package:deall/core/infrastructure/retailer_dto.dart' as _i3;
+import 'package:deall/core/application/retailer/retailer.dart' as _i2;
+import 'package:deall/core/infrastructure/firestore_failures.dart' as _i6;
+import 'package:deall/core/infrastructure/retailer/retailer_dto.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -123,6 +123,9 @@ class MockRetailer extends _i1.Mock implements _i2.Retailer {
   }
 
   @override
+  String get id =>
+      (super.noSuchMethod(Invocation.getter(#id), returnValue: '') as String);
+  @override
   String get name =>
       (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
   @override
@@ -145,9 +148,20 @@ class MockRetailer extends _i1.Mock implements _i2.Retailer {
       (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
           as String);
   @override
+  String get description =>
+      (super.noSuchMethod(Invocation.getter(#description), returnValue: '')
+          as String);
+  @override
+  String get image =>
+      (super.noSuchMethod(Invocation.getter(#image), returnValue: '')
+          as String);
+  @override
   bool get visibility =>
       (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
           as bool);
+  @override
+  String get uen =>
+      (super.noSuchMethod(Invocation.getter(#uen), returnValue: '') as String);
   @override
   _i2.$RetailerCopyWith<_i2.Retailer> get copyWith =>
       (super.noSuchMethod(Invocation.getter(#copyWith),
@@ -168,6 +182,9 @@ class MockRetailerDTO extends _i1.Mock implements _i3.RetailerDTO {
   }
 
   @override
+  String get id =>
+      (super.noSuchMethod(Invocation.getter(#id), returnValue: '') as String);
+  @override
   String get name =>
       (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
   @override
@@ -190,9 +207,20 @@ class MockRetailerDTO extends _i1.Mock implements _i3.RetailerDTO {
       (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
           as String);
   @override
+  String get description =>
+      (super.noSuchMethod(Invocation.getter(#description), returnValue: '')
+          as String);
+  @override
+  String get image =>
+      (super.noSuchMethod(Invocation.getter(#image), returnValue: '')
+          as String);
+  @override
   bool get visibility =>
       (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
           as bool);
+  @override
+  String get uen =>
+      (super.noSuchMethod(Invocation.getter(#uen), returnValue: '') as String);
   @override
   _i3.$RetailerDTOCopyWith<_i3.RetailerDTO> get copyWith =>
       (super.noSuchMethod(Invocation.getter(#copyWith),
