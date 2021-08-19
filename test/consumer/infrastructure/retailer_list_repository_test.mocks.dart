@@ -2,14 +2,13 @@
 // in deall/test/consumer/infrastructure/retailer_list_repository_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i5;
+import 'dart:async' as _i4;
 
-import 'package:cloud_firestore/cloud_firestore.dart' as _i7;
-import 'package:deall/consumer/infrastructure/retailer_list_remote_service.dart'
-    as _i4;
-import 'package:deall/core/application/retailer/retailer.dart' as _i2;
-import 'package:deall/core/infrastructure/firestore_failures.dart' as _i6;
-import 'package:deall/core/infrastructure/retailer/retailer_dto.dart' as _i3;
+import 'package:dartz/dartz.dart' as _i2;
+import 'package:deall/consumer/infrastructure/retailer_list_repository.dart'
+    as _i3;
+import 'package:deall/core/application/retailer/retailer.dart' as _i6;
+import 'package:deall/core/infrastructure/firestore_failures.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -20,34 +19,31 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
-class _Fake$RetailerCopyWith<$Res> extends _i1.Fake
-    implements _i2.$RetailerCopyWith<$Res> {}
+class _FakeEither<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
-class _Fake$RetailerDTOCopyWith<$Res> extends _i1.Fake
-    implements _i3.$RetailerDTOCopyWith<$Res> {}
-
-class _FakeRetailer extends _i1.Fake implements _i2.Retailer {}
-
-/// A class which mocks [RetailerListRemoteService].
+/// A class which mocks [RetailerListRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRetailerListRemoteService extends _i1.Mock
-    implements _i4.RetailerListRemoteService {
-  MockRetailerListRemoteService() {
+class MockRetailerListRepository extends _i1.Mock
+    implements _i3.RetailerListRepository {
+  MockRetailerListRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<List<_i3.RetailerDTO>> getRetailerList() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.FirestoreFailures, List<_i6.Retailer>>>
+      getRetailerList() => (super.noSuchMethod(
           Invocation.method(#getRetailerList, []),
-          returnValue: Future<List<_i3.RetailerDTO>>.value(<_i3.RetailerDTO>[]))
-      as _i5.Future<List<_i3.RetailerDTO>>);
+          returnValue: Future<
+                  _i2.Either<_i5.FirestoreFailures, List<_i6.Retailer>>>.value(
+              _FakeEither<_i5.FirestoreFailures, List<_i6.Retailer>>())) as _i4
+          .Future<_i2.Either<_i5.FirestoreFailures, List<_i6.Retailer>>>);
 }
 
 /// A class which mocks [FirestoreFailures].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
+class MockFirestoreFailures extends _i1.Mock implements _i5.FirestoreFailures {
   MockFirestoreFailures() {
     _i1.throwOnMissingStub(this);
   }
@@ -84,10 +80,10 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
           returnValue: null) as TResult);
   @override
   TResult map<TResult extends Object?>(
-          {TResult Function(_i6.CancelledOperation)? cancelledOperation,
-          TResult Function(_i6.ObjectNotFound)? objectNotFound,
-          TResult Function(_i6.Unknown)? unknown,
-          TResult Function(_i6.NoConnection)? noConnection}) =>
+          {TResult Function(_i5.CancelledOperation)? cancelledOperation,
+          TResult Function(_i5.ObjectNotFound)? objectNotFound,
+          TResult Function(_i5.Unknown)? unknown,
+          TResult Function(_i5.NoConnection)? noConnection}) =>
       (super.noSuchMethod(
           Invocation.method(#map, [], {
             #cancelledOperation: cancelledOperation,
@@ -98,10 +94,10 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
           returnValue: null) as TResult);
   @override
   TResult maybeMap<TResult extends Object?>(
-          {TResult Function(_i6.CancelledOperation)? cancelledOperation,
-          TResult Function(_i6.ObjectNotFound)? objectNotFound,
-          TResult Function(_i6.Unknown)? unknown,
-          TResult Function(_i6.NoConnection)? noConnection,
+          {TResult Function(_i5.CancelledOperation)? cancelledOperation,
+          TResult Function(_i5.ObjectNotFound)? objectNotFound,
+          TResult Function(_i5.Unknown)? unknown,
+          TResult Function(_i5.NoConnection)? noConnection,
           TResult Function()? orElse}) =>
       (super.noSuchMethod(
           Invocation.method(#maybeMap, [], {
@@ -112,146 +108,4 @@ class MockFirestoreFailures extends _i1.Mock implements _i6.FirestoreFailures {
             #orElse: orElse
           }),
           returnValue: null) as TResult);
-}
-
-/// A class which mocks [Retailer].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockRetailer extends _i1.Mock implements _i2.Retailer {
-  MockRetailer() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  String get id =>
-      (super.noSuchMethod(Invocation.getter(#id), returnValue: '') as String);
-  @override
-  String get name =>
-      (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
-  @override
-  String get block =>
-      (super.noSuchMethod(Invocation.getter(#block), returnValue: '')
-          as String);
-  @override
-  String get street =>
-      (super.noSuchMethod(Invocation.getter(#street), returnValue: '')
-          as String);
-  @override
-  String get unit =>
-      (super.noSuchMethod(Invocation.getter(#unit), returnValue: '') as String);
-  @override
-  String get postalCode =>
-      (super.noSuchMethod(Invocation.getter(#postalCode), returnValue: '')
-          as String);
-  @override
-  String get operatingHours =>
-      (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
-          as String);
-  @override
-  String get description =>
-      (super.noSuchMethod(Invocation.getter(#description), returnValue: '')
-          as String);
-  @override
-  String get image =>
-      (super.noSuchMethod(Invocation.getter(#image), returnValue: '')
-          as String);
-  @override
-  bool get visibility =>
-      (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
-          as bool);
-  @override
-  String get uen =>
-      (super.noSuchMethod(Invocation.getter(#uen), returnValue: '') as String);
-  @override
-  _i2.$RetailerCopyWith<_i2.Retailer> get copyWith =>
-      (super.noSuchMethod(Invocation.getter(#copyWith),
-              returnValue: _Fake$RetailerCopyWith<_i2.Retailer>())
-          as _i2.$RetailerCopyWith<_i2.Retailer>);
-  @override
-  String addressLine() =>
-      (super.noSuchMethod(Invocation.method(#addressLine, []), returnValue: '')
-          as String);
-}
-
-/// A class which mocks [RetailerDTO].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockRetailerDTO extends _i1.Mock implements _i3.RetailerDTO {
-  MockRetailerDTO() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  String get id =>
-      (super.noSuchMethod(Invocation.getter(#id), returnValue: '') as String);
-  @override
-  String get name =>
-      (super.noSuchMethod(Invocation.getter(#name), returnValue: '') as String);
-  @override
-  String get block =>
-      (super.noSuchMethod(Invocation.getter(#block), returnValue: '')
-          as String);
-  @override
-  String get street =>
-      (super.noSuchMethod(Invocation.getter(#street), returnValue: '')
-          as String);
-  @override
-  String get unit =>
-      (super.noSuchMethod(Invocation.getter(#unit), returnValue: '') as String);
-  @override
-  String get postalCode =>
-      (super.noSuchMethod(Invocation.getter(#postalCode), returnValue: '')
-          as String);
-  @override
-  String get operatingHours =>
-      (super.noSuchMethod(Invocation.getter(#operatingHours), returnValue: '')
-          as String);
-  @override
-  String get description =>
-      (super.noSuchMethod(Invocation.getter(#description), returnValue: '')
-          as String);
-  @override
-  String get image =>
-      (super.noSuchMethod(Invocation.getter(#image), returnValue: '')
-          as String);
-  @override
-  bool get visibility =>
-      (super.noSuchMethod(Invocation.getter(#visibility), returnValue: false)
-          as bool);
-  @override
-  String get uen =>
-      (super.noSuchMethod(Invocation.getter(#uen), returnValue: '') as String);
-  @override
-  _i3.$RetailerDTOCopyWith<_i3.RetailerDTO> get copyWith =>
-      (super.noSuchMethod(Invocation.getter(#copyWith),
-              returnValue: _Fake$RetailerDTOCopyWith<_i3.RetailerDTO>())
-          as _i3.$RetailerDTOCopyWith<_i3.RetailerDTO>);
-  @override
-  _i2.Retailer toDomain() =>
-      (super.noSuchMethod(Invocation.method(#toDomain, []),
-          returnValue: _FakeRetailer()) as _i2.Retailer);
-  @override
-  Map<String, dynamic> toJson() =>
-      (super.noSuchMethod(Invocation.method(#toJson, []),
-          returnValue: <String, dynamic>{}) as Map<String, dynamic>);
-}
-
-/// A class which mocks [FirebaseException].
-///
-/// See the documentation for Mockito's code generation for more information.
-// ignore: must_be_immutable
-class MockFirebaseException extends _i1.Mock implements _i7.FirebaseException {
-  MockFirebaseException() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  String get plugin =>
-      (super.noSuchMethod(Invocation.getter(#plugin), returnValue: '')
-          as String);
-  @override
-  String get code =>
-      (super.noSuchMethod(Invocation.getter(#code), returnValue: '') as String);
-  @override
-  String toString() => super.toString();
 }
