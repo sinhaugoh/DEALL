@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,26 +26,102 @@ void main() {
     return testContainer;
   }
 
-  group('getRetailerList', () {
-    test('state should be loaded if successfully retrieve retailer list',
-        () async {
-      final testContainer = setUpTestContainer();
+  // group('getRetailerList', () {
+  //   test('should return correct state when successfully retrieve retailer list',
+  //       () async {
+  //     final testContainer = setUpTestContainer();
 
-      // when(testContainer
-      //         .read(retailerListNotifierProvider.notifier)
-      //         .getRetailerList())
-      //     .thenAnswer(
-      //         (_) async => right(firebaseList));
+  //     when(testContainer
+  //             .read(retailerListNotifierProvider.notifier)
+  //             .getRetailerList())
+  //         .thenAnswer(
+  //             (_) async => right(firebaseList));
 
-      // await testContainer
-      //     .read(retailerListNotifierProvider.notifier)
-      //     .getRetailerList();
+  //     await testContainer
+  //         .read(retailerListNotifierProvider.notifier)
+  //         .getRetailerList();
 
-      // final resultState = testContainer.read(retailerListNotifierProvider);
+  //     final resultState = testContainer.read(retailerListNotifierProvider);
 
-      // expect(resultState, const RetailerListState.loaded(firebaseList, []));
-    });
-  });
+  //     expect(resultState, const RetailerListState.loaded(firebaseList, []));
+  //   });
+
+  //   test('should return correct state when no list is found',
+  //       () async {
+  //     final testContainer = setUpTestContainer();
+
+  //     when(testContainer
+  //             .read(retailerListNotifierProvider.notifier)
+  //             .getRetailerList())
+  //         .thenAnswer(
+  //             (_) async => left(const FirestoreFailures.objectNotFound()));
+
+  //     await testContainer
+  //         .read(retailerListNotifierProvider.notifier)
+  //         .getRetailerList();
+
+  //     final resultState = testContainer.read(retailerListNotifierProvider);
+
+  //     expect(resultState, const RetailerListState.failure("Object not found."));
+  //   });
+
+  //     test('should return correct state if user cancel retrieval of retailer list',
+  //       () async {
+  //     final testContainer = setUpTestContainer();
+
+  //     when(testContainer
+  //             .read(retailerListNotifierProvider.notifier)
+  //             .getRetailerList())
+  //         .thenAnswer(
+  //             (_) async => left(const FirestoreFailures.cancelledOperation()));
+
+  //     await testContainer
+  //         .read(retailerListNotifierProvider.notifier)
+  //         .getRetailerList();
+
+  //     final resultState = testContainer.read(retailerListNotifierProvider);
+
+  //     expect(resultState, const RetailerListState.failure("Operation cancelled."));
+  //   });
+
+  //   test('should return correct state if no connection on user device',
+  //       () async {
+  //     final testContainer = setUpTestContainer();
+
+  //     when(testContainer
+  //             .read(retailerListNotifierProvider.notifier)
+  //             .getRetailerList())
+  //         .thenAnswer(
+  //             (_) async => left(const FirestoreFailures.noConnection()));
+
+  //     await testContainer
+  //         .read(retailerListNotifierProvider.notifier)
+  //         .getRetailerList();
+
+  //     final resultState = testContainer.read(retailerListNotifierProvider);
+
+  //     expect(resultState, const RetailerListState.noConnection());
+  //   });
+
+  //   test('should return correct state if unknown error occurs',
+  //       () async {
+  //     final testContainer = setUpTestContainer();
+
+  //     when(testContainer
+  //             .read(retailerListNotifierProvider.notifier)
+  //             .getRetailerList())
+  //         .thenAnswer(
+  //             (_) async => left(const FirestoreFailures.unknown()));
+
+  //     await testContainer
+  //         .read(retailerListNotifierProvider.notifier)
+  //         .getRetailerList();
+
+  //     final resultState = testContainer.read(retailerListNotifierProvider);
+
+  //     expect(resultState, const RetailerListState.failure("Unknown error."));
+  //   });
+  // });
 
   // group('searchWithTerm', () {
   //   test('state should be loaded if successfully retrieve retailer list', () async {

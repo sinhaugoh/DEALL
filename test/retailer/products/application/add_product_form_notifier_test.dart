@@ -36,36 +36,6 @@ void main() {
     return testContainer;
   }
 
-  // group('initialiseRetailer', () {
-  //   test('should reset the value of retailer field based on the input', () {
-  //     final container = setUpContainer();
-  //     const testValue = Retailer(
-  //       id: 'id',
-  //       name: 'name',
-  //       block: 'block',
-  //       street: 'street',
-  //       unit: 'unit',
-  //       postalCode: 'postalCode',
-  //       operatingHours: 'operatingHours',
-  //       description: 'description',
-  //       image: 'image',
-  //       visibility: false,
-  //       uen: 'uen',
-  //     );
-
-  //     final initialState = container.read(retailerEditProfileNotifierProvider);
-
-  //     container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .initialiseRetailer(testValue);
-
-  //     final result = container.read(retailerEditProfileNotifierProvider);
-
-  //     expect(
-  //         result.retailer, initialState.copyWith(retailer: testValue).retailer);
-  //   });
-  // });
-
   group('prodNameChanged', () {
     test('should change product name field based on the input', () {
       final testContainer = setUpContainer();
@@ -166,68 +136,76 @@ void main() {
     });
   });
 
-// add product
-  
-  // group('pickImage', () {
-  //   test('should return correct state if the user picked a valid image',
+  // group('add product', () {
+  //   test('should return correct state when product added successfully',
   //       () async {
   //     final container = setUpContainer();
-  //     final testFile = File('');
+  //     when(container.read(addProductFormNotifierProvider.notifier).addProduct())
+  //         .thenAnswer((_) async => right(null));
+    
+  //     await container.read(addProductFormNotifierProvider.notifier).addProduct();
 
-  //     when(container.read(imagePickingRepositoryProvider).pickImage())
-  //         .thenAnswer((_) async => right(testFile));
+  //     final result = container.read(addProductFormNotifierProvider);
 
-  //     await container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .pickImage();
-  //     final result = container.read(retailerEditProfileNotifierProvider);
-
-  //     expect(result.imageFile, isA<File>());
-  //     expect(result.hasInitialImageChanged, true);
-  //   });
-
-  //   test('should return correct state if the user cancel picking image action',
-  //       () async {
-  //     final container = setUpContainer();
-
-  //     when(container.read(imagePickingRepositoryProvider).pickImage())
-  //         .thenAnswer(
-  //             (_) async => left(const ImagePickingFailure.imagePicker('')));
-
-  //     await container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .pickImage();
-  //     final result = container.read(retailerEditProfileNotifierProvider);
-
-  //     expect(result.imageFile, null);
+  //     expect(result.successful, true);
+  //     expect(result.isSaving, false);
   //   });
   // });
 
-  // group('deleteImage', () {
-  //   test(
-  //       'should reset imageFile field to null if a picture is already selected',
-  //       () {
-  //     final container = setUpContainer();
+  group('pickImage', () {
+    test('should return correct state if the user picked a valid image',
+        () async {
+      final container = setUpContainer();
+      final testFile = File('');
 
-  //     container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .imageChanged(File(''));
+      when(container.read(imagePickingRepositoryProvider).pickImage())
+          .thenAnswer((_) async => right(testFile));
 
-  //     container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .deleteImage();
-  //     final result = container.read(retailerEditProfileNotifierProvider);
-  //     expect(result.imageFile, null);
-  //   });
+      await container.read(addProductFormNotifierProvider.notifier).pickImage();
 
-  //   test('should reset imageFile field to null if a picture is not selected',
-  //       () {
-  //     final container = setUpContainer();
-  //     container
-  //         .read(retailerEditProfileNotifierProvider.notifier)
-  //         .deleteImage();
-  //     final result = container.read(retailerEditProfileNotifierProvider);
-  //     expect(result.imageFile, null);
-  //   });
-  // });
+      final result = container.read(addProductFormNotifierProvider);
+
+      expect(result.imageFile, isA<File>());
+      expect(result.imageFile, testFile);
+    });
+
+    test('should return correct state if the user cancel picking image action',
+        () async {
+      final container = setUpContainer();
+
+      when(container.read(imagePickingRepositoryProvider).pickImage())
+          .thenAnswer(
+              (_) async => left(const ImagePickingFailure.imagePicker('')));
+
+      await container.read(addProductFormNotifierProvider.notifier).pickImage();
+
+      final result = container.read(addProductFormNotifierProvider);
+
+      expect(result.imageFile, null);
+    });
+  });
+
+  group('deleteImage', () {
+    test(
+        'should reset imageFile field to null if a picture is already selected',
+        () {
+      final container = setUpContainer();
+
+      container
+          .read(addProductFormNotifierProvider.notifier)
+          .prodImageChanged(File(''));
+
+      container.read(addProductFormNotifierProvider.notifier).deleteImage();
+      final result = container.read(addProductFormNotifierProvider);
+      expect(result.imageFile, null);
+    });
+
+    test('should reset imageFile field to null if a picture is not selected',
+        () {
+      final container = setUpContainer();
+      container.read(addProductFormNotifierProvider.notifier).deleteImage();
+      final result = container.read(addProductFormNotifierProvider);
+      expect(result.imageFile, null);
+    });
+  });
 }
