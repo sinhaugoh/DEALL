@@ -17,7 +17,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       : super(AddProductFormState.initial());
 
   void prodNameChanged(String name) {
-    state = state.copyWith(name: name);
+    state = state.copyWith(name: name.trim());
   }
 
   void prodUsualPriceChanged(String usualPrice) {
@@ -33,7 +33,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   }
 
   void prodDescriptionChanged(String description) {
-    state = state.copyWith(description: description);
+    state = state.copyWith(description: description.trim());
   }
 
   void prodAvailabilityChanged() {

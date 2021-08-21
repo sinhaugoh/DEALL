@@ -69,7 +69,7 @@ class EditProductFormNotifier
   }
 
   void prodNameChanged(String name) {
-    state = state.copyWith.product(name: name);
+    state = state.copyWith.product(name: name.trim());
   }
 
   void prodUsualPriceChanged(String usualPriceString) {
@@ -88,7 +88,7 @@ class EditProductFormNotifier
   }
 
   void prodDescriptionChanged(String description) {
-    state = state.copyWith.product(description: description);
+    state = state.copyWith.product(description: description.trim());
   }
 
   void _validateInputs() {

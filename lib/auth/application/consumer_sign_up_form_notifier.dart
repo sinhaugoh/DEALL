@@ -43,7 +43,7 @@ class ConsumerSignUpFormNotifier
       : super(ConsumerSignUpFormState.initial());
 
   void emailChanged(String email) {
-    state = state.copyWith(email: email);
+    state = state.copyWith(email: email.trim());
   }
 
   void passwordChanged(String password) {
