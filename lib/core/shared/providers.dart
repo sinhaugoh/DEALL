@@ -37,7 +37,7 @@ final productProvider =
     Provider.autoDispose<Product>((ref) => throw UnimplementedError());
 
 final productRemoteServiceProvider =
-    Provider((ref) => ProductListRemoteService(
+    Provider((ref) => ProductRemoteService(
           ref.watch(firestoreProvider),
           ref.watch(firebaseAuthProvider),
         ));

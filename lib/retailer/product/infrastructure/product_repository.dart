@@ -10,7 +10,7 @@ import 'package:deall/core/infrastructure/product/product_dto.dart';
 import 'package:deall/core/infrastructure/firestore_failures.dart';
 
 class ProductRepository {
-  final ProductListRemoteService _productRemoteService;
+  final ProductRemoteService _productRemoteService;
   final InternetConnectionChecker _internetConnectionChecker;
 
   ProductRepository(
@@ -27,7 +27,7 @@ class ProductRepository {
               list.map((productDTO) => productDTO.toDomain()).toList()));
     } on FirebaseException catch (e) {
       if (e.code ==
-          FirebaseException(code: 'not_found', plugin: "No object found.")
+          FirebaseException(code: 'not-found', plugin: "No object found.")
               .code) {
         return left(const FirestoreFailures.objectNotFound());
       }
@@ -41,7 +41,7 @@ class ProductRepository {
         .map((list) => right<FirestoreFailures, List<Product>>(
             list.map((productDTO) => productDTO.toDomain()).toList()))
         .onErrorReturnWith((error, _) {
-      if (error is FirebaseException && error.code == 'not_found') {
+      if (error is FirebaseException && error.code == 'not-found') {
         return left(const FirestoreFailures.objectNotFound());
       } else {
         return left(const FirestoreFailures.unknown());
