@@ -84,6 +84,8 @@ class CustomCard extends StatelessWidget {
                       const SizedBox(height: 5,),
                       Text(
                         "${retailerData?.description.toString()}",
+                        // maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
                           fontSize: 12,
