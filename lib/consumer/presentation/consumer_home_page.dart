@@ -90,26 +90,6 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
   AppBar enterLocationAppBar() {
     return AppBar(
-      // title: Padding(
-      //   padding: const EdgeInsets.all(8.0),
-      //   child: TextField(
-      //     decoration: InputDecoration(
-      //       hintText: 'Search',
-      //       prefixIcon: Icon(Icons.search),
-      //       border: OutlineInputBorder(
-      //         borderRadius: BorderRadius.circular(10),
-      //         borderSide: BorderSide.none,
-      //       ),
-      //       fillColor: Colors.white,
-      //       filled: true,
-      //       contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
-      //       suffixIcon: IconButton(onPressed: (){
-
-      //       }, icon: Icon(Icons.arrow_forward))
-      //     ),
-      //   ),
-      // ),
-
       toolbarHeight: 70,
       title: Center(
         child: ConstrainedBox(
