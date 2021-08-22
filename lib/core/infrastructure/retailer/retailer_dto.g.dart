@@ -8,6 +8,7 @@ part of 'retailer_dto.dart';
 
 _$_RetailerDTO _$_$_RetailerDTOFromJson(Map<String, dynamic> json) {
   return _$_RetailerDTO(
+    id: json['id'] as String,
     name: json['name'] as String,
     block: json['block'] as String,
     street: json['street'] as String,
@@ -23,6 +24,7 @@ _$_RetailerDTO _$_$_RetailerDTOFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_RetailerDTOToJson(_$_RetailerDTO instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'block': instance.block,
       'street': instance.street,

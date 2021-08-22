@@ -26,7 +26,30 @@ class RetailerListNotifier extends StateNotifier<RetailerListState> {
           state = const RetailerListState.failure("Unknown error.");
         },
       );
-    }, (retailerList) => state = RetailerListState.loaded(retailerList));
+    }, (retailerList) => state = RetailerListState.loaded(retailerList, retailerList));
   }
 
+  void searchWithTerm(String? searchTerm) {
+    final formattedSearchTerm = searchTerm?.toLowerCase().trim();
+    state.maybeMap(
+      loaded: (loadedState) {
+        var loadedStateCopy = loadedState.copyWith();
+
+        if (formattedSearchTerm == null ||formattedSearchTerm.isEmpty) {
+          loadedStateCopy = loadedStateCopy.copyWith(
+              filteredRetailers: loadedStateCopy.retailers
+                  .where((retailer) => retailer.visibility == true)
+                  .toList());
+        } else {
+          loadedStateCopy = loadedStateCopy.copyWith(
+              filteredRetailers: loadedStateCopy.retailers
+                  .where((retailer) => retailer.name.toLowerCase().contains(formattedSearchTerm))
+                  .toList());
+        }
+
+        state = loadedStateCopy;
+      },
+      orElse: () {},
+    );
+  }
 }

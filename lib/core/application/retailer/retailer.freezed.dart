@@ -17,7 +17,8 @@ class _$RetailerTearOff {
   const _$RetailerTearOff();
 
   _Retailer call(
-      {required String name,
+      {required String id,
+      required String name,
       required String block,
       required String street,
       required String unit,
@@ -28,6 +29,7 @@ class _$RetailerTearOff {
       required bool visibility,
       required String uen}) {
     return _Retailer(
+      id: id,
       name: name,
       block: block,
       street: street,
@@ -47,6 +49,7 @@ const $Retailer = _$RetailerTearOff();
 
 /// @nodoc
 mixin _$Retailer {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get block => throw _privateConstructorUsedError;
   String get street => throw _privateConstructorUsedError;
@@ -68,7 +71,8 @@ abstract class $RetailerCopyWith<$Res> {
   factory $RetailerCopyWith(Retailer value, $Res Function(Retailer) then) =
       _$RetailerCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String block,
       String street,
       String unit,
@@ -90,6 +94,7 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? block = freezed,
     Object? street = freezed,
@@ -102,6 +107,10 @@ class _$RetailerCopyWithImpl<$Res> implements $RetailerCopyWith<$Res> {
     Object? uen = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -152,7 +161,8 @@ abstract class _$RetailerCopyWith<$Res> implements $RetailerCopyWith<$Res> {
       __$RetailerCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String block,
       String street,
       String unit,
@@ -175,6 +185,7 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? block = freezed,
     Object? street = freezed,
@@ -187,6 +198,10 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
     Object? uen = freezed,
   }) {
     return _then(_Retailer(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -235,7 +250,8 @@ class __$RetailerCopyWithImpl<$Res> extends _$RetailerCopyWithImpl<$Res>
 
 class _$_Retailer extends _Retailer {
   const _$_Retailer(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.block,
       required this.street,
       required this.unit,
@@ -247,6 +263,8 @@ class _$_Retailer extends _Retailer {
       required this.uen})
       : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -270,13 +288,15 @@ class _$_Retailer extends _Retailer {
 
   @override
   String toString() {
-    return 'Retailer(name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
+    return 'Retailer(id: $id, name: $name, block: $block, street: $street, unit: $unit, postalCode: $postalCode, operatingHours: $operatingHours, description: $description, image: $image, visibility: $visibility, uen: $uen)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Retailer &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.block, block) ||
@@ -306,6 +326,7 @@ class _$_Retailer extends _Retailer {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(block) ^
       const DeepCollectionEquality().hash(street) ^
@@ -325,7 +346,8 @@ class _$_Retailer extends _Retailer {
 
 abstract class _Retailer extends Retailer {
   const factory _Retailer(
-      {required String name,
+      {required String id,
+      required String name,
       required String block,
       required String street,
       required String unit,
@@ -337,6 +359,8 @@ abstract class _Retailer extends Retailer {
       required String uen}) = _$_Retailer;
   const _Retailer._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

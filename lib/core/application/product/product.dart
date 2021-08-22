@@ -14,5 +14,16 @@ class Product with _$Product {
     required String description,
     required bool availability,
   }) = _Product;
-}
 
+  factory Product.initial() {
+    return const Product(
+      id: '',
+      name: '',
+      usualPrice: 0.00,
+      discountedPrice: 0.00,
+      image: '',
+      description: '',
+      availability: false,
+    );
+  }
+}

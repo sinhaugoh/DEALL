@@ -58,19 +58,19 @@ class RetailerEditProfileFormNotifier
   }
 
   void nameChanged(String name) {
-    state = state.copyWith.retailer(name: name);
+    state = state.copyWith.retailer(name: name.trim());
   }
 
   void blockChanged(String block) {
-    state = state.copyWith.retailer(block: block);
+    state = state.copyWith.retailer(block: block.trim());
   }
 
   void streetChanged(String street) {
-    state = state.copyWith.retailer(street: street);
+    state = state.copyWith.retailer(street: street.trim());
   }
 
   void unitChanged(String unit) {
-    state = state.copyWith.retailer(unit: unit);
+    state = state.copyWith.retailer(unit: unit.trim());
   }
 
   void postalCodeChanged(String postalCode) {
@@ -78,11 +78,11 @@ class RetailerEditProfileFormNotifier
   }
 
   void operatingHoursChanged(String operatingHours) {
-    state = state.copyWith.retailer(operatingHours: operatingHours);
+    state = state.copyWith.retailer(operatingHours: operatingHours.trim());
   }
 
   void descriptionChanged(String description) {
-    state = state.copyWith.retailer(description: description);
+    state = state.copyWith.retailer(description: description.trim());
   }
 
   void imageChanged(File imageFile) {
@@ -109,6 +109,7 @@ class RetailerEditProfileFormNotifier
 
   void deleteImage() {
     state = state.copyWith(
+      retailer: state.retailer.copyWith(image: ''),
       imageFile: null,
       hasInitialImageChanged: true,
     );
@@ -171,15 +172,21 @@ class RetailerEditProfileFormNotifier
         );
 
         failureOrImageString.fold(
-          (f) => state = state.copyWith(
-            hasFirebaseFailure: true,
-            isSaving: false,
+          (f) => f.maybeWhen(
+            noConnection: () => state = state.copyWith(
+              hasConnection: false,
+              isSaving: false,
+            ),
+            orElse: () => state = state.copyWith(
+              hasFirebaseFailure: true,
+              isSaving: false,
+            ),
           ),
           (imageString) => state = state.copyWith.retailer(image: imageString),
         );
       }
 
-      if (!state.hasFirebaseFailure) {
+      if (!state.hasFirebaseFailure && state.hasConnection) {
         final failureOrSuccess =
             await _retailerRepository.updateRetailer(state.retailer);
         failureOrSuccess.fold(
@@ -199,39 +206,6 @@ class RetailerEditProfileFormNotifier
           ),
         );
       }
-
-      //   final failureOrSuccess = await _authRepository.retailerSignUp(
-      //     email: state.email,
-      //     password: state.password,
-      //     retailer: state.retailer,
-      //     imageFile: state.imageFile,
-      //   );
-
-      //   failureOrSuccess.fold((authFailure) {
-      //     authFailure.maybeWhen(
-      //       server: (failureMessage) {
-      //         state = state.copyWith(
-      //           emailErrorMessage: failureMessage,
-      //           isSaving: false,
-      //         );
-      //       },
-      //       noConnection: () {
-      //         state = state.copyWith(
-      //           hasConnection: false,
-      //           isSaving: false,
-      //         );
-      //       },
-      //       orElse: () {
-      //         //could throw unknown auth error or storage error
-      //       },
-      //     );
-      //   }, (_) {
-      //     state = state.copyWith(
-      //       isSaving: false,
-      //       successful: true,
-      //     );
-      //   });
-      // }
     }
   }
 }

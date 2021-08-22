@@ -8,7 +8,12 @@ class ProductListState with _$ProductListState {
   const ProductListState._();
   const factory ProductListState.initial() = Initial;
   const factory ProductListState.loading() = Loading;
-  const factory ProductListState.loaded(List<Product> products) = Loaded;
+  const factory ProductListState.loaded(
+    List<Product> products, {
+    @Default(true) bool hasConnection,
+    @Default(false) bool hasFirebaseFailure,
+  }) = Loaded;
+
   const factory ProductListState.noConnection() = NoConnection;
   const factory ProductListState.failure(String message) = Failure;
 }

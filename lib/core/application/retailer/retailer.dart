@@ -6,6 +6,7 @@ part 'retailer.freezed.dart';
 abstract class Retailer with _$Retailer {
   const Retailer._();
   const factory Retailer({
+    required String id,
     required String name,
     required String block,
     required String street,
@@ -20,6 +21,7 @@ abstract class Retailer with _$Retailer {
 
   factory Retailer.initial() {
     return const Retailer(
+      id: '',
       name: '',
       block: '',
       street: '',

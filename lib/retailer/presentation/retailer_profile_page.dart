@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
-import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
+import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,18 +20,21 @@ class RetailerProfilePage extends ConsumerWidget {
         title: Text(retailer?.name ?? ''),
         actions: [
           IconButton(
-            onPressed: () {
-              AutoRouter.of(context).push(
-                  EditProfileRoute(retailer: retailer ?? Retailer.initial()));
-            },
+            
+            onPressed: retailer == null
+                ? () {}
+                : () {
+                    AutoRouter.of(context)
+                        .push(EditProfileRoute(retailer: retailer));
+                  },
             icon: const Icon(Icons.edit),
           )
         ],
       ),
-      drawer: const ConsumerDrawer(),
+      drawer: const RetailerDrawer(),
       body: retailer == null
           ? const Center(
-            //TODO: implement no connection page
+              //TODO: implement no connection page
               child: Text('No connection!'),
             )
           : SingleChildScrollView(

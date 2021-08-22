@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'retailer_list_state.dart';
+part of 'favourite_retailer_notifier.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,67 +13,57 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$RetailerListStateTearOff {
-  const _$RetailerListStateTearOff();
+class _$FavouriteRetailerStateTearOff {
+  const _$FavouriteRetailerStateTearOff();
 
   Initial initial() {
     return const Initial();
-  }
-
-  NoConnection noConnection() {
-    return const NoConnection();
   }
 
   Loading loading() {
     return const Loading();
   }
 
-  Loaded loaded(List<Retailer> retailers, List<Retailer> filteredRetailers) {
+  Loaded loaded(List<Retailer> retailerList, {bool hasConnection = true}) {
     return Loaded(
-      retailers,
-      filteredRetailers,
+      retailerList,
+      hasConnection: hasConnection,
     );
   }
 
-  Failure failure(String message) {
+  Failure failure(FirestoreFailures failure) {
     return Failure(
-      message,
+      failure,
     );
   }
 }
 
 /// @nodoc
-const $RetailerListState = _$RetailerListStateTearOff();
+const $FavouriteRetailerState = _$FavouriteRetailerStateTearOff();
 
 /// @nodoc
-mixin _$RetailerListState {
+mixin _$FavouriteRetailerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
         loaded,
-    required TResult Function(String message) failure,
+    required TResult Function(FirestoreFailures failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
+    TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -82,7 +72,6 @@ mixin _$RetailerListState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -92,20 +81,20 @@ mixin _$RetailerListState {
 }
 
 /// @nodoc
-abstract class $RetailerListStateCopyWith<$Res> {
-  factory $RetailerListStateCopyWith(
-          RetailerListState value, $Res Function(RetailerListState) then) =
-      _$RetailerListStateCopyWithImpl<$Res>;
+abstract class $FavouriteRetailerStateCopyWith<$Res> {
+  factory $FavouriteRetailerStateCopyWith(FavouriteRetailerState value,
+          $Res Function(FavouriteRetailerState) then) =
+      _$FavouriteRetailerStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RetailerListStateCopyWithImpl<$Res>
-    implements $RetailerListStateCopyWith<$Res> {
-  _$RetailerListStateCopyWithImpl(this._value, this._then);
+class _$FavouriteRetailerStateCopyWithImpl<$Res>
+    implements $FavouriteRetailerStateCopyWith<$Res> {
+  _$FavouriteRetailerStateCopyWithImpl(this._value, this._then);
 
-  final RetailerListState _value;
+  final FavouriteRetailerState _value;
   // ignore: unused_field
-  final $Res Function(RetailerListState) _then;
+  final $Res Function(FavouriteRetailerState) _then;
 }
 
 /// @nodoc
@@ -115,7 +104,8 @@ abstract class $InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class _$InitialCopyWithImpl<$Res>
+    extends _$FavouriteRetailerStateCopyWithImpl<$Res>
     implements $InitialCopyWith<$Res> {
   _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
       : super(_value, (v) => _then(v as Initial));
@@ -131,7 +121,7 @@ class _$Initial extends Initial {
 
   @override
   String toString() {
-    return 'RetailerListState.initial()';
+    return 'FavouriteRetailerState.initial()';
   }
 
   @override
@@ -146,12 +136,10 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
         loaded,
-    required TResult Function(String message) failure,
+    required TResult Function(FirestoreFailures failure) failure,
   }) {
     return initial();
   }
@@ -160,12 +148,9 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
+    TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -178,7 +163,6 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -190,7 +174,6 @@ class _$Initial extends Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -203,112 +186,9 @@ class _$Initial extends Initial {
   }
 }
 
-abstract class Initial extends RetailerListState {
+abstract class Initial extends FavouriteRetailerState {
   const factory Initial() = _$Initial;
   const Initial._() : super._();
-}
-
-/// @nodoc
-abstract class $NoConnectionCopyWith<$Res> {
-  factory $NoConnectionCopyWith(
-          NoConnection value, $Res Function(NoConnection) then) =
-      _$NoConnectionCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$NoConnectionCopyWithImpl<$Res>
-    extends _$RetailerListStateCopyWithImpl<$Res>
-    implements $NoConnectionCopyWith<$Res> {
-  _$NoConnectionCopyWithImpl(
-      NoConnection _value, $Res Function(NoConnection) _then)
-      : super(_value, (v) => _then(v as NoConnection));
-
-  @override
-  NoConnection get _value => super._value as NoConnection;
-}
-
-/// @nodoc
-
-class _$NoConnection extends NoConnection {
-  const _$NoConnection() : super._();
-
-  @override
-  String toString() {
-    return 'RetailerListState.noConnection()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NoConnection);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() noConnection,
-    required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
-        loaded,
-    required TResult Function(String message) failure,
-  }) {
-    return noConnection();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? noConnection,
-    TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (noConnection != null) {
-      return noConnection();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Failure value) failure,
-  }) {
-    return noConnection(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
-    TResult Function(Loading value)? loading,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (noConnection != null) {
-      return noConnection(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NoConnection extends RetailerListState {
-  const factory NoConnection() = _$NoConnection;
-  const NoConnection._() : super._();
 }
 
 /// @nodoc
@@ -318,7 +198,8 @@ abstract class $LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class _$LoadingCopyWithImpl<$Res>
+    extends _$FavouriteRetailerStateCopyWithImpl<$Res>
     implements $LoadingCopyWith<$Res> {
   _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
       : super(_value, (v) => _then(v as Loading));
@@ -334,7 +215,7 @@ class _$Loading extends Loading {
 
   @override
   String toString() {
-    return 'RetailerListState.loading()';
+    return 'FavouriteRetailerState.loading()';
   }
 
   @override
@@ -349,12 +230,10 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
         loaded,
-    required TResult Function(String message) failure,
+    required TResult Function(FirestoreFailures failure) failure,
   }) {
     return loading();
   }
@@ -363,12 +242,9 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
+    TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -381,7 +257,6 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -393,7 +268,6 @@ class _$Loading extends Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -406,7 +280,7 @@ class _$Loading extends Loading {
   }
 }
 
-abstract class Loading extends RetailerListState {
+abstract class Loading extends FavouriteRetailerState {
   const factory Loading() = _$Loading;
   const Loading._() : super._();
 }
@@ -415,11 +289,12 @@ abstract class Loading extends RetailerListState {
 abstract class $LoadedCopyWith<$Res> {
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
       _$LoadedCopyWithImpl<$Res>;
-  $Res call({List<Retailer> retailers, List<Retailer> filteredRetailers});
+  $Res call({List<Retailer> retailerList, bool hasConnection});
 }
 
 /// @nodoc
-class _$LoadedCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class _$LoadedCopyWithImpl<$Res>
+    extends _$FavouriteRetailerStateCopyWithImpl<$Res>
     implements $LoadedCopyWith<$Res> {
   _$LoadedCopyWithImpl(Loaded _value, $Res Function(Loaded) _then)
       : super(_value, (v) => _then(v as Loaded));
@@ -429,18 +304,18 @@ class _$LoadedCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? retailers = freezed,
-    Object? filteredRetailers = freezed,
+    Object? retailerList = freezed,
+    Object? hasConnection = freezed,
   }) {
     return _then(Loaded(
-      retailers == freezed
-          ? _value.retailers
-          : retailers // ignore: cast_nullable_to_non_nullable
+      retailerList == freezed
+          ? _value.retailerList
+          : retailerList // ignore: cast_nullable_to_non_nullable
               as List<Retailer>,
-      filteredRetailers == freezed
-          ? _value.filteredRetailers
-          : filteredRetailers // ignore: cast_nullable_to_non_nullable
-              as List<Retailer>,
+      hasConnection: hasConnection == freezed
+          ? _value.hasConnection
+          : hasConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -448,35 +323,36 @@ class _$LoadedCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Loaded extends Loaded {
-  const _$Loaded(this.retailers, this.filteredRetailers) : super._();
+  const _$Loaded(this.retailerList, {this.hasConnection = true}) : super._();
 
   @override
-  final List<Retailer> retailers;
+  final List<Retailer> retailerList;
+  @JsonKey(defaultValue: true)
   @override
-  final List<Retailer> filteredRetailers;
+  final bool hasConnection;
 
   @override
   String toString() {
-    return 'RetailerListState.loaded(retailers: $retailers, filteredRetailers: $filteredRetailers)';
+    return 'FavouriteRetailerState.loaded(retailerList: $retailerList, hasConnection: $hasConnection)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Loaded &&
-            (identical(other.retailers, retailers) ||
+            (identical(other.retailerList, retailerList) ||
                 const DeepCollectionEquality()
-                    .equals(other.retailers, retailers)) &&
-            (identical(other.filteredRetailers, filteredRetailers) ||
+                    .equals(other.retailerList, retailerList)) &&
+            (identical(other.hasConnection, hasConnection) ||
                 const DeepCollectionEquality()
-                    .equals(other.filteredRetailers, filteredRetailers)));
+                    .equals(other.hasConnection, hasConnection)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(retailers) ^
-      const DeepCollectionEquality().hash(filteredRetailers);
+      const DeepCollectionEquality().hash(retailerList) ^
+      const DeepCollectionEquality().hash(hasConnection);
 
   @JsonKey(ignore: true)
   @override
@@ -487,30 +363,25 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
         loaded,
-    required TResult Function(String message) failure,
+    required TResult Function(FirestoreFailures failure) failure,
   }) {
-    return loaded(retailers, filteredRetailers);
+    return loaded(retailerList, hasConnection);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
+    TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(retailers, filteredRetailers);
+      return loaded(retailerList, hasConnection);
     }
     return orElse();
   }
@@ -519,7 +390,6 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -531,7 +401,6 @@ class _$Loaded extends Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -544,13 +413,13 @@ class _$Loaded extends Loaded {
   }
 }
 
-abstract class Loaded extends RetailerListState {
-  const factory Loaded(
-      List<Retailer> retailers, List<Retailer> filteredRetailers) = _$Loaded;
+abstract class Loaded extends FavouriteRetailerState {
+  const factory Loaded(List<Retailer> retailerList, {bool hasConnection}) =
+      _$Loaded;
   const Loaded._() : super._();
 
-  List<Retailer> get retailers => throw _privateConstructorUsedError;
-  List<Retailer> get filteredRetailers => throw _privateConstructorUsedError;
+  List<Retailer> get retailerList => throw _privateConstructorUsedError;
+  bool get hasConnection => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedCopyWith<Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -559,11 +428,14 @@ abstract class Loaded extends RetailerListState {
 abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res>;
-  $Res call({String message});
+  $Res call({FirestoreFailures failure});
+
+  $FirestoreFailuresCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
+class _$FailureCopyWithImpl<$Res>
+    extends _$FavouriteRetailerStateCopyWithImpl<$Res>
     implements $FailureCopyWith<$Res> {
   _$FailureCopyWithImpl(Failure _value, $Res Function(Failure) _then)
       : super(_value, (v) => _then(v as Failure));
@@ -573,41 +445,48 @@ class _$FailureCopyWithImpl<$Res> extends _$RetailerListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? message = freezed,
+    Object? failure = freezed,
   }) {
     return _then(Failure(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as FirestoreFailures,
     ));
+  }
+
+  @override
+  $FirestoreFailuresCopyWith<$Res> get failure {
+    return $FirestoreFailuresCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$Failure extends Failure {
-  const _$Failure(this.message) : super._();
+  const _$Failure(this.failure) : super._();
 
   @override
-  final String message;
+  final FirestoreFailures failure;
 
   @override
   String toString() {
-    return 'RetailerListState.failure(message: $message)';
+    return 'FavouriteRetailerState.failure(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Failure &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
   @JsonKey(ignore: true)
   @override
@@ -618,30 +497,25 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() noConnection,
     required TResult Function() loading,
-    required TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)
+    required TResult Function(List<Retailer> retailerList, bool hasConnection)
         loaded,
-    required TResult Function(String message) failure,
+    required TResult Function(FirestoreFailures failure) failure,
   }) {
-    return failure(message);
+    return failure(this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? noConnection,
     TResult Function()? loading,
-    TResult Function(
-            List<Retailer> retailers, List<Retailer> filteredRetailers)?
-        loaded,
-    TResult Function(String message)? failure,
+    TResult Function(List<Retailer> retailerList, bool hasConnection)? loaded,
+    TResult Function(FirestoreFailures failure)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(message);
+      return failure(this.failure);
     }
     return orElse();
   }
@@ -650,7 +524,6 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(NoConnection value) noConnection,
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Failure value) failure,
@@ -662,7 +535,6 @@ class _$Failure extends Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(NoConnection value)? noConnection,
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Failure value)? failure,
@@ -675,11 +547,11 @@ class _$Failure extends Failure {
   }
 }
 
-abstract class Failure extends RetailerListState {
-  const factory Failure(String message) = _$Failure;
+abstract class Failure extends FavouriteRetailerState {
+  const factory Failure(FirestoreFailures failure) = _$Failure;
   const Failure._() : super._();
 
-  String get message => throw _privateConstructorUsedError;
+  FirestoreFailures get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
 }

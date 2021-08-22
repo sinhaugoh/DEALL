@@ -12,14 +12,17 @@ class RetailerRemoteService {
     final userId = _firebaseAuth.currentUser!.uid;
     final documentSnapshot =
         await _firebaseFirestore.collection('retailers').doc(userId).get();
-    return RetailerDTO.fromJson(documentSnapshot.data()!);
+    final retailerJson = documentSnapshot.data()!;
+
+    retailerJson['id'] = documentSnapshot.id;
+
+    return RetailerDTO.fromJson(retailerJson);
   }
 
   Future<void> updateRetailer(RetailerDTO retailerDTO) async {
-    final userId = _firebaseAuth.currentUser!.uid;
     _firebaseFirestore
         .collection('retailers')
-        .doc(userId)
+        .doc(retailerDTO.id)
         .update(retailerDTO.toJson());
   }
 }

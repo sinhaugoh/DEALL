@@ -19,7 +19,6 @@ class ConsumerSignUpForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-
         Expanded(
           flex: 1,
           child: Padding(
@@ -29,115 +28,116 @@ class ConsumerSignUpForm extends ConsumerWidget {
               constraints: const BoxConstraints(maxWidth: 200),
               // color: Colors.blue,
               child: FittedBox(
-                child: Image.asset(
-                  Images.logoText
-                ),
+                child: Image.asset(Images.logoText),
               ),
             ),
           ),
         ),
-
         Expanded(
           flex: 3,
           child: Form(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text(
-                  'Sign up now for exclusive deals!',
-                  textAlign: TextAlign.center,
-                  //insert style
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-                  child: FormTextField(
-                    label: 'Email',
-                    errorText: ref.watch(consumerSignUpFormNotifierProvider
-                            .select((state) => state.showErrorMessage))
-                        ? ref.watch(consumerSignUpFormNotifierProvider
-                            .select((state) => state.emailErrorMessage))
-                        : null,
-                    onChanged: ref
-                        .read(consumerSignUpFormNotifierProvider.notifier)
-                        .emailChanged,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    'Sign up now for exclusive deals!',
+                    textAlign: TextAlign.center,
+                    //insert style
                   ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: FormTextField(
-                    label: 'Password',
-                    obscureText: true,
-                    errorText: ref.watch(consumerSignUpFormNotifierProvider
-                            .select((state) => state.showErrorMessage))
-                        ? ref.watch(consumerSignUpFormNotifierProvider
-                            .select((state) => state.passwordErrorMessage))
-                        : null,
-                    onChanged: ref
-                        .read(consumerSignUpFormNotifierProvider.notifier)
-                        .passwordChanged,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                    ],
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      //dismiss the keyboard
-                      final currentFocus = FocusScope.of(context);
-                      currentFocus.unfocus();
-
-                      ref
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 10.0),
+                    child: FormTextField(
+                      label: 'Email',
+                      errorText: ref.watch(consumerSignUpFormNotifierProvider
+                              .select((state) => state.showErrorMessage))
+                          ? ref.watch(consumerSignUpFormNotifierProvider
+                              .select((state) => state.emailErrorMessage))
+                          : null,
+                      onChanged: ref
                           .read(consumerSignUpFormNotifierProvider.notifier)
-                          .signUp();
-                    },
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))
-                        ),
-                      //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                          .emailChanged,
                     ),
-                    child: const Text('Sign-up'),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: FormTextField(
+                      label: 'Password',
+                      obscureText: ref.watch(consumerSignUpFormNotifierProvider
+                          .select((state) => state.hidePassword)),
+                      errorText: ref.watch(consumerSignUpFormNotifierProvider
+                              .select((state) => state.showErrorMessage))
+                          ? ref.watch(consumerSignUpFormNotifierProvider
+                              .select((state) => state.passwordErrorMessage))
+                          : null,
+                      onChanged: ref
+                          .read(consumerSignUpFormNotifierProvider.notifier)
+                          .passwordChanged,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(RegExp(r"\s")),
+                      ],
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          ref
+                              .read(consumerSignUpFormNotifierProvider.notifier)
+                              .toggleShowPassword();
+                        },
+                        icon: ref.watch(consumerSignUpFormNotifierProvider
+                                .select((state) => state.hidePassword))
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(Icons.visibility),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        //dismiss the keyboard
+                        final currentFocus = FocusScope.of(context);
+                        currentFocus.unfocus();
 
-                const Divider(
-                  thickness: 2,
-                  indent: 20,
-                  endIndent: 20,
-                  height: 50,
-                ),
-
-                Center(
-                  child: Row(
+                        ref
+                            .read(consumerSignUpFormNotifierProvider.notifier)
+                            .signUp();
+                      },
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                        //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
+                      child: const Text('Sign-up'),
+                    ),
+                  ),
+                  const Divider(
+                    thickness: 2,
+                    indent: 20,
+                    endIndent: 20,
+                    height: 50,
+                  ),
+                  Center(
+                      child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text('Already have an account? '),
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           AutoRouter.of(context).push(const SignInRoute());
                         },
-                        child: const Text(
-                          'Sign in.',
-                          style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline)
-                        ),
+                        child: const Text('Sign in.',
+                            style: TextStyle(
+                                color: Colors.redAccent,
+                                decoration: TextDecoration.underline)),
                       )
                     ],
-                  )
-                )
-
-              ],
+                  ))
+                ],
+              ),
             ),
           ),
-        ),
         )
-
-        
       ],
     );
   }

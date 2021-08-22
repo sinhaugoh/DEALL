@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:deall/core/application/product/product_list_notifier.dart';
+import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/infrastructure/image_picking_remote_service.dart';
 import 'package:deall/core/infrastructure/image_picking_repository.dart';
 
@@ -27,21 +29,26 @@ final imagePickingRemoteServiceProvider =
         ));
 final imagePickingRepositoryProvider = Provider((ref) => ImagePickingRepository(
       ref.watch(imagePickingRemoteServiceProvider),
+      ref.watch(internetConnectionCheckerProvider),
     ));
 
 // Product providers
 final productProvider =
     Provider.autoDispose<Product>((ref) => throw UnimplementedError());
 
-final productListRemoteServiceProvider =
+final productRemoteServiceProvider =
     Provider((ref) => ProductListRemoteService(
           ref.watch(firestoreProvider),
           ref.watch(firebaseAuthProvider),
         ));
 
-final productListRepoProvider = Provider(
+final productRepoProvider = Provider(
   (ref) => ProductRepository(
-    ref.watch(productListRemoteServiceProvider),
+    ref.watch(productRemoteServiceProvider),
     ref.watch(internetConnectionCheckerProvider),
   ),
 );
+
+final productNotifierProvider =
+    StateNotifierProvider.autoDispose<ProductListNotifier, ProductListState>(
+        (ref) => ProductListNotifier(ref.watch(productRepoProvider)));

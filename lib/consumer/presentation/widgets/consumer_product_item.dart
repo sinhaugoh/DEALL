@@ -1,16 +1,14 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:deall/core/presentation/routes/app_router.gr.dart';
-import 'package:deall/core/shared/providers.dart';
-import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductItem extends ConsumerWidget {
-  const ProductItem({Key? key}) : super(key: key);
+import 'package:deall/consumer/shared/providers.dart';
+
+class ConsumerProductItem extends ConsumerWidget {
+  const ConsumerProductItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final product = ref.watch(productProvider);
+    final product = ref.watch(currentProductItem);
     final mq = MediaQuery.of(context);
     return Container(
       padding: EdgeInsets.only(
@@ -65,25 +63,6 @@ class ProductItem extends ConsumerWidget {
                   ),
                 ],
               ),
-            ),
-            Column(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    AutoRouter.of(context).push(EditProductRoute(product: product));
-                  },
-                  icon: const Icon(Icons.edit),
-                ),
-                Switch(
-                  value: product.availability,
-                  onChanged: (value) {
-                    ref
-                        .read(productStateNotifierProvider.notifier)
-                        .updateProduct(product.copyWith(
-                            availability: !product.availability));
-                  },
-                ),
-              ],
             ),
           ],
         ),

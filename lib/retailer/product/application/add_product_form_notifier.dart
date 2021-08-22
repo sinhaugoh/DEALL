@@ -17,15 +17,15 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       : super(AddProductFormState.initial());
 
   void prodNameChanged(String name) {
-    state = state.copyWith(name: name);
+    state = state.copyWith(name: name.trim());
   }
 
-  void prodUsualPriceChanged(double usualPrice) {
-    state = state.copyWith(usualPrice: usualPrice);
+  void prodUsualPriceChanged(String usualPrice) {
+    state = state.copyWith(usualPriceString: usualPrice);
   }
 
-  void prodDiscountPriceChanged(double discountedPrice) {
-    state = state.copyWith(discountedPrice: discountedPrice);
+  void prodDiscountPriceChanged(String discountedPrice) {
+    state = state.copyWith(discountedPriceString: discountedPrice);
   }
 
   void prodImageChanged(File? imageFile) {
@@ -33,7 +33,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
   }
 
   void prodDescriptionChanged(String description) {
-    state = state.copyWith(description: description);
+    state = state.copyWith(description: description.trim());
   }
 
   void prodAvailabilityChanged() {
@@ -56,7 +56,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       (r) => stateCopy = stateCopy.copyWith(nameErrorMessage: null),
     );
     //validate usualPrice
-    final usualPriceValidate = validateUsualPrice(state.usualPrice);
+    final usualPriceValidate = validateUsualPrice(stateCopy.usualPriceString);
     usualPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
         empty: () {
@@ -67,16 +67,19 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         invalidPriceValue: () {
           stateCopy = stateCopy.copyWith(
             usualPriceErrorMessage:
-                'Usual price of product must be between \$0.00 and \$10,000.00',
+                'Usual price of product must be between \$0.02 and \$10,000.00',
           );
         },
         orElse: () {},
       ),
-      (r) => stateCopy = stateCopy.copyWith(usualPriceErrorMessage: null),
+      (price) => stateCopy = stateCopy.copyWith(
+        usualPriceErrorMessage: null,
+        usualPrice: price,
+      ),
     );
     //validate discounted price
-    final discountedPriceValidate =
-        validateDiscountedPrice(state.discountedPrice, state.usualPrice);
+    final discountedPriceValidate = validateDiscountedPrice(
+        stateCopy.discountedPriceString, stateCopy.usualPrice);
     discountedPriceValidate.fold(
       (valueFailure) => valueFailure.maybeWhen(
         empty: () {
@@ -93,12 +96,19 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
         },
         orElse: () {},
       ),
-      (r) => stateCopy = stateCopy.copyWith(discountedPriceErrorMessage: null),
+      (price) => stateCopy = stateCopy.copyWith(
+        discountedPriceErrorMessage: null,
+        discountedPrice: price,
+      ),
     );
     state = stateCopy;
   }
 
   Future<void> addProduct() async {
+    state = state.copyWith(
+      hasConnection: true,
+      hasFirebaseFailure: false,
+    );
     _validateInputs();
 
     //if the input are valid
@@ -114,7 +124,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
       final productId = _productRepository.generateNewProductId(uid);
 
       // if state.imageFile == null
-      final newProduct = Product(
+      var newProduct = Product(
         id: productId,
         name: state.name,
         usualPrice: state.usualPrice,
@@ -130,40 +140,51 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
                 userId: uid, file: state.imageFile!, productId: productId);
 
         result.fold((imagePickingFailure) {
-          imagePickingFailure.maybeWhen(orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-              hasFailureUploadingImage: true,
-            );
-          });
-        }, (filePath) {
-          newProduct.copyWith(image: filePath);
+          imagePickingFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+                hasFirebaseFailure: true,
+              );
+            },
+          );
+        }, (filePath) async {
+          newProduct = newProduct.copyWith(image: filePath);
         });
       }
 
-      final failureOrSuccess =
-          await _productRepository.addProduct(newProduct, uid);
+      if (!state.hasFirebaseFailure && state.hasConnection) {
+        final failureOrSuccess =
+            await _productRepository.addProduct(newProduct, uid);
 
-      failureOrSuccess.fold((firestoreFailure) {
-        firestoreFailure.maybeWhen(
-          noConnection: () {
-            state = state.copyWith(
-              hasConnection: false,
-              isSaving: false,
-            );
-          },
-          orElse: () {
-            state = state.copyWith(
-              isSaving: false,
-            );
-          },
-        );
-      }, (_) {
-        state = state.copyWith(
-          isSaving: false,
-          successful: true,
-        );
-      });
+        failureOrSuccess.fold((firestoreFailure) {
+          firestoreFailure.maybeWhen(
+            noConnection: () {
+              state = state.copyWith(
+                hasConnection: false,
+                isSaving: false,
+              );
+            },
+            orElse: () {
+              state = state.copyWith(
+                isSaving: false,
+                hasFirebaseFailure: true,
+              );
+            },
+          );
+        }, (_) {
+          state = state.copyWith(
+            isSaving: false,
+            successful: true,
+          );
+        });
+      }
     }
   }
 

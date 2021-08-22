@@ -40,6 +40,7 @@ void main() {
     test('should reset the value of retailer field based on the input', () {
       final container = setUpContainer();
       const testValue = Retailer(
+        id: 'id',
         name: 'name',
         block: 'block',
         street: 'street',

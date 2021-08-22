@@ -6,7 +6,6 @@ import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/infrastructure/retailer_remote_service.dart';
 import 'package:deall/retailer/infrastructure/retailer_repository.dart';
 
-
 final retailerRemoteServiceProvider = Provider(
   (ref) => RetailerRemoteService(
     ref.watch(firestoreProvider),
@@ -37,5 +36,4 @@ final retailerEditProfileNotifierProvider = StateNotifierProvider.autoDispose<
   ),
 );
 // final retailerLocalStateProvider = StateProvider<Retailer>((ref) => Retailer.initial());
-
 

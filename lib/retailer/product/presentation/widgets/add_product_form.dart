@@ -1,33 +1,19 @@
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
-import 'package:extended_masked_text/extended_masked_text.dart';
 
 class AddProductForm extends ConsumerWidget {
-  const AddProductForm({Key? key}) : super(key: key);
-
-  String get _currency =>
-      NumberFormat.compactSimpleCurrency(locale: 'en').currencySymbol;
+  const AddProductForm(
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final image = ref.watch(
         addProductFormNotifierProvider.select((state) => state.imageFile));
-    final usualPriceController = MoneyMaskedTextController(
-      decimalSeparator: '.',
-      thousandSeparator: ',',
-      initialValue: 0.00,
-    );
-    final discountedPriceController = MoneyMaskedTextController(
-      decimalSeparator: '.',
-      thousandSeparator: ',',
-      initialValue: 0.00,
-    );
-
     return Form(
       child: SingleChildScrollView(
         child: Column(
@@ -62,45 +48,45 @@ class AddProductForm extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
-                label: 'Usual Price',
-                controller: usualPriceController,
+                label: 'Usual Price (S\$)',
+                initialValue:
+                    ref.read(addProductFormNotifierProvider).usualPriceString,
                 errorText: ref.watch(addProductFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(addProductFormNotifierProvider
                         .select((state) => state.usualPriceErrorMessage))
                     : null,
-                onChanged: (value) {
-                  ref
-                      .read(addProductFormNotifierProvider.notifier)
-                      .prodUsualPriceChanged(usualPriceController.numberValue);
-                },
+                onChanged: ref
+                    .read(addProductFormNotifierProvider.notifier)
+                    .prodUsualPriceChanged,
                 keyboardType: TextInputType.number,
-                prefixText: _currency,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^(\d+)?\.?\d{0,2}')),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
-                label: 'Discount Price',
-                controller: discountedPriceController,
+                label: 'Discount Price (S\$)',
+                initialValue: ref
+                    .read(addProductFormNotifierProvider)
+                    .discountedPriceString,
                 errorText: ref.watch(addProductFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(addProductFormNotifierProvider
                         .select((state) => state.discountedPriceErrorMessage))
                     : null,
-                onChanged: (value) {
-                  ref
-                      .read(addProductFormNotifierProvider.notifier)
-                      .prodDiscountPriceChanged(
-                          discountedPriceController.numberValue);
-                },
-                keyboardType: const TextInputType.numberWithOptions(),
-                prefixText: _currency,
+                onChanged: ref
+                    .read(addProductFormNotifierProvider.notifier)
+                    .prodDiscountPriceChanged,
+                keyboardType: TextInputType.number,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^(\d+)?\.?\d{0,2}')),
                 ],
               ),
             ),
