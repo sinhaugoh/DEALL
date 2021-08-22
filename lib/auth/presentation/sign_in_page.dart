@@ -46,20 +46,17 @@ class SignInPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: Stack(
         children: [
           Column(
             children: [
+              Flexible(child: Container(),),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 18.0),
                   child: Container(
@@ -73,7 +70,7 @@ class SignInPage extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: SafeArea(
                   child: Stack(
                     children: [
