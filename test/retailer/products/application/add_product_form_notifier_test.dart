@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
+import 'package:deall/retailer/product/application/add_product_form_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -135,22 +137,6 @@ void main() {
       expect(result.availability, !initialState.availability);
     });
   });
-
-  // group('add product', () {
-  //   test('should return correct state when product added successfully',
-  //       () async {
-  //     final container = setUpContainer();
-  //     when(container.read(addProductFormNotifierProvider.notifier).addProduct())
-  //         .thenAnswer((_) async => right(null));
-    
-  //     await container.read(addProductFormNotifierProvider.notifier).addProduct();
-
-  //     final result = container.read(addProductFormNotifierProvider);
-
-  //     expect(result.successful, true);
-  //     expect(result.isSaving, false);
-  //   });
-  // });
 
   group('pickImage', () {
     test('should return correct state if the user picked a valid image',
