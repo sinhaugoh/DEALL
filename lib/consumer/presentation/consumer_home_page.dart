@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:deall/consumer/application/retailer_list_state.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -50,6 +51,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
     final mq = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false, //prevent searchbar resize
       appBar: enterLocationAppBar(),
       drawer: const ConsumerDrawer(),
       body: RefreshIndicator(
@@ -88,21 +90,37 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
   AppBar enterLocationAppBar() {
     return AppBar(
-      title: const TextField(),
+      toolbarHeight: 70,
+      title: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 30),
+          child: Image.asset(Images.logoTextWhite)
+        ),
+      ),
+      actions: [
+        // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
+        IconButton(onPressed: (){}, icon: const Icon(Icons.person)),
+      ],
+      // backgroundColor: Colors.white,
+      elevation: 0,
+      iconTheme: const IconThemeData(
+        color: Colors.white
+      ),
     );
   }
 
-  Widget consumerHomePageBody(
-      MediaQueryData mq, TextEditingController controller) {
+  Widget consumerHomePageBody(MediaQueryData mq, TextEditingController controller) {
     return SizedBox(
       height: mq.size.height * 0.9,
       child: Column(
         children: [
+          const Divider(thickness: 0, color: Colors.white, height: 12,),
           Flexible(
             child: SearchBarWithFilterButton(
               textEditingController: controller,
             ), //search bar + filter icon
           ),
+          // Divider(height: 15),
           const Flexible(
             flex: 10,
             child: RetailerListView(), // retailer list
@@ -111,4 +129,4 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       ),
     );
   }
-}
+} //class end

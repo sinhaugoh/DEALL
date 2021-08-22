@@ -13,12 +13,56 @@ class SearchBarWithFilterButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mq = MediaQuery.of(context);
     return Container(
-      height: mq.size.height * 0.1,
-      child: TextField(
-        controller: textEditingController,
-        onSubmitted:
-            ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
+    // color: Colors.yellow,
+    alignment: Alignment.center,
+    height: mq.size.height * 0.1,
+
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
+      child: IntrinsicHeight(
+        child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      // #1
+      // Expanded(child: SearchBar()), 
+      Expanded(
+        child: TextField(
+          controller: textEditingController,
+          onSubmitted:
+              ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
+          decoration: InputDecoration(
+            
+            hintText: 'Search',
+            prefixIcon: const Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            fillColor: Colors.grey.withOpacity(0.1),
+            filled: true,
+            contentPadding: const EdgeInsets.fromLTRB(2, 5, 2, 5),
+            suffixIcon: IconButton(onPressed: (){
+              //filter menu
+            }, 
+            icon: const Icon(Icons.arrow_forward)),
+          ),
+        ),
       ),
-    );
+      // #2
+      Align(
+        alignment: Alignment.centerRight,
+        child: IconButton(
+          color: Colors.grey,
+          onPressed: (){
+          
+          }, 
+          icon: const Icon(
+            Icons.filter_alt_outlined)
+          ),
+      ),
+        ],),
+      )
+    ),
+        );
   }
 }

@@ -78,9 +78,9 @@ class ProductItem extends ConsumerWidget {
                   value: product.availability,
                   onChanged: (value) {
                     ref
-                        .read(productStateNotifierProvider.notifier)
-                        .updateProduct(product.copyWith(
-                            availability: !product.availability));
+                      .read(productStateNotifierProvider.notifier)
+                      .updateProduct(product.copyWith(
+                          availability: !product.availability));
                   },
                 ),
               ],
