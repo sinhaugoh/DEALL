@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
   // final ProductListView? productListView;
-  final Product product;
+  // final Product product;
 
   const CustomCard({
     Key? key, 
