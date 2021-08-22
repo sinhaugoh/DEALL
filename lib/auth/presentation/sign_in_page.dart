@@ -55,7 +55,9 @@ class SignInPage extends ConsumerWidget {
         children: [
           Column(
             children: [
-              Flexible(child: Container(),),
+              Flexible(
+                child: Container()
+              ),
               Expanded(
                 flex: 2,
                 child: Padding(

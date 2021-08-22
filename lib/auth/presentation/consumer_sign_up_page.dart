@@ -37,14 +37,14 @@ class ConsumerSignUpPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        // title: const Text('Sign In'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black
-        ),
-      ),
+      // appBar: AppBar(
+      //   // title: const Text('Sign In'),
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   iconTheme: const IconThemeData(
+      //     color: Colors.black
+      //   ),
+      // ),
 
       body: SafeArea(
         child: Stack(
