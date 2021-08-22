@@ -1,6 +1,6 @@
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
-import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
+// import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,7 +66,7 @@ class CustomCard extends StatelessWidget {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Text(
                         "${retailerData?.operatingHours}",
                         maxLines: 3,
@@ -81,7 +81,7 @@ class CustomCard extends StatelessWidget {
                       // Divider(
                       //   thickness: 1,
                       // ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Text(
                         "${retailerData?.description.toString()}",
                         style: GoogleFonts.cantarell(

@@ -105,17 +105,17 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       toolbarHeight: 70,
       title: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 30),
+          constraints: const BoxConstraints(maxHeight: 30),
           child: Image.asset(Images.logoTextWhite)
         ),
       ),
       actions: [
         // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
-        IconButton(onPressed: (){}, icon: Icon(Icons.person)),
+        IconButton(onPressed: (){}, icon: const Icon(Icons.person)),
       ],
       // backgroundColor: Colors.white,
       elevation: 0,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: Colors.white
       ),
     );
@@ -126,14 +126,14 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       height: mq.size.height * 0.9,
       child: Column(
         children: [
-          Divider(thickness: 0, color: Colors.white, height: 12,),
+          const Divider(thickness: 0, color: Colors.white, height: 12,),
           Flexible(
             child: SearchBarWithFilterButton(
               textEditingController: controller,
             ), //search bar + filter icon
           ),
           // Divider(height: 15),
-          Flexible(
+          const Flexible(
             flex: 10,
             child: RetailerListView(), // retailer list
           ),

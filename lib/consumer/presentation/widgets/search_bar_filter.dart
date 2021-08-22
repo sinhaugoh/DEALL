@@ -33,18 +33,18 @@ class SearchBarWithFilterButton extends ConsumerWidget {
           decoration: InputDecoration(
             
             hintText: 'Search',
-            prefixIcon: Icon(Icons.search),
+            prefixIcon: const Icon(Icons.search),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
             fillColor: Colors.grey.withOpacity(0.1),
             filled: true,
-            contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+            contentPadding: const EdgeInsets.fromLTRB(2, 5, 2, 5),
             suffixIcon: IconButton(onPressed: (){
               //filter menu
             }, 
-            icon: Icon(Icons.arrow_forward)),
+            icon: const Icon(Icons.arrow_forward)),
           // child: TextField(
           //   controller: textEditingController,
           //   onSubmitted:
@@ -61,7 +61,7 @@ class SearchBarWithFilterButton extends ConsumerWidget {
           onPressed: (){
           
           }, 
-          icon: Icon(
+          icon: const Icon(
             Icons.filter_alt_outlined)
           ),
       ),
