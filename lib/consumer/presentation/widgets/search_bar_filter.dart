@@ -45,11 +45,6 @@ class SearchBarWithFilterButton extends ConsumerWidget {
               //filter menu
             }, 
             icon: const Icon(Icons.arrow_forward)),
-          // child: TextField(
-          //   controller: textEditingController,
-          //   onSubmitted:
-          //       ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
-          // ),
           ),
         ),
       ),
@@ -71,35 +66,3 @@ class SearchBarWithFilterButton extends ConsumerWidget {
         );
   }
 }
-
-// class SearchBar extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextField(
-//       controller: textEditingController,
-//       onSubmitted:
-//           ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
-//       decoration: InputDecoration(
-        
-//         hintText: 'Search',
-//         prefixIcon: Icon(Icons.search),
-//         border: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(10),
-//           borderSide: BorderSide.none,
-//         ),
-//         fillColor: Colors.grey.withOpacity(0.1),
-//         filled: true,
-//         contentPadding: EdgeInsets.fromLTRB(2, 5, 2, 5),
-//         suffixIcon: IconButton(onPressed: (){
-//           //filter menu
-//         }, 
-//         icon: Icon(Icons.arrow_forward)),
-//       // child: TextField(
-//       //   controller: textEditingController,
-//       //   onSubmitted:
-//       //       ref.read(retailerListNotifierProvider.notifier).searchWithTerm,
-//       // ),
-//       ),
-//     );
-//   }
-// }
