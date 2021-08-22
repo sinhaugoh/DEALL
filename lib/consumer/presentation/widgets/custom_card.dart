@@ -1,24 +1,27 @@
+import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
-// import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
-  // final ProductListView? productListView;
-  // final Product product;
+  final Product? product;
 
   const CustomCard({
     Key? key, 
     this.retailerData,
-    // this.productListView,
+    this.product,
     }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    // var data = retailerData ?? productListView;
+    var first = retailerData?.image ?? product?.image;
+    var second = retailerData?.name ?? product?.name;
+    var third = retailerData?.operatingHours ?? product?.description.toString();
+    var fourth = retailerData?.description.toString() ?? product?.discountedPrice.toString();
+    
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         // color: Colors.grey,
@@ -39,9 +42,8 @@ class CustomCard extends StatelessWidget {
                     Image.asset(
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
-                      // width: MediaQuery.of(context).size.width,
-                      // height: MediaQuery.of(context).size.height,
-                    ) : Image.network('${retailerData?.image}', fit: BoxFit.cover,),
+                    // ) : Image.network('${retailerData?.image}', fit: BoxFit.cover,),
+                    ) : Image.network(first!, fit: BoxFit.cover,),
                 ),
               ),
             ),
@@ -54,7 +56,8 @@ class CustomCard extends StatelessWidget {
                   // tileColor: Colors.red,
                   isThreeLine: true,
                   title: Text(
-                    '${retailerData?.name}',
+                    // '${retailerData?.name}',
+                    second!,
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -68,7 +71,8 @@ class CustomCard extends StatelessWidget {
                     children: [
                       const SizedBox(height: 5,),
                       Text(
-                        "${retailerData?.operatingHours}",
+                        // "${retailerData?.operatingHours}",
+                        third!,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
@@ -83,7 +87,8 @@ class CustomCard extends StatelessWidget {
                       // ),
                       const SizedBox(height: 5,),
                       Text(
-                        "${retailerData?.description.toString()}",
+                        // "${retailerData?.description.toString()}",
+                        fourth!,
                         // maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
