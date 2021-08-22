@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:auto_route/auto_route.dart';
 import 'package:deall/consumer/application/retailer_list_state.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -98,10 +100,14 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
         ),
       ),
       actions: [
-        // IconButton(onPressed: (){}, icon: Icon(Icons.filter_alt)),
-        IconButton(onPressed: (){}, icon: const Icon(Icons.person)),
+        IconButton(onPressed: (){
+          if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
+                  AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
+                } else {
+                  AutoRouter.of(context).pop();
+                }
+        }, icon: const Icon(Icons.star)),
       ],
-      // backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: const IconThemeData(
         color: Colors.white
