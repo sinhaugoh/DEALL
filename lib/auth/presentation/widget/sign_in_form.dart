@@ -18,7 +18,6 @@ class SignInForm extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: FormTextField(
@@ -37,7 +36,8 @@ class SignInForm extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: FormTextField(
                 label: 'Password',
-                obscureText: true,
+                obscureText: ref.watch(signInFormNotifierProvider
+                    .select((state) => state.hidePassword)),
                 errorText: ref.watch(signInFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(signInFormNotifierProvider
@@ -49,15 +49,31 @@ class SignInForm extends ConsumerWidget {
                 inputFormatters: [
                   FilteringTextInputFormatter.deny(RegExp(r"\s")),
                 ],
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    ref
+                        .read(signInFormNotifierProvider.notifier)
+                        .toggleShowPassword();
+                  },
+                  icon: ref.watch(signInFormNotifierProvider
+                          .select((state) => state.hidePassword))
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
+                ),
               ),
             ),
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Align(
-                alignment: Alignment.centerRight,
-                child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600, decoration: TextDecoration.underline),)
-              ),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                        decoration: TextDecoration.underline),
+                  )),
             ),
 
             Padding(
@@ -73,9 +89,8 @@ class SignInForm extends ConsumerWidget {
                     ref.read(signInFormNotifierProvider.notifier).signIn();
                   },
                   style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30))
-                     ),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30))),
                     //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                   ),
                   child: const Text('Sign In'),
@@ -96,64 +111,54 @@ class SignInForm extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: IntrinsicHeight(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  // mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child:  InkWell(
-                          onTap: (){
-                            AutoRouter.of(context).push(const ConsumerSignUpRoute());
-                          },
-                          child: const Text(
-                            'Consumer',
-                            style: TextStyle(
-                              color: Colors.redAccent, 
-                              decoration: TextDecoration.underline
-                            )
-                          ),
-                        )
+                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: InkWell(
+                              onTap: () {
+                                AutoRouter.of(context)
+                                    .push(const ConsumerSignUpRoute());
+                              },
+                              child: const Text('Consumer',
+                                  style: TextStyle(
+                                      color: Colors.redAccent,
+                                      decoration: TextDecoration.underline)),
+                            )),
                       ),
-                    ),
 
-                    // SizedBox(width: 10,),
-                    const SizedBox(
-                      height: 20,
-                      child: VerticalDivider(
-                        color: Colors.black54,
-                        thickness: 1,
-                        width: 20,
+                      // SizedBox(width: 10,),
+                      const SizedBox(
+                        height: 20,
+                        child: VerticalDivider(
+                          color: Colors.black54,
+                          thickness: 1,
+                          width: 20,
+                        ),
                       ),
-                    ),
 
-                    Expanded(
-                      flex: 1,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: InkWell(
-                          onTap: (){
-                            AutoRouter.of(context).push(const RetailerSignUpRoute());
-                          },
-                          child: const Text(
-                            'Retailer',
-                            style: TextStyle(
-                              color: Colors.redAccent, 
-                              decoration: TextDecoration.underline
-                            )
-                          ),
-                        )
+                      Expanded(
+                        flex: 1,
+                        child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: InkWell(
+                              onTap: () {
+                                AutoRouter.of(context)
+                                    .push(const RetailerSignUpRoute());
+                              },
+                              child: const Text('Retailer',
+                                  style: TextStyle(
+                                      color: Colors.redAccent,
+                                      decoration: TextDecoration.underline)),
+                            )),
                       ),
-                    ),
-                        
-                  ]
-                ),
+                    ]),
               ),
             )
-
           ],
         ),
       ),

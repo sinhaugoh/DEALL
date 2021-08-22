@@ -1,13 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:deall/consumer/presentation/widgets/custom_card.dart';
-import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:deall/consumer/shared/providers.dart';
 
-class RetailerItem extends StatelessWidget {
-  final Retailer retailerData;
-  const RetailerItem({Key? key, required this.retailerData}) : super(key: key);
+class RetailerItem extends ConsumerWidget {
+  const RetailerItem({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final retailerData = ref.watch(currentRetailerItem);
     final mq = MediaQuery.of(context);
     return Container(
       // color: Colors.tealAccent,
@@ -23,36 +26,50 @@ class RetailerItem extends StatelessWidget {
   }
 }
 
-// ListTile(
-//               isThreeLine: true,
-//               leading: ClipRRect(
-//                 borderRadius: BorderRadius.circular(20.0),//or 15.0
-//                 child: Container(
-//                   // height: 200.0, //doesnt work
-//                   // width: 100.0,
-//                   color: Color(0xffFF0E58),
-//                   child: Image.asset(Images.logoIconNoBorder),
+// // ListTile(return GestureDetector(
+//       onTap: () => AutoRouter.of(context)
+//           .push(ConsumerProductListRoute(retailerData: retailerData)),
+//       child: Container(
+//         padding: EdgeInsets.only(
+//           left: mq.size.width * 0.05,
+//           right: mq.size.width * 0.05,
+//           top: mq.size.width * 0.05,
+//         ),
+//         height: mq.size.height * 0.2,
+//         width: mq.size.width * 0.9,
+//         child: Card(
+//           elevation: 2,
+//           child: Row(
+//             children: [
+//               const Flexible(
+//                 flex: 3,
+//                 child: Placeholder(),
+//               ),
+//               Flexible(
+//                 flex: 6,
+//                 child: Column(
+//                   children: [
+//                     Flexible(
+//                       flex: 3,
+//                       child: Text(retailerData.name), //shop name
+//                     ),
+//                     Flexible(
+//                       flex: 3,
+//                       child: Text(
+//                           retailerData.operatingHours), //dist and opening hours
+//                     ),
+//                     Flexible(
+//                       flex: 5,
+//                       child: Text(
+//                         retailerData.description.toString(),
+//                         overflow: TextOverflow.ellipsis,
+//                         maxLines: 3,
+//                       ), //shop description
+//                     ),
+//                   ],
 //                 ),
 //               ),
-//               title: Text(retailerData.name),
-//               subtitle: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Divider(),
-//                   Text(
-//                     "${retailerData.operatingHours} \n ${retailerData.description.toString()}",
-//                     maxLines: 5,
-//                     overflow: TextOverflow.ellipsis,
-//                   ),
-//                 ],
-//               ),
-//               // subtitle: Column(
-//               //   crossAxisAlignment: CrossAxisAlignment.start,
-//               //   children: [
-//               //     Text('${retailerData.operatingHours}'),
-//               //     // Divider(),
-//               //     Text(retailerData.description.toString())
-//               //   ],
-//               // ),
-//               trailing: Icon(Icons.add),
-//             ),
+//             ],
+//           ),
+//         ),
+//       ),
