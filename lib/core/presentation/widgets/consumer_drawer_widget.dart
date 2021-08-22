@@ -12,34 +12,22 @@ class ConsumerDrawer extends ConsumerWidget {
     return Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               accountName: Text('Welcome'), 
               accountEmail: Text('email@email.com'),
-              currentAccountPicture: CircleAvatar(
-                child: ClipOval(
-                  child: Image.network(
-                    'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ),
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     image: NetworkImage(
-              //       'https://static.vecteezy.com/system/resources/thumbnails/000/223/249/small/ketogenic-diet-food-vector.jpg',
+              // currentAccountPicture: CircleAvatar(
+              //   child: ClipOval(
+              //     child: Image.network(
+              //       'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
+              //       fit: BoxFit.cover,
               //     ),
-              //     fit: BoxFit.cover
-              //   ),
-              // ),
-              // decoration: BoxDecoration(
-              //   gradient: LinearGradient(
-              //     colors: [Colors.red, Colors.redAccent])
+              //   )
               // ),
             ),
             
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () {
                 if (AutoRouter.of(context).current.name != RetailerHomeRoute.name) {
                   AutoRouter.of(context).popUntilRoot();
@@ -50,12 +38,12 @@ class ConsumerDrawer extends ConsumerWidget {
             ),
             //TODO: need to choose which one to display for diff user type
             ListTile(
-              leading: Icon(Icons.star),
+              leading: const Icon(Icons.star),
               title: const Text("Favourites"),
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.person),
+              leading: const Icon(Icons.person),
               title: const Text("Profile"),
               onTap: () {
                 if (AutoRouter.of(context).current.name !=
@@ -67,7 +55,7 @@ class ConsumerDrawer extends ConsumerWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
+              leading: const Icon(Icons.exit_to_app),
               title: const Text("Sign Out"),
               onTap: () {
                 ref.read(authNotifierProvider.notifier).signOut();
@@ -78,43 +66,3 @@ class ConsumerDrawer extends ConsumerWidget {
     );
   }
 }
-
-// child: Column(
-//           children: [
-//             AppBar(
-//               title: const Text("DEALL"),
-//             ),
-//             ListTile(
-//               leading: const Text("Home"),
-//               onTap: () {
-//                 if (AutoRouter.of(context).current.name != RetailerHomeRoute.name) {
-//                   AutoRouter.of(context).popUntilRoot();
-//                 } else {
-//                   AutoRouter.of(context).pop();
-//                 }
-//               },
-//             ),
-//             //TODO: need to choose which one to display for diff user type
-//             ListTile(
-//               leading: const Text("Favourites"),
-//               onTap: () {},
-//             ),
-//             ListTile(
-//               leading: const Text("Profile"),
-//               onTap: () {
-//                 if (AutoRouter.of(context).current.name !=
-//                     RetailerProfileRoute.name) {
-//                   AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
-//                 } else {
-//                   AutoRouter.of(context).pop();
-//                 }
-//               },
-//             ),
-//             ListTile(
-//               leading: const Text("Sign Out"),
-//               onTap: () {
-//                 ref.read(authNotifierProvider.notifier).signOut();
-//               },
-//             ),
-//           ],
-//         )
