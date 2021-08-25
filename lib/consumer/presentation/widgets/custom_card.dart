@@ -18,10 +18,10 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    var first = retailerData?.image ?? product?.image;
-    var second = retailerData?.name ?? product?.name;
-    var third = retailerData?.operatingHours ?? product?.description.toString();
-    var fourth = retailerData?.description.toString() ?? product?.discountedPrice.toString();
+    final image = retailerData?.image ?? product?.image;
+    final name = retailerData?.name ?? product?.name;
+    final middleRowText = retailerData?.operatingHours ?? product?.description.toString();
+    final lastRowText = retailerData?.description.toString() ?? product?.discountedPrice.toString();
     
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
@@ -44,7 +44,7 @@ class CustomCard extends StatelessWidget {
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
                     // ) : Image.network('${retailerData?.image}', fit: BoxFit.cover,),
-                    ) : Image.network(first!, fit: BoxFit.cover,),
+                    ) : Image.network(image!, fit: BoxFit.cover,),
                 ),
               ),
             ),
@@ -58,7 +58,7 @@ class CustomCard extends StatelessWidget {
                   isThreeLine: true,
                   title: Text(
                     // '${retailerData?.name}',
-                    second!,
+                    name!,
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -73,7 +73,7 @@ class CustomCard extends StatelessWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.operatingHours}",
-                        third!,
+                        middleRowText!,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
@@ -89,7 +89,7 @@ class CustomCard extends StatelessWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.description.toString()}",
-                        fourth!,
+                        lastRowText!,
                         // maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(

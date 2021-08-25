@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/application/product_notifier.dart';
 import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
@@ -13,6 +14,7 @@ import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/shared/providers.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
   const RetailerHomePage({Key? key}) : super(key: key);
@@ -130,8 +132,29 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     });
 
     return Scaffold(
+      //reused code from consumerhome
       appBar: AppBar(
-        title: const Text('DEALL'),
+        toolbarHeight: 70.h,
+        title: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 30),
+            child: Image.asset(Images.logoTextWhite)
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: (){
+            if (AutoRouter.of(context).current.name !=
+                  RetailerProfileRoute.name) {
+                AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
+              } else {
+                AutoRouter.of(context).pop();
+              }
+          }, icon: const Icon(Icons.person)),
+        ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
       ),
       drawer: const RetailerDrawer(),
       body: ref.watch(retailerNotifierProvider).when(
