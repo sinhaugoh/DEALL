@@ -56,7 +56,7 @@ class _AddProductPageState extends ConsumerState<AddProductPage> {
             SavingInProgressOverlay(
               isSaving: ref.watch(addProductFormNotifierProvider
                   .select((state) => state.isSaving)),
-              overlayText: 'Saving',
+              overlayText: 'Adding',
             ),
           ],
         ),
