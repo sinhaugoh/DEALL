@@ -10,16 +10,20 @@ class RetailerItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final retailerData = ref.watch(currentRetailerItem);
     final mq = MediaQuery.of(context);
-    return Container(
-      // color: Colors.tealAccent,
-      padding: EdgeInsets.only(
-        left: mq.size.width * 0.05,
-        right: mq.size.width * 0.05,
-        top: mq.size.width * 0.03,
+    return GestureDetector(
+      onTap: () => AutoRouter.of(context)
+      .push(ConsumerProductListRoute(retailerData: retailerData)),
+      child: Container(
+        // color: Colors.tealAccent,
+        padding: EdgeInsets.only(
+          left: mq.size.width * 0.05,
+          right: mq.size.width * 0.05,
+          top: mq.size.width * 0.03,
+        ),
+        height: mq.size.height * 0.2,
+        width: mq.size.width * 0.9,
+        child: CustomCard(retailerData: retailerData)
       ),
-      height: mq.size.height * 0.2,
-      width: mq.size.width * 0.9,
-      child: CustomCard(retailerData: retailerData)
     );
   }
 }

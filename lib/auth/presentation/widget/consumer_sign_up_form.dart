@@ -9,6 +9,7 @@ import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConsumerSignUpForm extends ConsumerWidget {
   const ConsumerSignUpForm({
@@ -19,12 +20,16 @@ class ConsumerSignUpForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
+        Flexible(
+          child: Container()
+        ),
         Expanded(
+          flex: 2,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
+            padding: EdgeInsets.symmetric(vertical: 18.0.h),
             child: Container(
               alignment: Alignment.bottomCenter,
-              constraints: const BoxConstraints(maxWidth: 200),
+              constraints: BoxConstraints(maxWidth: 170.w),
               // color: Colors.blue,
               child: FittedBox(
                 child: Image.asset(Images.logoText),
@@ -33,7 +38,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
           ),
         ),
         Expanded(
-          flex: 3,
+          flex: 6,
           child: Form(
             child: SingleChildScrollView(
               child: Column(
@@ -45,8 +50,8 @@ class ConsumerSignUpForm extends ConsumerWidget {
                     //insert style
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 10.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 16.0.w, vertical: 10.0.h),
                     child: FormTextField(
                       label: 'Email',
                       errorText: ref.watch(consumerSignUpFormNotifierProvider
@@ -60,7 +65,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                     child: FormTextField(
                       label: 'Password',
                       obscureText: ref.watch(consumerSignUpFormNotifierProvider
@@ -90,8 +95,8 @@ class ConsumerSignUpForm extends ConsumerWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 10.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 16.0.w, vertical: 10.0.h),
                     child: ElevatedButton(
                       onPressed: () {
                         //dismiss the keyboard
@@ -104,17 +109,17 @@ class ConsumerSignUpForm extends ConsumerWidget {
                       },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30))),
+                            borderRadius: BorderRadius.circular(30.w))),
                         //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                       ),
                       child: const Text('Sign-up'),
                     ),
                   ),
-                  const Divider(
-                    thickness: 2,
-                    indent: 20,
-                    endIndent: 20,
-                    height: 50,
+                  Divider(
+                    thickness: 2.h,
+                    indent: 20.w,
+                    endIndent: 20.w,
+                    height: 50.h,
                   ),
                   Center(
                       child: Row(
