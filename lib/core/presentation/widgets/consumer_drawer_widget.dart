@@ -13,8 +13,8 @@ class ConsumerDrawer extends ConsumerWidget {
         child: ListView(
           children: [
             const UserAccountsDrawerHeader(
-              accountName: Text('Welcome'), 
-              accountEmail: Text('email@email.com'),
+              accountName: Text(''), 
+              accountEmail: Text('Menu'),
               // currentAccountPicture: CircleAvatar(
               //   child: ClipOval(
               //     child: Image.network(
@@ -40,20 +40,27 @@ class ConsumerDrawer extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.star),
               title: const Text("Favourites"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text("Profile"),
               onTap: () {
-                if (AutoRouter.of(context).current.name !=
-                    RetailerProfileRoute.name) {
-                  AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
+                if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
+                  AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
                 } else {
                   AutoRouter.of(context).pop();
                 }
               },
             ),
+            // RETAILER ONLY
+            // ListTile(
+            //   leading: const Icon(Icons.person),
+            //   title: const Text("Profile"),
+            //   onTap: () {
+            //     if (AutoRouter.of(context).current.name !=
+            //         RetailerProfileRoute.name) {
+            //       AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
+            //     } else {
+            //       AutoRouter.of(context).pop();
+            //     }
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Sign Out"),
