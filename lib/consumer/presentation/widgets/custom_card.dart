@@ -3,6 +3,7 @@ import 'package:deall/core/presentation/widgets/images.dart';
 // import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
@@ -20,7 +21,7 @@ class CustomCard extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     // var data = retailerData ?? productListView;
     return Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
         // color: Colors.grey,
         shadowColor: Colors.grey.withOpacity(0.5),
         elevation: 2,
@@ -34,7 +35,7 @@ class CustomCard extends StatelessWidget {
                 height: mediaQuery.size.height,
 
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.0.w),
                   child: retailerData?.image.toString() == '' ? 
                     Image.asset(
                       Images.imageNotFound, 
@@ -49,7 +50,7 @@ class CustomCard extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0.w),
                 child: ListTile(
                   // tileColor: Colors.red,
                   isThreeLine: true,
@@ -58,7 +59,7 @@ class CustomCard extends StatelessWidget {
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 19,
+                      fontSize: 19.sp,
                       // fontWeight: FontWeight.w700,
                       // fontStyle: FontStyle.italic,
                     ),
@@ -66,14 +67,14 @@ class CustomCard extends StatelessWidget {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 5,),
+                      SizedBox(height: 5.h,),
                       Text(
                         "${retailerData?.operatingHours}",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,
                         ),
@@ -81,14 +82,14 @@ class CustomCard extends StatelessWidget {
                       // Divider(
                       //   thickness: 1,
                       // ),
-                      const SizedBox(height: 5,),
+                      SizedBox(height: 5.h,),
                       Text(
                         "${retailerData?.description.toString()}",
                         // maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           color: Colors.grey
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,

@@ -57,7 +57,7 @@ class StyleTheme{
 
   static final TextStyle _selectedTabLight = TextStyle(
     color: Colors.red,
-    fontWeight: FontWeight.bold,
+    // fontWeight: FontWeight.bold,
     fontSize: 16.sp,
   );
 
