@@ -81,9 +81,6 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
           ref
               .read(retailerListNotifierProvider.notifier)
               .searchWithTerm(_textEditingController.text);
-          ref
-              .read(favouriteRetailerStateNotifierProvider.notifier)
-              .getRetailerList();
         });
         subscription?.cancel();
       }
