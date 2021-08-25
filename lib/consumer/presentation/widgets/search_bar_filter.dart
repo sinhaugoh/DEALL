@@ -41,24 +41,8 @@ class SearchBarWithFilterButton extends ConsumerWidget {
             fillColor: Colors.grey.withOpacity(0.1),
             filled: true,
             contentPadding: const EdgeInsets.fromLTRB(2, 5, 2, 5),
-            suffixIcon: IconButton(onPressed: (){
-              //filter menu
-            }, 
-            icon: const Icon(Icons.arrow_forward)),
           ),
         ),
-      ),
-      // #2
-      Align(
-        alignment: Alignment.centerRight,
-        child: IconButton(
-          color: Colors.grey,
-          onPressed: (){
-          
-          }, 
-          icon: const Icon(
-            Icons.filter_alt_outlined)
-          ),
       ),
         ],),
       )
