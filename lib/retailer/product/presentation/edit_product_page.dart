@@ -62,6 +62,7 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
             SavingInProgressOverlay(
               isSaving: ref.watch(editProductFormStateNotifierProvider
                   .select((state) => state.isSaving)),
+              overlayText: 'Saving',
             ),
           ],
         ),

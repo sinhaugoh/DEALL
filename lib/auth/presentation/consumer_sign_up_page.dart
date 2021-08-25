@@ -45,14 +45,16 @@ class ConsumerSignUpPage extends ConsumerWidget {
       //     color: Colors.black
       //   ),
       // ),
-
       body: SafeArea(
         child: Stack(
           children: [
             const ConsumerSignUpForm(),
             SavingInProgressOverlay(
-                isSaving: ref.watch(signInFormNotifierProvider
-                    .select((state) => state.isSaving))),
+              isSaving: ref.watch(
+                signInFormNotifierProvider.select((state) => state.isSaving),
+              ),
+              overlayText: 'Signing Up',
+            ),
           ],
         ),
       ),
