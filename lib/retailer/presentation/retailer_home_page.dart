@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
+import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/application/product_notifier.dart';
@@ -27,6 +28,8 @@ class RetailerHomePage extends ConsumerStatefulWidget {
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
 
+  get showvalue => 1;
+
   @override
   void initState() {
     super.initState();
@@ -44,6 +47,11 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //variables
+    // final product = ref.watch(productProvider);
+    // final mq = MediaQuery.of(context);
+    // final product = Product.initial().name;
+
     ref.listen<RetailerNotifierState>(
       retailerNotifierProvider,
       (state) {
@@ -156,6 +164,8 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
           color: Colors.white
         ),
       ),
+
+
       drawer: const RetailerDrawer(),
       body: ref.watch(retailerNotifierProvider).when(
         initial: () {
@@ -169,42 +179,75 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         loaded: (retailer, hasConnection) {
           return Column(
             children: [
-              Switch(
-                onChanged: (value) {
-                  ref
-                      .read(retailerNotifierProvider.notifier)
-                      .toggleVisibility();
-                },
-                value: retailer.visibility,
-              ),
-              TextButton(
-                onPressed: () {
-                  AutoRouter.of(context).push(const AddProductRoute());
-                },
-                child: const ListTile(
-                  leading: Icon(Icons.add_circle),
-                  trailing: Text("Add Product"),
-                ),
-              ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
+                  Text("Visibility"),
+                  Switch(
+                    onChanged: (value) {
                       ref
-                          .read(productListNotifierProvider.notifier)
-                          .toggleAllOn();
+                          .read(retailerNotifierProvider.notifier)
+                          .toggleVisibility();
                     },
-                    child: const Text('Show All'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      ref
-                          .read(productListNotifierProvider.notifier)
-                          .toggleAllOff();
-                    },
-                    child: const Text('Hide All'),
+                    value: retailer.visibility,
                   ),
                 ],
+              ),
+              Container(
+                width: 1.sw,
+                height: 0.18.sh,
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  right: 20.h,
+                  // bottom: 20.h
+                ),
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    // padding: EdgeInsets.all(56.0.w),
+                    // textStyle: const TextStyle(fontSize: 20),
+                    side: BorderSide(color: Colors.black26),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w))
+                  ),
+                  onPressed: () {
+                    AutoRouter.of(context).push(const AddProductRoute());
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Add Product"),
+                      Icon(Icons.add_circle)
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(25.w, 8.h, 25.w, 8.h),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // CHECKBOX?
+                    ElevatedButton(
+                      onPressed: () {
+                        ref
+                          .read(productListNotifierProvider.notifier)
+                          .toggleAllOn();
+                      },
+                      child: const Text('Show All'),
+                    ),
+                    SizedBox(width: 10.w), 
+                    ElevatedButton(
+                      onPressed: () {
+                        ref
+                            .read(productListNotifierProvider.notifier)
+                            .toggleAllOff();
+                      },
+                      child: const Text('Hide All'),
+                    ),
+                  ],
+                ),
               ),
               const Expanded(
                 child: ProductListView(),

@@ -39,12 +39,12 @@ class CustomCard extends StatelessWidget {
 
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0.w),
-                  child: retailerData?.image.toString() == '' ? 
+                  child: image! == '' ? 
                     Image.asset(
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
                     // ) : Image.network('${retailerData?.image}', fit: BoxFit.cover,),
-                    ) : Image.network(image!, fit: BoxFit.cover,),
+                    ) : Image.network(image, fit: BoxFit.cover,),
                 ),
               ),
             ),
