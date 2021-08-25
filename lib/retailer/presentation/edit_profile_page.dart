@@ -62,6 +62,7 @@ class EditProfilePage extends ConsumerWidget {
                 retailerEditProfileNotifierProvider
                     .select((state) => state.isSaving),
               ),
+              overlayText: 'Saving',
             ),
           ],
         ),

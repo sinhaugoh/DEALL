@@ -47,6 +47,7 @@ class RetailerSignUpPage extends ConsumerWidget {
             SavingInProgressOverlay(
               isSaving: ref.watch(retailerSignUpFormNotifierProvider
                   .select((state) => state.isSaving)),
+              overlayText: 'Signing Up',
             ),
           ],
         ),

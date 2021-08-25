@@ -41,18 +41,18 @@ class ConsumerSignUpPage extends ConsumerWidget {
         // title: const Text('Sign In'),
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black
-        ),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-
       body: SafeArea(
         child: Stack(
           children: [
             const ConsumerSignUpForm(),
             SavingInProgressOverlay(
-                isSaving: ref.watch(signInFormNotifierProvider
-                    .select((state) => state.isSaving))),
+              isSaving: ref.watch(
+                signInFormNotifierProvider.select((state) => state.isSaving),
+              ),
+              overlayText: 'Signing Up',
+            ),
           ],
         ),
       ),

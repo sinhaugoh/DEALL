@@ -50,25 +50,20 @@ class SignInPage extends ConsumerWidget {
         title: const Text('Sign In'),
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black
-        ),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Stack(
         children: [
           Column(
             children: [
               Expanded(
-                flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 18.0),
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     constraints: const BoxConstraints(maxWidth: 200),
                     // color: Colors.blue,
-                    child: Image.asset(
-                      Images.logoText
-                    ),
+                    child: Image.asset(Images.logoText),
                   ),
                 ),
               ),
@@ -76,19 +71,18 @@ class SignInPage extends ConsumerWidget {
                 flex: 3,
                 child: SafeArea(
                   child: Stack(
-                    children: [
-                      const SignInForm(),
-                      
+                    children: const [
+                      SignInForm(),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-
           SavingInProgressOverlay(
-            isSaving: ref.watch(signInFormNotifierProvider
-                .select((state) => state.isSaving))
+            isSaving: ref.watch(
+                signInFormNotifierProvider.select((state) => state.isSaving)),
+            overlayText: 'Signing In',
           ),
         ],
       ),

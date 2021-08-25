@@ -20,7 +20,6 @@ class ConsumerSignUpForm extends ConsumerWidget {
     return Column(
       children: [
         Expanded(
-          flex: 1,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 18.0),
             child: Container(
