@@ -40,7 +40,7 @@ class CustomCard extends StatelessWidget {
                         // height: MediaQuery.of(context).size.height,
                       )
                     : Image.network(
-                        '${retailerData?.image}',
+                        retailerData?.image ?? '',
                         fit: BoxFit.cover,
                       ),
               ),
@@ -54,7 +54,7 @@ class CustomCard extends StatelessWidget {
                     // tileColor: Colors.red,
                     isThreeLine: true,
                     title: Text(
-                      '${retailerData?.name}',
+                      retailerData?.name ?? '',
                       //remove
                       style: GoogleFonts.averiaSansLibre(
                         // textStyle: Theme.of(context).textTheme.headline4,
@@ -70,7 +70,7 @@ class CustomCard extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "${retailerData?.operatingHours}",
+                          retailerData?.operatingHours ?? '',
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.cantarell(
@@ -87,7 +87,7 @@ class CustomCard extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "${retailerData?.description.toString()}",
+                          retailerData?.description.toString() ?? '',
                           // maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.cantarell(
