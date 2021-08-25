@@ -9,6 +9,7 @@ import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -46,25 +47,28 @@ class SignInPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Sign In'),
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   iconTheme: const IconThemeData(
+      //     color: Colors.black
+      //   ),
+      // ),
       body: Stack(
         children: [
           Column(
             children: [
+              Flexible(
+                child: Container()
+              ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 18.0),
+                  padding: EdgeInsets.symmetric(vertical: 18.0.h),
                   child: Container(
                     alignment: Alignment.bottomCenter,
-                    constraints: const BoxConstraints(maxWidth: 200),
+                    constraints: BoxConstraints(maxWidth: 170.w),
                     // color: Colors.blue,
                     child: Image.asset(
                       Images.logoText
@@ -73,12 +77,11 @@ class SignInPage extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: SafeArea(
                   child: Stack(
                     children: [
                       const SignInForm(),
-                      
                     ],
                   ),
                 ),

@@ -6,6 +6,7 @@ import 'package:deall/core/presentation/const/style_theme.dart';
 import 'package:deall/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'routes/app_router.gr.dart';
 
@@ -54,11 +55,14 @@ class AppWidget extends ConsumerWidget {
       });
     }
             
-    return MaterialApp.router(
-      title: 'DEALL',
-      theme: StyleTheme.lightTheme,
-      routeInformationParser: appRouter.defaultRouteParser(),
-      routerDelegate: appRouter.delegate(),
+    return ScreenUtilInit(
+        designSize: const Size(411, 731),
+        builder: () => MaterialApp.router(
+          title: 'DEALL',
+          theme: StyleTheme.lightTheme,
+          routeInformationParser: appRouter.defaultRouteParser(),
+          routerDelegate: appRouter.delegate(),
+      ),
     );
   }
 }
