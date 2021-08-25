@@ -1,6 +1,7 @@
 import 'package:deall/core/presentation/const/themedata_swatch_color.dart';
 import 'package:flutter/material.dart';
 import 'package:deall/core/presentation/const/size_config.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StyleTheme{
   StyleTheme._();
@@ -15,7 +16,7 @@ class StyleTheme{
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: StyleTheme.appBackgroundColor,
     brightness: Brightness.light,
-    // textTheme: lightTextTheme,
+    textTheme: lightTextTheme,
     primarySwatch: MaterialColor(0xFFF86B6B, deallAppColor),
   );
 
@@ -31,38 +32,37 @@ class StyleTheme{
 
   static final TextStyle _titleLight = TextStyle(
     color: Colors.black,
-    fontSize: 3.5 * SizeConfig.textMultiplier,
+    fontSize: 32.sp,
   );
 
   static final TextStyle _subTitleLight = TextStyle(
-    color: subTitleTextColor,
-    fontSize: 2 * SizeConfig.textMultiplier,
-    height: 1.5,
+    color: Colors.purple,
+    fontSize: 18.sp,
   );
 
   static final TextStyle _buttonLight = TextStyle(
-    color: Colors.black,
-    fontSize: 2.5 * SizeConfig.textMultiplier,
+    color: Colors.yellow,
+    fontSize: 16.sp,
   );
 
   static final TextStyle _greetingLight = TextStyle(
-    color: Colors.black,
-    fontSize: 2.0 * SizeConfig.textMultiplier,
+    color: Colors.blue,
+    fontSize: 16.sp,
   );
 
   static final TextStyle _searchLight = TextStyle(
-    color: Colors.black,
-    fontSize: 2.3 * SizeConfig.textMultiplier,
+    color: Colors.green,
+    fontSize: 16.sp,
   );
 
   static final TextStyle _selectedTabLight = TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-    fontSize: 2 * SizeConfig.textMultiplier,
+    color: Colors.red,
+    // fontWeight: FontWeight.bold,
+    fontSize: 16.sp,
   );
 
   static final TextStyle _unSelectedTabLight = TextStyle(
     color: Colors.grey,
-    fontSize: 2 * SizeConfig.textMultiplier,
+    fontSize: 16.sp,
   );
 } 
