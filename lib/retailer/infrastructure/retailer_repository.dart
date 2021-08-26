@@ -14,6 +14,18 @@ class RetailerRepository {
   RetailerRepository(
       this._retailerRemoteService, this._internetConnectionChecker);
 
+  /// Get [Retailer] data of current user
+  /// 
+  /// If device has no internet connection, [RetailerFailure.noConnection()] will be returned.
+  /// 
+  /// If user is not authenticated, [FirebaseAuthException] will be thrown and
+  /// [RetailerFailure.authentication(errorMessage)] will be returned.
+  /// 
+  /// If no retailer data is found, [FirebaseException] will be thrown and 
+  /// [RetailerFailure.notFound()] will be returned.
+  /// 
+  /// If other errors are found, [FirebaseException] will be thrown and
+  /// [RetailerFailure.unexpected(errorMessage)] will be returned.
   Future<Either<RetailerFailure, Retailer>> getRetailer() async {
     if(! await _internetConnectionChecker.hasConnection) {
       return left(const RetailerFailure.noConnection());
@@ -33,6 +45,18 @@ class RetailerRepository {
     }
   }
 
+  /// Updates retailer data with the provided [retailer] data
+  /// 
+  /// If device has no internet connection, [RetailerFailure.noConnection()] will be returned.
+  /// 
+  /// If user is not authenticated, [FirebaseAuthException] will be thrown and
+  /// [RetailerFailure.authentication(errorMessage)] will be returned.
+  /// 
+  /// If no existing retailer with the provided id is found, [FirebaseException] will be thrown  
+  /// and [RetailerFailure.notFound()] will be returned.
+  /// 
+  /// If other errors are found, [FirebaseException] will be thrown and
+  /// [RetailerFailure.unexpected(errorMessage)] will be returned.
   Future<Either<RetailerFailure, Unit>> updateRetailer(
       Retailer retailer) async {
     if (!await _internetConnectionChecker.hasConnection) {
