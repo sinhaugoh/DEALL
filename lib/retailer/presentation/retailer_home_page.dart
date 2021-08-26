@@ -28,7 +28,7 @@ class RetailerHomePage extends ConsumerStatefulWidget {
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
 
-  get showvalue => 1;
+  var checkedValue;
 
   @override
   void initState() {
@@ -228,24 +228,36 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // CHECKBOX?
-                    ElevatedButton(
-                      onPressed: () {
-                        ref
-                          .read(productListNotifierProvider.notifier)
-                          .toggleAllOn();
+
+                    CheckboxListTile(
+                      title: const Text("title text"),
+                      value: true,
+                      onChanged: (newValue) {
+                        setState(() {
+                          checkedValue = newValue;
+                        });
                       },
-                      child: const Text('Show All'),
-                    ),
-                    SizedBox(width: 10.w), 
-                    ElevatedButton(
-                      onPressed: () {
-                        ref
-                            .read(productListNotifierProvider.notifier)
-                            .toggleAllOff();
-                      },
-                      child: const Text('Hide All'),
-                    ),
+                      controlAffinity: ListTileControlAffinity.leading, //  <-- leading Checkbox
+                    );
+                    
+                    // // CHECKBOX?
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     ref
+                    //       .read(productListNotifierProvider.notifier)
+                    //       .toggleAllOn();
+                    //   },
+                    //   child: const Text('Show All'),
+                    // ),
+                    // SizedBox(width: 10.w), 
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     ref
+                    //         .read(productListNotifierProvider.notifier)
+                    //         .toggleAllOff();
+                    //   },
+                    //   child: const Text('Hide All'),
+                    // ),
                   ],
                 ),
               ),
