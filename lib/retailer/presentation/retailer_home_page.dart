@@ -28,10 +28,10 @@ class RetailerHomePage extends ConsumerStatefulWidget {
 class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
   StreamSubscription<ConnectivityResult>? _connectivityStreamSubscription;
 
-  var checkedValue;
 
   @override
   void initState() {
+    // bool isSelected = true;
     super.initState();
     Future.microtask(() {
       ref.read(retailerNotifierProvider.notifier).getRetailer();
@@ -51,6 +51,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     // final product = ref.watch(productProvider);
     // final mq = MediaQuery.of(context);
     // final product = Product.initial().name;
+    List<bool> isSelected = [true];
 
     ref.listen<RetailerNotifierState>(
       retailerNotifierProvider,
@@ -194,32 +195,66 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   ),
                 ],
               ),
+              // Container(
+              //   width: 1.sw,
+              //   height: 0.18.sh,
+              //   padding: EdgeInsets.only(
+              //     left: 20.w,
+              //     right: 20.h,
+              //     // bottom: 20.h
+              //   ),
+              //   child: OutlinedButton(
+              //     style: OutlinedButton.styleFrom(
+              //       // padding: EdgeInsets.all(56.0.w),
+              //       // textStyle: const TextStyle(fontSize: 20),
+              //       side: BorderSide(color: Colors.black26),
+              //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w))
+              //     ),
+              //     onPressed: () {
+              //       AutoRouter.of(context).push(const AddProductRoute());
+              //     },
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.center,
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: <Widget>[
+              //         Text("Add Product"),
+              //         Icon(Icons.add_circle)
+              //       ],
+              //     )
+              //   ),
+              // ),
               Container(
-                width: 1.sw,
-                height: 0.18.sh,
-                padding: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.h,
-                  // bottom: 20.h
-                ),
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    // padding: EdgeInsets.all(56.0.w),
-                    // textStyle: const TextStyle(fontSize: 20),
-                    side: BorderSide(color: Colors.black26),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w))
-                  ),
-                  onPressed: () {
-                    AutoRouter.of(context).push(const AddProductRoute());
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.w,right: 20.h,),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.add_circle_outline
+                        ),
+                      iconSize: 30.h,
+                      color: Colors.black45,
+                      // splashColor: Colors.purple,
+                        onPressed: () {
+                          AutoRouter.of(context).push(const AddProductRoute());
+                        },
+                      ),
                       Text("Add Product"),
-                      Icon(Icons.add_circle)
+                      SizedBox(width: 100.w),
+                      Text("Add Product"),
+                      ToggleButtons(
+                        children: <Widget>[
+                          Icon(Icons.panorama_fish_eye),
+                        ],
+                        onPressed: (int index) {
+                          setState(() {
+                          });
+                        },
+                        isSelected: isSelected,
+                      ),
                     ],
-                  )
+                  ),
                 ),
               ),
               Padding(
