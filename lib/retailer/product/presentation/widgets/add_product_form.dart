@@ -35,6 +35,8 @@ class AddProductForm extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
                 label: 'Name',
+                maxLength: 50,
+                counter: const Offstage(),
                 errorText: ref.watch(addProductFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(addProductFormNotifierProvider
