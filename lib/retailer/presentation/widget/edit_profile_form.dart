@@ -73,6 +73,8 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               child: FormTextField(
                 initialValue: widget.retailer.name,
                 label: 'Shop Name',
+                maxLength: 50,
+                counter: const Offstage(),
                 errorText: ref.watch(retailerEditProfileNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(retailerEditProfileNotifierProvider

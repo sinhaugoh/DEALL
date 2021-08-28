@@ -8,6 +8,7 @@ class FormTextField extends StatelessWidget {
   final String? prefixText;
   final TextInputType? keyboardType;
   final int? maxLength;
+  final Widget? counter;
   final int? minLines;
   final int? maxLines;
   final String? initialValue;
@@ -24,6 +25,7 @@ class FormTextField extends StatelessWidget {
     this.prefixText,
     this.inputFormatters,
     this.maxLength,
+    this.counter,
     this.minLines,
     this.initialValue,
     this.maxLines = 1,
@@ -47,6 +49,7 @@ class FormTextField extends StatelessWidget {
         labelText: label,
         border: const OutlineInputBorder(),
         errorText: errorText,
+        counter: counter,
         prefixText: prefixText,
         suffixIcon: suffixIcon,
       ),
