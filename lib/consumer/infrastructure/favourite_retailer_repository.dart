@@ -14,6 +14,13 @@ class FavouriteRetailerRepository {
   FavouriteRetailerRepository(this._favouriteListRemoteService,
       this._authRepository, this._internetConnectionChecker);
 
+  /// get the list of favourite [Retailer] from remote service
+  /// 
+  /// return a list of favourite [Retailer] if successful
+  /// 
+  /// return [FirestoreFailures.objectNotFound] if database cannot find specific document
+  /// 
+  /// return [FirestoreFailures.unknown] if unknown database exception thrown
   Future<Either<FirestoreFailures, List<Retailer>>>
       getFavouriteRetailers() async {
     if (!await _internetConnectionChecker.hasConnection) {
@@ -36,6 +43,14 @@ class FavouriteRetailerRepository {
     }
   }
 
+  /// update the list of [Retailer] to database
+  /// 
+  /// return [unit] if successful
+  /// 
+  /// return [FirestoreFailures.objectNotFound] if database cannot find specific document
+  /// to update
+  /// 
+  /// return [FirestoreFailures.unknown] if unknown database exception thrown
   Future<Either<FirestoreFailures, Unit>> updateFavouriteRetailerList(
       List<Retailer> retailerList) async {
     if (!await _internetConnectionChecker.hasConnection) {
