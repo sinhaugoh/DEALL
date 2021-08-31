@@ -138,7 +138,8 @@ class ConsumerProductListPageState
                     ],
                     child: const ConsumerProductItem(),
                   ),
-                ) : Center(
+                ) : Padding(
+                  padding: EdgeInsets.only(top: 100.h),
                   child: Text('No products available.'),
                 ),
               ),
