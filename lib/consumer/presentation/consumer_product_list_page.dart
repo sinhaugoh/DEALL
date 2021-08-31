@@ -150,7 +150,7 @@ Widget upperPortionOfPage(
           child: Container(
             decoration: const BoxDecoration(
               border: Border(
-                bottom: BorderSide(width: 2),
+                // bottom: BorderSide(width: 2),
               ),
             ),
             child: Column(
@@ -159,7 +159,7 @@ Widget upperPortionOfPage(
                   flex: 7,
                   child: Padding(
                     padding: EdgeInsets.only(left: 30, right: 30),
-                    // child: Placeholder(),
+                    child: Placeholder(),
                     // child: Image(retailerData.image)
                   ),
                 ),
