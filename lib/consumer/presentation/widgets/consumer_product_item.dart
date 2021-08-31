@@ -17,7 +17,7 @@ class ConsumerProductItem extends ConsumerWidget {
       padding: EdgeInsets.only(
         left: mediaQuery.size.width * 0.05,
         right: mediaQuery.size.width * 0.05,
-        top: mediaQuery.size.width * 0.05,
+        top: mediaQuery.size.width * 0.035,
       ),
       height: mediaQuery.size.height * 0.2,
       width: mediaQuery.size.width * 0.9,

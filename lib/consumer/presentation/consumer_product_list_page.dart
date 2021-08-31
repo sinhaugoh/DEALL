@@ -11,6 +11,7 @@ import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConsumerProductListPage extends ConsumerStatefulWidget {
   final Retailer retailerData;
@@ -97,14 +98,22 @@ class ConsumerProductListPageState
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70.h,
+        // title: Center(
+        //   child: ConstrainedBox(
+        //     constraints: const BoxConstraints(maxHeight: 30),
+        //     child: Image.asset(Images.logoTextWhite)
+        //   ),
         title: Text(widget.retailerData.name),
       ),
       body: Column(
         children: [
           Expanded(
+            flex: 2,
             child: upperPortionOfPage(context, widget.retailerData, ref),
           ),
           Expanded(
+            flex: 3,
             child: state.map(
               initial: (_) => const Center(),
               loading: (_) => const Center(
@@ -142,10 +151,10 @@ Widget upperPortionOfPage(
     BuildContext context, Retailer retailerData, WidgetRef ref) {
   final mq = MediaQuery.of(context);
   return SizedBox(
-    height: mq.size.height * 0.3,
+    height: mq.size.height * 0.2,
     child: Column(
       children: [
-        Flexible(
+        Expanded(
           flex: 6,
           child: Container(
             decoration: const BoxDecoration(
@@ -155,22 +164,53 @@ Widget upperPortionOfPage(
             ),
             child: Column(
               children: [
-                const Flexible(
+                Expanded(
                   flex: 7,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Placeholder(),
-                    // child: Image(retailerData.image)
+                    padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 20.h),
+                    // child: Placeholder(),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 175.w, maxHeight: 175.h),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        child: Image.network(
+                            retailerData?.image ?? '',
+                            fit: BoxFit.cover,
+                          ),
+                      ),
+                    ),
                   ),
                 ),
-                Flexible(
-                  child: GestureDetector(
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10.h),
+                    child: GestureDetector(
                       onTap: () {
                         AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
                             retailerData: retailerData));
                       },
-                      child: const Text("Show Details")),
+                      child: const Text(
+                        "Show Details",
+                        style: TextStyle(decoration: TextDecoration.underline)
+                      )
+                    ),
+                  ),
                 ),
+                
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(left: 30.w, right: 30.w),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                retailerData.visibility
+                    ? const Text("Available Deals")
+                    : const Text("Deals Unavailable"),
                 IconButton(
                   onPressed: () {
                     ref
@@ -195,11 +235,6 @@ Widget upperPortionOfPage(
               ],
             ),
           ),
-        ),
-        Flexible(
-          child: retailerData.visibility
-              ? const Text("Deals Available")
-              : const Text("Deals Unavailable"),
         ),
       ],
     ),
