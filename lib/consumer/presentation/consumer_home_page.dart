@@ -98,7 +98,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       ),
       title: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 30),
+          constraints: BoxConstraints(maxHeight: 35.h),
           child: Image.asset(Images.logoTextWhite)
         ),
       ),
