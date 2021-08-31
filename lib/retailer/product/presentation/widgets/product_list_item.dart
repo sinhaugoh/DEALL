@@ -12,6 +12,7 @@ class ProductItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final product = ref.watch(productProvider);
+    print(product);
     final mq = MediaQuery.of(context);
     return Container(
       padding: EdgeInsets.only(
@@ -21,7 +22,14 @@ class ProductItem extends ConsumerWidget {
       ),
       height: mq.size.height * 0.2,
       width: mq.size.width * 0.9,
-      child: product.availability ? Text('kosong') : CustomCard(product: product)
+      child: product.availability ? CustomCard(product: product) : 
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            'No products available.'
+          ),
+        ) 
+      // child: Text('$product')
     );
   }
 }
