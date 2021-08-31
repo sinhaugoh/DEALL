@@ -21,7 +21,7 @@ class ProductItem extends ConsumerWidget {
       ),
       height: mq.size.height * 0.2,
       width: mq.size.width * 0.9,
-      child: CustomCard(product: product)
+      child: product.availability ? Text('kosong') : CustomCard(product: product)
     );
   }
 }

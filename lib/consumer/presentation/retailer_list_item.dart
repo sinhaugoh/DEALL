@@ -26,7 +26,7 @@ class RetailerItem extends ConsumerWidget {
         height: mq.size.height * 0.2,
         width: mq.size.width * 0.9,
         // child: retailerData != null ? CustomCard(retailerData: retailerData) : GetWidget()
-        child: GetWidget()
+        child: CustomCard(retailerData: retailerData)
       ),
     );
   }
