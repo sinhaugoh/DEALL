@@ -144,7 +144,12 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     return Scaffold(
       //reused code from consumerhome
       appBar: AppBar(
-        toolbarHeight: 70.h,
+        toolbarHeight: 120.h,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
         title: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 30),
@@ -294,8 +299,11 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   ],
                 ),
               ),
-              const Expanded(
-                child: ProductListView(),
+              Expanded(
+                child: retailer.visibility ? ProductListView() : Padding(
+                  padding: EdgeInsets.only(top: 100.h),
+                  child: Text('No products available.'),
+                ),
               ),
             ],
           );
