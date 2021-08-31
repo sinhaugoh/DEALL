@@ -129,7 +129,7 @@ class ConsumerProductListPageState
                       .read(productNotifierProvider.notifier)
                       .getProductList(widget.retailerData.id);
                 },
-                child: ListView.builder(
+                child: loaded.products.length > 0 ? ListView.builder(
                   itemCount: loaded.products.length,
                   itemBuilder: (context, index) => ProviderScope(
                     overrides: [
@@ -138,6 +138,8 @@ class ConsumerProductListPageState
                     ],
                     child: const ConsumerProductItem(),
                   ),
+                ) : Center(
+                  child: Text('No products available.'),
                 ),
               ),
             ),
@@ -174,7 +176,7 @@ Widget upperPortionOfPage(
                       constraints: BoxConstraints(maxWidth: 175.w, maxHeight: 175.h),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0.w),
-                        child: retailerData?.image.toString() == ''
+                        child: retailerData.image.toString() == ''
                           ? Image.asset(
                               Images.imageNotFound,
                               fit: BoxFit.cover,
@@ -182,7 +184,7 @@ Widget upperPortionOfPage(
                               // height: MediaQuery.of(context).size.height,
                             )
                           : Image.network(
-                              retailerData?.image ?? '',
+                              retailerData.image,
                               fit: BoxFit.cover,
                             ),
                       ),
