@@ -22,6 +22,8 @@ class CustomCard extends StatelessWidget {
     final name = retailerData?.name ?? product?.name;
     final middleRowText = retailerData?.operatingHours ?? product?.description.toString();
     final lastRowText = retailerData?.description.toString() ?? product?.discountedPrice.toString();
+
+    // if (product == null){image = }
     
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),

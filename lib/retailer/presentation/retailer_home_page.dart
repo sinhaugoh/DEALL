@@ -16,6 +16,7 @@ import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:path/path.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
   const RetailerHomePage({Key? key}) : super(key: key);
@@ -241,17 +242,25 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                         },
                       ),
                       Text("Add Product"),
-                      SizedBox(width: 100.w),
-                      Text("Add Product"),
-                      ToggleButtons(
-                        children: <Widget>[
-                          Icon(Icons.panorama_fish_eye),
-                        ],
-                        onPressed: (int index) {
-                          setState(() {
-                          });
+                      SizedBox(width: 40.w),
+                      
+                      // // CHECKBOX?
+                      ElevatedButton(
+                        onPressed: () {
+                          ref
+                            .read(productListNotifierProvider.notifier)
+                            .toggleAllOn();
                         },
-                        isSelected: isSelected,
+                        child: const Text('Show All'),
+                      ),
+                      SizedBox(width: 10.w), 
+                      ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(productListNotifierProvider.notifier)
+                              .toggleAllOff();
+                        },
+                        child: const Text('Hide All'),
                       ),
                     ],
                   ),
@@ -264,35 +273,24 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
 
-                    // CheckboxListTile(
-                    //   title: const Text("title text"),
-                    //   value: true,
-                    //   onChanged: (newValue) {
-                    //     setState(() {
-                    //       checkedValue = newValue;
-                    //     });
+                    // // // CHECKBOX?
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     ref
+                    //       .read(productListNotifierProvider.notifier)
+                    //       .toggleAllOn();
                     //   },
-                    //   controlAffinity: ListTileControlAffinity.leading, //  <-- leading Checkbox
-                    // );
-                    
-                    // // CHECKBOX?
-                    ElevatedButton(
-                      onPressed: () {
-                        ref
-                          .read(productListNotifierProvider.notifier)
-                          .toggleAllOn();
-                      },
-                      child: const Text('Show All'),
-                    ),
-                    SizedBox(width: 10.w), 
-                    ElevatedButton(
-                      onPressed: () {
-                        ref
-                            .read(productListNotifierProvider.notifier)
-                            .toggleAllOff();
-                      },
-                      child: const Text('Hide All'),
-                    ),
+                    //   child: const Text('Show All'),
+                    // ),
+                    // SizedBox(width: 10.w), 
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     ref
+                    //         .read(productListNotifierProvider.notifier)
+                    //         .toggleAllOff();
+                    //   },
+                    //   child: const Text('Hide All'),
+                    // ),
                   ],
                 ),
               ),
