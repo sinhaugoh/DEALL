@@ -274,7 +274,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               Padding(
                 padding: EdgeInsets.fromLTRB(25.w, 8.h, 25.w, 8.h),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
 
