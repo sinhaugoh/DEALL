@@ -10,6 +10,7 @@ import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/consumer/presentation/retailer_listview.dart';
 import 'package:deall/consumer/presentation/widgets/search_bar_filter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConsumerHomePage extends ConsumerStatefulWidget {
   const ConsumerHomePage({Key? key}) : super(key: key);
@@ -89,7 +90,12 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
   AppBar enterLocationAppBar() {
     return AppBar(
-      toolbarHeight: 70,
+      toolbarHeight: 120.h,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+          bottom: Radius.elliptical(350.w, 40.h),
+        ),
+      ),
       title: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 30),

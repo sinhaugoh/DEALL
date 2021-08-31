@@ -99,13 +99,26 @@ class ConsumerProductListPageState
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70.h,
-        // title: Center(
-        //   child: ConstrainedBox(
-        //     constraints: const BoxConstraints(maxHeight: 30),
-        //     child: Image.asset(Images.logoTextWhite)
-        //   ),
-        title: Text(widget.retailerData.name),
+        toolbarHeight: 120.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 40.h),
+          ),
+        ),
+        title: Center(child: Text(
+            widget.retailerData.name,
+            //style
+          )
+        ),
+        actions: [
+          IconButton(onPressed: (){
+            if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
+                    AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
+                  } else {
+                    AutoRouter.of(context).pop();
+                  }
+          }, icon: const Icon(Icons.star)),
+        ],
       ),
       body: Column(
         children: [
@@ -129,7 +142,7 @@ class ConsumerProductListPageState
                       .read(productNotifierProvider.notifier)
                       .getProductList(widget.retailerData.id);
                 },
-                child: loaded.products.length > 0 ? ListView.builder(
+                child: loaded.products.isNotEmpty ? ListView.builder(
                   itemCount: loaded.products.length,
                   itemBuilder: (context, index) => ProviderScope(
                     overrides: [
@@ -140,7 +153,7 @@ class ConsumerProductListPageState
                   ),
                 ) : Padding(
                   padding: EdgeInsets.only(top: 100.h),
-                  child: Text('No products available.'),
+                  child: const Text('No products available.'),
                 ),
               ),
             ),
@@ -216,7 +229,6 @@ Widget upperPortionOfPage(
           child: Padding(
             padding: EdgeInsets.only(left: 30.w, right: 30.w),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 retailerData.visibility

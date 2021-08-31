@@ -30,7 +30,7 @@ class _FavouriteRetailerPageState extends ConsumerState<FavouriteRetailerPage> {
       appBar: AppBar(
         title: const Text('Favourite'),
       ),
-      drawer: const ConsumerDrawer(),
+      // drawer: const ConsumerDrawer(),
       body: RefreshIndicator(
         onRefresh: () async {
           ref
