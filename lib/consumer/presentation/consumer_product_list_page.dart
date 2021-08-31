@@ -8,6 +8,7 @@ import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -173,10 +174,17 @@ Widget upperPortionOfPage(
                       constraints: BoxConstraints(maxWidth: 175.w, maxHeight: 175.h),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0.w),
-                        child: Image.network(
-                            retailerData?.image ?? '',
-                            fit: BoxFit.cover,
-                          ),
+                        child: retailerData?.image.toString() == ''
+                          ? Image.asset(
+                              Images.imageNotFound,
+                              fit: BoxFit.cover,
+                              // width: MediaQuery.of(context).size.width,
+                              // height: MediaQuery.of(context).size.height,
+                            )
+                          : Image.network(
+                              retailerData?.image ?? '',
+                              fit: BoxFit.cover,
+                            ),
                       ),
                     ),
                   ),

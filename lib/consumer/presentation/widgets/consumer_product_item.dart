@@ -35,17 +35,16 @@ class ConsumerProductItem extends ConsumerWidget {
                 height: mediaQuery.size.height,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0.w),
-                  child: product.image.toString() == ''
-                      ? Image.asset(
-                          Images.imageNotFound,
-                          fit: BoxFit.cover,
-                          // width: MediaQuery.of(context).size.width,
-                          // height: MediaQuery.of(context).size.height,
-                        )
-                      : Image.network(
-                          product.image,
-                          fit: BoxFit.cover,
-                        ),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: product.image.toString() == ''
+                        ? Image.asset(
+                            Images.imageNotFound,
+                          )
+                        : Image.network(
+                            product.image,
+                          ),
+                  ),
                 ),
               ),
             ),
