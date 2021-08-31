@@ -142,7 +142,7 @@ Widget upperPortionOfPage(
     BuildContext context, Retailer retailerData, WidgetRef ref) {
   final mq = MediaQuery.of(context);
   return SizedBox(
-    height: mq.size.height * 0.5,
+    height: mq.size.height * 0.3,
     child: Column(
       children: [
         Flexible(
@@ -159,7 +159,8 @@ Widget upperPortionOfPage(
                   flex: 7,
                   child: Padding(
                     padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Placeholder(),
+                    // child: Placeholder(),
+                    // child: Image(retailerData.image)
                   ),
                 ),
                 Flexible(
