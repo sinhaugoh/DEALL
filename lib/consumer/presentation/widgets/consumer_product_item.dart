@@ -57,6 +57,8 @@ class ConsumerProductItem extends ConsumerWidget {
                       isThreeLine: true,
                       title: Text(
                         product.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         //remove
                         style: GoogleFonts.averiaSansLibre(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -92,17 +94,19 @@ class ConsumerProductItem extends ConsumerWidget {
                             children: product.discountedPrice != 0
                                 ? [
                                     Text(
-                                      product.usualPrice.toString(),
+                                      "\$${product.usualPrice.toStringAsFixed(2)}",
                                       style: const TextStyle(
                                         decoration: TextDecoration.lineThrough,
                                       ),
                                     ),
+                                    SizedBox(width: 7.w),
                                     Text(
-                                      product.discountedPrice.toString(),
+                                      //style
+                                      "\$${product.discountedPrice.toStringAsFixed(2)}",
                                     ),
                                   ]
                                 : [
-                                    Text(product.usualPrice.toString()),
+                                    Text("\$${product.usualPrice.toStringAsFixed(2)}"),
                                   ]),
                           // Text(
                           //   product.description.toString(),
