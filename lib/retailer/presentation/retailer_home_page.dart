@@ -300,6 +300,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               ),
               Expanded(
                 child: retailer.visibility ? ProductListView() : Padding(
+                // child: Product.initial() ? ProductListView() : Padding(
                   padding: EdgeInsets.only(top: 100.h),
                   child: Text('No products available.'),
                 ),
