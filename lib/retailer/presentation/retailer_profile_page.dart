@@ -63,6 +63,7 @@ class RetailerProfilePage extends ConsumerWidget {
                             fit: BoxFit.fitHeight,
                           ),
                   ),
+
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
