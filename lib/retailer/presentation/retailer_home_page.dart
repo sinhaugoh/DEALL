@@ -190,7 +190,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Visibility"),
+                  Text("Enable retailer's visibility."),
                   Switch(
                     onChanged: (value) {
                       ref
@@ -300,11 +300,11 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               ),
               //@@@@@@ need to remove this
               Expanded(
-                child: retailer.visibility ? ProductListView() : Padding(
-                // child: Product.initial() ? ProductListView() : Padding(
-                  padding: EdgeInsets.only(top: 100.h),
-                  child: Text('No products available.'),
-                ),
+                // child: retailer.visibility ? ProductListView() : Padding(
+                //   padding: EdgeInsets.only(top: 100.h),
+                //   child: Text('No products available.'),
+                // ),
+                child: ProductListView()
               ),
             ],
           );

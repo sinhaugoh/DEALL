@@ -1,11 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
+import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomRetailerCard extends StatelessWidget {
+class CustomRetailerCard extends ConsumerWidget {
   final Product? product;
 
   const CustomRetailerCard({
@@ -14,7 +19,9 @@ class CustomRetailerCard extends StatelessWidget {
     }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final product = ref.watch(productProvider);
+
     final mediaQuery = MediaQuery.of(context);
     final image = product?.image;
     final name = product?.name;
@@ -30,7 +37,7 @@ class CustomRetailerCard extends StatelessWidget {
           children: [
 
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
@@ -48,7 +55,7 @@ class CustomRetailerCard extends StatelessWidget {
             ),
 
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Padding(
                 padding: EdgeInsets.all(8.0.w),
                 child: ListTile(
@@ -100,9 +107,59 @@ class CustomRetailerCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  // trailing: Icon(Icons.add),
+                  // trailing: Column(
+                  //   children: [
+                  //     Flexible(
+                  //       child: IconButton(
+                  //         onPressed: () {
+                  //           AutoRouter.of(context).push(EditProductRoute(product: product));
+                  //         },
+                  //         icon: const Icon(Icons.edit),
+                  //       ),
+                  //     ),
+                  //     // SizedBox(height: 50.h,),
+                  //     Flexible(
+                  //       child: Switch(
+                  //         value: product.availability,
+                  //         onChanged: (value) {
+                  //           ref
+                  //             .read(productStateNotifierProvider.notifier)
+                  //             .updateProduct(product.copyWith(
+                  //                 availability: !product.availability));
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 )
               )
+            ),
+
+            Expanded(
+              child: Column(
+                children: [
+                  Flexible(
+                    child: IconButton(
+                      onPressed: () {
+                        AutoRouter.of(context).push(EditProductRoute(product: product));
+                      },
+                      icon: const Icon(Icons.edit),
+                    ),
+                  ),
+                  // SizedBox(height: 50.h,),
+                  Flexible(
+                    child: Switch(
+                      value: product.availability,
+                      onChanged: (value) {
+                        ref
+                          .read(productStateNotifierProvider.notifier)
+                          .updateProduct(product.copyWith(
+                              availability: !product.availability));
+                      },
+                    ),
+                  ),
+                ]
+              ),
             )
 
           ],
