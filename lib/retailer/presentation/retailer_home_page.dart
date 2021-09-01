@@ -298,6 +298,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   ],
                 ),
               ),
+              //@@@@@@ need to remove this
               Expanded(
                 child: retailer.visibility ? ProductListView() : Padding(
                 // child: Product.initial() ? ProductListView() : Padding(
