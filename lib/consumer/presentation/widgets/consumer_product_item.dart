@@ -101,8 +101,11 @@ class ConsumerProductItem extends ConsumerWidget {
                                     ),
                                     SizedBox(width: 7.w),
                                     Text(
-                                      //style
                                       "\$${product.discountedPrice.toStringAsFixed(2)}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18.sp,
+                                      ),
                                     ),
                                   ]
                                 : [
