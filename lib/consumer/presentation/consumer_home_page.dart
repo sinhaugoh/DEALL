@@ -115,6 +115,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       iconTheme: const IconThemeData(
         color: Colors.white
       ),
+      centerTitle: true,
     );
   }
 

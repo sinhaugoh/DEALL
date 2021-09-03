@@ -119,6 +119,7 @@ class ConsumerProductListPageState
                   }
           }, icon: const Icon(Icons.star)),
         ],
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -172,7 +173,7 @@ Widget upperPortionOfPage(
     child: Column(
       children: [
         Expanded(
-          flex: 6,
+          flex: 5,
           child: Container(
             decoration: const BoxDecoration(
               border: Border(
@@ -206,19 +207,45 @@ Widget upperPortionOfPage(
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 10.h),
-                    child: GestureDetector(
-                      onTap: () {
-                        AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                  flex: 2,
+                  // child: Padding(
+                  //   padding: EdgeInsets.only(top: 10.h),
+                  //   child: GestureDetector(
+                  //     onTap: () {
+                  //       AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                  //           retailerData: retailerData));
+                  //     },
+                      // child: const Text(
+                      //   "Show Details",
+                      //   style: TextStyle(decoration: TextDecoration.underline)
+                      // )
+                      // child: Container(
+                      //   // padding: const EdgeInsets.all(12.0),
+                      //   width: 120.w,
+                      //   alignment: Alignment.center,
+                      //   decoration: BoxDecoration(
+                      //     color: Theme.of(context).buttonColor,
+                      //     borderRadius: BorderRadius.circular(18.0),
+                      //   ),
+                      //   child: const Text(
+                      //     "Show Details",
+                      //     style: TextStyle(decoration: TextDecoration.underline)
+                      //   ),
+                      // ),
+                      
+                      child: TextButton(
+                        onPressed: (){
+                          AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
                             retailerData: retailerData));
-                      },
-                      child: const Text(
-                        "Show Details",
-                        style: TextStyle(decoration: TextDecoration.underline)
-                      )
-                    ),
-                  ),
+                        },
+                        child: const Text(
+                          "Show Details",
+                          style: TextStyle(decoration: TextDecoration.underline)
+                          ),
+                        ),
+                      // ),
+                    // ),
+                  // ),
                 ),
                 
               ],
@@ -226,6 +253,7 @@ Widget upperPortionOfPage(
           ),
         ),
         Expanded(
+          // flex: 2,
           child: Padding(
             padding: EdgeInsets.only(left: 30.w, right: 30.w),
             child: Row(
