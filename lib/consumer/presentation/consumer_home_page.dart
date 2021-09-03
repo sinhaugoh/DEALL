@@ -90,10 +90,15 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
 
   AppBar enterLocationAppBar() {
     return AppBar(
-      toolbarHeight: 70.h,
+      toolbarHeight: 120.h,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+          bottom: Radius.elliptical(350.w, 40.h),
+        ),
+      ),
       title: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 30),
+          constraints: BoxConstraints(maxHeight: 35.h),
           child: Image.asset(Images.logoTextWhite)
         ),
       ),
@@ -110,6 +115,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
       iconTheme: const IconThemeData(
         color: Colors.white
       ),
+      centerTitle: true,
     );
   }
 

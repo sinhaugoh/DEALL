@@ -35,6 +35,8 @@ class AddProductForm extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
                 label: 'Name',
+                maxLength: 50,
+                counter: const Offstage(),
                 errorText: ref.watch(addProductFormNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(addProductFormNotifierProvider
@@ -81,7 +83,7 @@ class AddProductForm extends ConsumerWidget {
                     : null,
                 onChanged: ref
                     .read(addProductFormNotifierProvider.notifier)
-                    .prodDiscountPriceChanged,
+                    .prodDiscountedPriceChanged,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99

@@ -10,7 +10,7 @@ class CustomCard extends StatelessWidget {
   final Product? product;
 
   const CustomCard({
-    Key? key, 
+    Key? key,
     this.retailerData,
     this.product,
     }) : super(key: key);
@@ -50,8 +50,8 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
             ),
-
-            Expanded(
+          // ),
+          Expanded(
               flex: 2,
               child: Padding(
                 padding: EdgeInsets.all(8.0.w),
@@ -100,17 +100,32 @@ class CustomCard extends StatelessWidget {
                           color: Colors.grey
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                  // trailing: Icon(Icons.add),
-                )
-              )
-            )
-
-          ],
-        ),
-      );
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          retailerData?.description.toString() ?? '',
+                          // maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.cantarell(
+                              // textStyle: Theme.of(context).textTheme.headline4,
+                              fontSize: 12.sp,
+                              color: Colors.grey
+                              // fontWeight: FontWeight.w700,
+                              // fontStyle: FontStyle.italic,
+                          ),
+                          // Divider(
+                          //   thickness: 1,
+                          // ),
+                        ),
+                      ],
+                    ),
+                    // trailing: Icon(Icons.add),
+                  )))
+        ],
+      ),
+    );
   }
 }

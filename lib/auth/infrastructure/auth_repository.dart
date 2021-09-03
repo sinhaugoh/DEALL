@@ -38,6 +38,11 @@ class AuthRepository {
     return userType;
   }
 
+  /// get [AppUser] from firebase auth
+  /// 
+  /// return [AppUser] if user is authenticated
+  /// 
+  /// return null if user is not authenticated
   Future<AppUser?> getFirebaseUser() async {
     final firebaseUser = await _firebaseAuthService.getFirebaseUser();
     if (firebaseUser == null) {
@@ -50,11 +55,23 @@ class AuthRepository {
     }
   }
 
-  ///DO NOT use before authenticated
+  ///get userId if the user is authenticated
+  ///
+  /// DO NOT use before authenticated
   String getUserId() {
     return _firebaseAuthService.getUserId();
   }
 
+  /// sign in with email and password
+  /// 
+  /// return [AuthFailure.noConnection] if no connection
+  /// 
+  /// return [AppUser] if sign in successful
+  /// 
+  /// return [AuthFailure.server] with error message if firebase auth throws exception
+  /// 
+  /// return [AuthFailure.unexpectedError] if [AppUser] is missing after sign in successfully
+  /// which is IMPOSSIBLE
   Future<Either<AuthFailure, AppUser>> signIn({
     required String email,
     required String password,
@@ -83,6 +100,15 @@ class AuthRepository {
     }
   }
 
+  /// sign up consumer with email and password
+  /// 
+  /// return [AuthFailure.noConnection] if no connection
+  /// 
+  /// return [unit] if sign in successful
+  /// 
+  /// return [AuthFailure.server] if email already in used
+  /// 
+  /// return [AuthFailure.unexpectedError] if unexpected exception thrown
   Future<Either<AuthFailure, Unit>> consumerSignUp({
     required String email,
     required String password,
@@ -110,6 +136,16 @@ class AuthRepository {
     }
   }
 
+  /// sign up retailer with email and password and shop information
+  /// 
+  /// return [AuthFailure.noConnection] if no connection
+  /// 
+  /// return [unit] if sign in successful
+  /// 
+  /// return [AuthFailure.server] if email already in used
+  /// 
+  /// return [AuthFailure.unexpectedError] if unexpected exception thrown from firebase
+  /// auth or firebase storage
   Future<Either<AuthFailure, Unit>> retailerSignUp({
     required String email,
     required String password,
@@ -150,6 +186,11 @@ class AuthRepository {
     }
   }
 
+  /// sign out from firebase auth
+  /// 
+  /// return [unit] if successful
+  /// 
+  /// return [AuthFailure.server] with error message if firebase exception thrown
   Future<Either<AuthFailure, Unit>> signOut() async {
     try {
       await _firebaseAuthService.signOut();

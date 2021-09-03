@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class SavingInProgressOverlay extends StatelessWidget {
   final bool isSaving;
+  final String overlayText;
 
   const SavingInProgressOverlay({
     Key? key,
     required this.isSaving,
+    required this.overlayText,
   }) : super(key: key);
 
   @override
@@ -21,12 +23,12 @@ class SavingInProgressOverlay extends StatelessWidget {
           visible: isSaving,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CircularProgressIndicator(),
-              SizedBox(height: 8),
+            children:  [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 8),
               Text(
-                'Saving',
-                style: TextStyle(
+                overlayText,
+                style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                     ),

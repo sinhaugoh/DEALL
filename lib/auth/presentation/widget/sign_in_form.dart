@@ -116,7 +116,6 @@ class SignInForm extends ConsumerWidget {
                     // mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
-                        flex: 1,
                         child: Align(
                             alignment: Alignment.centerRight,
                             child: InkWell(
@@ -142,7 +141,6 @@ class SignInForm extends ConsumerWidget {
                       ),
 
                       Expanded(
-                        flex: 1,
                         child: Align(
                             alignment: Alignment.centerLeft,
                             child: InkWell(
