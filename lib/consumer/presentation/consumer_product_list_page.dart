@@ -105,21 +105,20 @@ class ConsumerProductListPageState
             bottom: Radius.elliptical(350.w, 40.h),
           ),
         ),
-        title: Center(child: Text(
+        centerTitle: true,
+        title: Text(
             widget.retailerData.name,
             //style
-          )
-        ),
-        actions: [
-          IconButton(onPressed: (){
-            if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
-                    AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
-                  } else {
-                    AutoRouter.of(context).pop();
-                  }
-          }, icon: const Icon(Icons.star)),
-        ],
-        centerTitle: true,
+          ),
+        // actions: [
+        //   IconButton(onPressed: (){
+        //     if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
+        //             AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
+        //           } else {
+        //             AutoRouter.of(context).pop();
+        //           }
+        //   }, icon: const Icon(Icons.star)),
+        // ],
       ),
       body: Column(
         children: [
