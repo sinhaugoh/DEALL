@@ -62,15 +62,13 @@ class ConsumerProductItem extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(20.0.w),
                   clipBehavior: Clip.hardEdge,
                   child: FittedBox(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     child: product.image.toString() == ''
                         ? Image.asset(
                             Images.imageNotFound,
                           )
                         : Image.network(
                             product.image,
-                            // height: 300,
-                            // width: 300,
                           ),
                   ),
                 ),

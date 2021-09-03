@@ -191,6 +191,7 @@ Widget upperPortionOfPage(
                       constraints: BoxConstraints(maxWidth: 175.w, maxHeight: 175.h),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0.w),
+                        clipBehavior: Clip.hardEdge,
                         child: retailerData.image.toString() == ''
                           ? Image.asset(
                               Images.imageNotFound,
@@ -200,7 +201,7 @@ Widget upperPortionOfPage(
                             )
                           : Image.network(
                               retailerData.image,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                       ),
                     ),
