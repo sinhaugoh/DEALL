@@ -16,6 +16,7 @@ class FormTextField extends StatelessWidget {
   final TextEditingController? controller;
   final void Function(String value) onChanged;
   final Widget? suffixIcon;
+  final TextStyle? labelStyle;
 
   const FormTextField({
     Key? key,
@@ -31,6 +32,7 @@ class FormTextField extends StatelessWidget {
     this.maxLines = 1,
     this.controller,
     this.suffixIcon,
+    this.labelStyle,
     required this.onChanged,
     required this.label,
   }) : super(key: key);
@@ -47,6 +49,7 @@ class FormTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: labelStyle,
         border: const OutlineInputBorder(),
         errorText: errorText,
         counter: counter,

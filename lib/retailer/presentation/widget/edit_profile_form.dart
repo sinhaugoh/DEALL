@@ -5,6 +5,7 @@ import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileForm extends ConsumerStatefulWidget {
   final Retailer retailer;
@@ -40,13 +41,20 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (!ref.watch<bool>(
-              retailerEditProfileNotifierProvider
-                  .select((state) => state.hasInitialImageChanged),
-            )&& widget.retailer.image.isNotEmpty)
-              CachedNetworkImage(
-                imageUrl: widget.retailer.image,
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
+                  retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged),
+                ) &&
+                widget.retailer.image.isNotEmpty)
+              SizedBox(
+                height: 200.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0.w),
+                  child: CachedNetworkImage(
+                    imageUrl: widget.retailer.image,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                  ),
+                ),
               ),
             if (ref.watch<bool>(retailerEditProfileNotifierProvider
                     .select((state) => state.hasInitialImageChanged)) &&
@@ -73,6 +81,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               child: FormTextField(
                 initialValue: widget.retailer.name,
                 label: 'Shop Name',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 maxLength: 50,
                 counter: const Offstage(),
                 errorText: ref.watch(retailerEditProfileNotifierProvider
@@ -92,6 +104,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                 minLines: 3,
                 maxLines: null,
                 label: 'Operating Hours',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .operatingHoursChanged,
@@ -102,6 +118,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               child: FormTextField(
                 initialValue: widget.retailer.block,
                 label: 'Block',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .blockChanged,
@@ -112,6 +132,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               child: FormTextField(
                 initialValue: widget.retailer.street,
                 label: 'Street',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .streetChanged,
@@ -122,6 +146,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               child: FormTextField(
                 initialValue: widget.retailer.unit,
                 label: 'Unit No.',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .unitChanged,
@@ -134,6 +162,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                 maxLength: 6,
                 keyboardType: const TextInputType.numberWithOptions(),
                 label: 'Postal Code',
+                labelStyle: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold),
                 errorText: ref.watch(retailerEditProfileNotifierProvider
                         .select((state) => state.showErrorMessage))
                     ? ref.watch(retailerEditProfileNotifierProvider
