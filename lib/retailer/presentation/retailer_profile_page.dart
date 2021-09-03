@@ -49,57 +49,82 @@ class RetailerProfilePage extends ConsumerWidget {
                   //     placeholder: (context, url) =>
                   //         const CircularProgressIndicator(),
                   //   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0.w),
-                    child: retailer.image == ''
-                        ? Image.asset(
-                            Images.imageNotFound,
-                            fit: BoxFit.fitHeight,
-                            // width: MediaQuery.of(context).size.width,
-                            // height: MediaQuery.of(context).size.height,
-                          )
-                        : Image.network(
-                            retailer.image,
-                            fit: BoxFit.fitHeight,
-                          ),
+                  SizedBox(
+                    height: 30.h,
                   ),
-
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
+                  SizedBox(
+                    height: 200.h,
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0.w),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(retailer.operatingHours),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(20.0.w),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(retailer.addressLine()),
+                      child: retailer.image == ''
+                          ? Image.asset(
+                              Images.imageNotFound,
+                              fit: BoxFit.fitHeight,
+                              // width: MediaQuery.of(context).size.width,
+                              // height: MediaQuery.of(context).size.height,
+                            )
+                          : Image.network(
+                              retailer.image,
+                              fit: BoxFit.fitHeight,
+                            ),
                     ),
                   ),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.all(16.0),
-                  //   child: Text(retailer.description),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(16.0),
-                  //   child: Text(retailer.operatingHours),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(16.0),
-                  //   child: Text(retailer.addressLine()),
-                  // ),
-                  //Text(retailer.description),
-                  //Text(retailer.operatingHours),
-                  //Text(retailer.addressLine()),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(20.0.w),
+                      ),
+                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      alignment: Alignment.center,
+                      child: RichText(
+                        text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Operating Hours\n',
+                                style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: retailer.operatingHours,
+                                style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                      )),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(20.0.w),
+                      ),
+                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      alignment: Alignment.center,
+                      child: RichText(
+                        text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Address\n',
+                                style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text: retailer.addressLine(),
+                                style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                      )),
                 ],
               ),
             ),
