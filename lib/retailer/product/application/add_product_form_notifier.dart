@@ -24,7 +24,7 @@ class AddProductFormNotifier extends StateNotifier<AddProductFormState> {
     state = state.copyWith(usualPriceString: usualPrice);
   }
 
-  void prodDiscountPriceChanged(String discountedPrice) {
+  void prodDiscountedPriceChanged(String discountedPrice) {
     state = state.copyWith(discountedPriceString: discountedPrice);
   }
 

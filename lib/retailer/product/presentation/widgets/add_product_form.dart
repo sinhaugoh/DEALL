@@ -83,7 +83,7 @@ class AddProductForm extends ConsumerWidget {
                     : null,
                 onChanged: ref
                     .read(addProductFormNotifierProvider.notifier)
-                    .prodDiscountPriceChanged,
+                    .prodDiscountedPriceChanged,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
