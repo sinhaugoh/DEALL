@@ -188,9 +188,9 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("Enable retailer's visibility."),
+                  const Text("Enable retailer's visibility."),
                   Switch(
                     onChanged: (value) {
                       ref
@@ -246,7 +246,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                           AutoRouter.of(context).push(const AddProductRoute());
                         },
                       ),
-                      Text("Add Product"),
+                      const Text("Add Product"),
                       SizedBox(width: 40.w),
                       
                       // // CHECKBOX?
@@ -257,6 +257,13 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                             .toggleAllOn();
                         },
                         child: const Text('Show All'),
+                        style: ButtonStyle(
+                          // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+                          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+                          }),
+                          // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
+                        ),
                       ),
                       SizedBox(width: 10.w), 
                       ElevatedButton(
@@ -266,6 +273,13 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                               .toggleAllOff();
                         },
                         child: const Text('Hide All'),
+                        style: ButtonStyle(
+                          // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+                          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+                          }),
+                          // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
+                        ),
                       ),
                     ],
                   ),

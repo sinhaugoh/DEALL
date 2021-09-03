@@ -23,7 +23,8 @@ class ProductListView extends ConsumerWidget {
               overrides: [
                 productProvider.overrideWithValue(loaded.products[index])
               ],
-              child: const ProductItem(),
+              // text not showing
+              child: loaded.products.isNotEmpty ? const ProductItem() : Text('kosong'),
             ),
           );
         });

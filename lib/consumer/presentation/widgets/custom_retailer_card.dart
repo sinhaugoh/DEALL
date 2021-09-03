@@ -23,10 +23,10 @@ class CustomRetailerCard extends ConsumerWidget {
     final product = ref.watch(productProvider);
 
     final mediaQuery = MediaQuery.of(context);
-    final image = product?.image;
-    final name = product?.name;
-    final middleRowText = product?.description.toString();
-    final lastRowText = product?.discountedPrice.toString();
+    final image = product.image;
+    final name = product.name;
+    final middleRowText = product.description.toString();
+    final lastRowText = product.discountedPrice.toString();
 
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
@@ -44,7 +44,7 @@ class CustomRetailerCard extends ConsumerWidget {
 
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0.w),
-                  child: image! == '' ? 
+                  child: image == '' ? 
                     Image.asset(
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
@@ -63,7 +63,7 @@ class CustomRetailerCard extends ConsumerWidget {
                   isThreeLine: true,
                   title: Text(
                     // '${retailerData?.name}',
-                    name!,
+                    name,
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -78,7 +78,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.operatingHours}",
-                        middleRowText!,
+                        middleRowText,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
@@ -94,7 +94,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.description.toString()}",
-                        lastRowText!,
+                        lastRowText,
                         // maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
