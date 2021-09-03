@@ -1,8 +1,10 @@
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RetailerSignUpForm extends ConsumerWidget {
   const RetailerSignUpForm({Key? key}) : super(key: key);
@@ -15,9 +17,10 @@ class RetailerSignUpForm extends ConsumerWidget {
     return Form(
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (image != null) Image.file(image),
+             if (image != null) Image.file(image) else  Image.asset(Images.imageNotFound),
+            //const Placeholder(),
+
             ElevatedButton(
               onPressed: () {
                 ref

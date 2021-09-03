@@ -22,6 +22,7 @@ class RetailerSignUpPage extends ConsumerWidget {
       }
     });
 
+
     ref.listen<bool>(
       retailerSignUpFormNotifierProvider.select((state) => state.hasConnection),
       (state) {
