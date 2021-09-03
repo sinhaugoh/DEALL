@@ -30,19 +30,47 @@ class ConsumerProductItem extends ConsumerWidget {
         child: Row(
           children: [
             Expanded(
+              // child: Container(
+              //   width: mediaQuery.size.width,
+              //   height: mediaQuery.size.height,
+              //   child: ClipRRect(
+              //         borderRadius: BorderRadius.circular(20.0.w),
+              //         clipBehavior: Clip.hardEdge,
+              //         child: Stack(
+              //       children: [
+              //         FadeInImage.assetNetwork(
+              //           placeholder: "resources/your_placeholder_image.png",
+              //           image: product.image,
+              //           fit: BoxFit.cover,
+              //           width: 120.0,
+              //           height: 120.0,
+              //         ),
+              //         Positioned.fill(
+              //           child: Material(
+              //               color: Colors.transparent,
+              //               child: InkWell(
+              //                   splashColor: Colors.lightGreenAccent, onTap: () {})),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0.w),
+                  clipBehavior: Clip.hardEdge,
                   child: FittedBox(
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     child: product.image.toString() == ''
                         ? Image.asset(
                             Images.imageNotFound,
                           )
                         : Image.network(
                             product.image,
+                            // height: 300,
+                            // width: 300,
                           ),
                   ),
                 ),
