@@ -233,16 +233,33 @@ Widget upperPortionOfPage(
                       //   ),
                       // ),
                       
-                      child: TextButton(
-                        onPressed: (){
-                          AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
-                            retailerData: retailerData));
-                        },
-                        child: const Text(
-                          "Show Details",
-                          style: TextStyle(decoration: TextDecoration.underline)
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 8.h),
+                        child: TextButton(
+                          clipBehavior: Clip.hardEdge,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                                  return Theme.of(context).colorScheme.primary.withOpacity(0.0);
+                              },
+                            ), 
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0.w),
+                                side: BorderSide(color: Theme.of(context).colorScheme.primary)
+                              )
+                            ),
                           ),
-                        ),
+                          onPressed: (){
+                            AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                              retailerData: retailerData));
+                          },
+                          child: const Text(
+                            "Show Details",
+                            // style: TextStyle(decoration: TextDecoration.underline)
+                            ),
+                          ),
+                      ),
                       // ),
                     // ),
                   // ),
