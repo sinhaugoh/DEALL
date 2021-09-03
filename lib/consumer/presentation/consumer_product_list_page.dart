@@ -8,9 +8,11 @@ import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConsumerProductListPage extends ConsumerStatefulWidget {
   final Retailer retailerData;
@@ -97,14 +99,35 @@ class ConsumerProductListPageState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.retailerData.name),
+        toolbarHeight: 120.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 40.h),
+          ),
+        ),
+        centerTitle: true,
+        title: Text(
+            widget.retailerData.name,
+            //style
+          ),
+        // actions: [
+        //   IconButton(onPressed: (){
+        //     if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
+        //             AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
+        //           } else {
+        //             AutoRouter.of(context).pop();
+        //           }
+        //   }, icon: const Icon(Icons.star)),
+        // ],
       ),
       body: Column(
         children: [
           Expanded(
+            flex: 2,
             child: upperPortionOfPage(context, widget.retailerData, ref),
           ),
           Expanded(
+            flex: 3,
             child: state.map(
               initial: (_) => const Center(),
               loading: (_) => const Center(
@@ -119,7 +142,7 @@ class ConsumerProductListPageState
                       .read(productNotifierProvider.notifier)
                       .getProductList(widget.retailerData.id);
                 },
-                child: ListView.builder(
+                child: loaded.products.isNotEmpty ? ListView.builder(
                   itemCount: loaded.products.length,
                   itemBuilder: (context, index) => ProviderScope(
                     overrides: [
@@ -128,6 +151,9 @@ class ConsumerProductListPageState
                     ],
                     child: const ConsumerProductItem(),
                   ),
+                ) : Padding(
+                  padding: EdgeInsets.only(top: 100.h),
+                  child: const Text('No products available.'),
                 ),
               ),
             ),
@@ -142,34 +168,119 @@ Widget upperPortionOfPage(
     BuildContext context, Retailer retailerData, WidgetRef ref) {
   final mq = MediaQuery.of(context);
   return SizedBox(
-    height: mq.size.height * 0.5,
+    height: mq.size.height * 0.2,
     child: Column(
       children: [
-        Flexible(
-          flex: 6,
+        Expanded(
+          flex: 5,
           child: Container(
             decoration: const BoxDecoration(
               border: Border(
-                bottom: BorderSide(width: 2),
+                // bottom: BorderSide(width: 2),
               ),
             ),
             child: Column(
               children: [
-                const Flexible(
+                Expanded(
                   flex: 7,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Placeholder(),
+                    padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 20.h),
+                    // child: Placeholder(),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 175.w, maxHeight: 175.h),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        clipBehavior: Clip.hardEdge,
+                        child: retailerData.image.toString() == ''
+                          ? Image.asset(
+                              Images.imageNotFound,
+                              fit: BoxFit.cover,
+                              // width: MediaQuery.of(context).size.width,
+                              // height: MediaQuery.of(context).size.height,
+                            )
+                          : Image.network(
+                              retailerData.image,
+                              fit: BoxFit.fill,
+                            ),
+                      ),
+                    ),
                   ),
                 ),
-                Flexible(
-                  child: GestureDetector(
-                      onTap: () {
-                        AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
-                            retailerData: retailerData));
-                      },
-                      child: const Text("Show Details")),
+                Expanded(
+                  flex: 2,
+                  // child: Padding(
+                  //   padding: EdgeInsets.only(top: 10.h),
+                  //   child: GestureDetector(
+                  //     onTap: () {
+                  //       AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                  //           retailerData: retailerData));
+                  //     },
+                      // child: const Text(
+                      //   "Show Details",
+                      //   style: TextStyle(decoration: TextDecoration.underline)
+                      // )
+                      // child: Container(
+                      //   // padding: const EdgeInsets.all(12.0),
+                      //   width: 120.w,
+                      //   alignment: Alignment.center,
+                      //   decoration: BoxDecoration(
+                      //     color: Theme.of(context).buttonColor,
+                      //     borderRadius: BorderRadius.circular(18.0),
+                      //   ),
+                      //   child: const Text(
+                      //     "Show Details",
+                      //     style: TextStyle(decoration: TextDecoration.underline)
+                      //   ),
+                      // ),
+                      
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 8.h),
+                          child: TextButton(
+                            clipBehavior: Clip.hardEdge,
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                    return Theme.of(context).colorScheme.primary.withOpacity(0.0);
+                                },
+                              ), 
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0.w),
+                                  side: BorderSide(color: Theme.of(context).colorScheme.primary)
+                                )
+                              ),
+                            ),
+                            onPressed: (){
+                              AutoRouter.of(context).push(ConsumerRetailerDetailRoute(
+                                retailerData: retailerData));
+                            },
+                            child: const Text(
+                              "Show Details",
+                              // style: TextStyle(decoration: TextDecoration.underline)
+                              ),
+                            ),
+                        ),
+                      ),
+                      // ),
+                    // ),
+                  // ),
                 ),
+                
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          // flex: 2,
+          child: Padding(
+            padding: EdgeInsets.only(left: 30.w, right: 30.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                retailerData.visibility
+                    ? const Text("Available Deals")
+                    : const Text("Deals Unavailable"),
                 IconButton(
                   onPressed: () {
                     ref
@@ -194,11 +305,6 @@ Widget upperPortionOfPage(
               ],
             ),
           ),
-        ),
-        Flexible(
-          child: retailerData.visibility
-              ? const Text("Deals Available")
-              : const Text("Deals Unavailable"),
         ),
       ],
     ),
