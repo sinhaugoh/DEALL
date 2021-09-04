@@ -64,6 +64,8 @@ class CustomRetailerCard extends ConsumerWidget {
                   title: Text(
                     // '${retailerData?.name}',
                     name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -79,7 +81,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       Text(
                         // "${retailerData?.operatingHours}",
                         middleRowText,
-                        maxLines: 3,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -95,7 +97,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       Text(
                         // "${retailerData?.description.toString()}",
                         lastRowText,
-                        // maxLines: 2,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
