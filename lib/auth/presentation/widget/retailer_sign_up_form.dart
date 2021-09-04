@@ -1,8 +1,10 @@
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RetailerSignUpForm extends ConsumerWidget {
   const RetailerSignUpForm({Key? key}) : super(key: key);
@@ -15,25 +17,46 @@ class RetailerSignUpForm extends ConsumerWidget {
     return Form(
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (image != null) Image.file(image),
-            ElevatedButton(
+            SizedBox(
+              height: 20.h,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+
+                SizedBox(
+                    height: 200.h,
+                    width: 200.w,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0.w),
+                      //child: Image.file(image),
+                      child: FittedBox(fit: BoxFit.cover,child: image!=null? Image.file(image):  Image.asset(Images.imageNotFound),),
+                    )
+                ),
+
+              Column(
+              children:[
+
+                ElevatedButton(
               onPressed: () {
-                ref
-                    .read(retailerSignUpFormNotifierProvider.notifier)
-                    .pickImage();
+              ref
+                  .read(retailerSignUpFormNotifierProvider.notifier)
+                  .pickImage();
               },
               child: const Text('Upload Image'),
-            ),
-            ElevatedButton(
+              ),
+              ElevatedButton(
               onPressed: () {
-                ref
-                    .read(retailerSignUpFormNotifierProvider.notifier)
-                    .deleteImage();
+              ref
+                  .read(retailerSignUpFormNotifierProvider.notifier)
+                  .deleteImage();
               },
               child: const Text('Delete Image'),
-            ),
+              ),
+              ],)
+
+            ]),
+
+
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
