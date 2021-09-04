@@ -52,6 +52,7 @@ class RetailerProfilePage extends ConsumerWidget {
                   SizedBox(
                     height: 30.h,
                   ),
+
                   SizedBox(
                     height: 200.h,
                     child: ClipRRect(
@@ -81,19 +82,26 @@ class RetailerProfilePage extends ConsumerWidget {
                       ),
                       padding: const EdgeInsets.all(12.0),
                       margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerLeft,
                       child: RichText(
                         text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                                text: 'Operating Hours\n',
+                                text: 'Description\n',
                                 style: TextStyle(
                                     color: Colors.grey.shade700,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold)),
-                            TextSpan(
-                                text: retailer.operatingHours,
-                                style: TextStyle(color: Colors.grey)),
+                            if (retailer.description.isEmpty != true)
+                              TextSpan(
+                                  text: retailer.description,
+                                  style: TextStyle(color: Colors.grey))
+                            else
+                              const TextSpan(
+                                  text: 'No content has been found',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.grey)),
                           ],
                         ),
                       )),
@@ -109,7 +117,42 @@ class RetailerProfilePage extends ConsumerWidget {
                       ),
                       padding: const EdgeInsets.all(12.0),
                       margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Operating Hours\n',
+                                style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold)),
+                            if (retailer.operatingHours.isEmpty != true)
+                              TextSpan(
+                                  text: retailer.operatingHours,
+                                  style: TextStyle(color: Colors.grey))
+                            else
+                              const TextSpan(
+                                  text: 'No content has been found',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.grey)),
+                          ],
+                        ),
+                      )),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(20.0.w),
+                      ),
+                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      alignment: Alignment.centerLeft,
                       child: RichText(
                         text: TextSpan(
                           children: <TextSpan>[
@@ -119,9 +162,16 @@ class RetailerProfilePage extends ConsumerWidget {
                                     color: Colors.grey.shade700,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold)),
-                            TextSpan(
-                                text: retailer.addressLine(),
-                                style: TextStyle(color: Colors.grey)),
+                            if (retailer.addressLine().isEmpty != true)
+                              TextSpan(
+                                  text: retailer.addressLine(),
+                                  style: TextStyle(color: Colors.grey))
+                            else
+                              const TextSpan(
+                                  text: 'No content has been found',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.grey)),
                           ],
                         ),
                       )),
