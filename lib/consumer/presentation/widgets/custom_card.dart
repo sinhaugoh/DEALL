@@ -72,7 +72,7 @@ class CustomCard extends StatelessWidget {
                       Text(
                         // "${retailerData?.operatingHours}",
                         middleRowText!,
-                        maxLines: 3,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -88,7 +88,7 @@ class CustomCard extends StatelessWidget {
                       Text(
                         // "${retailerData?.description.toString()}",
                         lastRowText!,
-                        // maxLines: 2,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -100,21 +100,6 @@ class CustomCard extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 5.h,
-                        ),
-                        Text(
-                          retailerData?.description.toString() ?? '',
-                          // maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.cantarell(
-                              // textStyle: Theme.of(context).textTheme.headline4,
-                              fontSize: 12.sp,
-                              color: Colors.grey
-                              // fontWeight: FontWeight.w700,
-                              // fontStyle: FontStyle.italic,
-                          ),
-                          // Divider(
-                          //   thickness: 1,
-                          // ),
                         ),
                       ],
                     ),
