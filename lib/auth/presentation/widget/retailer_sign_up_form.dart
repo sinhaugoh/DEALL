@@ -22,28 +22,17 @@ class RetailerSignUpForm extends ConsumerWidget {
               height: 20.h,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              if (image != null)
+
                 SizedBox(
                     height: 200.h,
                     width: 200.w,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0.w),
                       //child: Image.file(image),
-                      child: FittedBox(child: Image.file(image), fit: BoxFit.cover,),
+                      child: FittedBox(fit: BoxFit.cover,child: image!=null? Image.file(image):  Image.asset(Images.imageNotFound),),
                     )
-                )
-              else
-                SizedBox(
-                  height: 200.h,
-                  width: 200.w,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0.w),
-                    //child: Image.asset(Images.imageNotFound),
-                    child: FittedBox(child: Image.asset(Images.imageNotFound), fit: BoxFit.cover,),
-                    //const Placeholder(),
-                  ),
-
                 ),
+
               Column(
               children:[
 
