@@ -5,6 +5,7 @@ import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileForm extends ConsumerStatefulWidget {
   final Retailer retailer;
@@ -39,6 +40,9 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(
+              height: 20.h,
+              ),
             if (!ref.watch<bool>(
                   retailerEditProfileNotifierProvider
                       .select((state) => state.hasInitialImageChanged),
@@ -69,6 +73,63 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
               },
               child: const Text('Delete Image'),
             ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              if (!ref.watch<bool>(
+                    retailerEditProfileNotifierProvider
+                        .select((state) => state.hasInitialImageChanged),
+                  ) &&
+                  widget.retailer.image.isNotEmpty)
+                SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.retailer.image,
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged)) &&
+                  image != null)
+                SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: FittedBox(
+                      child: Image.file(image),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(retailerEditProfileNotifierProvider.notifier)
+                          .pickImage();
+                    },
+                    child: const Text('Upload Image'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(retailerEditProfileNotifierProvider.notifier)
+                          .deleteImage();
+                    },
+                    child: const Text('Delete Image'),
+                  ),
+                ],
+              ),
+            ]),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(

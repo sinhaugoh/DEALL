@@ -103,13 +103,17 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
         ),
       ),
       actions: [
-        IconButton(onPressed: (){
-          if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
-                  AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
-                } else {
-                  AutoRouter.of(context).pop();
-                }
-        }, icon: const Icon(Icons.star)),
+        IconButton(
+            onPressed: () {
+              if (AutoRouter.of(context).current.name !=
+                  FavouriteRetailerRoute.name) {
+                AutoRouter.of(context)
+                    .popAndPush(const FavouriteRetailerRoute());
+              } else {
+                AutoRouter.of(context).pop();
+              }
+            },
+            icon: const Icon(Icons.star)),
       ],
       elevation: 0,
       iconTheme: const IconThemeData(
@@ -119,12 +123,17 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     );
   }
 
-  Widget consumerHomePageBody(MediaQueryData mq, TextEditingController controller) {
+  Widget consumerHomePageBody(
+      MediaQueryData mq, TextEditingController controller) {
     return SizedBox(
       height: mq.size.height * 0.9,
       child: Column(
         children: [
-          const Divider(thickness: 0, color: Colors.white, height: 12,),
+          const Divider(
+            thickness: 0,
+            color: Colors.white,
+            height: 12,
+          ),
           Flexible(
             child: SearchBarWithFilterButton(
               textEditingController: controller,

@@ -36,6 +36,6 @@ abstract class Retailer with _$Retailer {
   }
 
   String addressLine() {
-    return "$block $street $unit $postalCode";
+    return "$block $street \n $unit $postalCode";
   }
 }
