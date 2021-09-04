@@ -1,10 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
-import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
-import 'package:deall/core/presentation/widgets/retailer_drawer_widget.dart';
-import 'package:deall/core/presentation/widgets/form_text_field.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +31,7 @@ class RetailerProfilePage extends ConsumerWidget {
           )
         ],
       ),
-      drawer: const RetailerDrawer(),
+      // drawer: const RetailerDrawer(),
       body: retailer == null
           ? const Center(
               //TODO: implement no connection page
@@ -43,39 +40,26 @@ class RetailerProfilePage extends ConsumerWidget {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  // if (retailer.image != '')
-                  //   CachedNetworkImage(
-                  //     imageUrl: retailer.image,
-                  //     placeholder: (context, url) =>
-                  //         const CircularProgressIndicator(),
-                  //   ),
                   SizedBox(
                     height: 30.h,
                   ),
-
-                  SizedBox(
-                    height: 200.h,
-                    width: 200.w,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0.w),
-                      child: retailer.image == ''
-                          ? Image.asset(
-                              Images.imageNotFound,
-                              fit: BoxFit.fitHeight,
-                              // width: MediaQuery.of(context).size.width,
-                              // height: MediaQuery.of(context).size.height,
-                            )
-                          : Image.network(
-                              retailer.image,
-                              fit: BoxFit.fitHeight,
-                            ),
+                  if (retailer.image != '')
+                    SizedBox(
+                      height: 200.h,
+                      width: 200.w,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        child: CachedNetworkImage(
+                          imageUrl: retailer.image,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                        ),
+                      ),
                     ),
-                  ),
-
                   SizedBox(
                     height: 16.h,
                   ),
-
                   Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
@@ -93,24 +77,23 @@ class RetailerProfilePage extends ConsumerWidget {
                                     color: Colors.grey.shade700,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold)),
-                            if (retailer.description.isEmpty != true)
+                            if (retailer.description.isNotEmpty)
                               TextSpan(
                                   text: retailer.description,
                                   style: TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
-                                  text: 'No content has been found',
+                                  text:
+                                      'The retailer has not provided information yet',
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       color: Colors.grey)),
                           ],
                         ),
                       )),
-
                   SizedBox(
                     height: 16.h,
                   ),
-
                   Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
@@ -128,24 +111,23 @@ class RetailerProfilePage extends ConsumerWidget {
                                     color: Colors.grey.shade700,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold)),
-                            if (retailer.operatingHours.isEmpty != true)
+                            if (retailer.operatingHours.isNotEmpty)
                               TextSpan(
                                   text: retailer.operatingHours,
                                   style: TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
-                                  text: 'No content has been found',
+                                  text:
+                                      'The retailer has not provided information yet',
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       color: Colors.grey)),
                           ],
                         ),
                       )),
-
                   SizedBox(
                     height: 16.h,
                   ),
-
                   Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
@@ -163,13 +145,14 @@ class RetailerProfilePage extends ConsumerWidget {
                                     color: Colors.grey.shade700,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold)),
-                            if (retailer.addressLine().isEmpty != true)
+                            if (retailer.addressLine().isNotEmpty)
                               TextSpan(
                                   text: retailer.addressLine(),
                                   style: TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
-                                  text: 'No content has been found',
+                                  text:
+                                      'The retailer has not provided information yet',
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       color: Colors.grey)),
