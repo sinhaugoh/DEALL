@@ -32,7 +32,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
 
   @override
   void initState() {
-    // bool isSelected = true;
     super.initState();
     Future.microtask(() {
       ref.read(retailerNotifierProvider.notifier).getRetailer();
@@ -52,7 +51,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     // final product = ref.watch(productProvider);
     // final mq = MediaQuery.of(context);
     // final product = Product.initial().name;
-    List<bool> isSelected = [true];
 
     ref.listen<RetailerNotifierState>(
       retailerNotifierProvider,
@@ -312,12 +310,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   ],
                 ),
               ),
-              //@@@@@@ need to remove this
-              Expanded(
-                // child: retailer.visibility ? ProductListView() : Padding(
-                //   padding: EdgeInsets.only(top: 100.h),
-                //   child: Text('No products available.'),
-                // ),
+              const Expanded(
                 child: ProductListView()
               ),
             ],

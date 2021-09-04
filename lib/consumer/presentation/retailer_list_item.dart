@@ -25,37 +25,8 @@ class RetailerItem extends ConsumerWidget {
         ),
         height: mq.size.height * 0.2,
         width: mq.size.width * 0.9,
-        // child: retailerData != null ? CustomCard(retailerData: retailerData) : GetWidget()
         child: CustomCard(retailerData: retailerData)
       ),
-    );
-  }
-}
-
-class GetWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-
-    return Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
-        // color: Colors.grey,
-        shadowColor: Colors.grey.withOpacity(0.5),
-        elevation: 2,
-        child: Row(
-          children: [
-
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: mediaQuery.size.width,
-                height: mediaQuery.size.height,
-                color: Colors.amber,
-                
-              ),
-            ),
-          ]
-        ),
     );
   }
 }
