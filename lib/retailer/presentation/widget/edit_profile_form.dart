@@ -42,6 +42,36 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
           children: [
             SizedBox(
               height: 20.h,
+              ),
+            if (!ref.watch<bool>(
+                  retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged),
+                ) &&
+                widget.retailer.image.isNotEmpty)
+              CachedNetworkImage(
+                imageUrl: widget.retailer.image,
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+              ),
+            if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                    .select((state) => state.hasInitialImageChanged)) &&
+                image != null)
+              Image.file(image),
+            ElevatedButton(
+              onPressed: () {
+                ref
+                    .read(retailerEditProfileNotifierProvider.notifier)
+                    .pickImage();
+              },
+              child: const Text('Upload Image'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                ref
+                    .read(retailerEditProfileNotifierProvider.notifier)
+                    .deleteImage();
+              },
+              child: const Text('Delete Image'),
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               if (!ref.watch<bool>(
@@ -115,6 +145,18 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .nameChanged,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
+                initialValue: widget.retailer.description,
+                minLines: 3,
+                maxLines: null,
+                label: 'Shop Description',
+                onChanged: ref
+                    .read(retailerEditProfileNotifierProvider.notifier)
+                    .descriptionChanged,
               ),
             ),
             Padding(

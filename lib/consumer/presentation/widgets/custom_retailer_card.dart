@@ -1,26 +1,33 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
+import 'package:deall/core/shared/providers.dart';
+import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomCard extends StatelessWidget {
-  final Retailer? retailerData;
+class CustomRetailerCard extends ConsumerWidget {
+  final Product? product;
 
-  const CustomCard({
-    Key? key,
-    this.retailerData,
+  const CustomRetailerCard({
+    Key? key, 
+    this.product,
     }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final product = ref.watch(productProvider);
+
     final mediaQuery = MediaQuery.of(context);
-    final image = retailerData?.image;
-    final name = retailerData?.name;
-    final middleRowText = retailerData?.operatingHours;
-    final lastRowText = retailerData?.description.toString();
-    
+    final image = product.image;
+    final name = product.name;
+    final middleRowText = product.description.toString();
+    final lastRowText = product.discountedPrice.toString();
+
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
         // color: Colors.grey,
@@ -30,14 +37,14 @@ class CustomCard extends StatelessWidget {
           children: [
 
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
 
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0.w),
-                  child: image! == '' ? 
+                  child: image == '' ? 
                     Image.asset(
                       Images.imageNotFound, 
                       fit: BoxFit.cover,
@@ -46,9 +53,9 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
             ),
-          // ),
-          Expanded(
-              flex: 2,
+
+            Expanded(
+              flex: 3,
               child: Padding(
                 padding: EdgeInsets.all(8.0.w),
                 child: ListTile(
@@ -56,7 +63,7 @@ class CustomCard extends StatelessWidget {
                   isThreeLine: true,
                   title: Text(
                     // '${retailerData?.name}',
-                    name!,
+                    name,
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
@@ -71,8 +78,8 @@ class CustomCard extends StatelessWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.operatingHours}",
-                        middleRowText!,
-                        maxLines: 2,
+                        middleRowText,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -87,8 +94,8 @@ class CustomCard extends StatelessWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         // "${retailerData?.description.toString()}",
-                        lastRowText!,
-                        maxLines: 2,
+                        lastRowText,
+                        // maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
@@ -96,17 +103,67 @@ class CustomCard extends StatelessWidget {
                           color: Colors.grey
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,
-                          ),
                         ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                      ],
+                      )
+                    ],
+                  ),
+                  // trailing: Column(
+                  //   children: [
+                  //     Flexible(
+                  //       child: IconButton(
+                  //         onPressed: () {
+                  //           AutoRouter.of(context).push(EditProductRoute(product: product));
+                  //         },
+                  //         icon: const Icon(Icons.edit),
+                  //       ),
+                  //     ),
+                  //     // SizedBox(height: 50.h,),
+                  //     Flexible(
+                  //       child: Switch(
+                  //         value: product.availability,
+                  //         onChanged: (value) {
+                  //           ref
+                  //             .read(productStateNotifierProvider.notifier)
+                  //             .updateProduct(product.copyWith(
+                  //                 availability: !product.availability));
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                )
+              )
+            ),
+
+            Expanded(
+              child: Column(
+                children: [
+                  Flexible(
+                    child: IconButton(
+                      onPressed: () {
+                        AutoRouter.of(context).push(EditProductRoute(product: product));
+                      },
+                      icon: const Icon(Icons.edit),
                     ),
-                    // trailing: Icon(Icons.add),
-                  )))
-        ],
-      ),
-    );
+                  ),
+                  // SizedBox(height: 50.h,),
+                  Flexible(
+                    child: Switch(
+                      value: product.availability,
+                      onChanged: (value) {
+                        ref
+                          .read(productStateNotifierProvider.notifier)
+                          .updateProduct(product.copyWith(
+                              availability: !product.availability));
+                      },
+                    ),
+                  ),
+                ]
+              ),
+            )
+
+          ],
+        ),
+      );
   }
 }

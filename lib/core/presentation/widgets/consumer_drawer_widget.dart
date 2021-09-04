@@ -29,7 +29,7 @@ class ConsumerDrawer extends ConsumerWidget {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
-                if (AutoRouter.of(context).current.name != RetailerHomeRoute.name) {
+                if (AutoRouter.of(context).current.name != ConsumerHomeRoute.name) {
                   AutoRouter.of(context).popUntilRoot();
                 } else {
                   AutoRouter.of(context).pop();

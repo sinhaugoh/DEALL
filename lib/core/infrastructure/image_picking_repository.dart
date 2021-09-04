@@ -14,6 +14,12 @@ class ImagePickingRepository {
   ImagePickingRepository(
       this._imagePickingRemoteService, this._internetConnectionChecker);
 
+  /// pick image from local gallery (work for android only)
+  /// 
+  /// if the user cancel the operation, [ImagePickingFailure.imagePicker]
+  /// will be returned
+  /// 
+  /// if [PlatformException] is thrown, [ImagePickingFailure.imagePicker] will be returned
   Future<Either<ImagePickingFailure, File>> pickImage() async {
     try {
       final result = await _imagePickingRemoteService.pickImageFromGallery();
@@ -27,6 +33,11 @@ class ImagePickingRepository {
     }
   }
 
+  /// upload shop logo to firebase storage
+  /// 
+  /// return [ImagePickingFailure.noConnection] if no connection
+  /// 
+  /// return [ImagePickingFailure.server] if firebase exception thrown
   Future<Either<ImagePickingFailure, String>> uploadShopLogoToCloudStorage({
     required String userId,
     required File file,
@@ -46,6 +57,12 @@ class ImagePickingRepository {
     }
   }
 
+  /// upload product image to firebase storage with path format:
+  /// - ProductImage/{userId}/{file extension string}
+  /// 
+  /// return [ImagePickingFailure.noConnection] if no connection
+  /// 
+  /// return [ImagePickingFailure.server] if firebase exception thrown
   Future<Either<ImagePickingFailure, String>> uploadProductImageToCloudStorage({
     required String userId,
     required File file,
