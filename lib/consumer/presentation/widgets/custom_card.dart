@@ -7,23 +7,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCard extends StatelessWidget {
   final Retailer? retailerData;
-  final Product? product;
 
   const CustomCard({
     Key? key,
     this.retailerData,
-    this.product,
     }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final image = retailerData?.image ?? product?.image;
-    final name = retailerData?.name ?? product?.name;
-    final middleRowText = retailerData?.operatingHours ?? product?.description.toString();
-    final lastRowText = retailerData?.description.toString() ?? product?.discountedPrice.toString();
-
-    // if (product == null){image = }
+    final image = retailerData?.image;
+    final name = retailerData?.name;
+    final middleRowText = retailerData?.operatingHours;
+    final lastRowText = retailerData?.description.toString();
     
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
