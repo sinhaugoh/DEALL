@@ -97,6 +97,17 @@ class RetailerSignUpForm extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
+                minLines: 3,
+                maxLines: null,
+                label: 'Shop Description',
+                onChanged: ref
+                    .read(retailerSignUpFormNotifierProvider.notifier)
+                    .descriptionChanged,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
                 label: 'UEN',
                 errorText: ref.watch(retailerSignUpFormNotifierProvider
                         .select((state) => state.showErrorMessage))

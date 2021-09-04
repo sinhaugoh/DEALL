@@ -40,9 +40,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (!ref.watch<bool>(
-              retailerEditProfileNotifierProvider
-                  .select((state) => state.hasInitialImageChanged),
-            )&& widget.retailer.image.isNotEmpty)
+                  retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged),
+                ) &&
+                widget.retailer.image.isNotEmpty)
               CachedNetworkImage(
                 imageUrl: widget.retailer.image,
                 placeholder: (context, url) =>
@@ -83,6 +84,18 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                 onChanged: ref
                     .read(retailerEditProfileNotifierProvider.notifier)
                     .nameChanged,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormTextField(
+                initialValue: widget.retailer.description,
+                minLines: 3,
+                maxLines: null,
+                label: 'Shop Description',
+                onChanged: ref
+                    .read(retailerEditProfileNotifierProvider.notifier)
+                    .descriptionChanged,
               ),
             ),
             Padding(
