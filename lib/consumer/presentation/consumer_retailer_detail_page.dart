@@ -35,6 +35,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
 
                   SizedBox(
                     height: 200.h,
+                    width: 200.w,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0.w),
                       child: retailerData.image == ''
