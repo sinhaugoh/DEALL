@@ -58,6 +58,18 @@ class RetailerProfilePage extends ConsumerWidget {
                           ),
                         ),
                       ),
+                    )
+                  else
+                    SizedBox(
+                      height: 200.h,
+                      width: 200.w,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        child: FittedBox(
+                          child: Image.asset(Images.imageNotFound),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   SizedBox(
                     height: 16.h,

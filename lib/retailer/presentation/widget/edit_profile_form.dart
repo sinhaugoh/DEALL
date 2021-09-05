@@ -35,7 +35,6 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
   Widget build(BuildContext context) {
     final image = ref.watch(
         retailerEditProfileNotifierProvider.select((state) => state.imageFile));
-    final imageNotFound = Images.imageNotFound;
 
     return Form(
       child: SingleChildScrollView(
@@ -65,6 +64,22 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                       ),
                     ),
                   ),
+                )
+              else if (!ref.watch<bool>(
+                    retailerEditProfileNotifierProvider
+                        .select((state) => state.hasInitialImageChanged),
+                  ) &&
+                  widget.retailer.image.isEmpty)
+                SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: Image.asset(Images.imageNotFound),
+                    ),
+                  ),
                 ),
               if (ref.watch<bool>(retailerEditProfileNotifierProvider
                       .select((state) => state.hasInitialImageChanged)) &&
@@ -79,8 +94,8 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                )
+              else if (ref.watch<bool>(retailerEditProfileNotifierProvider
                       .select((state) => state.hasInitialImageChanged)) &&
                   image == null)
                 SizedBox(
@@ -89,8 +104,8 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.0.w),
                     child: FittedBox(
-                      child: Image.asset(imageNotFound),
                       fit: BoxFit.cover,
+                      child: Image.asset(Images.imageNotFound),
                     ),
                   ),
                 ),
