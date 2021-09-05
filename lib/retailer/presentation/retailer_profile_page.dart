@@ -52,10 +52,8 @@ class RetailerProfilePage extends ConsumerWidget {
                         child: CachedNetworkImage(
                           imageUrl: retailer.image,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => Transform.scale(
-                            scale: 0.2.h,
-                            child: const CircularProgressIndicator(),
-                          ),
+                          placeholder: (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
                         ),
                       ),
                     )
