@@ -36,8 +36,10 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                         child: CachedNetworkImage(
                           imageUrl: retailerData.image,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
+                          placeholder: (context, url) => Transform.scale(
+                            scale: 0.2.h,
+                            child: const CircularProgressIndicator(),
+                          ),
                         ),
                       ),
                     ),
