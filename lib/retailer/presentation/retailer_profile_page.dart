@@ -53,7 +53,19 @@ class RetailerProfilePage extends ConsumerWidget {
                           imageUrl: retailer.image,
                           fit: BoxFit.cover,
                           placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
+                              const Center(child: CircularProgressIndicator()),
+                        ),
+                      ),
+                    )
+                  else
+                    SizedBox(
+                      height: 200.h,
+                      width: 200.w,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        child: FittedBox(
+                          child: Image.asset(Images.imageNotFound),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),

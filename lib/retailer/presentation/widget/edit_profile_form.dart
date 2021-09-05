@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,9 +57,25 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                     borderRadius: BorderRadius.circular(20.0.w),
                     child: CachedNetworkImage(
                       imageUrl: widget.retailer.image,
-                      placeholder: (context, url) =>
-                          const CircularProgressIndicator(),
                       fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                    ),
+                  ),
+                )
+              else if (!ref.watch<bool>(
+                    retailerEditProfileNotifierProvider
+                        .select((state) => state.hasInitialImageChanged),
+                  ) &&
+                  widget.retailer.image.isEmpty)
+                SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: Image.asset(Images.imageNotFound),
                     ),
                   ),
                 ),
@@ -73,6 +90,20 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                     child: FittedBox(
                       child: Image.file(image),
                       fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              else if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged)) &&
+                  image == null)
+                SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: Image.asset(Images.imageNotFound),
                     ),
                   ),
                 ),

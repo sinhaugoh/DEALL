@@ -37,7 +37,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                           imageUrl: retailerData.image,
                           fit: BoxFit.cover,
                           placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
+                              const Center(child: CircularProgressIndicator()),
                         ),
                       ),
                     ),
