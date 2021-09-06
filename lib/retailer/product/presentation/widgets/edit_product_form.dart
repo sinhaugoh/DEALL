@@ -1,33 +1,69 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProductForm extends ConsumerWidget {
   const EditProductForm({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final image = ref.watch(editProductFormStateNotifierProvider
-        .select((state) => state.imageFile));
-
+  Widget _buildImage(WidgetRef ref) {
     final imageString =
         ref.read(editProductFormStateNotifierProvider).product.image;
 
+    final image = ref.watch(editProductFormStateNotifierProvider
+        .select((state) => state.imageFile));
+
+    final hasInitialImageChanged = ref.watch(
+        editProductFormStateNotifierProvider
+            .select((state) => state.hasInitialImageChanged));
+
+    if (hasInitialImageChanged) {
+      if(image == null) {
+        return Image.asset(Images.imageNotFound);
+      } else {
+        return Image.file(image);
+      }
+    } else {
+      if (imageString.isEmpty) {
+        return Image.asset(Images.imageNotFound);
+      } else {
+        return CachedNetworkImage(
+          imageUrl: imageString,
+          placeholder: (context, _) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            if (!ref.watch(editProductFormStateNotifierProvider
-                    .select((state) => state.hasInitialImageChanged)) &&
-                imageString != '')
-              CachedNetworkImage(
-                imageUrl: imageString,
-                placeholder: (context, _) => const CircularProgressIndicator(),
-              ),
-            if (image != null) Image.file(image),
+            SizedBox(
+              height: 20.h,
+            ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          SizedBox(
+          height: 200.h,
+          width: 200.w,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0.w),
+            child: FittedBox(
+            child: _buildImage(ref),
+            fit: BoxFit.cover,
+            ),
+          ),
+          ),
+          Column(
+            children: [
             ElevatedButton(
               onPressed: () {
                 ref
@@ -44,6 +80,10 @@ class EditProductForm extends ConsumerWidget {
               },
               child: const Text('Delete Image'),
             ),
+              ],
+          ),
+            ],
+        ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
