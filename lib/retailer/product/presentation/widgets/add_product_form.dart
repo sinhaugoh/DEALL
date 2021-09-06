@@ -1,14 +1,13 @@
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddProductForm extends ConsumerWidget {
-  const AddProductForm(
-      {Key? key})
-      : super(key: key);
+  const AddProductForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,20 +16,46 @@ class AddProductForm extends ConsumerWidget {
     return Form(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (image != null) Image.file(image),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(addProductFormNotifierProvider.notifier).pickImage();
-              },
-              child: const Text('Upload Image'),
+            SizedBox(
+              height: 20.h,
             ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(addProductFormNotifierProvider.notifier).deleteImage();
-              },
-              child: const Text('Delete Image'),
-            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              SizedBox(
+                height: 200.h,
+                width: 200.w,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0.w),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: image != null
+                        ? Image.file(image)
+                        : Image.asset(Images.imageNotFound),
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(addProductFormNotifierProvider.notifier)
+                          .pickImage();
+                    },
+                    child: const Text('Upload Image'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(addProductFormNotifierProvider.notifier)
+                          .deleteImage();
+                    },
+                    child: const Text('Delete Image'),
+                  )
+                ],
+              )
+            ]),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
