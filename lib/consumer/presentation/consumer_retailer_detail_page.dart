@@ -15,6 +15,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(retailerData.name),
+        centerTitle: true,
       ),
       body: retailerData == null
           ? const Center(

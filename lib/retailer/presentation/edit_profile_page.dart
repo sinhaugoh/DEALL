@@ -50,6 +50,7 @@ class EditProfilePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Profile'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Stack(

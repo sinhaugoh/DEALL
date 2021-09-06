@@ -20,6 +20,7 @@ class FavouriteRetailerPage extends ConsumerWidget {
         ),
       ),
         title: const Text('Favourites'),
+        centerTitle: true,
         // actions: [
         //   IconButton(onPressed: (){
         //   }, icon: const Icon(Icons.star)),

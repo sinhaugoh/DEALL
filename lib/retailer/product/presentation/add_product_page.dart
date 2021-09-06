@@ -48,6 +48,7 @@ class _AddProductPageState extends ConsumerState<AddProductPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Product'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Stack(
