@@ -10,14 +10,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EditProductForm extends ConsumerWidget {
   const EditProductForm({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final image = ref.watch(editProductFormStateNotifierProvider
-        .select((state) => state.imageFile));
-
+  Widget _buildImage(WidgetRef ref) {
     final imageString =
         ref.read(editProductFormStateNotifierProvider).product.image;
 
+    final image = ref.watch(editProductFormStateNotifierProvider
+        .select((state) => state.imageFile));
+
+    final hasInitialImageChanged = ref.watch(
+        editProductFormStateNotifierProvider
+            .select((state) => state.hasInitialImageChanged));
+
+    if (hasInitialImageChanged) {
+      if(image == null) {
+        return Image.asset(Images.imageNotFound);
+      } else {
+        return Image.file(image);
+      }
+    } else {
+      if (imageString.isEmpty) {
+        return Image.asset(Images.imageNotFound);
+      } else {
+        return CachedNetworkImage(
+          imageUrl: imageString,
+          placeholder: (context, _) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
       child: SingleChildScrollView(
         child: Column(
@@ -25,14 +50,7 @@ class EditProductForm extends ConsumerWidget {
             SizedBox(
               height: 20.h,
             ),
-            if (!ref.watch(editProductFormStateNotifierProvider
-                    .select((state) => state.hasInitialImageChanged)) &&
-                imageString != '')
-              CachedNetworkImage(
-                imageUrl: imageString != '' ? imageString : Images.imageNotFound,
-                placeholder: (context, _) => const CircularProgressIndicator(),
-              ) else if (image == null) Image.asset (Images.imageNotFound),
-            if (image != null) Image.file(image),
+            _buildImage(ref),
             ElevatedButton(
               onPressed: () {
                 ref
