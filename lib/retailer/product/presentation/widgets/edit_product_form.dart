@@ -50,7 +50,20 @@ class EditProductForm extends ConsumerWidget {
             SizedBox(
               height: 20.h,
             ),
-            _buildImage(ref),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          SizedBox(
+          height: 200.h,
+          width: 200.w,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0.w),
+            child: FittedBox(
+            child: _buildImage(ref),
+            fit: BoxFit.cover,
+            ),
+          ),
+          ),
+          Column(
+            children: [
             ElevatedButton(
               onPressed: () {
                 ref
@@ -67,6 +80,10 @@ class EditProductForm extends ConsumerWidget {
               },
               child: const Text('Delete Image'),
             ),
+              ],
+          ),
+            ],
+        ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: FormTextField(
