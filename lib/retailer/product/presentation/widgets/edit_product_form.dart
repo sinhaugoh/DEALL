@@ -29,10 +29,10 @@ class EditProductForm extends ConsumerWidget {
                     .select((state) => state.hasInitialImageChanged)) &&
                 imageString != '')
               CachedNetworkImage(
-                imageUrl: imageString,
+                imageUrl: imageString != '' ? imageString : Images.imageNotFound,
                 placeholder: (context, _) => const CircularProgressIndicator(),
-              ),
-            image != null ? Image.file(image): Image.asset (Images.imageNotFound),
+              ) else if (image == null) Image.asset (Images.imageNotFound),
+            if (image != null) Image.file(image),
             ElevatedButton(
               onPressed: () {
                 ref
