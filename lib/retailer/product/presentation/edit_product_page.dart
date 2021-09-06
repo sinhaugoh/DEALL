@@ -54,6 +54,7 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Product'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Stack(

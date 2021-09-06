@@ -19,6 +19,7 @@ class RetailerProfilePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(retailer?.name ?? ''),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: retailer == null

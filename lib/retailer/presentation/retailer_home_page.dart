@@ -168,6 +168,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
         iconTheme: const IconThemeData(
           color: Colors.white
         ),
+        centerTitle: true,
       ),
 
 

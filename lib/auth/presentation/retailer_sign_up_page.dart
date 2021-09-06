@@ -39,6 +39,7 @@ class RetailerSignUpPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign Up'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Stack(
