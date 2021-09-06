@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/presentation/widgets/form_text_field.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProductForm extends ConsumerWidget {
   const EditProductForm({Key? key}) : super(key: key);
@@ -20,6 +22,9 @@ class EditProductForm extends ConsumerWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 20.h,
+            ),
             if (!ref.watch(editProductFormStateNotifierProvider
                     .select((state) => state.hasInitialImageChanged)) &&
                 imageString != '')
@@ -27,7 +32,7 @@ class EditProductForm extends ConsumerWidget {
                 imageUrl: imageString,
                 placeholder: (context, _) => const CircularProgressIndicator(),
               ),
-            if (image != null) Image.file(image),
+            image != null ? Image.file(image): Image.asset (Images.imageNotFound),
             ElevatedButton(
               onPressed: () {
                 ref
