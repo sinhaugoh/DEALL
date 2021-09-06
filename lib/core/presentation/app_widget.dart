@@ -62,6 +62,7 @@ class AppWidget extends ConsumerWidget {
           theme: StyleTheme.lightTheme,
           routeInformationParser: appRouter.defaultRouteParser(),
           routerDelegate: appRouter.delegate(),
+          debugShowCheckedModeBanner: false,
       ),
     );
   }
