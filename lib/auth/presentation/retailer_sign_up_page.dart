@@ -58,7 +58,7 @@ class RetailerSignUpPage extends ConsumerWidget {
                     children: [
                       IconButton(
                         onPressed: (){}, 
-                        icon: Icon(Icons.arrow_back),
+                        icon: Icon(Icons.arrow_back_ios),
                         color: Colors.black,
                       ),
                       Padding(
