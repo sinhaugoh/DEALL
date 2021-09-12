@@ -1,4 +1,3 @@
-import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,6 @@ class CustomCard extends StatelessWidget {
           children: [
 
             Expanded(
-              flex: 1,
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,

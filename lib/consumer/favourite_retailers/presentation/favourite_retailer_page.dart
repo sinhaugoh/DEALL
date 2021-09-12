@@ -1,10 +1,8 @@
 import 'package:deall/consumer/presentation/retailer_list_item.dart';
 import 'package:deall/consumer/shared/providers.dart';
-import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class FavouriteRetailerPage extends ConsumerWidget {
   const FavouriteRetailerPage({Key? key}) : super(key: key);
