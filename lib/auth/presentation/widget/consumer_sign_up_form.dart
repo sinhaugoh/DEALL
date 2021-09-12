@@ -20,38 +20,33 @@ class ConsumerSignUpForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        Flexible(
-          child: Container()
-        ),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 18.0.h),
-            child: Container(
-              alignment: Alignment.bottomCenter,
-              constraints: BoxConstraints(maxWidth: 170.w),
-              // color: Colors.blue,
-              child: FittedBox(
-                child: Image.asset(Images.logoText),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 6,
-          child: Form(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text(
-                    'Sign up now for exclusive deals!',
-                    textAlign: TextAlign.center,
-                    //insert style
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 16.0.w, vertical: 10.0.h),
+        // Expanded(
+        //   flex: 2,
+        //   child: Padding(
+        //     padding: EdgeInsets.symmetric(vertical: 10.0.h),
+        //     child: Container(
+        //       alignment: Alignment.bottomCenter,
+        //       constraints: BoxConstraints(maxWidth: 150.w),
+        //       child: Image.asset(Images.logoText),
+        //     ),
+        //   ),
+        // ),
+        Form(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  'Sign up now for exclusive deals!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(),
+                  //insert style
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 30.0.w, vertical: 10.0.h),
+                  child: Container(
+                    height: 50.h,
                     child: FormTextField(
                       label: 'Email',
                       errorText: ref.watch(consumerSignUpFormNotifierProvider
@@ -64,8 +59,11 @@ class ConsumerSignUpForm extends ConsumerWidget {
                           .emailChanged,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.0.w),
+                  child: Container(
+                    height: 50.h,
                     child: FormTextField(
                       label: 'Password',
                       obscureText: ref.watch(consumerSignUpFormNotifierProvider
@@ -94,15 +92,22 @@ class ConsumerSignUpForm extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 16.0.w, vertical: 10.0.h),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 30.0.w, vertical: 10.0.h),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.tightFor(height: 40.h),
                     child: ElevatedButton(
                       onPressed: () {
                         //dismiss the keyboard
                         final currentFocus = FocusScope.of(context);
                         currentFocus.unfocus();
-
                         ref
                             .read(consumerSignUpFormNotifierProvider.notifier)
                             .signUp();
@@ -110,35 +115,36 @@ class ConsumerSignUpForm extends ConsumerWidget {
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.w))),
-                        //  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                       ),
                       child: const Text('Sign-up'),
                     ),
                   ),
-                  Divider(
-                    thickness: 2.h,
-                    indent: 20.w,
-                    endIndent: 20.w,
-                    height: 50.h,
-                  ),
-                  Center(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Already have an account? '),
-                      InkWell(
-                        onTap: () {
-                          AutoRouter.of(context).push(const SignInRoute());
-                        },
-                        child: const Text('Sign in.',
-                            style: TextStyle(
-                                color: Colors.redAccent,
-                                decoration: TextDecoration.underline)),
-                      )
-                    ],
-                  ))
-                ],
-              ),
+                ),
+                Divider(
+                  thickness: 2,
+                  indent: 30.w,
+                  endIndent: 30.w,
+                  height: 50.h,
+                ),
+
+                SizedBox(height: 30.h),
+                Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Already have an account? '),
+                    InkWell(
+                      onTap: () {
+                        AutoRouter.of(context).push(const SignInRoute());
+                      },
+                      child: const Text('Sign in.',
+                          style: TextStyle(
+                              color: Colors.redAccent,
+                              decoration: TextDecoration.underline)),
+                    )
+                  ],
+                ))
+              ],
             ),
           ),
         )
