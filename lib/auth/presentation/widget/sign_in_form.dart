@@ -22,7 +22,7 @@ class SignInForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: Container(
-                height: 50.h,
+                height: 60.h,
                 child: FormTextField(
                   label: 'Email',
                   errorText: ref.watch(signInFormNotifierProvider
@@ -39,7 +39,7 @@ class SignInForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
               child: Container(
-                height: 50.h,
+                height: 60.h,
                 child: FormTextField(
                   label: 'Password',
                   obscureText: ref.watch(signInFormNotifierProvider

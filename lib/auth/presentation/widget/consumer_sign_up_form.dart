@@ -20,17 +20,6 @@ class ConsumerSignUpForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        // Expanded(
-        //   flex: 2,
-        //   child: Padding(
-        //     padding: EdgeInsets.symmetric(vertical: 10.0.h),
-        //     child: Container(
-        //       alignment: Alignment.bottomCenter,
-        //       constraints: BoxConstraints(maxWidth: 150.w),
-        //       child: Image.asset(Images.logoText),
-        //     ),
-        //   ),
-        // ),
         Form(
           child: SingleChildScrollView(
             child: Column(
@@ -46,7 +35,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: 30.0.w, vertical: 10.0.h),
                   child: Container(
-                    height: 50.h,
+                    height: 60.h,
                     child: FormTextField(
                       label: 'Email',
                       errorText: ref.watch(consumerSignUpFormNotifierProvider
@@ -63,7 +52,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.0.w),
                   child: Container(
-                    height: 50.h,
+                    height: 60.h,
                     child: FormTextField(
                       label: 'Password',
                       obscureText: ref.watch(consumerSignUpFormNotifierProvider
