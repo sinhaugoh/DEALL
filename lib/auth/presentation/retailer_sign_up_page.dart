@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:deall/auth/application/retailer_sign_up_form_notifier.dart';
 import 'package:deall/auth/presentation/widget/retailer_sign_up_form.dart';
 import 'package:deall/auth/shared/providers.dart';
+import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
@@ -39,10 +40,14 @@ class RetailerSignUpPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Sign Up'),
-      //   centerTitle: true,
-      // ),
+      appBar: CustomAppBar(IconButton(
+        icon: Icon(
+          Icons.add,
+          color: Colors.black.withOpacity(0),
+        ),
+        onPressed: () {  },),
+        
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -52,35 +57,36 @@ class RetailerSignUpPage extends ConsumerWidget {
                 // Flexible(
                 //   child: Container()
                 // ),
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: (){
-                              Navigator.pop(context);
-                            }, 
-                            icon: Icon(Icons.arrow_back_ios),
-                            color: Colors.black,
-                          ),
-                          Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.0.h),
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          constraints: BoxConstraints(maxWidth: 150.w),
-                          child: Image.asset(Images.logoText),
-                        ),
-                      ),
-                        ],
-                      ),
+                // Expanded(
+                //   // flex: 2,
+                //   child: Column(
+                //     children: [
+                //       Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           IconButton(
+                //             onPressed: (){
+                //               Navigator.pop(context);
+                //             }, 
+                //             icon: Icon(Icons.arrow_back_ios),
+                //             color: Colors.black,
+                //           ),
+                //           Padding(
+                //         padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                //         child: Container(
+                //           alignment: Alignment.bottomCenter,
+                //           constraints: BoxConstraints(maxWidth: 150.w, maxHeight: 60.h),
+                //           child: Image.asset(Images.logoText),
+                //         ),
+                //       ),
+                //         ],
+                //       ),
                       
-                    ],
-                  ),
-                ),
+                //     ],
+                //   ),
+                // ),
                 Expanded(
-                  flex: 8,
+                  flex: 7,
                   child: SafeArea(
                     child: Stack(
                       children: const [
