@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
+import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
@@ -47,11 +48,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //variables
-    // final product = ref.watch(productProvider);
-    // final mq = MediaQuery.of(context);
-    // final product = Product.initial().name;
-
     ref.listen<RetailerNotifierState>(
       retailerNotifierProvider,
       (state) {
@@ -141,34 +137,16 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
 
     return Scaffold(
       //reused code from consumerhome
-      appBar: AppBar(
-        toolbarHeight: 120.h,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.elliptical(350.w, 50.h),
-          ),
-        ),
-        title: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 30),
-            child: Image.asset(Images.logoTextWhite)
-          ),
-        ),
-        actions: [
-          IconButton(onPressed: (){
+      appBar: CustomAppBar(
+        IconButton(onPressed: (){
             if (AutoRouter.of(context).current.name !=
                   RetailerProfileRoute.name) {
                 AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
               } else {
                 AutoRouter.of(context).pop();
               }
-          }, icon: const Icon(Icons.person)),
-        ],
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.white
+          }, icon: const Icon(Icons.person)
         ),
-        centerTitle: true,
       ),
 
 
@@ -240,7 +218,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                         ),
                       iconSize: 30.h,
                       color: Colors.black45,
-                      // splashColor: Colors.purple,
                         onPressed: () {
                           AutoRouter.of(context).push(const AddProductRoute());
                         },
@@ -255,7 +232,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                             .read(productListNotifierProvider.notifier)
                             .toggleAllOn();
                         },
-                        child: const Text('Show All'),
                         style: ButtonStyle(
                           // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
                           shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
@@ -263,6 +239,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                           }),
                           // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
                         ),
+                        child: const Text('Show All'),
                       ),
                       SizedBox(width: 10.w), 
                       ElevatedButton(
@@ -271,14 +248,14 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                               .read(productListNotifierProvider.notifier)
                               .toggleAllOff();
                         },
-                        child: const Text('Hide All'),
                         style: ButtonStyle(
                           // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
                           shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
-                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
                           }),
                           // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
                         ),
+                        child: const Text('Hide All'),
                       ),
                     ],
                   ),
@@ -286,30 +263,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(25.w, 8.h, 25.w, 8.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-
-                    // // // CHECKBOX?
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     ref
-                    //       .read(productListNotifierProvider.notifier)
-                    //       .toggleAllOn();
-                    //   },
-                    //   child: const Text('Show All'),
-                    // ),
-                    // SizedBox(width: 10.w), 
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     ref
-                    //         .read(productListNotifierProvider.notifier)
-                    //         .toggleAllOff();
-                    //   },
-                    //   child: const Text('Hide All'),
-                    // ),
-                  ],
-                ),
               ),
               const Expanded(
                 child: ProductListView()
