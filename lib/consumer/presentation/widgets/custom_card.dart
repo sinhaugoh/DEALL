@@ -22,7 +22,6 @@ class CustomCard extends StatelessWidget {
     
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
-        // color: Colors.grey,
         shadowColor: Colors.grey.withOpacity(0.5),
         elevation: 2,
         child: Row(
@@ -58,7 +57,7 @@ class CustomCard extends StatelessWidget {
                     //remove
                     style: GoogleFonts.averiaSansLibre(
                       // textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 19.sp,
+                      fontSize: 20.sp,
                       // fontWeight: FontWeight.w700,
                       // fontStyle: FontStyle.italic,
                     ),
@@ -82,7 +81,7 @@ class CustomCard extends StatelessWidget {
                       // Divider(
                       //   thickness: 1,
                       // ),
-                      SizedBox(height: 5.h,),
+                      SizedBox(height: 2.h,),
                       Text(
                         // "${retailerData?.description.toString()}",
                         lastRowText!,
@@ -90,14 +89,14 @@ class CustomCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cantarell(
                           // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 12.sp,
+                          fontSize: 14.sp,
                           color: Colors.grey
                           // fontWeight: FontWeight.w700,
                           // fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 2.h,
                         ),
                       ],
                     ),
