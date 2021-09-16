@@ -67,7 +67,7 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
                   AutoRouter.of(context).pop();
                 }
               },
-            icon: const Icon(Icons.star)
+            icon: const Icon(Icons.favorite)
         ),
       ),
       drawer: const ConsumerDrawer(),
