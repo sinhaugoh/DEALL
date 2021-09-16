@@ -56,12 +56,16 @@ class RetailerSignUpPage extends ConsumerWidget {
                   flex: 2,
                   child: Column(
                     children: [
-                      IconButton(
-                        onPressed: (){}, 
-                        icon: Icon(Icons.arrow_back_ios),
-                        color: Colors.black,
-                      ),
-                      Padding(
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: (){
+                              Navigator.pop(context);
+                            }, 
+                            icon: Icon(Icons.arrow_back_ios),
+                            color: Colors.black,
+                          ),
+                          Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.0.h),
                         child: Container(
                           alignment: Alignment.bottomCenter,
@@ -69,6 +73,9 @@ class RetailerSignUpPage extends ConsumerWidget {
                           child: Image.asset(Images.logoText),
                         ),
                       ),
+                        ],
+                      ),
+                      
                     ],
                   ),
                 ),

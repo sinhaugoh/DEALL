@@ -278,9 +278,9 @@ Widget upperPortionOfPage(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                retailerData.visibility
-                    ? const Text("Available Deals")
-                    : const Text("Deals Unavailable"),
+                if (retailerData.visibility) 
+                  const Text("Available Deals") 
+                else const Text("Deals Unavailable"),
                 IconButton(
                   onPressed: () {
                     ref
