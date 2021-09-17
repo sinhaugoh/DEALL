@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/application/edit_product_form_notifier.dart';
 import 'package:deall/retailer/product/presentation/widgets/edit_product_form.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProductPage extends ConsumerStatefulWidget {
   final Product product;
@@ -53,7 +55,22 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
 
     return Scaffold(
       appBar: AppBar(
+        // title: const Text('Edit Product'),
+        // centerTitle: true,
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
         title: const Text('Edit Product'),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: SafeArea(
