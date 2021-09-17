@@ -85,28 +85,32 @@ class EditProductForm extends ConsumerWidget {
             ],
         ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: FormTextField(
-                label: 'Name',
-                maxLength: 50,
-                counter: const Offstage(),
-                initialValue:
-                    ref.read(editProductFormStateNotifierProvider).product.name,
-                errorText: ref.watch(editProductFormStateNotifierProvider
-                        .select((state) => state.showErrorMessage))
-                    ? ref.watch(editProductFormStateNotifierProvider
-                        .select((state) => state.nameErrorMessage))
-                    : null,
-                onChanged: ref
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
+              child: SizedBox(
+                height: 90.h,
+                child: FormTextField(
+
+                  counter: const Offstage(),
+                  initialValue: ref.read(editProductFormStateNotifierProvider).product.name,
+                    errorText: ref.watch(editProductFormStateNotifierProvider
+                            .select((state) => state.showErrorMessage))
+                        ? ref.watch(editProductFormStateNotifierProvider
+                            .select((state) => state.nameErrorMessage))
+                        : null,
+                  maxLength: 50,
+                  label: 'Name',
+                  onChanged: ref
                     .read(editProductFormStateNotifierProvider.notifier)
                     .prodNameChanged,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: FormTextField(
-                label: 'Usual Price (S\$)',
-                initialValue: ref
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
+              child: SizedBox(
+                height: 90.h,
+                child: FormTextField(
+                  initialValue: ref
                     .read(editProductFormStateNotifierProvider)
                     .usualPriceString,
                 errorText: ref.watch(editProductFormStateNotifierProvider
@@ -114,7 +118,8 @@ class EditProductForm extends ConsumerWidget {
                     ? ref.watch(editProductFormStateNotifierProvider
                         .select((state) => state.usualPriceErrorMessage))
                     : null,
-                onChanged: ref
+                  label: 'Usual Price (S\$)',
+                  onChanged: ref
                     .read(editProductFormStateNotifierProvider.notifier)
                     .prodUsualPriceChanged,
                 keyboardType: TextInputType.number,
@@ -122,11 +127,35 @@ class EditProductForm extends ConsumerWidget {
                   LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
                   FilteringTextInputFormatter.allow(
                       RegExp(r'^(\d+)?\.?\d{0,2}')),
-                ],
+                  ],
+                ),
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            //   child: FormTextField(
+            //     label: 'Usual Price (S\$)',
+            //     initialValue: ref
+            //         .read(editProductFormStateNotifierProvider)
+            //         .usualPriceString,
+            //     errorText: ref.watch(editProductFormStateNotifierProvider
+            //             .select((state) => state.showErrorMessage))
+            //         ? ref.watch(editProductFormStateNotifierProvider
+            //             .select((state) => state.usualPriceErrorMessage))
+            //         : null,
+            //     onChanged: ref
+            //         .read(editProductFormStateNotifierProvider.notifier)
+            //         .prodUsualPriceChanged,
+            //     keyboardType: TextInputType.number,
+            //     inputFormatters: [
+            //       LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
+            //       FilteringTextInputFormatter.allow(
+            //           RegExp(r'^(\d+)?\.?\d{0,2}')),
+            //     ],
+            //   ),
+            // ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: FormTextField(
                 label: 'Discount Price (S\$)',
                 initialValue: ref
@@ -149,7 +178,7 @@ class EditProductForm extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: FormTextField(
                 label: 'Description',
                 initialValue: ref
@@ -165,7 +194,7 @@ class EditProductForm extends ConsumerWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(16.w),
                   child: ElevatedButton(
                     onPressed: () {
                       //dismiss the keyboard
@@ -180,7 +209,7 @@ class EditProductForm extends ConsumerWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(16.w),
                   child: ElevatedButton(
                     onPressed: () {
                       //dismiss the keyboard
