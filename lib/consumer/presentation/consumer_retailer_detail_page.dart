@@ -14,7 +14,25 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(retailerData.name),
+        // title: Text(retailerData.name),
+        // centerTitle: true,
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text(
+            retailerData.name,
+            //style
+          ),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: retailerData == null

@@ -18,9 +18,18 @@ class RetailerProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(retailer?.name ?? ''),
-        centerTitle: true,
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text(
+            retailer?.name ?? '',
+            //style
+          ),
         actions: [
+          // iconbtn!,
           IconButton(
             onPressed: retailer == null
                 ? () {}
@@ -31,6 +40,11 @@ class RetailerProfilePage extends ConsumerWidget {
             icon: const Icon(Icons.edit),
           )
         ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
       // drawer: const RetailerDrawer(),
       body: retailer == null

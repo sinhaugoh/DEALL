@@ -40,12 +40,13 @@ class RetailerSignUpPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: CustomAppBar(IconButton(
-        icon: Icon(
-          Icons.add,
-          color: Colors.black.withOpacity(0),
-        ),
-        onPressed: () {  },),
+      appBar: CustomAppBar(
+        // IconButton(
+        //   icon: Icon(
+        //     Icons.add,
+        //     color: Colors.black.withOpacity(0),
+        //   ),
+        // onPressed: () {  },),
         
       ),
       body: SafeArea(

@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/application/retailer_edit_profile_form_notifier.dart';
 import 'package:deall/retailer/presentation/widget/edit_profile_form.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfilePage extends ConsumerWidget {
   final Retailer retailer;
@@ -49,7 +51,20 @@ class EditProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
         title: const Text('Edit Profile'),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: SafeArea(

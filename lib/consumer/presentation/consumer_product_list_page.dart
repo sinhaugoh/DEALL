@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:deall/consumer/application/favourite_retailer_notifier.dart';
 import 'package:deall/consumer/presentation/widgets/consumer_product_item.dart';
+import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
@@ -99,27 +100,26 @@ class ConsumerProductListPageState
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 120.h,
+        toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-            bottom: Radius.elliptical(350.w, 40.h),
+            bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        centerTitle: true,
         title: Text(
             widget.retailerData.name,
             //style
           ),
         // actions: [
-        //   IconButton(onPressed: (){
-        //     if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
-        //             AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
-        //           } else {
-        //             AutoRouter.of(context).pop();
-        //           }
-        //   }, icon: const Icon(Icons.star)),
+        //   // iconbtn!,
         // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
+      // appBar: CustomAppBar(),
       body: Column(
         children: [
           Expanded(
@@ -310,3 +310,4 @@ Widget upperPortionOfPage(
     ),
   );
 }
+

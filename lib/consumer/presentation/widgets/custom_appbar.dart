@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
-  final IconButton iconbtn;
+  // final IconButton? iconbtn;
 
   @override
   final Size preferredSize;
 
-  CustomAppBar(this.iconbtn, {Key? key}) : preferredSize = Size.fromHeight(140.h),
+  // CustomAppBar(this.iconbtn, {Key? key}) : preferredSize = Size.fromHeight(140.h),
+  CustomAppBar({Key? key}) : preferredSize = Size.fromHeight(140.h),
+        
         super(key: key);
 
   @override
@@ -20,15 +22,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
             bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        title: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 35.h),
-            child: Image.asset(Images.logoTextWhite)
-          ),
+        title: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 35.h),
+          child: Image.asset(Images.logoTextWhite)
         ),
-        actions: [
-          iconbtn,
-        ],
+        // actions: [
+        //   // iconbtn!,
+        // ],
         elevation: 0,
         iconTheme: const IconThemeData(
           color: Colors.white

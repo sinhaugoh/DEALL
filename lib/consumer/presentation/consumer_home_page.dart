@@ -57,18 +57,18 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false, //prevent searchbar resize
       appBar : CustomAppBar(
-        IconButton(
-              onPressed: () {
-                if (AutoRouter.of(context).current.name !=
-                    FavouriteRetailerRoute.name) {
-                  AutoRouter.of(context)
-                      .popAndPush(const FavouriteRetailerRoute());
-                } else {
-                  AutoRouter.of(context).pop();
-                }
-              },
-            icon: const Icon(Icons.favorite)
-        ),
+        // IconButton(
+        //     onPressed: () {
+        //       if (AutoRouter.of(context).current.name !=
+        //           FavouriteRetailerRoute.name) {
+        //         AutoRouter.of(context)
+        //             .popAndPush(const FavouriteRetailerRoute());
+        //       } else {
+        //         AutoRouter.of(context).pop();
+        //       }
+        //     },
+        //   icon: const Icon(Icons.favorite)
+        // ),
       ),
       drawer: const ConsumerDrawer(),
       body: RefreshIndicator(
