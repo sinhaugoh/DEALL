@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/application/edit_product_form_notifier.dart';
 import 'package:deall/retailer/product/presentation/widgets/edit_product_form.dart';
 import 'package:deall/retailer/product/shared/providers.dart';

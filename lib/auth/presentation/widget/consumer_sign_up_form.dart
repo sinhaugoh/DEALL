@@ -35,7 +35,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: 30.0.w, vertical: 10.0.h),
-              child: Container(
+              child: SizedBox(
                 height: 60.h,
                 child: FormTextField(
                   label: 'Email',
@@ -52,7 +52,7 @@ class ConsumerSignUpForm extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0.w),
-              child: Container(
+              child: SizedBox(
                 height: 60.h,
                 child: FormTextField(
                   label: 'Password',

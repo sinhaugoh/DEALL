@@ -5,10 +5,8 @@ import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RetailerSignUpPage extends ConsumerWidget {
   const RetailerSignUpPage({Key? key}) : super(key: key);

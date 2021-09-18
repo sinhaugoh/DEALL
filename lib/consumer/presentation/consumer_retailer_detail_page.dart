@@ -1,7 +1,6 @@
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ConsumerRetailerDetailPage extends StatelessWidget {
@@ -11,7 +10,6 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 140.h,
@@ -82,7 +80,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.description.isNotEmpty)
                               TextSpan(
                                   text: retailerData.description,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -116,7 +114,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.operatingHours.isNotEmpty)
                               TextSpan(
                                   text: retailerData.operatingHours,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -150,7 +148,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.addressLine().isNotEmpty)
                               TextSpan(
                                   text: retailerData.addressLine(),
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:

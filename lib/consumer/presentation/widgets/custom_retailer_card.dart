@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/core/application/product/product.dart';
-import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/core/shared/providers.dart';
@@ -37,7 +36,7 @@ class CustomRetailerCard extends ConsumerWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Container(
+            child: SizedBox(
               width: mediaQuery.size.width,
               height: mediaQuery.size.height,
               child: ClipRRect(

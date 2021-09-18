@@ -1,7 +1,6 @@
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCard extends StatelessWidget {
@@ -28,7 +27,7 @@ class CustomCard extends StatelessWidget {
           children: [
 
             Expanded(
-              child: Container(
+              child: SizedBox(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
 

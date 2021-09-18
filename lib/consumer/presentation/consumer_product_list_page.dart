@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:deall/consumer/application/favourite_retailer_notifier.dart';
 import 'package:deall/consumer/presentation/widgets/consumer_product_item.dart';
-import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
 import 'package:deall/core/application/retailer/retailer.dart';

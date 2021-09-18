@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
-import 'package:deall/retailer/product/application/add_product_form_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -14,7 +12,6 @@ import 'package:deall/core/infrastructure/image_picking_repository.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/product/infrastructure/product_repository.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
-import 'package:deall/retailer/shared/providers.dart';
 
 import 'add_product_form_notifier_test.mocks.dart';
 

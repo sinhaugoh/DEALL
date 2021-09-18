@@ -1,4 +1,3 @@
-import 'package:deall/consumer/presentation/widgets/custom_card.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';

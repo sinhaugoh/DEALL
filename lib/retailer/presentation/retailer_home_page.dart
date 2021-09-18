@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
-import 'package:deall/core/application/product/product.dart';
 import 'package:deall/core/application/product/product_list_state.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:deall/retailer/product/application/product_notifier.dart';
 import 'package:deall/retailer/product/presentation/widgets/product_listview.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
@@ -17,7 +15,6 @@ import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/application/retailer_notifier.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:path/path.dart';
 
 class RetailerHomePage extends ConsumerStatefulWidget {
   const RetailerHomePage({Key? key}) : super(key: key);

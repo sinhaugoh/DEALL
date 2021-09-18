@@ -30,7 +30,7 @@ class ConsumerProductItem extends ConsumerWidget {
         child: Row(
           children: [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
                 child: ClipRRect(

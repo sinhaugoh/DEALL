@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:deall/consumer/application/retailer_list_state.dart';
 import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
