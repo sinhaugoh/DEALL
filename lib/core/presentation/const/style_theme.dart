@@ -23,7 +23,7 @@ class StyleTheme{
 
   static final TextTheme lightTextTheme = TextTheme(
     // headline1: _headline1,
-    // headline2: _headline2,
+    headline2: _headline2,
     headline3: _headline3,
     headline4: _headline4,
     headline5: _headline5,
@@ -42,10 +42,11 @@ class StyleTheme{
   //   fontSize: 32.sp,
   // );
 
-  // static final TextStyle _headline2 = TextStyle(
-  //   color: Colors.purple,
-  //   fontSize: 18.sp,
-  // );
+  static final TextStyle _headline2 = GoogleFonts.cantarell(
+    color: Colors.white,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w500,
+  );
 
   static final TextStyle _headline3 = GoogleFonts.averiaSansLibre(
     // textStyle: Theme.of(context).textTheme.headline4,

@@ -55,15 +55,13 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
 
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('Edit Product'),
-        // centerTitle: true,
         toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
             bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        title: const Text('Edit Product'),
+        title: Text('Edit Product', style: Theme.of(context).textTheme.headline2),
         // actions: [
         //   // iconbtn!,
         // ],
