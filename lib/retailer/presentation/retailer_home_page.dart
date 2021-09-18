@@ -209,8 +209,9 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.w,right: 20.h,),
+                  padding: EdgeInsets.only(left: 20.w,right: 25.w,),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
                         icon: Icon(
@@ -223,7 +224,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                         },
                       ),
                       const Text("Add Product"),
-                      SizedBox(width: 40.w),
+                      SizedBox(width: 10.w),
                       
                       // // CHECKBOX?
                       ElevatedButton(
@@ -235,7 +236,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                         style: ButtonStyle(
                           // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
                           shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
-                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
                           }),
                           // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
                         ),

@@ -50,42 +50,55 @@ class EditProductForm extends ConsumerWidget {
             SizedBox(
               height: 20.h,
             ),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          SizedBox(
-          height: 200.h,
-          width: 200.w,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0.w),
-            child: FittedBox(
-            child: _buildImage(ref),
-            fit: BoxFit.cover,
-            ),
-          ),
-          ),
-          Column(
-            children: [
-            ElevatedButton(
-              onPressed: () {
-                ref
-                    .read(editProductFormStateNotifierProvider.notifier)
-                    .pickImage();
-              },
-              child: const Text('Upload Image'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ref
-                    .read(editProductFormStateNotifierProvider.notifier)
-                    .deleteImage();
-              },
-              child: const Text('Delete Image'),
-            ),
-              ],
-          ),
-            ],
-        ),
             Padding(
-              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, 
+                children: [
+                  SizedBox(
+                  height: 200.h,
+                  width: 200.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0.w),
+                    child: FittedBox(
+                      child: _buildImage(ref),
+                      fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(editProductFormStateNotifierProvider.notifier)
+                              .pickImage();
+                        },
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.w))),
+                        ),
+                      child: const Text('Upload Image'),
+                    ),
+                      ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(editProductFormStateNotifierProvider.notifier)
+                              .deleteImage();
+                        },
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.w))),
+                        ),
+                        child: const Text('Delete Image'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 25.h),
               child: SizedBox(
                 height: 90.h,
                 child: FormTextField(
@@ -192,35 +205,49 @@ class EditProductForm extends ConsumerWidget {
             ),
             //availability default true
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(16.w),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      //dismiss the keyboard
-                      final currentFocus = FocusScope.of(context);
-                      currentFocus.unfocus();
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 5.w, left: 30.0.w, top: 10.0.h, bottom: 10.h),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        //dismiss the keyboard
+                        final currentFocus = FocusScope.of(context);
+                        currentFocus.unfocus();
 
-                      ref
-                          .read(editProductFormStateNotifierProvider.notifier)
-                          .updateProduct();
-                    },
-                    child: const Text('Update'),
+                        ref
+                            .read(editProductFormStateNotifierProvider.notifier)
+                            .updateProduct();
+                      },
+                      style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.w))),
+                      ),
+                      child: const Text('Update'),
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(16.w),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      //dismiss the keyboard
-                      final currentFocus = FocusScope.of(context);
-                      currentFocus.unfocus();
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5.w, right: 30.w, top: 10.0.h, bottom: 10.h),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        //dismiss the keyboard
+                        final currentFocus = FocusScope.of(context);
+                        currentFocus.unfocus();
 
-                      ref
-                          .read(editProductFormStateNotifierProvider.notifier)
-                          .deleteProduct();
-                    },
-                    child: const Text('Delete'),
+                        ref
+                            .read(editProductFormStateNotifierProvider.notifier)
+                            .deleteProduct();
+                      },
+                      style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.w))),
+                      ),
+                      child: const Text('Delete'),
+                    ),
                   ),
                 ),
               ],
