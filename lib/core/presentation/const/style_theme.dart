@@ -58,8 +58,9 @@ class StyleTheme{
   );
 
   static final TextStyle _headline5 = GoogleFonts.cantarell(
-    color: Colors.black54,
+    color: Colors.black.withOpacity(0.75),
     fontSize: 14.sp,
+    // fontWeight: FontWeight.w600,
   );
 
   static final TextStyle _headline6 = GoogleFonts.cantarell(
