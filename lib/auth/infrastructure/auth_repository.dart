@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/application/app_user.dart';
+import 'package:deall/auth/application/auth_failure.dart';
 import 'package:deall/auth/infrastructure/firebase_auth_service.dart';
 import 'package:deall/auth/infrastructure/initial_user_creation_service.dart';
 import 'package:deall/core/application/retailer/retailer.dart';

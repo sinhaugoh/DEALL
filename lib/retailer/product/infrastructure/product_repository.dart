@@ -1,13 +1,12 @@
-import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:deall/core/application/product/product.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
+import 'package:deall/core/infrastructure/product/product_dto.dart';
 import 'package:deall/retailer/product/infrastructure/product_remote_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rxdart/rxdart.dart';
-
-import 'package:deall/core/application/product/product.dart';
-import 'package:deall/core/infrastructure/product/product_dto.dart';
-import 'package:deall/core/infrastructure/firestore_failures.dart';
 
 class ProductRepository {
   final ProductRemoteService _productRemoteService;

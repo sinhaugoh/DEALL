@@ -1,6 +1,6 @@
+import 'package:deall/consumer/infrastructure/retailer_list_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:deall/consumer/infrastructure/retailer_list_repository.dart';
 import 'retailer_list_state.dart';
 
 class RetailerListNotifier extends StateNotifier<RetailerListState> {

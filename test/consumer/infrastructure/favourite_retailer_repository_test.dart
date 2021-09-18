@@ -137,22 +137,6 @@ void main() {
       'abcd1234',
     ];
 
-    const testUpdatedRetailerDTOList = [
-      RetailerDTO(
-        id: 'abcd1234',
-        name: 'name',
-        block: 'block',
-        street: 'street',
-        unit: 'unit',
-        postalCode: 'postalCode',
-        operatingHours: 'operatingHours',
-        description: 'description',
-        image: '',
-        visibility: false,
-        uen: 'uen',
-      ),
-    ];
-
     test(
         'should return FirestoreFailures.noConnection if there is no internet connection',
         () async {

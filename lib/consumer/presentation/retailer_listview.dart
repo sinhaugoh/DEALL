@@ -1,8 +1,7 @@
+import 'package:deall/consumer/presentation/retailer_list_item.dart';
+import 'package:deall/consumer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:deall/consumer/shared/providers.dart';
-import 'package:deall/consumer/presentation/retailer_list_item.dart';
 
 class RetailerListView extends ConsumerWidget {
   const RetailerListView({Key? key}) : super(key: key);

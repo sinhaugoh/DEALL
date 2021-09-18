@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ConsumerRetailerDetailPage extends StatelessWidget {
   final Retailer retailerData;
@@ -32,12 +32,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: retailerData == null
-          ? const Center(
-              //TODO: implement no connection page
-              child: Text('No connection!'),
-            )
-          : SingleChildScrollView(
+      body: SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(

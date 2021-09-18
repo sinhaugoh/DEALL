@@ -1,5 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'retailer_list_state.freezed.dart';
 

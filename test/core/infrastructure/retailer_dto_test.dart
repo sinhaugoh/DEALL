@@ -1,9 +1,8 @@
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:deall/core/infrastructure/retailer/retailer_dto.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
 import 'retailer_dto_test.mocks.dart';
 

@@ -1,14 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:deall/core/infrastructure/firestore_failures.dart';
 import 'package:deall/consumer/infrastructure/retailer_list_repository.dart';
 import 'package:deall/consumer/shared/providers.dart';
-
 import 'package:deall/core/application/retailer/retailer.dart';
+import 'package:deall/core/infrastructure/firestore_failures.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
 import 'retailer_list_repository_test.mocks.dart';
 
