@@ -72,15 +72,6 @@ class SignInForm extends ConsumerWidget {
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-              // child: Align(
-              //     alignment: Alignment.centerRight,
-              //     child: Text(
-              //       'Forgot Password?',
-              //       style: TextStyle(
-              //           color: Colors.grey,
-              //           fontWeight: FontWeight.w600,
-              //           decoration: TextDecoration.underline),
-              //     )),
             ),
 
             Padding(
@@ -124,8 +115,6 @@ class SignInForm extends ConsumerWidget {
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: IntrinsicHeight(
                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    // mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
                         child: Align(

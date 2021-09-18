@@ -59,14 +59,11 @@ class CustomRetailerCard extends ConsumerWidget {
               child: Padding(
                   padding: EdgeInsets.all(8.0.w),
                   child: ListTile(
-                    // tileColor: Colors.red,
                     isThreeLine: true,
                     title: Text(
-                      // '${retailerData?.name}',
                       name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      //remove
                       style: Theme.of(context).textTheme.headline3,
                     ),
                     subtitle: Column(
@@ -76,7 +73,6 @@ class CustomRetailerCard extends ConsumerWidget {
                           height: 5.h,
                         ),
                         Text(
-                          // "${retailerData?.operatingHours}",
                           middleRowText,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -95,11 +91,8 @@ class CustomRetailerCard extends ConsumerWidget {
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.cantarell(
                                 decoration: TextDecoration.lineThrough,
-                                // textStyle: Theme.of(context).textTheme.headline4,
                                 fontSize: 12.sp,
                                 color: Colors.grey
-                                // fontWeight: FontWeight.w700,
-                                // fontStyle: FontStyle.italic,
                               ),
                             ),
                             SizedBox(width: 2.w),
@@ -127,47 +120,10 @@ class CustomRetailerCard extends ConsumerWidget {
                                       // style: Theme.of(context).textTheme.headline4,
                                     ),
                                   ]),
-                            // Text(
-                            //   // "${retailerData?.description.toString()}",
-                            //   lastRowText,
-                            //   maxLines: 2,
-                            //   overflow: TextOverflow.ellipsis,
-                            //   style: GoogleFonts.cantarell(
-                            //       // textStyle: Theme.of(context).textTheme.headline4,
-                            //       fontSize: 14.sp,
-                            //       color: Colors.grey
-                            //       // fontWeight: FontWeight.w700,
-                            //       // fontStyle: FontStyle.italic,
-                            //       ),
-                            // ),
                           ],
                         )
                       ],
                     ),
-                    // trailing: Column(
-                    //   children: [
-                    //     Flexible(
-                    //       child: IconButton(
-                    //         onPressed: () {
-                    //           AutoRouter.of(context).push(EditProductRoute(product: product));
-                    //         },
-                    //         icon: const Icon(Icons.edit),
-                    //       ),
-                    //     ),
-                    //     // SizedBox(height: 50.h,),
-                    //     Flexible(
-                    //       child: Switch(
-                    //         value: product.availability,
-                    //         onChanged: (value) {
-                    //           ref
-                    //             .read(productStateNotifierProvider.notifier)
-                    //             .updateProduct(product.copyWith(
-                    //                 availability: !product.availability));
-                    //         },
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                   ))),
           Flexible(
             child: Column(children: [
@@ -180,7 +136,6 @@ class CustomRetailerCard extends ConsumerWidget {
                   icon: const Icon(Icons.edit),
                 ),
               ),
-              // SizedBox(height: 50.h,),
               Flexible(
                 child: Switch(
                   value: product.availability,

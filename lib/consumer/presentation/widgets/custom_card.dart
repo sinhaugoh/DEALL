@@ -48,12 +48,9 @@ class CustomCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(8.0.w),
                 child: ListTile(
-                  // tileColor: Colors.red,
                   isThreeLine: true,
                   title: Text(
-                    // '${retailerData?.name}',
                     name!,
-                    //remove
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   subtitle: Column(
@@ -61,7 +58,6 @@ class CustomCard extends StatelessWidget {
                     children: [
                       SizedBox(height: 5.h,),
                       Text(
-                        // "${retailerData?.operatingHours}",
                         middleRowText!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -72,7 +68,6 @@ class CustomCard extends StatelessWidget {
                       // ),
                       SizedBox(height: 2.h,),
                       Text(
-                        // "${retailerData?.description.toString()}",
                         lastRowText!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -83,7 +78,6 @@ class CustomCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // trailing: Icon(Icons.add),
                   )))
         ],
       ),

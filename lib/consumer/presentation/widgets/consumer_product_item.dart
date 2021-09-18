@@ -24,7 +24,6 @@ class ConsumerProductItem extends ConsumerWidget {
 
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
-        // color: Colors.grey,
         shadowColor: Colors.grey.withOpacity(0.5),
         elevation: 2,
         child: Row(
@@ -61,12 +60,7 @@ class ConsumerProductItem extends ConsumerWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         //remove
-                        style: GoogleFonts.averiaSansLibre(
-                          // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 19.sp,
-                          // fontWeight: FontWeight.w700,
-                          // fontStyle: FontStyle.italic,
-                        ),
+                        style: Theme.of(context).textTheme.headline3,
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,12 +72,7 @@ class ConsumerProductItem extends ConsumerWidget {
                             product.description.toString(),                            
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.cantarell(
-                              // textStyle: Theme.of(context).textTheme.headline4,
-                              fontSize: 13.sp,
-                              // fontWeight: FontWeight.w700,
-                              // fontStyle: FontStyle.italic,
-                            ),
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                           // Divider(
                           //   thickness: 1,
@@ -114,7 +103,6 @@ class ConsumerProductItem extends ConsumerWidget {
                                   ]),
                         ],
                       ),
-                      // trailing: Icon(Icons.add),
                     )))
           ],
         ),

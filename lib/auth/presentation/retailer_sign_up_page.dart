@@ -53,37 +53,6 @@ class RetailerSignUpPage extends ConsumerWidget {
 
             Column(
               children: [
-                // Flexible(
-                //   child: Container()
-                // ),
-                // Expanded(
-                //   // flex: 2,
-                //   child: Column(
-                //     children: [
-                //       Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //         children: [
-                //           IconButton(
-                //             onPressed: (){
-                //               Navigator.pop(context);
-                //             }, 
-                //             icon: Icon(Icons.arrow_back_ios),
-                //             color: Colors.black,
-                //           ),
-                //           Padding(
-                //         padding: EdgeInsets.symmetric(vertical: 10.0.h),
-                //         child: Container(
-                //           alignment: Alignment.bottomCenter,
-                //           constraints: BoxConstraints(maxWidth: 150.w, maxHeight: 60.h),
-                //           child: Image.asset(Images.logoText),
-                //         ),
-                //       ),
-                //         ],
-                //       ),
-                      
-                //     ],
-                //   ),
-                // ),
                 Expanded(
                   flex: 7,
                   child: SafeArea(
@@ -96,7 +65,6 @@ class RetailerSignUpPage extends ConsumerWidget {
                 ),
               ],
             ),
-            // const RetailerSignUpForm(),
             SavingInProgressOverlay(
               isSaving: ref.watch(retailerSignUpFormNotifierProvider
                   .select((state) => state.isSaving)),

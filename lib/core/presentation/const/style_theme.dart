@@ -48,31 +48,23 @@ class StyleTheme{
   );
 
   static final TextStyle _headline3 = GoogleFonts.averiaSansLibre(
-    // textStyle: Theme.of(context).textTheme.headline4,
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,
-    // fontStyle: FontStyle.italic,
   );
 
   static final TextStyle _headline4 = GoogleFonts.averiaSansLibre(
     color: Colors.grey,
     fontSize: 18.sp,
-    // fontWeight: FontWeight.w700,
-    // fontStyle: FontStyle.italic,
   );
 
   static final TextStyle _headline5 = GoogleFonts.cantarell(
     color: Colors.black54,
     fontSize: 14.sp,
-    // fontWeight: FontWeight.w700,
-    // fontStyle: FontStyle.italic,
   );
 
   static final TextStyle _headline6 = GoogleFonts.cantarell(
     color: Colors.black54,
     fontSize: 13.sp,
-    // fontWeight: FontWeight.w700,
-    // fontStyle: FontStyle.italic,
   );
 
   // static final TextStyle _caption = GoogleFonts.cantarell(

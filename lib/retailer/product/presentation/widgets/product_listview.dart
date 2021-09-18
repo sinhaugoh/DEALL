@@ -22,7 +22,6 @@ class ProductListView extends ConsumerWidget {
               overrides: [
                 productProvider.overrideWithValue(loaded.products[index])
               ],
-              // notEmpty
               child: const ProductItem(),
             ),
           );

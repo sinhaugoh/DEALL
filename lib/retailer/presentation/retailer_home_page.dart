@@ -178,34 +178,6 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                   ),
                 ],
               ),
-              // Container(
-              //   width: 1.sw,
-              //   height: 0.18.sh,
-              //   padding: EdgeInsets.only(
-              //     left: 20.w,
-              //     right: 20.h,
-              //     // bottom: 20.h
-              //   ),
-              //   child: OutlinedButton(
-              //     style: OutlinedButton.styleFrom(
-              //       // padding: EdgeInsets.all(56.0.w),
-              //       // textStyle: const TextStyle(fontSize: 20),
-              //       side: BorderSide(color: Colors.black26),
-              //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w))
-              //     ),
-              //     onPressed: () {
-              //       AutoRouter.of(context).push(const AddProductRoute());
-              //     },
-              //     child: Column(
-              //       crossAxisAlignment: CrossAxisAlignment.center,
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: <Widget>[
-              //         Text("Add Product"),
-              //         Icon(Icons.add_circle)
-              //       ],
-              //     )
-              //   ),
-              // ),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Padding(

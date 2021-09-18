@@ -148,29 +148,6 @@ class EditProductForm extends ConsumerWidget {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(16.0),
-            //   child: FormTextField(
-            //     label: 'Usual Price (S\$)',
-            //     initialValue: ref
-            //         .read(editProductFormStateNotifierProvider)
-            //         .usualPriceString,
-            //     errorText: ref.watch(editProductFormStateNotifierProvider
-            //             .select((state) => state.showErrorMessage))
-            //         ? ref.watch(editProductFormStateNotifierProvider
-            //             .select((state) => state.usualPriceErrorMessage))
-            //         : null,
-            //     onChanged: ref
-            //         .read(editProductFormStateNotifierProvider.notifier)
-            //         .prodUsualPriceChanged,
-            //     keyboardType: TextInputType.number,
-            //     inputFormatters: [
-            //       LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
-            //       FilteringTextInputFormatter.allow(
-            //           RegExp(r'^(\d+)?\.?\d{0,2}')),
-            //     ],
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: SizedBox(
