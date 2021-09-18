@@ -78,8 +78,11 @@ class RetailerSignUpForm extends ConsumerWidget {
 
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 16.h, bottom: 12.h),
-              child: SizedBox(
-                height: 50.h,
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                ),
+                // height: 50.h,
                 child: FormTextField(
                   label: 'Email',
                   errorText: ref.watch(retailerSignUpFormNotifierProvider
@@ -95,8 +98,11 @@ class RetailerSignUpForm extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
-              child: SizedBox(
-                height: 50.h,
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                  // maxHeight: 50.h
+                ),
                 child: FormTextField(
                   label: 'Password',
                   obscureText: ref.watch(retailerSignUpFormNotifierProvider
@@ -128,8 +134,10 @@ class RetailerSignUpForm extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
-              child: SizedBox(
-                height: 50.h,
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                ),
                 child: FormTextField(
                   label: 'Shop Name',
                   maxLength: 50,
@@ -167,8 +175,11 @@ class RetailerSignUpForm extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
-              child: SizedBox(
-                height: 50.h,
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                ),
+                // height: 50.h,
                 child: FormTextField(
                   label: 'UEN',
                   errorText: ref.watch(retailerSignUpFormNotifierProvider
