@@ -258,9 +258,7 @@ Widget upperPortionOfPage(
                             },
                             child: const Text(
                               "Show Details",
-                              // softWrap: true,
-                              textScaleFactor: 0.66,
-                              // style: TextStyle(decoration: TextDecoration.underline)
+                              // textScaleFactor: 0.66,
                               ),
                             ),
                         ),
