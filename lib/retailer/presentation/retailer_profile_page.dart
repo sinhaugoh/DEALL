@@ -26,6 +26,7 @@ class RetailerProfilePage extends ConsumerWidget {
         ),
         title: Text(
             retailer?.name ?? '',
+            style: Theme.of(context).textTheme.headline2,
             //style
           ),
         actions: [

@@ -108,6 +108,7 @@ class ConsumerProductListPageState
         ),
         title: Text(
             widget.retailerData.name,
+            style: Theme.of(context).textTheme.headline2,
             //style
           ),
         // actions: [

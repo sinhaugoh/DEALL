@@ -17,7 +17,7 @@ class FavouriteRetailerPage extends ConsumerWidget {
             bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        title: const Text('Favourites'),
+        title: Text('Favourites', style: Theme.of(context).textTheme.headline2,),
             //style
         // actions: [
         //   // iconbtn!,

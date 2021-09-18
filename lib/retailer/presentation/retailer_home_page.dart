@@ -233,43 +233,48 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                       SizedBox(width: 10.w),
                       
                       // // CHECKBOX?
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                            .read(productListNotifierProvider.notifier)
-                            .toggleAllOn();
-                        },
-                        style: ButtonStyle(
-                          // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
-                          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
-                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
-                          }),
-                          // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
-                        ),
-                        child: const Text(
-                          'Show All',
-                          textScaleFactor: 0.8,
-                        ),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              ref
+                                .read(productListNotifierProvider.notifier)
+                                .toggleAllOn();
+                            },
+                            style: ButtonStyle(
+                              // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+                              shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+                                return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
+                              }),
+                              // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
+                            ),
+                            child: const Text(
+                              'Show All',
+                              textScaleFactor: 0.9,
+                            ),
+                          ),
+                          SizedBox(width: 2.w), 
+                          ElevatedButton(
+                            onPressed: () {
+                              ref
+                                  .read(productListNotifierProvider.notifier)
+                                  .toggleAllOff();
+                            },
+                            style: ButtonStyle(
+                              // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+                              shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+                                return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
+                              }),
+                              // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
+                            ),
+                            child: const Text(
+                              'Hide All',
+                              textScaleFactor: 0.9,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 2.w), 
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(productListNotifierProvider.notifier)
-                              .toggleAllOff();
-                        },
-                        style: ButtonStyle(
-                          // backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Theme.of(context).colorScheme.primary.withOpacity(0.1)),
-                          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
-                            return RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w));
-                          }),
-                          // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
-                        ),
-                        child: const Text(
-                          'Hide All',
-                          textScaleFactor: 0.8,
-                        ),
-                      ),
+                      
                     ],
                   ),
                 ),

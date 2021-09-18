@@ -22,6 +22,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
         ),
         title: Text(
             retailerData.name,
+            style: Theme.of(context).textTheme.headline2,
             //style
           ),
         // actions: [

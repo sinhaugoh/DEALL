@@ -57,7 +57,7 @@ class EditProfilePage extends ConsumerWidget {
             bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        title: const Text('Edit Profile'),
+        title: Text('Edit Profile', style: Theme.of(context).textTheme.headline2,),
         // actions: [
         //   // iconbtn!,
         // ],
