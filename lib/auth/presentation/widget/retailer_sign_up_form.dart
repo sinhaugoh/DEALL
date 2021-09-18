@@ -235,7 +235,7 @@ class RetailerSignUpForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: SizedBox(
-                height: 50.h,
+                height: 70.h,
                 child: FormTextField(
                   maxLength: 6,
                   keyboardType: const TextInputType.numberWithOptions(),
