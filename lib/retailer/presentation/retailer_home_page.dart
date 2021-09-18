@@ -138,15 +138,15 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
     return Scaffold(
       //reused code from consumerhome
       appBar: CustomAppBar(
-        // IconButton(onPressed: (){
-        //     if (AutoRouter.of(context).current.name !=
-        //           RetailerProfileRoute.name) {
-        //         AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
-        //       } else {
-        //         AutoRouter.of(context).pop();
-        //       }
-        //   }, icon: const Icon(Icons.person)
-        // ),
+        IconButton(onPressed: (){
+            if (AutoRouter.of(context).current.name !=
+                  RetailerProfileRoute.name) {
+                AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
+              } else {
+                AutoRouter.of(context).pop();
+              }
+          }, icon: const Icon(Icons.person)
+        ),
       ),
 
 
