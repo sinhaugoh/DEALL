@@ -234,10 +234,11 @@ Widget upperPortionOfPage(
                       // ),
                       
                       child: Center(
+                        // heightFactor: 100.0,
                         child: Padding(
                           padding: EdgeInsets.only(top: 8.h),
                           child: TextButton(
-                            clipBehavior: Clip.hardEdge,
+                            // clipBehavior: Clip.hardEdge,
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
@@ -257,6 +258,8 @@ Widget upperPortionOfPage(
                             },
                             child: const Text(
                               "Show Details",
+                              // softWrap: true,
+                              textScaleFactor: 0.8,
                               // style: TextStyle(decoration: TextDecoration.underline)
                               ),
                             ),

@@ -1,6 +1,7 @@
 import 'package:deall/consumer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBarWithFilterButton extends ConsumerWidget {
   final TextEditingController textEditingController;
@@ -18,7 +19,7 @@ class SearchBarWithFilterButton extends ConsumerWidget {
     height: mq.size.height * 0.1,
 
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(50, 8, 50, 8),
+      padding: EdgeInsets.fromLTRB(50.w, 8.h, 50.w, 8.h),
       child: IntrinsicHeight(
         child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -35,12 +36,12 @@ class SearchBarWithFilterButton extends ConsumerWidget {
             hintText: 'Search',
             prefixIcon: const Icon(Icons.search),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.w),
               borderSide: BorderSide.none,
             ),
             fillColor: Colors.grey.withOpacity(0.1),
             filled: true,
-            contentPadding: const EdgeInsets.fromLTRB(2, 5, 2, 5),
+            contentPadding: EdgeInsets.fromLTRB(2.w, 5.h, 2.w, 5.h),
           ),
         ),
       ),
