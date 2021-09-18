@@ -26,7 +26,7 @@ class CustomRetailerCard extends ConsumerWidget {
     final image = product.image;
     final name = product.name;
     final middleRowText = product.description.toString();
-    final lastRowText = product.discountedPrice.toStringAsFixed(2);
+    // final lastRowText = product.discountedPrice.toStringAsFixed(2);
 
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.w)),
@@ -68,12 +68,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       //remove
-                      style: GoogleFonts.averiaSansLibre(
-                        // textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 20.sp,
-                        // fontWeight: FontWeight.w700,
-                        // fontStyle: FontStyle.italic,
-                      ),
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,12 +81,7 @@ class CustomRetailerCard extends ConsumerWidget {
                           middleRowText,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.cantarell(
-                            // textStyle: Theme.of(context).textTheme.headline4,
-                            fontSize: 13.sp,
-                            // fontWeight: FontWeight.w700,
-                            // fontStyle: FontStyle.italic,
-                          ),
+                          style: Theme.of(context).textTheme.headline6,
                         ),
                         // Divider(
                         //   thickness: 1,
@@ -105,14 +95,13 @@ class CustomRetailerCard extends ConsumerWidget {
                               product.usualPrice.toStringAsFixed(2),
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.cantarell(
-                                  decoration: TextDecoration.lineThrough,
-                                  // textStyle: Theme.of(context).textTheme.headline4,
-                                  fontSize: 12.sp,
-                                  color: Colors.grey
-                                  // fontWeight: FontWeight.w700,
-                                  // fontStyle: FontStyle.italic,
-                                  ),
-                                  
+                                decoration: TextDecoration.lineThrough,
+                                // textStyle: Theme.of(context).textTheme.headline4,
+                                fontSize: 12.sp,
+                                color: Colors.grey
+                                // fontWeight: FontWeight.w700,
+                                // fontStyle: FontStyle.italic,
+                              ),
                             ),
                             SizedBox(width: 2.w),
                             Wrap(
@@ -134,7 +123,10 @@ class CustomRetailerCard extends ConsumerWidget {
                                     ),
                                   ]
                                 : [
-                                    Text("\$${product.usualPrice.toStringAsFixed(2)}"),
+                                    Text(
+                                      "\$${product.usualPrice.toStringAsFixed(2)}",
+                                      // style: Theme.of(context).textTheme.headline4,
+                                    ),
                                   ]),
                             // Text(
                             //   // "${retailerData?.description.toString()}",

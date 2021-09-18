@@ -54,22 +54,57 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                         .select((state) => state.hasInitialImageChanged),
                   ) &&
                   widget.retailer.image.isNotEmpty)
-                  SizedBox(
-                      height: 200.h,
-                      width: 200.w,
-                      child: CachedNetworkImage(
-                        imageUrl: widget.retailer.image,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
-                      )
+                  Expanded(
+                    child: SizedBox(
+                        height: 200.h,
+                        width: 200.w,
+                        child: CachedNetworkImage(
+                          imageUrl: widget.retailer.image,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        )
+                    ),
                   )
                   else if (!ref.watch<bool>(
                       retailerEditProfileNotifierProvider
                           .select((state) => state.hasInitialImageChanged),
                     ) &&
                     widget.retailer.image.isEmpty)
-                  SizedBox(
+                  Expanded(
+                    child: SizedBox(
+                      height: 200.h,
+                      width: 200.w,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0.w),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: Image.asset(Images.imageNotFound),
+                        ),
+                      ),
+                    ),
+                  ),
+                if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged)) &&
+                  image != null)
+                Expanded(
+                  child: SizedBox(
+                    height: 200.h,
+                    width: 200.w,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0.w),
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: Image.file(image),
+                      ),
+                    ),
+                  ),
+                )
+              else if (ref.watch<bool>(retailerEditProfileNotifierProvider
+                      .select((state) => state.hasInitialImageChanged)) &&
+                  image == null)
+                Expanded(
+                  child: SizedBox(
                     height: 200.h,
                     width: 200.w,
                     child: ClipRRect(
@@ -80,67 +115,40 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                       ),
                     ),
                   ),
-                if (ref.watch<bool>(retailerEditProfileNotifierProvider
-                      .select((state) => state.hasInitialImageChanged)) &&
-                  image != null)
-                SizedBox(
-                  height: 200.h,
-                  width: 200.w,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0.w),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.file(image),
-                    ),
-                  ),
-                )
-              else if (ref.watch<bool>(retailerEditProfileNotifierProvider
-                      .select((state) => state.hasInitialImageChanged)) &&
-                  image == null)
-                SizedBox(
-                  height: 200.h,
-                  width: 200.w,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0.w),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset(Images.imageNotFound),
-                    ),
-                  ),
                 ),
 
-
-                Column(
-                children:[
-
-                  ElevatedButton(
-                    onPressed: () {
-                    ref
-                        .read(retailerEditProfileNotifierProvider.notifier)
-                        .pickImage();
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.w))),
-                    ),
-                    child: const Text('Upload Image'),
+                Expanded(
+                  child: Column(
+                    children:[
+                      ElevatedButton(
+                        onPressed: () {
+                        ref
+                            .read(retailerEditProfileNotifierProvider.notifier)
+                            .pickImage();
+                        },
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.w))),
+                        ),
+                        child: const Text('Upload Image'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                        ref
+                            .read(retailerEditProfileNotifierProvider.notifier)
+                            .deleteImage();
+                        },
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.w))),
+                        ),
+                        child: const Text('Delete Image'),
+                      ),
+                    ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                    ref
-                        .read(retailerEditProfileNotifierProvider.notifier)
-                        .deleteImage();
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.w))),
-                    ),
-                    child: const Text('Delete Image'),
-                  ),
-                ],
-              )
-
-          ]),
+                )
+              ]
+              ),
             ),
 
 

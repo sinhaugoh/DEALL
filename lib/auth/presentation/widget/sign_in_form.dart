@@ -112,7 +112,12 @@ class SignInForm extends ConsumerWidget {
             ),
 
             SizedBox(height: 30.h),
-            const Center(child: Text("Don't have an account? Sign up.")),
+            Center(
+              child: Text(
+                "Don't have an account? Sign up.",
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ),
 
             //SIGN UP PART TEST
             Padding(
@@ -156,8 +161,8 @@ class SignInForm extends ConsumerWidget {
                               },
                               child: const Text('Retailer',
                                   style: TextStyle(
-                                      color: Colors.redAccent,
-                                      decoration: TextDecoration.underline)),
+                                    color: Colors.redAccent,
+                                    decoration: TextDecoration.underline)),
                             )),
                       ),
                     ]),

@@ -55,12 +55,7 @@ class CustomCard extends StatelessWidget {
                     // '${retailerData?.name}',
                     name!,
                     //remove
-                    style: GoogleFonts.averiaSansLibre(
-                      // textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 20.sp,
-                      // fontWeight: FontWeight.w700,
-                      // fontStyle: FontStyle.italic,
-                    ),
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,12 +66,7 @@ class CustomCard extends StatelessWidget {
                         middleRowText!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.cantarell(
-                          // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 13.sp,
-                          // fontWeight: FontWeight.w700,
-                          // fontStyle: FontStyle.italic,
-                        ),
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                       // Divider(
                       //   thickness: 1,
@@ -87,13 +77,7 @@ class CustomCard extends StatelessWidget {
                         lastRowText!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.cantarell(
-                          // textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 14.sp,
-                          color: Colors.grey
-                          // fontWeight: FontWeight.w700,
-                          // fontStyle: FontStyle.italic,
-                          ),
+                        style: Theme.of(context).textTheme.headline5,
                         ),
                         SizedBox(
                           height: 2.h,

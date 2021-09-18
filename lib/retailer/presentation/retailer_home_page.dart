@@ -164,10 +164,13 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
           return Column(
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text("Enable retailer's visibility."),
+                  Text(
+                    "Enable retailer's visibility.",
+                    style: Theme.of(context).textTheme.bodyText1, 
+                  ),
                   Switch(
                     onChanged: (value) {
                       ref
@@ -214,7 +217,7 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.add_circle_outline
                         ),
                       iconSize: 30.h,
@@ -223,7 +226,10 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                           AutoRouter.of(context).push(const AddProductRoute());
                         },
                       ),
-                      const Text("Add Product"),
+                      Text(
+                        "Add Product",
+                        style: Theme.of(context).textTheme.bodyText1, 
+                      ),
                       SizedBox(width: 10.w),
                       
                       // // CHECKBOX?
@@ -240,9 +246,12 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                           }),
                           // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
                         ),
-                        child: const Text('Show All'),
+                        child: const Text(
+                          'Show All',
+                          textScaleFactor: 0.8,
+                        ),
                       ),
-                      SizedBox(width: 10.w), 
+                      SizedBox(width: 2.w), 
                       ElevatedButton(
                         onPressed: () {
                           ref
@@ -256,7 +265,10 @@ class _RetailerHomePageState extends ConsumerState<RetailerHomePage> {
                           }),
                           // side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black26)),
                         ),
-                        child: const Text('Hide All'),
+                        child: const Text(
+                          'Hide All',
+                          textScaleFactor: 0.8,
+                        ),
                       ),
                     ],
                   ),
