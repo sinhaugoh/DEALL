@@ -59,7 +59,7 @@ class CustomCard extends StatelessWidget {
                       SizedBox(height: 5.h,),
                       Text(
                         middleRowText!,
-                        maxLines: 2,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.headline6,
                       ),
