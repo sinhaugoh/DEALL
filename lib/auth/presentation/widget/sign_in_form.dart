@@ -118,7 +118,7 @@ class SignInForm extends ConsumerWidget {
 
             //SIGN UP PART TEST
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
+              padding: EdgeInsets.only(top: 8.h, bottom: 20.h),
               child: IntrinsicHeight(
                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [

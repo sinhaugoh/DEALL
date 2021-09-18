@@ -123,24 +123,27 @@ class ConsumerSignUpForm extends ConsumerWidget {
 
             SizedBox(height: 20.h),
             Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: 8.h, bottom: 20.h),
                 child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account? ',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                InkWell(
-                  onTap: () {
-                    AutoRouter.of(context).push(const SignInRoute());
-                  },
-                  child: const Text('Sign in.',
-                      style: TextStyle(
-                          color: Colors.redAccent,
-                          decoration: TextDecoration.underline)),
-                )
-              ],
-            ))
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account? ',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        AutoRouter.of(context).push(const SignInRoute());
+                      },
+                      child: const Text('Sign in.',
+                          style: TextStyle(
+                              color: Colors.redAccent,
+                              decoration: TextDecoration.underline)),
+                    )
+                  ],
+            ),
+              ))
           ],
         ),
       ),
