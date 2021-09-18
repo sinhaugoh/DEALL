@@ -11,18 +11,22 @@ class FavouriteRetailerPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 120.h,
+        toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-          bottom: Radius.elliptical(350.w, 40.h),
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
         ),
-      ),
         title: const Text('Favourites'),
-        centerTitle: true,
+            //style
         // actions: [
-        //   IconButton(onPressed: (){
-        //   }, icon: const Icon(Icons.star)),
+        //   // iconbtn!,
         // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
       // drawer: const ConsumerDrawer(),
       body: RefreshIndicator(

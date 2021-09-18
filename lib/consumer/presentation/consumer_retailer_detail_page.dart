@@ -14,8 +14,6 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
     final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        // title: Text(retailerData.name),
-        // centerTitle: true,
         toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
