@@ -24,47 +24,53 @@ class RetailerSignUpForm extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, 
+                children: [
 
-                  SizedBox(
-                      height: 200.h,
-                      width: 200.w,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0.w),
-                        //child: Image.file(image),
-                        child: FittedBox(fit: BoxFit.cover,child: image!=null? Image.file(image):  Image.asset(Images.imageNotFound),),
-                      )
-                  ),
-
-                Column(
-                children:[
-
-                  ElevatedButton(
-                    onPressed: () {
-                    ref
-                        .read(retailerSignUpFormNotifierProvider.notifier)
-                        .pickImage();
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.w))),
+                  Expanded(
+                    child: SizedBox(
+                        height: 200.h,
+                        width: 200.w,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0.w),
+                          //child: Image.file(image),
+                          child: FittedBox(fit: BoxFit.cover,child: image!=null? Image.file(image):  Image.asset(Images.imageNotFound),),
+                        )
                     ),
-                    child: const Text('Upload Image'),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                    ref
-                        .read(retailerSignUpFormNotifierProvider.notifier)
-                        .deleteImage();
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.w))),
+
+                Expanded(
+                  child: Column(
+                  children:[
+
+                    ElevatedButton(
+                      onPressed: () {
+                      ref
+                          .read(retailerSignUpFormNotifierProvider.notifier)
+                          .pickImage();
+                      },
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.w))),
+                      ),
+                      child: const Text('Upload Image'),
                     ),
-                    child: const Text('Delete Image'),
-                  ),
-                ],
-              )
+                    ElevatedButton(
+                      onPressed: () {
+                      ref
+                          .read(retailerSignUpFormNotifierProvider.notifier)
+                          .deleteImage();
+                      },
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.w))),
+                      ),
+                      child: const Text('Delete Image'),
+                    ),
+                  ],
+              ),
+                )
 
           ]),
             ),

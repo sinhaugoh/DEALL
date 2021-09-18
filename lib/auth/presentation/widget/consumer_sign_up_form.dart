@@ -23,12 +23,17 @@ class ConsumerSignUpForm extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
+                Text(
                   'Sign up now for exclusive deals!',
                   textAlign: TextAlign.center,
-                  style: TextStyle(),
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey,
+                    fontSize: 17.sp
+                  ),
                   //insert style
                 ),
+                SizedBox(height: 10.h),
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: 30.0.w, vertical: 10.0.h),
@@ -119,7 +124,10 @@ class ConsumerSignUpForm extends ConsumerWidget {
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Already have an account? '),
+                    Text(
+                      'Already have an account? ',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
                     InkWell(
                       onTap: () {
                         AutoRouter.of(context).push(const SignInRoute());
