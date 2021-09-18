@@ -5,6 +5,7 @@ import 'package:deall/auth/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInForm extends ConsumerWidget {
   const SignInForm({
@@ -19,73 +20,75 @@ class SignInForm extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: FormTextField(
-                label: 'Email',
-                errorText: ref.watch(signInFormNotifierProvider
-                        .select((state) => state.showErrorMessage))
-                    ? ref.watch(signInFormNotifierProvider
-                        .select((state) => state.emailErrorMessage))
-                    : null,
-                onChanged:
-                    ref.read(signInFormNotifierProvider.notifier).emailChanged,
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: FormTextField(
-                label: 'Password',
-                obscureText: ref.watch(signInFormNotifierProvider
-                    .select((state) => state.hidePassword)),
-                errorText: ref.watch(signInFormNotifierProvider
-                        .select((state) => state.showErrorMessage))
-                    ? ref.watch(signInFormNotifierProvider
-                        .select((state) => state.passwordErrorMessage))
-                    : null,
-                onChanged: ref
-                    .read(signInFormNotifierProvider.notifier)
-                    .passwordChanged,
-                inputFormatters: [
-                  FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                ],
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    ref
-                        .read(signInFormNotifierProvider.notifier)
-                        .toggleShowPassword();
-                  },
-                  icon: ref.watch(signInFormNotifierProvider
-                          .select((state) => state.hidePassword))
-                      ? const Icon(Icons.visibility_off)
-                      : const Icon(Icons.visibility),
+              padding: EdgeInsets.only(right: 30.w, left: 30.w, top: 10.h),
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                  // maxHeight: 60.h,
+                ),
+                child: FormTextField(
+                  label: 'Email',
+                  errorText: ref.watch(signInFormNotifierProvider
+                          .select((state) => state.showErrorMessage))
+                      ? ref.watch(signInFormNotifierProvider
+                          .select((state) => state.emailErrorMessage))
+                      : null,
+                  onChanged:
+                      ref.read(signInFormNotifierProvider.notifier).emailChanged,
                 ),
               ),
             ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600,
-                        decoration: TextDecoration.underline),
-                  )),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 40.h,
+                  // maxHeight: 100.h
+                ),
+                child: FormTextField(
+                  label: 'Password',
+                  obscureText: ref.watch(signInFormNotifierProvider
+                      .select((state) => state.hidePassword)),
+                  errorText: ref.watch(signInFormNotifierProvider
+                          .select((state) => state.showErrorMessage))
+                      ? ref.watch(signInFormNotifierProvider
+                          .select((state) => state.passwordErrorMessage))
+                      : null,
+                  onChanged: ref
+                      .read(signInFormNotifierProvider.notifier)
+                      .passwordChanged,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.deny(RegExp(r"\s")),
+                  ],
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      ref
+                          .read(signInFormNotifierProvider.notifier)
+                          .toggleShowPassword();
+                    },
+                    icon: ref.watch(signInFormNotifierProvider
+                            .select((state) => state.hidePassword))
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
+                  ),
+                ),
+              ),
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+            ),
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: ConstrainedBox(
-                constraints: const BoxConstraints.tightFor(height: 40),
+                constraints: BoxConstraints.tightFor(height: 40.h),
                 child: ElevatedButton(
                   onPressed: () {
                     //dismiss the keyboard
                     final currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
-
                     ref.read(signInFormNotifierProvider.notifier).signIn();
                   },
                   style: ButtonStyle(
@@ -98,22 +101,26 @@ class SignInForm extends ConsumerWidget {
               ),
             ),
 
-            const Divider(
+            Divider(
               thickness: 2,
-              indent: 20,
-              endIndent: 20,
-              height: 50,
+              indent: 30.w,
+              endIndent: 30.w,
+              height: 50.h,
             ),
 
-            const Center(child: Text("Don't have an account? Sign up.")),
+            SizedBox(height: 30.h),
+            Center(
+              child: Text(
+                "Don't have an account? Sign up.",
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ),
 
             //SIGN UP PART TEST
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.only(top: 8.h, bottom: 20.h),
               child: IntrinsicHeight(
                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    // mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
                         child: Align(
@@ -130,13 +137,12 @@ class SignInForm extends ConsumerWidget {
                             )),
                       ),
 
-                      // SizedBox(width: 10,),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 20.h,
                         child: VerticalDivider(
                           color: Colors.black54,
                           thickness: 1,
-                          width: 20,
+                          width: 20.w,
                         ),
                       ),
 
@@ -150,8 +156,8 @@ class SignInForm extends ConsumerWidget {
                               },
                               child: const Text('Retailer',
                                   style: TextStyle(
-                                      color: Colors.redAccent,
-                                      decoration: TextDecoration.underline)),
+                                    color: Colors.redAccent,
+                                    decoration: TextDecoration.underline)),
                             )),
                       ),
                     ]),

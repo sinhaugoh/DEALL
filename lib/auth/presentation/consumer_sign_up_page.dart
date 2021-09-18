@@ -4,8 +4,10 @@ import 'package:deall/auth/presentation/widget/consumer_sign_up_form.dart';
 import 'package:deall/auth/shared/providers.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:deall/core/presentation/saving_in_progress_overlay.dart';
+import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConsumerSignUpPage extends ConsumerWidget {
   const ConsumerSignUpPage({Key? key}) : super(key: key);
@@ -37,18 +39,39 @@ class ConsumerSignUpPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      // appBar: AppBar(
-      //   // title: const Text('Sign In'),
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   iconTheme: const IconThemeData(
-      //     color: Colors.black
-      //   ),
-      // ),
       body: SafeArea(
         child: Stack(
           children: [
-            const ConsumerSignUpForm(),
+            // const ConsumerSignUpForm(),
+              Column(
+              children: [
+                Expanded(
+                  child: Container()
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      constraints: BoxConstraints(maxWidth: 150.w),
+                      child: Image.asset(Images.logoText),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 6,
+                  child: SafeArea(
+                    child: Stack(
+                      children: const [
+                        ConsumerSignUpForm(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            
             SavingInProgressOverlay(
               isSaving: ref.watch(
                 signInFormNotifierProvider.select((state) => state.isSaving),

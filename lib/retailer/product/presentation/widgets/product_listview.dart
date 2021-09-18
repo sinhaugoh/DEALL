@@ -1,4 +1,3 @@
-import 'package:deall/consumer/presentation/widgets/custom_card.dart';
 import 'package:deall/core/shared/providers.dart';
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class ProductListView extends ConsumerWidget {
               overrides: [
                 productProvider.overrideWithValue(loaded.products[index])
               ],
-              // notEmpty
               child: const ProductItem(),
             ),
           );

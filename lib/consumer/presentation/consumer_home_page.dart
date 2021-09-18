@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:deall/consumer/application/retailer_list_state.dart';
+import 'package:deall/consumer/presentation/widgets/custom_appbar.dart';
 import 'package:deall/core/presentation/routes/app_router.gr.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity/connectivity.dart';
@@ -55,7 +55,20 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     final mq = MediaQuery.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false, //prevent searchbar resize
-      appBar: enterLocationAppBar(),
+      appBar : CustomAppBar(
+        IconButton(
+            onPressed: () {
+              if (AutoRouter.of(context).current.name !=
+                  FavouriteRetailerRoute.name) {
+                AutoRouter.of(context)
+                    .popAndPush(const FavouriteRetailerRoute());
+              } else {
+                AutoRouter.of(context).pop();
+              }
+            },
+          icon: const Icon(Icons.favorite)
+        ),
+      ),
       drawer: const ConsumerDrawer(),
       body: RefreshIndicator(
           onRefresh: () async {
@@ -88,58 +101,19 @@ class _ConsumerHomePageState extends ConsumerState<ConsumerHomePage> {
     });
   }
 
-  AppBar enterLocationAppBar() {
-    return AppBar(
-      toolbarHeight: 120.h,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-          bottom: Radius.elliptical(350.w, 40.h),
-        ),
-      ),
-      title: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 35.h),
-          child: Image.asset(Images.logoTextWhite)
-        ),
-      ),
-      actions: [
-        IconButton(
-            onPressed: () {
-              if (AutoRouter.of(context).current.name !=
-                  FavouriteRetailerRoute.name) {
-                AutoRouter.of(context)
-                    .popAndPush(const FavouriteRetailerRoute());
-              } else {
-                AutoRouter.of(context).pop();
-              }
-            },
-            icon: const Icon(Icons.star)),
-      ],
-      elevation: 0,
-      iconTheme: const IconThemeData(
-        color: Colors.white
-      ),
-      centerTitle: true,
-    );
-  }
-
   Widget consumerHomePageBody(
       MediaQueryData mq, TextEditingController controller) {
     return SizedBox(
       height: mq.size.height * 0.9,
       child: Column(
         children: [
-          const Divider(
-            thickness: 0,
-            color: Colors.white,
-            height: 12,
-          ),
+          SizedBox(height: 12.h),
           Flexible(
             child: SearchBarWithFilterButton(
               textEditingController: controller,
             ), //search bar + filter icon
           ),
-          // Divider(height: 15),
+          SizedBox(height: 5.h),
           const Flexible(
             flex: 10,
             child: RetailerListView(), // retailer list

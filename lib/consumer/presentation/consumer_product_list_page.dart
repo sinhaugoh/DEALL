@@ -99,27 +99,27 @@ class ConsumerProductListPageState
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 120.h,
+        toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-            bottom: Radius.elliptical(350.w, 40.h),
+            bottom: Radius.elliptical(350.w, 50.h),
           ),
         ),
-        centerTitle: true,
         title: Text(
             widget.retailerData.name,
+            style: Theme.of(context).textTheme.headline2,
             //style
           ),
         // actions: [
-        //   IconButton(onPressed: (){
-        //     if (AutoRouter.of(context).current.name != FavouriteRetailerRoute.name) {
-        //             AutoRouter.of(context).popAndPush(const FavouriteRetailerRoute());
-        //           } else {
-        //             AutoRouter.of(context).pop();
-        //           }
-        //   }, icon: const Icon(Icons.star)),
+        //   // iconbtn!,
         // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
+      // appBar: CustomAppBar(),
       body: Column(
         children: [
           Expanded(
@@ -234,10 +234,11 @@ Widget upperPortionOfPage(
                       // ),
                       
                       child: Center(
+                        // heightFactor: 100.0,
                         child: Padding(
                           padding: EdgeInsets.only(top: 8.h),
                           child: TextButton(
-                            clipBehavior: Clip.hardEdge,
+                            // clipBehavior: Clip.hardEdge,
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
@@ -257,7 +258,7 @@ Widget upperPortionOfPage(
                             },
                             child: const Text(
                               "Show Details",
-                              // style: TextStyle(decoration: TextDecoration.underline)
+                              // textScaleFactor: 0.66,
                               ),
                             ),
                         ),
@@ -278,9 +279,9 @@ Widget upperPortionOfPage(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                retailerData.visibility
-                    ? const Text("Available Deals")
-                    : const Text("Deals Unavailable"),
+                if (retailerData.visibility) 
+                  Text("Available Deals", style: Theme.of(context).textTheme.subtitle1,) 
+                else const Text("Deals Unavailable"),
                 IconButton(
                   onPressed: () {
                     ref
@@ -310,3 +311,4 @@ Widget upperPortionOfPage(
     ),
   );
 }
+

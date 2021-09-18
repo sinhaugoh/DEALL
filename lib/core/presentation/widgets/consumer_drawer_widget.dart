@@ -15,14 +15,6 @@ class ConsumerDrawer extends ConsumerWidget {
             const UserAccountsDrawerHeader(
               accountName: Text(''), 
               accountEmail: Text('Menu'),
-              // currentAccountPicture: CircleAvatar(
-              //   child: ClipOval(
-              //     child: Image.network(
-              //       'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
-              //       fit: BoxFit.cover,
-              //     ),
-              //   )
-              // ),
             ),
             
             ListTile(
@@ -48,19 +40,6 @@ class ConsumerDrawer extends ConsumerWidget {
                 }
               },
             ),
-            // RETAILER ONLY
-            // ListTile(
-            //   leading: const Icon(Icons.person),
-            //   title: const Text("Profile"),
-            //   onTap: () {
-            //     if (AutoRouter.of(context).current.name !=
-            //         RetailerProfileRoute.name) {
-            //       AutoRouter.of(context).popAndPush(const RetailerProfileRoute());
-            //     } else {
-            //       AutoRouter.of(context).pop();
-            //     }
-            //   },
-            // ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Sign Out"),

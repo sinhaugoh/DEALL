@@ -6,6 +6,7 @@ import 'package:deall/retailer/product/presentation/widgets/edit_product_form.da
 import 'package:deall/retailer/product/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProductPage extends ConsumerStatefulWidget {
   final Product product;
@@ -53,7 +54,20 @@ class _EditProductPageState extends ConsumerState<EditProductPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Product'),
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text('Edit Product', style: Theme.of(context).textTheme.headline2),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: SafeArea(

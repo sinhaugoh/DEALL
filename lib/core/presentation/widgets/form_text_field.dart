@@ -47,7 +47,9 @@ class FormTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         labelText: label,
-        border: const OutlineInputBorder(),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
         errorText: errorText,
         counter: counter,
         prefixText: prefixText,

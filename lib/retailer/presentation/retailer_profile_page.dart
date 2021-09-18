@@ -18,9 +18,19 @@ class RetailerProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(retailer?.name ?? ''),
-        centerTitle: true,
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text(
+            retailer?.name ?? '',
+            style: Theme.of(context).textTheme.headline2,
+            //style
+          ),
         actions: [
+          // iconbtn!,
           IconButton(
             onPressed: retailer == null
                 ? () {}
@@ -31,6 +41,11 @@ class RetailerProfilePage extends ConsumerWidget {
             icon: const Icon(Icons.edit),
           )
         ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
       // drawer: const RetailerDrawer(),
       body: retailer == null
@@ -65,8 +80,8 @@ class RetailerProfilePage extends ConsumerWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0.w),
                         child: FittedBox(
-                          child: Image.asset(Images.imageNotFound),
                           fit: BoxFit.cover,
+                          child: Image.asset(Images.imageNotFound),
                         ),
                       ),
                     ),
@@ -78,8 +93,8 @@ class RetailerProfilePage extends ConsumerWidget {
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20.0.w),
                       ),
-                      padding: const EdgeInsets.all(12.0),
-                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      padding: EdgeInsets.all(12.0.w),
+                      margin: EdgeInsets.only(left: 30.0.w, right: 30.0.w),
                       alignment: Alignment.centerLeft,
                       child: RichText(
                         text: TextSpan(
@@ -93,7 +108,7 @@ class RetailerProfilePage extends ConsumerWidget {
                             if (retailer.description.isNotEmpty)
                               TextSpan(
                                   text: retailer.description,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -112,8 +127,8 @@ class RetailerProfilePage extends ConsumerWidget {
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20.0.w),
                       ),
-                      padding: const EdgeInsets.all(12.0),
-                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      padding: EdgeInsets.all(12.0.w),
+                      margin: EdgeInsets.only(left: 30.0.w, right: 30.0.w),
                       alignment: Alignment.centerLeft,
                       child: RichText(
                         text: TextSpan(
@@ -127,7 +142,7 @@ class RetailerProfilePage extends ConsumerWidget {
                             if (retailer.operatingHours.isNotEmpty)
                               TextSpan(
                                   text: retailer.operatingHours,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -146,8 +161,8 @@ class RetailerProfilePage extends ConsumerWidget {
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20.0.w),
                       ),
-                      padding: const EdgeInsets.all(12.0),
-                      margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                      padding: EdgeInsets.all(12.0.w),
+                      margin: EdgeInsets.only(left: 30.0.w, right: 30.0.w),
                       alignment: Alignment.centerLeft,
                       child: RichText(
                         text: TextSpan(
@@ -161,7 +176,7 @@ class RetailerProfilePage extends ConsumerWidget {
                             if (retailer.addressLine().isNotEmpty)
                               TextSpan(
                                   text: retailer.addressLine(),
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:

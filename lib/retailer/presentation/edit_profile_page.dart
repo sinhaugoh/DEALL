@@ -6,6 +6,7 @@ import 'package:deall/retailer/presentation/widget/edit_profile_form.dart';
 import 'package:deall/retailer/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfilePage extends ConsumerWidget {
   final Retailer retailer;
@@ -49,7 +50,20 @@ class EditProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text('Edit Profile', style: Theme.of(context).textTheme.headline2,),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: SafeArea(

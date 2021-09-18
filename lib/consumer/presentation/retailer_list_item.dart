@@ -4,7 +4,6 @@ import 'package:deall/core/presentation/routes/app_router.gr.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:deall/consumer/shared/providers.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RetailerItem extends ConsumerWidget {
   const RetailerItem({Key? key}) : super(key: key);

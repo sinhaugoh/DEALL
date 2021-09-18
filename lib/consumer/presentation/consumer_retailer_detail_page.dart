@@ -1,7 +1,6 @@
 import 'package:deall/core/application/retailer/retailer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:deall/core/presentation/widgets/images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ConsumerRetailerDetailPage extends StatelessWidget {
@@ -11,10 +10,26 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mq = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(retailerData.name),
+        toolbarHeight: 140.h,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
+        ),
+        title: Text(
+            retailerData.name,
+            style: Theme.of(context).textTheme.headline2,
+            //style
+          ),
+        // actions: [
+        //   // iconbtn!,
+        // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
         centerTitle: true,
       ),
       body: retailerData == null
@@ -65,7 +80,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.description.isNotEmpty)
                               TextSpan(
                                   text: retailerData.description,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -99,7 +114,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.operatingHours.isNotEmpty)
                               TextSpan(
                                   text: retailerData.operatingHours,
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:
@@ -133,7 +148,7 @@ class ConsumerRetailerDetailPage extends StatelessWidget {
                             if (retailerData.addressLine().isNotEmpty)
                               TextSpan(
                                   text: retailerData.addressLine(),
-                                  style: TextStyle(color: Colors.grey))
+                                  style: const TextStyle(color: Colors.grey))
                             else
                               const TextSpan(
                                   text:

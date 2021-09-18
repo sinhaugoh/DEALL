@@ -1,10 +1,8 @@
 import 'package:deall/consumer/presentation/retailer_list_item.dart';
 import 'package:deall/consumer/shared/providers.dart';
-import 'package:deall/core/presentation/widgets/consumer_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class FavouriteRetailerPage extends ConsumerWidget {
   const FavouriteRetailerPage({Key? key}) : super(key: key);
@@ -13,18 +11,22 @@ class FavouriteRetailerPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 120.h,
+        toolbarHeight: 140.h,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-          bottom: Radius.elliptical(350.w, 40.h),
+            borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(350.w, 50.h),
+          ),
         ),
-      ),
-        title: const Text('Favourites'),
-        centerTitle: true,
+        title: Text('Favourites', style: Theme.of(context).textTheme.headline2,),
+            //style
         // actions: [
-        //   IconButton(onPressed: (){
-        //   }, icon: const Icon(Icons.star)),
+        //   // iconbtn!,
         // ],
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        ),
+        centerTitle: true,
       ),
       // drawer: const ConsumerDrawer(),
       body: RefreshIndicator(

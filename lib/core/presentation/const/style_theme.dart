@@ -1,7 +1,7 @@
 import 'package:deall/core/presentation/const/themedata_swatch_color.dart';
 import 'package:flutter/material.dart';
-import 'package:deall/core/presentation/const/size_config.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StyleTheme{
   StyleTheme._();
@@ -21,48 +21,72 @@ class StyleTheme{
   );
 
   static final TextTheme lightTextTheme = TextTheme(
-    headline1: _titleLight,
-    subtitle2: _subTitleLight,
-    button: _buttonLight,
-    headline4: _greetingLight,
-    headline3: _searchLight,
-    bodyText2: _selectedTabLight,
-    bodyText1: _unSelectedTabLight,  
+    // headline1: _headline1,
+    headline2: _headline2,
+    headline3: _headline3,
+    headline4: _headline4,
+    headline5: _headline5,
+    headline6: _headline6,
+
+    subtitle1: _subtitle1,
+    // caption: _caption,
+    // button: _buttonLight,
+
+    bodyText1: _bodyText1,  
+    bodyText2: _bodyText2,
   );
 
-  static final TextStyle _titleLight = TextStyle(
-    color: Colors.black,
+  // static final TextStyle _headline1 = TextStyle(
+  //   color: Colors.black,
+  //   fontSize: 32.sp,
+  // );
+
+  static final TextStyle _headline2 = GoogleFonts.cantarell(
+    color: Colors.white,
     fontSize: 32.sp,
+    fontWeight: FontWeight.w500,
   );
 
-  static final TextStyle _subTitleLight = TextStyle(
-    color: Colors.purple,
+  static final TextStyle _headline3 = GoogleFonts.averiaSansLibre(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final TextStyle _headline4 = GoogleFonts.averiaSansLibre(
+    color: Colors.grey,
     fontSize: 18.sp,
   );
 
-  static final TextStyle _buttonLight = TextStyle(
-    color: Colors.yellow,
+  static final TextStyle _headline5 = GoogleFonts.cantarell(
+    color: Colors.black.withOpacity(0.75),
+    fontSize: 14.sp,
+    // fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle _headline6 = GoogleFonts.cantarell(
+    color: Colors.black54,
+    fontSize: 13.sp,
+  );
+
+  // static final TextStyle _caption = GoogleFonts.cantarell(
+  //   // color: appBarBackgroundColor,
+  //   fontSize: 10.sp,
+  //   // fontWeight: FontWeight.w700,
+  //   // fontStyle: FontStyle.italic,
+  // );
+
+    static final TextStyle _subtitle1 = TextStyle(
+    // color: appBarBackgroundColor,
     fontSize: 16.sp,
   );
 
-  static final TextStyle _greetingLight = TextStyle(
-    color: Colors.blue,
-    fontSize: 16.sp,
-  );
-
-  static final TextStyle _searchLight = TextStyle(
-    color: Colors.green,
-    fontSize: 16.sp,
-  );
-
-  static final TextStyle _selectedTabLight = TextStyle(
-    color: Colors.red,
-    // fontWeight: FontWeight.bold,
-    fontSize: 16.sp,
-  );
-
-  static final TextStyle _unSelectedTabLight = TextStyle(
+  static final TextStyle _bodyText1 = TextStyle(
     color: Colors.grey,
+    fontSize: 16.sp,
+  );
+
+  static final TextStyle _bodyText2 = TextStyle(
+    color: Colors.black87,
     fontSize: 16.sp,
   );
 } 
