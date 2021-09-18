@@ -29,7 +29,8 @@ class StyleTheme{
     headline5: _headline5,
     headline6: _headline6,
 
-    // subtitle2: _subTitleLight,
+    subtitle1: _subtitle1,
+    // caption: _caption,
     // button: _buttonLight,
 
     bodyText1: _bodyText1,  
@@ -72,6 +73,18 @@ class StyleTheme{
     fontSize: 13.sp,
     // fontWeight: FontWeight.w700,
     // fontStyle: FontStyle.italic,
+  );
+
+  // static final TextStyle _caption = GoogleFonts.cantarell(
+  //   // color: appBarBackgroundColor,
+  //   fontSize: 10.sp,
+  //   // fontWeight: FontWeight.w700,
+  //   // fontStyle: FontStyle.italic,
+  // );
+
+    static final TextStyle _subtitle1 = TextStyle(
+    // color: appBarBackgroundColor,
+    fontSize: 16.sp,
   );
 
   static final TextStyle _bodyText1 = TextStyle(

@@ -259,7 +259,7 @@ Widget upperPortionOfPage(
                             child: const Text(
                               "Show Details",
                               // softWrap: true,
-                              textScaleFactor: 0.8,
+                              textScaleFactor: 0.66,
                               // style: TextStyle(decoration: TextDecoration.underline)
                               ),
                             ),
@@ -282,7 +282,7 @@ Widget upperPortionOfPage(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (retailerData.visibility) 
-                  const Text("Available Deals") 
+                  Text("Available Deals", style: Theme.of(context).textTheme.subtitle1,) 
                 else const Text("Deals Unavailable"),
                 IconButton(
                   onPressed: () {
