@@ -70,7 +70,7 @@ class CustomRetailerCard extends ConsumerWidget {
                       //remove
                       style: GoogleFonts.averiaSansLibre(
                         // textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 19.sp,
+                        fontSize: 20.sp,
                         // fontWeight: FontWeight.w700,
                         // fontStyle: FontStyle.italic,
                       ),
@@ -114,20 +114,41 @@ class CustomRetailerCard extends ConsumerWidget {
                                   ),
                                   
                             ),
-                            SizedBox(width: 5.w),
-                            Text(
-                              // "${retailerData?.description.toString()}",
-                              lastRowText,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.cantarell(
-                                  // textStyle: Theme.of(context).textTheme.headline4,
-                                  fontSize: 12.sp,
-                                  color: Colors.grey
-                                  // fontWeight: FontWeight.w700,
-                                  // fontStyle: FontStyle.italic,
-                                  ),
-                            ),
+                            SizedBox(width: 2.w),
+                            Wrap(
+                            children: product.discountedPrice != 0
+                                ? [
+                                    // Text(
+                                    //   "\$${retailerData?.description.toString()}",
+                                    //   style: const TextStyle(
+                                    //     decoration: TextDecoration.lineThrough,
+                                    //   ),
+                                    // ),
+                                    SizedBox(width: 7.w),
+                                    Text(
+                                      "\$${product.discountedPrice.toStringAsFixed(2)}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18.sp,
+                                      ),
+                                    ),
+                                  ]
+                                : [
+                                    Text("\$${product.usualPrice.toStringAsFixed(2)}"),
+                                  ]),
+                            // Text(
+                            //   // "${retailerData?.description.toString()}",
+                            //   lastRowText,
+                            //   maxLines: 2,
+                            //   overflow: TextOverflow.ellipsis,
+                            //   style: GoogleFonts.cantarell(
+                            //       // textStyle: Theme.of(context).textTheme.headline4,
+                            //       fontSize: 14.sp,
+                            //       color: Colors.grey
+                            //       // fontWeight: FontWeight.w700,
+                            //       // fontStyle: FontStyle.italic,
+                            //       ),
+                            // ),
                           ],
                         )
                       ],
@@ -157,7 +178,7 @@ class CustomRetailerCard extends ConsumerWidget {
                     //   ],
                     // ),
                   ))),
-          Expanded(
+          Flexible(
             child: Column(children: [
               Flexible(
                 child: IconButton(

@@ -30,31 +30,6 @@ class ConsumerProductItem extends ConsumerWidget {
         child: Row(
           children: [
             Expanded(
-              // child: Container(
-              //   width: mediaQuery.size.width,
-              //   height: mediaQuery.size.height,
-              //   child: ClipRRect(
-              //         borderRadius: BorderRadius.circular(20.0.w),
-              //         clipBehavior: Clip.hardEdge,
-              //         child: Stack(
-              //       children: [
-              //         FadeInImage.assetNetwork(
-              //           placeholder: "resources/your_placeholder_image.png",
-              //           image: product.image,
-              //           fit: BoxFit.cover,
-              //           width: 120.0,
-              //           height: 120.0,
-              //         ),
-              //         Positioned.fill(
-              //           child: Material(
-              //               color: Colors.transparent,
-              //               child: InkWell(
-              //                   splashColor: Colors.lightGreenAccent, onTap: () {})),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
               child: Container(
                 width: mediaQuery.size.width,
                 height: mediaQuery.size.height,
@@ -137,21 +112,6 @@ class ConsumerProductItem extends ConsumerWidget {
                                 : [
                                     Text("\$${product.usualPrice.toStringAsFixed(2)}"),
                                   ]),
-                          // Text(
-                          //   product.description.toString(),
-                          //   // maxLines: 2,
-                          //   overflow: TextOverflow.ellipsis,
-                          //   style: GoogleFonts.cantarell(
-                          //       // textStyle: Theme.of(context).textTheme.headline4,
-                          //       fontSize: 12.sp,
-                          //       color: Colors.grey
-                          //       // fontWeight: FontWeight.w700,
-                          //       // fontStyle: FontStyle.italic,
-                          //       ),
-                          //   // Divider(
-                          //   //   thickness: 1,
-                          //   // ),
-                          // ),
                         ],
                       ),
                       // trailing: Icon(Icons.add),
@@ -159,57 +119,6 @@ class ConsumerProductItem extends ConsumerWidget {
           ],
         ),
       )
-
-
-      // child: Card(
-      //   elevation: 2,
-      //   child: Row(
-      //     children: [
-      //       const Flexible(
-      //         flex: 3,
-      //         child: Placeholder(),
-      //       ),
-      //       Flexible(
-      //         flex: 6,
-      //         child: Column(
-      //           children: [
-      //             Flexible(
-      //               flex: 3,
-      //               child: Text(product.name),
-      //             ),
-      //             const Flexible(
-      //               flex: 5,
-      //               child: Text(
-      //                 "product description",
-      //                 overflow: TextOverflow.ellipsis,
-      //                 maxLines: 3,
-      //               ),
-      //             ),
-      //             Flexible(
-      //               flex: 3,
-      //               child: Wrap(
-      //                   children: product.discountedPrice != 0
-      //                       ? [
-      //                           Text(
-      //                             product.usualPrice.toString(),
-      //                             style: const TextStyle(
-      //                               decoration: TextDecoration.lineThrough,
-      //                             ),
-      //                           ),
-      //                           Text(
-      //                             product.discountedPrice.toString(),
-      //                           ),
-      //                         ]
-      //                       : [
-      //                           Text(product.usualPrice.toString()),
-      //                         ]),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
