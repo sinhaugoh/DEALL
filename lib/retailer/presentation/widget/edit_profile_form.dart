@@ -89,8 +89,8 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.0.w),
                     child: FittedBox(
-                      child: Image.file(image),
                       fit: BoxFit.cover,
+                      child: Image.file(image),
                     ),
                   ),
                 )
@@ -197,7 +197,7 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: SizedBox(
-                height: 50.h,
+                height: 60.h,
                 child: FormTextField(
                   initialValue: widget.retailer.name,
                   label: 'Shop Name',
@@ -309,7 +309,7 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: SizedBox(
-                height: 50.h,
+                height: 65.h,
                 child: FormTextField(
                   initialValue: widget.retailer.postalCode,
                   maxLength: 6,
