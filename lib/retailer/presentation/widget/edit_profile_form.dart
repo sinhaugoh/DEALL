@@ -130,7 +130,10 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.w))),
                         ),
-                        child: const Text('Upload Image'),
+                        child: const Text(
+                          'Upload Image',
+                          // style: Theme.of(context).textTheme.bodyText2,
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -203,7 +206,7 @@ class _EditProfileFormState extends ConsumerState<EditProfileForm> {
             //   ),
             // ),
             Padding(
-              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
+              padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 25.h),
               child: SizedBox(
                 height: 60.h,
                 child: FormTextField(

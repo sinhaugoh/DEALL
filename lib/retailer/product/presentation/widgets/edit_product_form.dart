@@ -55,44 +55,48 @@ class EditProductForm extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround, 
                 children: [
-                  SizedBox(
-                  height: 200.h,
-                  width: 200.w,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0.w),
-                    child: FittedBox(
-                      child: _buildImage(ref),
-                      fit: BoxFit.cover,
+                  Expanded(
+                    child: SizedBox(
+                    height: 200.h,
+                    width: 200.w,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0.w),
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: _buildImage(ref),
+                        ),
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(editProductFormStateNotifierProvider.notifier)
-                              .pickImage();
-                        },
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.w))),
-                        ),
-                      child: const Text('Upload Image'),
-                    ),
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(editProductFormStateNotifierProvider.notifier)
-                              .deleteImage();
-                        },
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.w))),
-                        ),
-                        child: const Text('Delete Image'),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            ref
+                                .read(editProductFormStateNotifierProvider.notifier)
+                                .pickImage();
+                          },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.w))),
+                          ),
+                        child: const Text('Upload Image'),
                       ),
-                    ],
+                        ElevatedButton(
+                          onPressed: () {
+                            ref
+                                .read(editProductFormStateNotifierProvider.notifier)
+                                .deleteImage();
+                          },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.w))),
+                          ),
+                          child: const Text('Delete Image'),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -100,7 +104,7 @@ class EditProductForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 25.h),
               child: SizedBox(
-                height: 90.h,
+                height: 60.h,
                 child: FormTextField(
 
                   counter: const Offstage(),
@@ -121,7 +125,7 @@ class EditProductForm extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
               child: SizedBox(
-                height: 90.h,
+                height: 60.h,
                 child: FormTextField(
                   initialValue: ref
                     .read(editProductFormStateNotifierProvider)
@@ -169,38 +173,44 @@ class EditProductForm extends ConsumerWidget {
             // ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
-              child: FormTextField(
-                label: 'Discount Price (S\$)',
-                initialValue: ref
-                    .read(editProductFormStateNotifierProvider)
-                    .discountedPriceString,
-                errorText: ref.watch(editProductFormStateNotifierProvider
-                        .select((state) => state.showErrorMessage))
-                    ? ref.watch(editProductFormStateNotifierProvider
-                        .select((state) => state.discountedPriceErrorMessage))
-                    : null,
-                onChanged: ref
-                    .read(editProductFormStateNotifierProvider.notifier)
-                    .prodDiscountPriceChanged,
-                keyboardType: TextInputType.number,
-                inputFormatters: [
-                  LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
-                  FilteringTextInputFormatter.allow(
-                      RegExp(r'^(\d+)?\.?\d{0,2}')),
-                ],
+              child: SizedBox(
+                height: 60.h,
+                child: FormTextField(
+                  label: 'Discount Price (S\$)',
+                  initialValue: ref
+                      .read(editProductFormStateNotifierProvider)
+                      .discountedPriceString,
+                  errorText: ref.watch(editProductFormStateNotifierProvider
+                          .select((state) => state.showErrorMessage))
+                      ? ref.watch(editProductFormStateNotifierProvider
+                          .select((state) => state.discountedPriceErrorMessage))
+                      : null,
+                  onChanged: ref
+                      .read(editProductFormStateNotifierProvider.notifier)
+                      .prodDiscountPriceChanged,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(8), // max limit of $9,999.99
+                    FilteringTextInputFormatter.allow(
+                        RegExp(r'^(\d+)?\.?\d{0,2}')),
+                  ],
+                ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 12.h),
-              child: FormTextField(
-                label: 'Description',
-                initialValue: ref
-                    .read(editProductFormStateNotifierProvider)
-                    .product
-                    .description,
-                onChanged: ref
-                    .read(editProductFormStateNotifierProvider.notifier)
-                    .prodDescriptionChanged,
+              child: SizedBox(
+                height: 90.h,
+                child: FormTextField(
+                  label: 'Description',
+                  initialValue: ref
+                      .read(editProductFormStateNotifierProvider)
+                      .product
+                      .description,
+                  onChanged: ref
+                      .read(editProductFormStateNotifierProvider.notifier)
+                      .prodDescriptionChanged,
+                ),
               ),
             ),
             //availability default true
