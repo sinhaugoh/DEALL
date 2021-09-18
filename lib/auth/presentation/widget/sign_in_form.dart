@@ -20,7 +20,7 @@ class SignInForm extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              padding: EdgeInsets.only(right: 30.w, left: 30.w, top: 10.h),
               child: Container(
                 height: 60.h,
                 child: FormTextField(

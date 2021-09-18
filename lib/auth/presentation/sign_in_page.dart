@@ -57,7 +57,7 @@ class SignInPage extends ConsumerWidget {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                  padding: EdgeInsets.only(top: 10.0.h,bottom: 10.h),
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     constraints: BoxConstraints(maxWidth: 150.w),

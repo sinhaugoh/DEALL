@@ -45,7 +45,7 @@ class ConsumerSignUpPage extends ConsumerWidget {
             // const ConsumerSignUpForm(),
               Column(
               children: [
-                Flexible(
+                Expanded(
                   child: Container()
                 ),
                 Expanded(
